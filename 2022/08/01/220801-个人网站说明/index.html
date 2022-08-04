@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">812</span>
+            <span class="post-count">886</span>
         </span>
     </span>
 
@@ -147,7 +147,7 @@
 </ul>
 </li>
 </ol>
-<h3 id="V2022-08-01"><a href="#V2022-08-01" class="headerlink" title="V2022.08.01"></a>V2022.08.01</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 1.在任意文件夹下打开powershell窗口：初始化blog</span></span><br><span class="line"><span class="attribute">hexo</span> init blog</span><br><span class="line"></span><br><span class="line"><span class="comment">## 2.在blog文件下打开powershell窗口：安装主题ayer</span></span><br><span class="line">git clone https://github.com/Shen-Yu/hexo-theme-ayer.git themes/ayer</span><br><span class="line"></span><br><span class="line"><span class="comment">## 3.配置blog下的_config.yml（版本迭代，可直接复制替换配置文件）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 4.配置theme下的_config.yml（版本迭代，可直接复制替换配置文件）</span></span><br></pre></td></tr></table></figure>
+<h2 id="V2022-08"><a href="#V2022-08" class="headerlink" title="V2022.08"></a>V2022.08</h2><h3 id="V2022-08-01"><a href="#V2022-08-01" class="headerlink" title="V2022.08.01"></a>V2022.08.01</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 1.在任意文件夹下打开powershell窗口：初始化blog</span></span><br><span class="line"><span class="attribute">hexo</span> init blog</span><br><span class="line"></span><br><span class="line"><span class="comment">## 2.在blog文件下打开powershell窗口：安装主题ayer</span></span><br><span class="line">git clone https://github.com/Shen-Yu/hexo-theme-ayer.git themes/ayer</span><br><span class="line"></span><br><span class="line"><span class="comment">## 3.配置blog下的_config.yml（版本迭代，可直接复制替换配置文件）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 4.配置theme下的_config.yml（版本迭代，可直接复制替换配置文件）</span></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 5.1 安装插件hexo-generator-searchdb 用于搜索</span></span><br><span class="line"><span class="attribute">npm</span> install hexo-generator-searchdb --save</span><br><span class="line"><span class="comment">## 5.2 安装后需要在blog下的_config.yml添加</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索</span></span><br><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br></pre></td></tr></table></figure>
 
@@ -162,6 +162,9 @@
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 11.在GitHub Pages中配置Custom domain为网站域名</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="/2022/08/01/220801-%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%AF%B4%E6%98%8E/image-20220804082258151.png" alt="image-20220804082258151"></p>
+<h3 id="V2022-08-04"><a href="#V2022-08-04" class="headerlink" title="V2022.08.04"></a>V2022.08.04</h3><h4 id="Hexo-文章置顶插件"><a href="#Hexo-文章置顶插件" class="headerlink" title="Hexo 文章置顶插件"></a>Hexo 文章置顶插件</h4><p><a target="_blank" rel="noopener" href="https://github.com/netcan/hexo-generator-index-pin-top">hexo-generator-index-pin-top</a></p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 1.卸载安装</span></span><br><span class="line"><span class="attribute">npm</span> uninstall hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-index-pin-top --save</span><br><span class="line"></span><br><span class="line"><span class="comment">## 2.在需要置顶的文章的 Front-matter 中加上 top: true 或者 top: 任意数字</span></span><br><span class="line"><span class="comment">## 注意：top 中数字越大，文章越靠前。</span></span><br><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">top: <span class="literal">true</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
  
       <!-- reward -->
       
@@ -245,10 +248,19 @@
    
   <nav class="article-nav">
     
+      <a href="/2022/08/02/220802-NPS%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            NPS用户净推荐分析
+          
+        </div>
+      </a>
     
-      <a href="/2022/03/12/%E7%B1%BB%E5%88%AB%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90-%E5%9F%BA%E4%BA%8ER/" class="article-nav-link">
+    
+      <a href="/2022/03/06/%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD%E6%96%B9%E6%B3%95/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">类别变量分析-基于R</div>
+        <div class="article-nav-title">常用统计推断方法</div>
       </a>
     
   </nav>
@@ -340,6 +352,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
     </li>
     
     <li class="nav-item">

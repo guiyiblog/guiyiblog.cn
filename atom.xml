@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>归一</title>
+  
+  
+  <link href="http://guiyiblog.cn/atom.xml" rel="self"/>
+  
+  <link href="http://guiyiblog.cn/"/>
+  <updated>2022-08-03T16:12:10.193Z</updated>
+  <id>http://guiyiblog.cn/</id>
+  
+  <author>
+    <name>归一</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>个人网站说明</title>
+    <link href="http://guiyiblog.cn/2022/08/01/220801-%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%AF%B4%E6%98%8E/"/>
+    <id>http://guiyiblog.cn/2022/08/01/220801-%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%AF%B4%E6%98%8E/</id>
+    <published>2022-08-01T04:00:00.000Z</published>
+    <updated>2022-08-03T16:12:10.193Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;生命转瞬即逝，唯有思想、灵感与爱永存。&lt;/p&gt;
+&lt;p&gt;Life is fleeting, but thought, inspiration and love remain forever.&lt;/p&gt;
+&lt;p&gt;您好！我是归一，欢迎来到我的个人网站！&lt;/p&gt;
+&lt;p&gt;归一，源自我对生活的感悟，老子在《道德经》中有言：“道生一，一生二，二生三，三生万物。“世间的万事万物都可由简到繁，化繁为简。”一”既是起点，也是终点。“归一”对我来说，不仅是一种生活的态度，更是一种为人处世的哲学。&lt;/p&gt;
+&lt;p&gt;2022年8月1日，我开始正式维护我的个人博客，在这里记录和分享我的学习、工作和生活。&lt;/p&gt;
+&lt;p&gt;之前，我在其他网站上也写过一些文章，但总感觉寄人篱下，有着各种限制，而且无论是CSDN、知乎、简书都有着它自己的产品定位，我希望自己有自己的个性，希望在我走过的岁月能留下属于自己的足迹，希望能有一件能让我一直坚持且不求回报做下去的事情，我想这也是网上很多志同道合的小伙伴热衷于建立自己的个人网站的原因。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="说明文档" scheme="http://guiyiblog.cn/categories/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/"/>
+    
+    
+    <category term="网站开发" scheme="http://guiyiblog.cn/tags/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>类别变量分析-基于R</title>
+    <link href="http://guiyiblog.cn/2022/03/12/%E7%B1%BB%E5%88%AB%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90-%E5%9F%BA%E4%BA%8ER/"/>
+    <id>http://guiyiblog.cn/2022/03/12/%E7%B1%BB%E5%88%AB%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90-%E5%9F%BA%E4%BA%8ER/</id>
+    <published>2022-03-11T16:00:00.000Z</published>
+    <updated>2022-08-03T01:29:03.672Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文主要介绍基于R实现类别变量分析，主要包括：&lt;/p&gt;
+&lt;p&gt;（1）&lt;strong&gt;拟合优度检验&lt;/strong&gt;用于检验 &lt;strong&gt;一个分类变量各类别的观察频数与期望频数是否有显著性差异，&lt;/strong&gt; 或者说是检验一个分类变量各类别观察频数的分布是否符合某一理论分布。&lt;/p&gt;
+&lt;p&gt;（2）&lt;strong&gt;独立性检验&lt;/strong&gt;主要是用于分析判断两个分类变量是否独立。它是在假设两分类变量独立的情况下计算出理论频数，从而再与观察频数作比较，看是否有显著性差异。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    
+    
+    <category term="R语言" scheme="http://guiyiblog.cn/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="推断统计" scheme="http://guiyiblog.cn/tags/%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>描述统计分析-基于R</title>
+    <link href="http://guiyiblog.cn/2022/03/10/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90-%E5%9F%BA%E4%BA%8ER/"/>
+    <id>http://guiyiblog.cn/2022/03/10/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90-%E5%9F%BA%E4%BA%8ER/</id>
+    <published>2022-03-09T16:00:00.000Z</published>
+    <updated>2022-03-12T02:46:06.788Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;统计学是一门专门研究如何收集、处理、分析、解释数据并从数据中得出结论的科学。&lt;/p&gt;
+&lt;p&gt;一般而言，我们通常将对数据的分析分为两大部分：描述统计分析和推断统计分析。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;描述统计分析&lt;/strong&gt; ，可以帮助我们快速了解随机事件的现状，它的基本原理就是信息的凝练和浓缩。用简单的统计量和图表去概况我们所关注的某部分信息，而忽略其他嘈杂信息，整个过程其实就是一个信息筛选和浓缩的过程。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    
+    
+    <category term="描述统计" scheme="http://guiyiblog.cn/tags/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="R语言" scheme="http://guiyiblog.cn/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用统计推断方法</title>
+    <link href="http://guiyiblog.cn/2022/03/06/%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD%E6%96%B9%E6%B3%95/"/>
+    <id>http://guiyiblog.cn/2022/03/06/%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD%E6%96%B9%E6%B3%95/</id>
+    <published>2022-03-06T06:37:08.000Z</published>
+    <updated>2022-03-06T10:02:08.823Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文主要介绍基于参数估计和假设检验的统计推断应用方法，主要包括：&lt;/p&gt;
+&lt;p&gt;（1）分类数据分析 &lt;strong&gt;（统计的是各类别样本频数）&lt;/strong&gt; ：&lt;/p&gt;
+&lt;p&gt;① 拟合优度分析：检验一个分类变量是否符合某一理论分布；或一个分类变量（可以是多分类）对另一个&lt;strong&gt;二分类&lt;/strong&gt;变量对影响是否显著；&lt;/p&gt;
+&lt;p&gt;② 独立性检验（或列联分析）：检验两个分类变量交叉是否是独立的；&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    
+    
+    <category term="统计推断" scheme="http://guiyiblog.cn/tags/%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>推断统计学</title>
+    <link href="http://guiyiblog.cn/2022/03/05/%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    <id>http://guiyiblog.cn/2022/03/05/%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/</id>
+    <published>2022-03-05T11:37:08.000Z</published>
+    <updated>2022-03-05T12:05:20.137Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文主要介绍使用样本推断总体的统计学方法，主要包括参数估计和假设检验。参数估计使用样本统计量估计总体参数，假设检验则使用样本数据推断对某一总体的假设是否成立，两者的理论基础都是大数定律和中心极限定理。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    
+    
+    <category term="统计推断" scheme="http://guiyiblog.cn/tags/%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>描述统计学</title>
+    <link href="http://guiyiblog.cn/2022/03/05/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    <id>http://guiyiblog.cn/2022/03/05/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/</id>
+    <published>2022-03-05T06:37:08.000Z</published>
+    <updated>2022-03-12T02:34:29.579Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文主要介绍了数据分析统计基础——统计描述。数据分析的前提就是要学会观察数据，了解数据，统计描述包括对数据的图表描述和统计量描述，它能让我们对数据有一个直观的认识，比如数据是否完整、是否存在异常、服从什么分布、存在什么规律等，为数据预处理和数据分析做准备。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    
+    
+    <category term="描述统计" scheme="http://guiyiblog.cn/tags/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>量化分析方法</title>
+    <link href="http://guiyiblog.cn/2022/02/22/%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/"/>
+    <id>http://guiyiblog.cn/2022/02/22/%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</id>
+    <published>2022-02-22T14:32:21.000Z</published>
+    <updated>2022-03-12T02:30:25.074Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;如何从定性分析转变为定量分析？&quot;&gt;&lt;a href=&quot;#如何从定性分析转变为定量分析？&quot; class=&quot;headerlink&quot; title=&quot;如何从定性分析转变为定量分析？&quot;&gt;&lt;/a&gt;如何从定性分析转变为定量分析？&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;例: 明天天气怎么样？&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;变量抽离: 天气状况&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;寻找衡量标准: 背景是明天要去室外打球，主要关心下不下雨&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根据信息量大小由小到大扩充变量信息&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据分析方法论" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/"/>
+    
+    
+    <category term="量化分析" scheme="http://guiyiblog.cn/tags/%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python控制流语句</title>
+    <link href="http://guiyiblog.cn/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/"/>
+    <id>http://guiyiblog.cn/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</id>
+    <published>2022-02-22T06:37:08.000Z</published>
+    <updated>2022-08-02T13:29:29.354Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;程序的流程结构可以概括为三种：① 顺序结构；② 分支结构；③ 循环结构。本文主要介绍Python的条件判断语句和循环语句。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据分析" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+    <category term="Python教程" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Python%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Python" scheme="http://guiyiblog.cn/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python数据类型和变量</title>
+    <link href="http://guiyiblog.cn/2022/02/19/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%8F%98%E9%87%8F/"/>
+    <id>http://guiyiblog.cn/2022/02/19/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%8F%98%E9%87%8F/</id>
+    <published>2022-02-19T06:37:08.000Z</published>
+    <updated>2022-08-02T13:28:57.190Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;计算机顾名思义就是可以做数学计算的机器，因此，计算机程序理所当然地可以处理各种数值。但是，计算机能处理的远不止数值，还可以处理文本、图形、音频、视频、网页等各种各样的数据，不同的数据，需要定义不同的数据类型。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据分析" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+    <category term="Python教程" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/Python%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Python" scheme="http://guiyiblog.cn/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NPS用户净推荐分析</title>
+    <link href="http://guiyiblog.cn/2022/01/12/NPS%20%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/"/>
+    <id>http://guiyiblog.cn/2022/01/12/NPS%20%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/</id>
+    <published>2022-01-11T16:00:00.000Z</published>
+    <updated>2022-08-03T01:32:12.866Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;NPS (Net Promoter Score) 可以&lt;strong&gt;衡量客户体验&lt;/strong&gt;并&lt;strong&gt;预测业务增长&lt;/strong&gt;。这一指标改变了商业世界，为全球的客户体验管理提供了可以参考的核心指标。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据分析方法论" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/"/>
+    
+    
+    <category term="用户分析" scheme="http://guiyiblog.cn/tags/%E7%94%A8%E6%88%B7%E5%88%86%E6%9E%90/"/>
+    
+    <category term="NPS" scheme="http://guiyiblog.cn/tags/NPS/"/>
+    
+    <category term="满意度分析" scheme="http://guiyiblog.cn/tags/%E6%BB%A1%E6%84%8F%E5%BA%A6%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+</feed>

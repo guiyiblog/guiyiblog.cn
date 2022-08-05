@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.cn/"/>
-  <updated>2022-08-04T15:21:18.396Z</updated>
+  <updated>2022-08-05T01:11:47.953Z</updated>
   <id>http://guiyiblog.cn/</id>
   
   <author>
@@ -15,6 +15,96 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>量化分析方法</title>
+    <link href="http://guiyiblog.cn/2022/08/08/220808-%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/"/>
+    <id>http://guiyiblog.cn/2022/08/08/220808-%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</id>
+    <published>2022-08-08T14:32:21.000Z</published>
+    <updated>2022-08-05T01:11:47.953Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;如何从定性分析转变为定量分析？&quot;&gt;&lt;a href=&quot;#如何从定性分析转变为定量分析？&quot; class=&quot;headerlink&quot; title=&quot;如何从定性分析转变为定量分析？&quot;&gt;&lt;/a&gt;如何从定性分析转变为定量分析？&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;例: 明天天气怎么样？&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;变量抽离: 天气状况&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;寻找衡量标准: 背景是明天要去室外打球，主要关心下不下雨&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;根据信息量大小由小到大扩充变量信息&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="数据分析" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+    <category term="方法论" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%96%B9%E6%B3%95%E8%AE%BA/"/>
+    
+    
+    <category term="量化分析" scheme="http://guiyiblog.cn/tags/%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用统计推断方法</title>
+    <link href="http://guiyiblog.cn/2022/08/07/220807-%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD%E6%96%B9%E6%B3%95/"/>
+    <id>http://guiyiblog.cn/2022/08/07/220807-%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD%E6%96%B9%E6%B3%95/</id>
+    <published>2022-08-07T06:37:08.000Z</published>
+    <updated>2022-08-05T01:06:45.336Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文主要介绍基于参数估计和假设检验的统计推断应用方法，主要包括：&lt;/p&gt;
+&lt;p&gt;（1）分类数据分析 &lt;strong&gt;（统计的是各类别样本频数）&lt;/strong&gt; ：&lt;/p&gt;
+&lt;p&gt;① 拟合优度分析：检验一个分类变量是否符合某一理论分布；或一个分类变量（可以是多分类）对另一个&lt;strong&gt;二分类&lt;/strong&gt;变量对影响是否显著；&lt;/p&gt;
+&lt;p&gt;② 独立性检验（或列联分析）：检验两个分类变量交叉是否是独立的；&lt;/p&gt;
+&lt;p&gt;（2）数值型数据分析 &lt;strong&gt;（统计的是样本的某个指标）&lt;/strong&gt; ：&lt;/p&gt;
+&lt;p&gt;① 方差分析：检验分类变量对数值型变量对影响是否显著；（若分类变量为&lt;strong&gt;二分类变量&lt;/strong&gt;则可以使用z检验或t检验）&lt;/p&gt;
+&lt;p&gt;② 回归分析：用于预测一个或多个自变量对某一个因变量的影响趋势，量化自变量对因变量的影响程度&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    
+    
+    <category term="统计推断" scheme="http://guiyiblog.cn/tags/%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>推断统计学</title>
+    <link href="http://guiyiblog.cn/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    <id>http://guiyiblog.cn/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/</id>
+    <published>2022-08-06T11:37:08.000Z</published>
+    <updated>2022-08-05T01:05:28.937Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文主要介绍使用样本推断总体的统计学方法，主要包括参数估计和假设检验。参数估计使用样本统计量估计总体参数，假设检验则使用样本数据推断对某一总体的假设是否成立，两者的理论基础都是大数定律和中心极限定理。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    
+    
+    <category term="统计推断" scheme="http://guiyiblog.cn/tags/%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>描述统计学</title>
+    <link href="http://guiyiblog.cn/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    <id>http://guiyiblog.cn/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/</id>
+    <published>2022-08-05T06:37:08.000Z</published>
+    <updated>2022-08-05T01:03:29.650Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文主要介绍了数据分析统计基础——统计描述。数据分析的前提就是要学会观察数据，了解数据，统计描述包括对数据的图表描述和统计量描述，它能让我们对数据有一个直观的认识，比如数据是否完整、是否存在异常、服从什么分布、存在什么规律等，为数据预处理和数据分析做准备。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+    
+    
+    <category term="描述统计" scheme="http://guiyiblog.cn/tags/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>类别变量分析（R语言实现）</title>
@@ -33,9 +123,9 @@
     <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
     
     
-    <category term="推断统计" scheme="http://guiyiblog.cn/tags/%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1/"/>
-    
     <category term="R语言" scheme="http://guiyiblog.cn/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="推断统计" scheme="http://guiyiblog.cn/tags/%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
@@ -57,9 +147,9 @@
     <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
     
     
-    <category term="R语言" scheme="http://guiyiblog.cn/tags/R%E8%AF%AD%E8%A8%80/"/>
-    
     <category term="描述统计" scheme="http://guiyiblog.cn/tags/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="R语言" scheme="http://guiyiblog.cn/tags/R%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
@@ -110,91 +200,6 @@
     
     
     <category term="网站开发" scheme="http://guiyiblog.cn/tags/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用统计推断方法</title>
-    <link href="http://guiyiblog.cn/2022/03/06/%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD%E6%96%B9%E6%B3%95/"/>
-    <id>http://guiyiblog.cn/2022/03/06/%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD%E6%96%B9%E6%B3%95/</id>
-    <published>2022-03-06T06:37:08.000Z</published>
-    <updated>2022-03-06T10:02:08.823Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文主要介绍基于参数估计和假设检验的统计推断应用方法，主要包括：&lt;/p&gt;
-&lt;p&gt;（1）分类数据分析 &lt;strong&gt;（统计的是各类别样本频数）&lt;/strong&gt; ：&lt;/p&gt;
-&lt;p&gt;① 拟合优度分析：检验一个分类变量是否符合某一理论分布；或一个分类变量（可以是多分类）对另一个&lt;strong&gt;二分类&lt;/strong&gt;变量对影响是否显著；&lt;/p&gt;
-&lt;p&gt;② 独立性检验（或列联分析）：检验两个分类变量交叉是否是独立的；&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
-    
-    
-    <category term="统计推断" scheme="http://guiyiblog.cn/tags/%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>推断统计学</title>
-    <link href="http://guiyiblog.cn/2022/03/05/%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
-    <id>http://guiyiblog.cn/2022/03/05/%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/</id>
-    <published>2022-03-05T11:37:08.000Z</published>
-    <updated>2022-03-05T12:05:20.137Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文主要介绍使用样本推断总体的统计学方法，主要包括参数估计和假设检验。参数估计使用样本统计量估计总体参数，假设检验则使用样本数据推断对某一总体的假设是否成立，两者的理论基础都是大数定律和中心极限定理。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
-    
-    
-    <category term="统计推断" scheme="http://guiyiblog.cn/tags/%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>描述统计学</title>
-    <link href="http://guiyiblog.cn/2022/03/05/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
-    <id>http://guiyiblog.cn/2022/03/05/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/</id>
-    <published>2022-03-05T06:37:08.000Z</published>
-    <updated>2022-03-12T02:34:29.579Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文主要介绍了数据分析统计基础——统计描述。数据分析的前提就是要学会观察数据，了解数据，统计描述包括对数据的图表描述和统计量描述，它能让我们对数据有一个直观的认识，比如数据是否完整、是否存在异常、服从什么分布、存在什么规律等，为数据预处理和数据分析做准备。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
-    
-    
-    <category term="描述统计" scheme="http://guiyiblog.cn/tags/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>量化分析方法</title>
-    <link href="http://guiyiblog.cn/2022/02/22/%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/"/>
-    <id>http://guiyiblog.cn/2022/02/22/%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</id>
-    <published>2022-02-22T14:32:21.000Z</published>
-    <updated>2022-03-12T02:30:25.074Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;如何从定性分析转变为定量分析？&quot;&gt;&lt;a href=&quot;#如何从定性分析转变为定量分析？&quot; class=&quot;headerlink&quot; title=&quot;如何从定性分析转变为定量分析？&quot;&gt;&lt;/a&gt;如何从定性分析转变为定量分析？&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;例: 明天天气怎么样？&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;变量抽离: 天气状况&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;寻找衡量标准: 背景是明天要去室外打球，主要关心下不下雨&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;根据信息量大小由小到大扩充变量信息&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary>
-    
-    
-    
-    <category term="数据分析方法论" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/"/>
-    
-    
-    <category term="量化分析" scheme="http://guiyiblog.cn/tags/%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90/"/>
     
   </entry>
   

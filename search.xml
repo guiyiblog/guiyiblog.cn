@@ -81,639 +81,106 @@
       </tags>
   </entry>
   <entry>
-    <title>NPS用户净推荐分析</title>
-    <url>/2022/08/02/220802-NPS%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/</url>
-    <content><![CDATA[<p>NPS (Net Promoter Score) 可以<strong>衡量客户体验</strong>并<strong>预测业务增长</strong>。这一指标改变了商业世界，为全球的客户体验管理提供了可以参考的核心指标。</p>
-<p><img src="/2022/08/02/220802-NPS%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/NPS.jpg" alt="NPS"></p>
-  <span id="more"></span>
+    <title>Git学习笔记</title>
+    <url>/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>学习地址：<a href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
+<span id="more"></span>
 
-<h2 id="NPS-计算"><a href="#NPS-计算" class="headerlink" title="NPS 计算"></a>NPS 计算</h2><p>调研提问方式：”您有多大可能把我们（或这个产品&#x2F;服务&#x2F;品牌等等）推荐给朋友或同事？请从0-10分打分。“</p>
-<p>受访者分为以下几类：</p>
+<h2 id="Git本地仓库"><a href="#Git本地仓库" class="headerlink" title="Git本地仓库"></a>Git本地仓库</h2><h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 创建版本库</span></span></span><br><span class="line">mkdir learngit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 进入learngit目录</span></span></span><br><span class="line">cd learngit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 指定仓库</span></span></span><br><span class="line">git init</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 新建文件：版本1</span></span></span><br><span class="line">vim readme.txt</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># ins输入</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Git is a version control system.</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Git is a free software.</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Esc退出，:wq保存</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 把文件添加到仓库</span></span></span><br><span class="line">git add readme.txt</span><br><span class="line">git commit -m&quot;wrote a readme.txt&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="查看修改记录"><a href="#查看修改记录" class="headerlink" title="查看修改记录"></a>查看修改记录</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 修改文件：版本2</span></span></span><br><span class="line">vim readme.txt</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># ins输入，修改第一行为</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Git is a distributed version control system.</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Esc退出，:wq保存</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查看仓库状态</span></span></span><br><span class="line">git status</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查看修改内容</span></span></span><br><span class="line">git diff</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 把文件添加到仓库</span></span></span><br><span class="line">git add readme.txt</span><br><span class="line">git commit -m&quot;add distributed&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 修改文件：版本3</span></span></span><br><span class="line">vim readme.txt</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># ins输入，修改第二行为</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Git is free software distributed under the GPL.</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Esc退出，:wq保存</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查看版本历史记录：显示从最近到最远的提交日志</span></span></span><br><span class="line">git log</span><br><span class="line">git log --pretty=oneline</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 回退到上一版本（版本2）</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100</span></span></span><br><span class="line">git reset --hard HEAD^</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 重新回到版本1</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 找到版本1的commit id</span></span></span><br><span class="line">git reflog</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 根据版本1的commit id，重新回到版本1</span></span></span><br><span class="line">git reset --hard 150fa61</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><p><strong>工作区（Working Directory）</strong></p>
+<p>就是你在电脑里能看到的目录，比如<code>learngit</code>文件夹就是一个工作区</p>
+<p><strong>版本库（Repository）</strong></p>
+<p>工作区有一个隐藏目录<code>.git</code>，这个不算工作区，而是Git的版本库。</p>
+<p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支<code>master</code>，以及指向<code>master</code>的一个指针叫<code>HEAD</code>。</p>
+<p>每次修改，如果不用<code>git add</code>到暂存区，那就不会加入到<code>commit</code>中</p>
+<p><img src="/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/0.jpeg"></p>
+<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
+<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了场景1，第二步按场景1操作。</p>
+<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考<strong>版本回退</strong>一节，不过前提是没有推送到远程库。</p>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 删除工作区中的文件readme.txt</span></span></span><br><span class="line">rm readme.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 同步删除版本库中的文件</span></span></span><br><span class="line">git rm readme.txt</span><br><span class="line">git commit -m&quot;remove readme.txt&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 撤回修改（删除）</span></span></span><br><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+
+<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+<h2 id="Git远程仓库"><a href="#Git远程仓库" class="headerlink" title="Git远程仓库"></a>Git远程仓库</h2><h3 id="关联GitHub"><a href="#关联GitHub" class="headerlink" title="关联GitHub"></a>关联GitHub</h3><p>本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，因此需要给GitHub添加本地的SSH Key进行关联。</p>
+<p><strong>第1步：创建SSH Key。</strong></p>
+<p>在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 创建SSH Key</span></span></span><br><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查找.shh所在目录</span></span></span><br><span class="line">ll -d ~/.ssh</span><br></pre></td></tr></table></figure>
+
+<p>把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可。</p>
+<p>在用户主目录里找到<code>.ssh</code>目录，里面有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥，可以放心地告诉任何人。</p>
+<p><strong>第2步：GitHub添加SSH Key。</strong></p>
+<p>登陆GitHub，打开“Account settings”，“SSH Keys”页面：</p>
+<p>然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容：</p>
+<p><img src="/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/0.png"></p>
+<h3 id="从本地上传到GitHub"><a href="#从本地上传到GitHub" class="headerlink" title="从本地上传到GitHub"></a>从本地上传到GitHub</h3><p>在本地工作区下执行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 将该目录下的本地仓库与某个GitHub仓库关联</span></span></span><br><span class="line">git remote add origin git@github.com:GitHub账号名/仓库名.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 将本地的【版本库!!!】上传到GitHub仓库</span></span></span><br><span class="line">git push -u origin master</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查看远程库信息</span></span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 解除与远程库的关系</span></span></span><br><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
+
+<p>把本地库的内容推送到远程，用<code>git push</code>命令，实际上是把当前分支<code>master</code>推送到远程。</p>
+<p>由于远程库是空的，第一次推送<code>master</code>分支时，需加上<code>-u</code>参数，Git不但会把本地的<code>master</code>分支内容推送的远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，以后的推送，使用<code>git push origin master</code>即可。</p>
+<p>注意：推送的是版本库，不是工作区！！！</p>
+<p>因此，更新流程是：<strong>工作区-&gt;版本库-&gt;远程库</strong></p>
+<h3 id="从GitHub克隆到本地"><a href="#从GitHub克隆到本地" class="headerlink" title="从GitHub克隆到本地"></a>从GitHub克隆到本地</h3><p>在本地工作区下执行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 从GitHub克隆到本地</span></span></span><br><span class="line">git clone git@github.com:GitHub账号名/仓库名.git</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>大数据开发</category>
+        <category>Git教程</category>
+      </categories>
+      <tags>
+        <tag>网站开发</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>量化分析方法</title>
+    <url>/2022/08/08/220808-%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="如何从定性分析转变为定量分析？"><a href="#如何从定性分析转变为定量分析？" class="headerlink" title="如何从定性分析转变为定量分析？"></a>如何从定性分析转变为定量分析？</h2><p><strong>例: 明天天气怎么样？</strong></p>
+<ol>
+<li><p>变量抽离: 天气状况</p>
+</li>
+<li><p>寻找衡量标准: 背景是明天要去室外打球，主要关心下不下雨</p>
+</li>
+<li><p>根据信息量大小由小到大扩充变量信息</p>
+<span id="more"></span>
+
 <ul>
-<li><strong>推荐者（Promoter）</strong>（9-10分）：是忠诚的爱好者，他们会继续购买并推荐他人，从而促进增长。</li>
-<li><strong>被动者（Passive）</strong>（7-分）：很满意，但很容易受到竞争产品的攻击。</li>
-<li><strong>批评者（Detractor）</strong>（0-6分）：是不满意的客户，他们可能会通过负面的口碑来损害您的品牌并阻碍增长。</li>
+<li>二分类变量: 好(不下雨），不好(下雨）</li>
+<li>顺序变量: 极差(下暴雨），差(下大雨），一般(下小雨），好(晴天），很好(阴天)</li>
+<li>数值型变量: 下雨量，室外温度</li>
 </ul>
-<p>从推荐者的百分比中减去批评者的百分比会得出净推荐者分数，其范围可以从低到 -100（如果每个客户都是批评者）到最高 100（如果每个客户都是推荐者）。</p>
-<p><strong>净推荐值(NPS)&#x3D;(推荐者数&#x2F;总样本数)×100% - (批评者数&#x2F;总样本数)×100%</strong></p>
-<h3 id="CEM的核心指标"><a href="#CEM的核心指标" class="headerlink" title="CEM的核心指标"></a>CEM的核心指标</h3><p>CEM （Customer Experience Management）</p>
-<p>将NPS用作衡量客户对品牌整体印象的关键指标。因为NPS是增长的领先指标，所以它为您的客户体验管理（CEM）计划提供了最佳的选择。将NPS与来自客户历程中各个角度的其他指标和见解相辅相成，您可以全面，切实地查看客户体验绩效。</p>
-<h2 id="NPS-预测增长"><a href="#NPS-预测增长" class="headerlink" title="NPS 预测增长"></a>NPS 预测增长</h2><p>改善客户体验的商业利益</p>
-<p>在改变商业世界十多年后，NPS仍然是唯一可以预测业务增长的客户体验。<strong>NPS 的经济学源于推荐者，被动者和批评者的行为差异。</strong>通过多种方式集中精力提高NPS，以提高业务绩效。</p>
-<h3 id="更高的利润和支出"><a href="#更高的利润和支出" class="headerlink" title="更高的利润和支出"></a>更高的利润和支出</h3><p><strong>推荐者通常不如其他客户对价格敏感</strong>，因为他们认为他们从贵公司整体上获得了良好的价值。对于<strong>价格更敏感的批评者</strong>而言，情况恰恰相反。同时，<strong>推荐者购买的商品比批评者购买的商品更多</strong>。他们倾向于通过自己喜欢的品牌整合更多的商品类别。<strong>推荐者对新产品和品牌扩展的兴趣</strong>也超过了批评者或被动者。</p>
-<h3 id="更高的保留率"><a href="#更高的保留率" class="headerlink" title="更高的保留率"></a>更高的保留率</h3><p>批评者通常比推荐者更容易出现问题，这意味着他们与您的公司之间的关系较短且利润较低。挽救那些批评者，将他们变成推荐者，从而并获得更高的利润。（有时候也可以战略性放弃这部分人群，因为批评者的获客成本往往很高，且容易给公司造成负面影响）</p>
-<h3 id="更好的口碑"><a href="#更好的口碑" class="headerlink" title="更好的口碑"></a>更好的口碑</h3><p>有多少新客户是因为声誉或推荐而选择您的公司？这些新客户的终生价值（包括销售或营销费用的任何节省）将大部分来自于推荐者。另一方面，批评者会导致负面的口口相传，因此您可以将这种拖累增长的成本归因于他们。</p>
-<p>总而言之，推荐者可以帮你减少获客成本，提高增长；而批评者则会增加你的获客成本，降低增长。</p>
-<h2 id="比较您的净促销员分数"><a href="#比较您的净促销员分数" class="headerlink" title="比较您的净促销员分数"></a>比较您的净促销员分数</h2><p>NPS基准测试指导您的目标和计划</p>
-<p>“我的 NPS 应该是多少？” 简单的问题，复杂的答案。NPS会因行业，地区或客户特征（例如年龄，收入水平或与公司在一起的时间）而异。</p>
-<p><img src="https://www.netpromoter.com/wp-content/uploads/2016/06/2016-b2c-sps-sector-averages.jpg" alt="B2C基准"></p>
-<p>因此，要了解您的净促销员得分，您<strong>必须将该得分与您的行业内以及直接和间接竞争对手的得分进行比较</strong>。得分高于竞争水平的公司发展更快，更成功。</p>
-<h3 id="使用NPS跟踪用户体验"><a href="#使用NPS跟踪用户体验" class="headerlink" title="使用NPS跟踪用户体验"></a>使用NPS跟踪用户体验</h3><p>NPS 分数是客户体验好坏的标志。NPS高于竞争对手的公司往往会增长更快并取得更大的成功。使用您自己的 NPS 分数（并查看竞争对手的分数），可以来跟踪您为提高客户体验的努力是否成功。</p>
-<p>参考网站：<a href="https://www.netpromoter.com/compare/">https://www.netpromoter.com/compare/</a></p>
-<h2 id="使用Power-BI-搭建-NPS-模型"><a href="#使用Power-BI-搭建-NPS-模型" class="headerlink" title="使用Power BI 搭建 NPS 模型"></a>使用Power BI 搭建 NPS 模型</h2><p><img src="/2022/08/02/220802-NPS%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/NPS%E6%A8%A1%E5%9E%8B.jpg" alt="NPS模型"></p>
+</li>
+<li><p>根据实际情况选择合适的量化层级进行辅助判断。</p>
+<ul>
+<li><p>场景一: 对天气要求极为苛刻，只要下雨就不去打球，二分类变量即可衡量</p>
+</li>
+<li><p>场景二: 对打球兴趣度极高，只要不是下大暴雨就行，顺序变量即可衡量</p>
+</li>
+<li><p>场景三: 身体对下雨量和温度极度敏感，只能接受某个下雨量和温度范围，多下一毫米雨，高一度温度，就会导致发烧感冒，选数值型变量衡量</p>
+</li>
+</ul>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>数据分析</category>
         <category>方法论</category>
       </categories>
       <tags>
-        <tag>用户分析</tag>
-        <tag>NPS</tag>
-        <tag>满意度分析</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>描述统计分析（R语言实现）</title>
-    <url>/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/</url>
-    <content><![CDATA[<p>统计学是一门专门研究如何收集、处理、分析、解释数据并从数据中得出结论的科学。</p>
-<p>一般而言，我们通常将对数据的分析分为两大部分：描述统计分析和推断统计分析。</p>
-<p><strong>描述统计分析</strong> ，可以帮助我们快速了解随机事件的现状，它的基本原理就是信息的凝练和浓缩。用简单的统计量和图表去概况我们所关注的某部分信息，而忽略其他嘈杂信息，整个过程其实就是一个信息筛选和浓缩的过程。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/image-20220804231411913.png"></p>
-  <span id="more"></span>
-
-<p>举个简单的例子：婚介所给你推荐了10个女士的个人信息，包括：身高、体重、年龄、学历……，但是，你最关注的只是学历，因此，在众多的信息里，只有学历这个信息对你而言是有用的，你只需要把10个人的学历信息筛选出来进行比较即可，而不需要关注过多的其他信息，造成时间的浪费。<strong>这就是一个简单的信息筛选过程。</strong></p>
-<p>再举个例子：如果你想了解你目前的薪资处于当前城市的什么水平，最“严谨”的办法当然是，把这个城市的所有人的薪资都统计出来，然后排个序，看自己的薪资再所有人当中能排到哪个位置。但是，显然这是不可取的。因此，我们就需要进行如下工作：</p>
-<ol>
-<li>**信息筛选（随机抽样）： **抽取部分与城市薪资分布整体结构近似的人群进行调查。</li>
-<li>**信息浓缩（概括性度量）： **计算样本的中位数，通过观察你距离样本中位数的位置，大致能推断你在这个城市的薪资水平。</li>
-</ol>
-<p><strong>从这个过程我们可以看出，通过信息的筛选和浓缩，我们从需要了解一个城市所有人的薪资大小简化到了只需要了解一个统计量（中位数）的大小。</strong></p>
-<p>但是，肯定会有人有疑问：虽说简单了，但是也损失了很多信息，而且极可能把我们关注的信息也损失了，我们也不知道结果准不准确？有多准确？对于这个问题，如果来判断准不准确？误差是多少？能否按照规律进行预测？…….这些就是我们推断统计部分需要来回答的问题了。</p>
-<p>我们需要清楚的是，描述统计的作用就是通过信息筛选和信息浓缩<strong>快速了解现状</strong>。就好比两军开战，要先知己知彼，洞察敌情，至于什么时候开战？如果判断开战的时机？这个就是我们统计推断要解决的事情。</p>
-<h2 id="数据信息的分类"><a href="#数据信息的分类" class="headerlink" title="数据信息的分类"></a>数据信息的分类</h2><p>现实世界的数据信息以各种形态存在，为了更好的对他们进行搜集和分析，我们把具有相同性质的数据信息进行如下分类。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB.png"></p>
-<p>非结构化数据处理相对复杂，有专门的学科进行研究。在这里，我们主要来分析结构化数据。</p>
-<h2 id="分类数据的描述性分析"><a href="#分类数据的描述性分析" class="headerlink" title="分类数据的描述性分析"></a>分类数据的描述性分析</h2><p>分类数据是只能归于某一类别的非数字型数据，它是对事物进行分类的结果，数据表现为类别，是用文字来表述的。</p>
-<h3 id="图表描述分析"><a href="#图表描述分析" class="headerlink" title="图表描述分析"></a>图表描述分析</h3><p>对分类变量的图表描述分析，主要分为对比分析和占比分析。</p>
-<h4 id="对比分析：条形图"><a href="#对比分析：条形图" class="headerlink" title="对比分析：条形图"></a>对比分析：条形图</h4><p>通常，我们使用条形图来对比不同类别的频数大小，快速直观的了解各类别的”好坏“情况。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%9D%A1%E5%BD%A2%E5%9B%BE.png"></p>
-<h4 id="占比分析：帕累托图和扇形图"><a href="#占比分析：帕累托图和扇形图" class="headerlink" title="占比分析：帕累托图和扇形图"></a>占比分析：帕累托图和扇形图</h4><p>对于分类变量，我们除了想了解数据整体的情况，还需要了解各部分在整体中的占比（即影响权重），常用的占比分析方法就是帕累托分析。</p>
-<p><strong>帕累托法则，又称为二八原则，即20%的人贡献了80%的价值。它常用来对用户进行分类，寻找出核心价值用户。</strong></p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E5%B8%95%E7%B4%AF%E6%89%98%E5%9B%BE.png"></p>
-<p>扇形图能更加直观的看出各类别占比的大小顺序，方便类别直接进行比较。（个人不推荐使用饼图）</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%89%87%E5%BD%A2%E5%9B%BE.png"></p>
-<h3 id="统计量描述分析"><a href="#统计量描述分析" class="headerlink" title="统计量描述分析"></a>统计量描述分析</h3><h4 id="描述水平的统计量：众数"><a href="#描述水平的统计量：众数" class="headerlink" title="描述水平的统计量：众数"></a>描述水平的统计量：众数</h4><p>咱们公司的明星产品是什么？哪个小区的人口最多？为了回答类似这样的问题，我们可以使用众数 $M_0$ 来进行衡量。<strong>众数是频数最高的那个类别值，通过它我们可以了解哪个类别出现的概率会更高，即哪款产品可能更受用户喜爱。</strong></p>
-<h4 id="描述差异的统计量：异众比率"><a href="#描述差异的统计量：异众比率" class="headerlink" title="描述差异的统计量：异众比率"></a>描述差异的统计量：异众比率</h4><p>描述数据的统计量通常都是成对出现的，在上面，我们通过众数了解到了销量最好的明星产品，但是，这个明星产品是否可以作为”代表“，来代表所有产品的销售情况呢？是不是通过它的销售好坏，就可以直接衡量所有产品整体的销售好坏呢？</p>
-<p>我们需要一个评判标准，那就是异众比率。异众比率是指除了众数以外其他类别的总频数占总样本量的比例，即除了明星产品，其他产品的销量占总销量的比例。</p>
-<p>如果异众比率小，则说明销量主要集中在明星产品，众数的代表性好，反之，则代表性差，不能用众数去代表整体的情况。</p>
-<p><strong>注：根据二八法则，通常认为异众比率在0.2以下，众数的代表性就很好。</strong></p>
-<h2 id="顺序数据的描述性分析"><a href="#顺序数据的描述性分析" class="headerlink" title="顺序数据的描述性分析"></a>顺序数据的描述性分析</h2><h3 id="图表描述分析-1"><a href="#图表描述分析-1" class="headerlink" title="图表描述分析"></a>图表描述分析</h3><p><strong>（1）</strong>   <strong>频数分布表——累计频数分布表</strong></p>
-<p>主要用于计数和汇总顺序变量的数据，通过它可以使频数、比例、累积频数、累积频率等一目了然，从而为进一步分析做准备。</p>
-<p><strong>（2）</strong>   <strong>累计频数分布图</strong></p>
-<p>主要是用于展示顺序变量的<strong>累积频数分布情况</strong>。它是将各类别按级别大小进行升序或降序排列在横坐标上，用纵坐标表示各类别的频率，然后用折线绘制出累积频率。</p>
-<h3 id="统计量描述分析-1"><a href="#统计量描述分析-1" class="headerlink" title="统计量描述分析"></a>统计量描述分析</h3><h4 id="描述水平的统计量：中位数、四分位数"><a href="#描述水平的统计量：中位数、四分位数" class="headerlink" title="描述水平的统计量：中位数、四分位数"></a>描述水平的统计量：中位数、四分位数</h4><p><strong>中位数</strong>是一组数据排序后处于中间位置的变量值。<strong>四分位数</strong>是一组数据排序后处于25%和75%位置上的值。它们常用于反映一组顺序数据的集中趋势，且不受极端值影响。</p>
-<h4 id="描述差异的统计量：四分位差"><a href="#描述差异的统计量：四分位差" class="headerlink" title="描述差异的统计量：四分位差"></a>描述差异的统计量：四分位差</h4><p><strong>四分位差</strong>是上四分位数与下四分位数之差。它反映了中间50%数据的离散程度，其数值越小说明数据越集中，数值越大说明数据越发散。</p>
-<h2 id="数值型数据的描述性分析"><a href="#数值型数据的描述性分析" class="headerlink" title="数值型数据的描述性分析"></a>数值型数据的描述性分析</h2><h3 id="图表描述分析-2"><a href="#图表描述分析-2" class="headerlink" title="图表描述分析"></a>图表描述分析</h3><p><strong>用于展示数据分布特征的图形主要有以下几种：</strong></p>
-<p><strong>（1）</strong> <strong>直方图</strong></p>
-<p>主要用于观察分组数据的分布特征，通常可以结合核密度线进行观察，可用于进行正态性检验。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E7%9B%B4%E6%96%B9%E5%9B%BE.png"></p>
-<p><strong>直方图与条形图的区别与联系：</strong></p>
-<p><strong>区别：</strong>条形图主要用来展示分类数据，其高度表示各类别频数的多少，其宽度是固定的；直方图则主要是用于展示数值型分组数据，是用面积表示频数分布，矩形的高度表示每一组的频数或频率，宽度则表示各组的组距，因此其高度和宽度均有意义。且由于分组数据具有连续性，直方图的各矩形通常是连续排列的，而条形图则是分开排列的。</p>
-<p><strong>联系：</strong>二者都用来展示数据的分布情况；在平面直角坐标系中，二者的横轴都表示分组，纵轴都可表示频数或频率大小。</p>
-<p><strong>（2）</strong> <strong>茎叶图</strong></p>
-<p>它不仅可以用来反映数据的分布特征，还可以保留原始数据的信息，更适用于观察少量数据的分布。它由“茎”和“叶”两部分构成。绘制时，首先将一个数值分成两部分，通常是以该数据的高位数值作为树茎，而叶上只保留该数值的最后一个数字。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E8%8C%8E%E5%8F%B6%E5%9B%BE.png"></p>
-<p><strong>（3）</strong> <strong>箱线图</strong></p>
-<p>它不仅可以用来反映原始数据的分布特征，还可以进行多组数据分布特征的比较。箱形图是由5个统计量组合而成的图形，它们分别是：“最大值”、“最小值”、中位数、上四分位数和下四分位数。</p>
-<p><strong>“最大值和最小值”：</strong>在箱形图中的最大值其实是指去除异常值后的最大值和最小值，然后将它们作为整体图形的上下两条边界线。</p>
-<p>判断异常值的异常值截断点计算方式如下：</p>
-<p>上异常值截断点 &#x3D; 上四分位数 + 1.5*IQR（IQR即四分位差）</p>
-<p>下异常值截断点 &#x3D; 下四分位数 - 1.5*IQR（IQR即四分位差）</p>
-<p><strong>中位数</strong>：代表数据集中趋势位置的数，它表示这组数据大部分是集中在哪个数的附近，在这组数据中即表示了大多数的学生成绩是在75.5分左右。</p>
-<p><strong>四分位差（IQR)：</strong>IQR &#x3D; Q3（上四分位数）-Q1（下四分位数）。</p>
-<p>四分位差表示了一组数据中间50%的数据的离散程度，通过它我们可以来衡量中位数的代表性。如果IQR较大，则说明中间50%的数据相对分散，中位数的代表性则不好；如果IQR较小，则说明中间50%的数据相对集中，中位数的代表性则较好。</p>
-<p><strong>此外，</strong>我们还可以通过图形的整体长度，即极差来观察数据的整体分散程度。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E7%AE%B1%E7%BA%BF%E5%9B%BE.png"></p>
-<p><strong>用于展示变量之间的关系的图形主要有以下几种：</strong></p>
-<p><strong>（4）</strong> <strong>散点图（两个数值型变量）</strong></p>
-<p>它可以用来展示两个数值型变量之间的关系，一个变量在横轴，一个变量在纵轴，通过观察散点的趋势判断两变量的相关性。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%95%A3%E7%82%B9%E5%9B%BE.png"></p>
-<p><strong>（5）气泡图（三个数值型变量）</strong></p>
-<p>它可以用来展示三个数值型变量之间的关系。第一个变量用横轴表示，第二个变量用纵轴表示，第三个变量用气泡的大小表示。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%B0%94%E6%B3%A1%E5%9B%BE.png"></p>
-<p><strong>用于比较多个样本的相似性的图形主要有以下几种：</strong></p>
-<p><strong>（6）雷达图（两个以上数值型变量）</strong></p>
-<p>它是从一点出发，用每一条射线代表一个变量，多个变量的数据的连成线就围成了一个区域，多个样本就能绘制多个区域 ，从而方便研究各样本间的相似程度。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E9%9B%B7%E8%BE%BE%E5%9B%BE.png"></p>
-<p><strong>（7）轮廓图（两个以上数值型变量）</strong></p>
-<p>它是用横轴表示各样本，纵轴表示每个样本的多个变量的取值，将不同样本同一个变量的取值用折线连接，从而便于分析各个样本之间的相似程度。</p>
-<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E8%BD%AE%E5%BB%93%E5%9B%BE.png"></p>
-<h3 id="统计量描述分析-2"><a href="#统计量描述分析-2" class="headerlink" title="统计量描述分析"></a>统计量描述分析</h3><h4 id="描述水平的统计量：平均数"><a href="#描述水平的统计量：平均数" class="headerlink" title="描述水平的统计量：平均数"></a>描述水平的统计量：平均数</h4><p><strong>平均数</strong>的计算公式有多种，如简单平均数、加权平均数、几何平均数。主要是用于反映一组数值型数据的集中趋势，<strong>且易受极端值影响。</strong></p>
-<h4 id="描述差异的统计量：方差和标准差"><a href="#描述差异的统计量：方差和标准差" class="headerlink" title="描述差异的统计量：方差和标准差"></a>描述差异的统计量：方差和标准差</h4><p><strong>方差</strong>是各变量值与其均值离差平方的平均数。方差的平方根成为<strong>标准差</strong>。它们是实际中应用最广的数值型数据离散程度测度值。其值越大，说明数据越分散。此外，还有极差、平均差等可以对离散程度进行测度。</p>
-<p><strong>此外，</strong>还有极差，平均差等统计量有时也可以反映数值型数据的离散程度，不过极差易受极端值影响，而平均差的数学性质较差，故不常用。</p>
-<p>（注：数值型数据的<strong>相对位置度量</strong>用<strong>标准分数（sc）</strong>$ z_i &#x3D; \frac{x_i-\overline{x}}{s}$，如z&#x3D;-1.5，则表示该数值低于平均数的1.5倍标准差）</p>
-<h4 id="分布形状度量：偏态系数、峰态系数"><a href="#分布形状度量：偏态系数、峰态系数" class="headerlink" title="分布形状度量：偏态系数、峰态系数"></a>分布形状度量：偏态系数、峰态系数</h4><p><strong>偏态系数</strong>是对数据分布对称性的测度，当分布对称时，其值为0；分布左偏时，其值为负；分布右偏时，其值为正。</p>
-<p><strong>峰态系数</strong>是对数据分布平峰或尖峰程度的测度，它是通过与标准正态分布的峰态系数进行比较来实现的，当分布为正态时，其值为0；分布为尖峰时，其值为正；分布为平峰时，其值为负。</p>
-<h4 id="相对离散程度：离散（变异）系数"><a href="#相对离散程度：离散（变异）系数" class="headerlink" title="相对离散程度：离散（变异）系数"></a>相对离散程度：离散（变异）系数</h4><p><strong>离散系数</strong>是一组数据的标准差与其相应的平均数之比，它主要用来比较不同样本之间的离散程度。离散系数越大，说明数据的离散程度越大；离散系数越小，则说明数据的离散程度越小。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
-<li>描述性分析主要是用图表和统计量来观察随机现象的特征规律；</li>
-<li>图表简单、直观，可以帮助我们快速发现规律、监控异常；</li>
-<li>统计量则浓缩了与目标最相关的信息，可以通过样本统计量来预估总体特征，除了上面常见的统计量之外，我们在实际工作中，一般是提取随机现象的特征统计量，如常见的业务指标，来描述实际业务当中随机变化的现象的规律和特征。</li>
-<li>总而言之，统计描述分析就是对总体信息进行抽取、筛选、浓缩、描述的过程。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>统计学</category>
-      </categories>
-      <tags>
-        <tag>描述统计</tag>
-        <tag>R语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>类别变量分析（R语言实现）</title>
-    <url>/2022/08/04/220804-%E7%B1%BB%E5%88%AB%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/</url>
-    <content><![CDATA[<p>本文主要介绍基于R实现类别变量分析，主要包括：</p>
-<p>（1）<strong>拟合优度检验</strong>用于检验 <strong>一个分类变量各类别的观察频数与期望频数是否有显著性差异，</strong> 或者说是检验一个分类变量各类别观察频数的分布是否符合某一理论分布。</p>
-<p>（2）<strong>独立性检验</strong>主要是用于分析判断两个分类变量是否独立。它是在假设两分类变量独立的情况下计算出理论频数，从而再与观察频数作比较，看是否有显著性差异。</p>
-  <span id="more"></span>
-
-
-
-<h2 id="一个分类变量的拟合优度检验"><a href="#一个分类变量的拟合优度检验" class="headerlink" title="一个分类变量的拟合优度检验"></a>一个分类变量的拟合优度检验</h2><h3 id="期望频数相等时的拟合优度检验"><a href="#期望频数相等时的拟合优度检验" class="headerlink" title="期望频数相等时的拟合优度检验"></a>期望频数相等时的拟合优度检验</h3><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">load<span class="punctuation">(</span><span class="string">&quot;Rdata\\example\\ch7\\example7_1.RData&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">example7_1</span><br></pre></td></tr></table></figure>
-
-
-<table class="dataframe">
-<caption>A data.frame: 4 × 2</caption>
-<thead>
-    <tr><th></th><th scope="col">饮料类型</th><th scope="col">人数</th></tr>
-    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
-</thead>
-<tbody>
-    <tr><th scope="row">1</th><td>碳酸饮料</td><td>525</td></tr>
-    <tr><th scope="row">2</th><td>矿泉水  </td><td>550</td></tr>
-    <tr><th scope="row">3</th><td>果汁    </td><td>470</td></tr>
-    <tr><th scope="row">4</th><td>其他    </td><td>455</td></tr>
-</tbody>
-</table>
-
-
-
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">chisq.test<span class="punctuation">(</span>example7_1<span class="operator">$</span>人数<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>    Chi-squared test for given probabilities
-
-data:  example7_1$人数
-X-squared = 12.1, df = 3, p-value = 0.007048
-</code></pre>
-<h3 id="期望频数不相等时的拟合优度检验"><a href="#期望频数不相等时的拟合优度检验" class="headerlink" title="期望频数不相等时的拟合优度检验"></a>期望频数不相等时的拟合优度检验</h3><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">load<span class="punctuation">(</span><span class="string">&quot;Rdata\\example\\ch7\\example7_2.RData&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">example7_2</span><br></pre></td></tr></table></figure>
-
-
-<table class="dataframe">
-<caption>A data.frame: 5 × 3</caption>
-<thead>
-    <tr><th scope="col">受教育程度</th><th scope="col">离婚家庭数</th><th scope="col">期望比例</th></tr>
-    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
-</thead>
-<tbody>
-    <tr><td>小学及以下</td><td> 30</td><td>0.20</td></tr>
-    <tr><td>初中      </td><td>110</td><td>0.35</td></tr>
-    <tr><td>高中      </td><td> 80</td><td>0.25</td></tr>
-    <tr><td>大学      </td><td> 25</td><td>0.12</td></tr>
-    <tr><td>研究生    </td><td> 15</td><td>0.08</td></tr>
-</tbody>
-</table>
-
-
-
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">chisq.test<span class="punctuation">(</span>example7_2<span class="operator">$</span>离婚家庭数<span class="punctuation">,</span> p <span class="operator">=</span> example7_2<span class="operator">$</span>期望比例<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>    Chi-squared test for given probabilities
-
-data:  example7_2$离婚家庭数
-X-squared = 19.586, df = 4, p-value = 0.0006028
-</code></pre>
-<h2 id="两个分类变量的独立性检验（列联分析）"><a href="#两个分类变量的独立性检验（列联分析）" class="headerlink" title="两个分类变量的独立性检验（列联分析）"></a>两个分类变量的独立性检验（列联分析）</h2><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 数据已经是列联表了</span></span><br><span class="line">x <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">126</span><span class="punctuation">,</span><span class="number">158</span><span class="punctuation">,</span><span class="number">35</span><span class="punctuation">,</span><span class="number">34</span><span class="punctuation">,</span><span class="number">82</span><span class="punctuation">,</span><span class="number">65</span><span class="punctuation">)</span></span><br><span class="line">M <span class="operator">&lt;-</span> matrix<span class="punctuation">(</span>x<span class="punctuation">,</span> nr<span class="operator">=</span><span class="number">2</span><span class="punctuation">,</span> nc<span class="operator">=</span><span class="number">3</span><span class="punctuation">,</span> byrow<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="built_in">dimnames</span><span class="operator">=</span><span class="built_in">list</span><span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;满意&quot;</span><span class="punctuation">,</span><span class="string">&quot;不满意&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;东部&quot;</span><span class="punctuation">,</span><span class="string">&quot;中部&quot;</span><span class="punctuation">,</span><span class="string">&quot;西部&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">M</span><br><span class="line">chisq.test<span class="punctuation">(</span>M<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-<table class="dataframe">
-<caption>A matrix: 2 × 3 of type dbl</caption>
-<thead>
-    <tr><th></th><th scope="col">东部</th><th scope="col">中部</th><th scope="col">西部</th></tr>
-</thead>
-<tbody>
-    <tr><th scope="row">满意</th><td>126</td><td>158</td><td>35</td></tr>
-    <tr><th scope="row">不满意</th><td> 34</td><td> 82</td><td>65</td></tr>
-</tbody>
-</table>
-
-
-<pre><code>    Pearson&#39;s Chi-squared test
-
-data:  M
-X-squared = 51.827, df = 2, p-value = 5.572e-12
-</code></pre>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 根据原始数据进行检验</span></span><br><span class="line">load<span class="punctuation">(</span><span class="string">&quot;Rdata\\example\\ch7\\example7_3.RData&quot;</span><span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算列联表</span></span><br><span class="line">fre_table <span class="operator">&lt;-</span> table<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br><span class="line">fre_table</span><br><span class="line"></span><br><span class="line"><span class="comment"># 独立性检验</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>fre_table<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-<table class="dataframe">
-<caption>A data.frame: 6 × 2</caption>
-<thead>
-    <tr><th></th><th scope="col">满意度</th><th scope="col">地区</th></tr>
-    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th></tr>
-</thead>
-<tbody>
-    <tr><th scope="row">1</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">2</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">3</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">4</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">5</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">6</th><td>满意</td><td>东部</td></tr>
-</tbody>
-</table>
-
-<pre><code>        地区
-满意度   东部 西部 中部
-  不满意   34   65   82
-  满意    126   35  158
-
-
-    Pearson&#39;s Chi-squared test
-
-data:  fre_table
-X-squared = 51.827, df = 2, p-value = 5.572e-12
-</code></pre>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 是否满意与地区是否相互独立（独立性检验） 等价于 各地区的满意度是否符合均匀分布（拟合优度检验）</span></span><br><span class="line"><span class="comment"># 因此，当检验两个分类变量是否独立，且其中一个变量为二分类变量时，拟合优度检验可以同样适用</span></span><br><span class="line"><span class="comment"># 根据原始数据进行检验</span></span><br><span class="line">load<span class="punctuation">(</span><span class="string">&quot;Rdata\\example\\ch7\\example7_3.RData&quot;</span><span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算实际频数</span></span><br><span class="line">fre_table <span class="operator">&lt;-</span> table<span class="punctuation">(</span>example7_3<span class="punctuation">[</span>example7_3<span class="operator">$</span>满意度 <span class="operator">==</span> <span class="string">&quot;满意&quot;</span><span class="punctuation">,</span> <span class="punctuation">]</span><span class="operator">$</span>地区<span class="punctuation">)</span></span><br><span class="line">fre_table</span><br><span class="line"></span><br><span class="line"><span class="comment"># 独立性检验</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>fre_table<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-<table class="dataframe">
-<caption>A data.frame: 6 × 2</caption>
-<thead>
-    <tr><th></th><th scope="col">满意度</th><th scope="col">地区</th></tr>
-    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th></tr>
-</thead>
-<tbody>
-    <tr><th scope="row">1</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">2</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">3</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">4</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">5</th><td>满意</td><td>东部</td></tr>
-    <tr><th scope="row">6</th><td>满意</td><td>东部</td></tr>
-</tbody>
-</table>
-
-
-<pre><code>东部 西部 中部 
- 126   35  158 
-
-
-    Chi-squared test for given probabilities
-
-data:  fre_table
-X-squared = 76.596, df = 2, p-value &lt; 2.2e-16
-</code></pre>
-<h2 id="两个分类变量的相关性度量"><a href="#两个分类变量的相关性度量" class="headerlink" title="两个分类变量的相关性度量"></a>两个分类变量的相关性度量</h2><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">load<span class="punctuation">(</span><span class="string">&quot;D:\\Rdata\\example\\ch7\\example7_3.RData&quot;</span><span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-<table>
-<thead><tr><th scope="col">满意度</th><th scope="col">地区</th></tr></thead>
-<tbody>
-    <tr><td>满意</td><td>东部</td></tr>
-    <tr><td>满意</td><td>东部</td></tr>
-    <tr><td>满意</td><td>东部</td></tr>
-    <tr><td>满意</td><td>东部</td></tr>
-    <tr><td>满意</td><td>东部</td></tr>
-    <tr><td>满意</td><td>东部</td></tr>
-</tbody>
-</table>
-
-
-
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算列联表</span></span><br><span class="line">fre_table <span class="operator">&lt;-</span> table<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br><span class="line">fre_table</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>        地区
-满意度   东部 西部 中部
-  不满意   34   65   82
-  满意    126   35  158
-</code></pre>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># install.packages(&#x27;vcd&#x27;)</span></span><br><span class="line">library<span class="punctuation">(</span>vcd<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Likelihood Ratio 似然比检验</span></span><br><span class="line"><span class="comment"># Pearson          皮尔逊检验(卡方检验)</span></span><br><span class="line"><span class="comment"># Phi相关系数、Contingency Coeff列联系数、Cramer&#x27;s V 系数</span></span><br><span class="line">assocstats<span class="punctuation">(</span>fre_table<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-
-<pre><code>                    X^2 df   P(&gt; X^2)
-Likelihood Ratio 51.326  2 7.1559e-12
-Pearson          51.827  2 5.5718e-12
-
-Phi-Coefficient   : NA 
-Contingency Coeff.: 0.306 
-Cramer&#39;s V        : 0.322 
-</code></pre>
-]]></content>
-      <categories>
-        <category>统计学</category>
-      </categories>
-      <tags>
-        <tag>R语言</tag>
-        <tag>推断统计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>描述统计学</title>
-    <url>/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/</url>
-    <content><![CDATA[<p>本文主要介绍了数据分析统计基础——统计描述。数据分析的前提就是要学会观察数据，了解数据，统计描述包括对数据的图表描述和统计量描述，它能让我们对数据有一个直观的认识，比如数据是否完整、是否存在异常、服从什么分布、存在什么规律等，为数据预处理和数据分析做准备。</p>
-  <span id="more"></span>
-
-<h2 id="统计学基本概念"><a href="#统计学基本概念" class="headerlink" title="统计学基本概念"></a>统计学基本概念</h2><p><img src="/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305122313250.png" alt="image-20220305122313250"></p>
-<p><strong>1.</strong>   <strong>举例解释下列概念：总体、样本、参数、统计量</strong></p>
-<p><strong>总体</strong>是包含研究对象的全部个体的集合，组成总体的每个元素称为个体。比如：要检验一批灯泡的使用寿命，这批灯泡构成的集合就是总体，每个灯泡就是一个个体。</p>
-<p><strong>样本</strong>是从总体中抽取的一部分元素的集合，构成样本的元素数目称为样本量。抽样的目的就是根据样本信息去推断总体特征。比如：从一批灯泡中随机抽取100个来推断这批灯泡的使用寿命，这100个灯泡就构成了一个样本，100就是该样本的样本量。</p>
-<p><strong>参数</strong>是用来描述总体特征的概括性数字度量，它是研究者想要了解的总体的某种特征值。由于总体数据通常是未知的，所以参数是一个未知的常数。</p>
-<p><strong>统计量</strong>是用来描述样本特征的概括性数字度量。它是根据样本数据计算出来的，由于抽样的随机性，因此统计量是样本的函数。</p>
-<p><strong>2.</strong>   <strong>分类数据、顺序数据和数值型数据的区别。</strong></p>
-<p>按照所采用的计量尺度的不同，可以将统计数据分为分类数据、顺序数据和数值型数据。</p>
-<p><strong>分类数据</strong>是只能归于某一类别的非数字型数据，它是对事物进行分类的结果，数据表现为类别，是用文字来表述的。</p>
-<p><strong>顺序数据</strong>是只能归于某一有序类别的非数字型数据。顺序数据虽然也是类别，但这些类别是有序的。</p>
-<p><strong>数值型数据</strong>是按数字尺度测量的观测值，其结果表现为具体的数值。现实中所处理的大多数数据都是数值型数据。</p>
-<p>分类数据和顺序数据说明的是事物的品质特征，通常是用文字来表述的，其结果均表现为类别，因而也可统称为定性数据或称品质数据；数值型数据说明的是现象的数量特征，通常是用数值来表现的，因此也可以称为定量数据或数量数据。</p>
-<p><strong>3.</strong>   <strong>统计的基本任务是什么？如何理解它们的内在关系？</strong></p>
-<p>统计的基本任务是对经济社会发展情况进行统计调查、统计分析，提供统计资料和统计咨询意见、实行统计监督。</p>
-<p>统计的信息、咨询和监督三大职能，是相互作用、相互促进、相辅相成和密切联系的。信息职能是统计最基本的职能，是保证咨询和监督职能得以有效发挥的前提。咨询和监督职能是在信息职能基础上的拓展和深化，是在充分发挥信息资源作用的基础上，对统计整体效能的提高。</p>
-<p><strong>4.</strong>   <strong>什么叫变异、变量和变量值，试举例说明。</strong></p>
-<p>标志在同一总体不同总体单位之间的差别称为变异。例如：人的性别标志表现为男、女；年龄标志表现为20岁、30岁等。</p>
-<p>变异标志又称为变量，是说明现象某种特征的概念，其特点是从一次观察到下一次观察结果会呈现出差别或变化。变量的具体取值称为变量值。具体包括：</p>
-<p>（1）  分类变量（2）  顺序变量（3）  数值型变量</p>
-<h2 id="数据的描述统计"><a href="#数据的描述统计" class="headerlink" title="数据的描述统计"></a>数据的描述统计</h2><p> <img src="/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305114123496.png" alt="image-20220305114123496"></p>
-<h3 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h3><p><strong>一、</strong>    <strong>数据的来源</strong></p>
-<p>从使用者的角度，分为间接来源和直接来源。</p>
-<ol>
-<li><strong>数据的间接来源</strong></li>
-</ol>
-<p>二手数据的搜集比较容易，采集数据的成本低，且作用广泛。局限</p>
-<p>性在于二手资料并不是为特定的研究问题而产生的，即其针对性不够。</p>
-<p>​    二手数据的评估（3W1H——who why when how）</p>
-<ol start="2">
-<li><p><strong>数据的直接来源</strong>——调查数据或实验数据</p>
-</li>
-<li><p><strong>统计数据质量的基本标准：</strong></p>
-</li>
-</ol>
-<p>（1）准确：用数字语言来反映客观实际；</p>
-<p>（2）快速：统计信息服务必须具有时效性和紧迫性；</p>
-<p>（3）完整：调查单位没有遗漏，调查项目没有缺陷，资料数据齐全；</p>
-<p>（4）精炼：统计信息具有针对性、时效性、精确性。</p>
-<p><strong>二、</strong>    <strong>调查数据</strong></p>
-<ol>
-<li><strong>概率抽样</strong>——包括等概率抽样和不等概率抽样</li>
-</ol>
-<p>概率抽样也称为随机抽样，是指遵循随机原则进行的抽样，总体中每个单位都有一定的机会被选入样本。</p>
-<p>其特点有：（1）抽样时是按一定的概率以随机原则抽取样本。（2）每个单位被抽中的概率是已知的，或是可以计算出来的。（3）当用样本对总体目标量进行估计时，要考虑到每个样本单位被抽中的概率。</p>
-<p><strong>常用抽样方式有：</strong></p>
-<p><strong>（1）</strong>  <strong>简单随机抽样</strong></p>
-<p>定义：从包括总体N个单位的抽样框中随机地、一个一个地抽取n个单位作为样本。</p>
-<p>特点：简单，直观。但抽样框不易构造，抽出单位分散、估计效率不高。</p>
-<p><strong>（2）</strong>  <strong>分层抽样</strong></p>
-<p>定义：将抽取单位按某种特征或某种规则划分为不同的层，然后从不同的层中独立、随机地抽取样本。</p>
-<p>特点：样本结构与总体结构类似，提高了估计精度，组织调查方便，还可对各层的目标量进行估计。</p>
-<p><strong>（3）</strong>  <strong>整群抽样</strong></p>
-<p>定义： 将总体中若干个单位合并为组，这样的组称为群。抽样时直接抽取群，然后对选中群中的所有单位全部实施调查。</p>
-<p>特点： 抽取样本时只需要群的抽样框，简化了工作量，但估计精度较差。</p>
-<p><strong>（4）</strong>  <strong>系统抽样</strong></p>
-<p>定义：将总体中的所有单位（抽样单位）按一定顺序排列，在规定范围内随机地抽取一个单位作为初始单位，然后按事先规定好的规则确定其样本单位。</p>
-<p>特点：操作简便，但对估计量方差的估计比较困难。</p>
-<p><strong>（5）</strong>  <strong>多阶段抽样</strong></p>
-<p>定义：采用类似整群抽样的方法，首先抽取群，然后再抽取群中的部分单位。这里群是初级抽样单位，第二阶段抽取的是最终抽取单位。</p>
-<p>特点：常用于大规模抽样当中。</p>
-<ol start="2">
-<li><strong>非概率抽样</strong></li>
-</ol>
-<p>指抽取样本时不是依据随机原则，而是根据研究目的对数据的要求，采用某种方式从总体中抽取部分单位对其实施调查。</p>
-<p><strong>非概率抽样一般可分为以下几种类型：</strong></p>
-<p>（1）  方便抽样：调查过程中由调查员依据方便原则抽样，其特点是成本低，易实施。</p>
-<p>（2）  判断抽样：研究人员根据经验、判断和对研究对象的了解，有目的地选择样本，根据不同目的有重点抽样、典型抽样、代表抽样。</p>
-<p>（3）  自愿抽样：被调查者自愿参加</p>
-<p>（4）  滚雪球抽样：调查对象继续推荐另一些调查对象</p>
-<p>（5）  配额抽样：类似分层抽样，先分类，再从各类中用方便抽样或判断抽样的方式选取样本单位。</p>
-<ol start="3">
-<li><strong>概率抽样与非概率抽样的比较</strong></li>
-</ol>
-<p>非概率抽样的特点是操作简便、失效快、成本低，且对抽样中的统计学专业技术要求不高，适合探索性的研究，调查的结果用于发现问题，为更深入的数量分析做准备。</p>
-<p>概率抽样则可用样本推断总体，对误差进行估计。</p>
-<ol start="4">
-<li><strong>搜集数据的基本方法：</strong> 自填式、面访式、电话式、观察式。</li>
-</ol>
-<p><strong>三、</strong>    <strong>数据误差</strong></p>
-<p><strong>统计数据的误差是指</strong>通过调查搜集到的数据与研究对象真实结果之间的差异。数据的误差有两类：抽样误差和非抽样误差</p>
-<p><strong>抽样误差是</strong>由抽样的随机性引起的样本结果与总体真值之间的误差，影响抽样误差大小的因素有样本量的大小和总体的变异性。通过增加样本量可以减小抽样误差，当样本量与总体单位相同时，就变成了普查，此时抽样误差就减小到0。</p>
-<p><strong>非抽样误差是</strong>指除抽样误差外的其他误差。抽样误差只存在于概率抽样中，而非抽样误差概率抽样和非概率抽样中都有。非抽样误差有如下几种类型：抽样框误差，回答误差，无回答误差，调查员误差，测量误差等。非抽样误差控制的重要方面是调查过程的质量。包括：调查员的挑选、调查员的培训、对调查过程进行控制的具体措施、对调查结果进行检验评估、对现场调查人员进行奖惩制度等。</p>
-<p><strong>抽样误差影响因素分析：</strong></p>
-<p>（1）样本量大小。在其他条件不变的情况下，样本量越大，抽样误差越小，当样本量为总体单位数目时即为普查，抽样误差则为0。</p>
-<p>（2）总体标志变异程度。在其他条件不变的情况下，总体标志变异程度越大，抽样误差越大。</p>
-<p>（3）抽样方法。一般而言，不重复抽样的抽样误差要小于重复抽样的抽样误差。当  时，两者差距不大。</p>
-<p>（4）抽样组织方式。一般而言，分层抽样的抽样误差较小，而整群抽样的抽样误差较大。</p>
-<p><strong>四、简述搜集数据的基本方法及其弱点。</strong></p>
-<p>（1）自填式。自填式是指在没有调查员协助的情况下由被调查者自己填写，完成调查问卷。其弱点：首先，问卷回收率较低。其次，自填式方法不适合结构复杂的问卷，对调查的内容有所局限。此外，自填式方法的调查周期通常比较长，调查人员也需要对问卷的递送和回收方法进行仔细的研究和选择。最后，对于在数据搜集过程中出现的问题，一般难以及时采取调改措施。</p>
-<p>（2）面访式。面访式是指现场调查中调查员与被调查者面对面，调查者提问、被调查者回答这种调查方式。其弱点：调查成本较高、调查质量的控制有难度、对于敏感性问题不易调查。</p>
-<p>（3）电话式。电话式是指调查人员通过打电话的方式向被调查者实施调查。其弱点：由于调查工具是电话，因此对电话拥有率不高的地区调查会受到限制；拒访率较高，且访问时间不能太长。</p>
-<p><strong>五、分层抽样与整群抽样有何异同？它们分别适合什么场合？</strong></p>
-<p>相同点：都是需要事先按某一标志对总体进行划分的随机抽样。</p>
-<p>不同点：分层抽样是先对总体进行结构分层，然后从不同层中独立、随机的抽取样本；整群抽样是将若干单位合并为一个群体，然后抽取这个群体里的所有对象进行调查。</p>
-<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p><strong>数据预处理包括：</strong> 数据审核、数据筛选、数据排序。其中数据审核中，对原始数据包括完整性审核和准确性审核；对二手数据还包括适用性审核和时效性审核。</p>
-<p><strong>一、数据清洗：</strong> 主要是为了保证数据的完整性和准确性，包括处理缺失值、识别和处理异常值。</p>
-<p>  <strong>处理缺失值的方法有：</strong> 删除整行、人工填写、用均值或中位数代替，用回归分析预测等</p>
-<p>  <strong>识别异常值的方法有：</strong> （1）用切比雪夫不等式或标准分数判断，数据在  范围外的则为异常值。（2）用箱线图判断，数据小于  或大于  则为异常值。（3）用聚类的方法判断，单个数据自成一类的则为异常值。</p>
-<p><strong>处理异常值的方法有：</strong> 删除异常值、将其作为缺失值处理、对其单独分析。</p>
-<p><strong>二、数据标准化：</strong>主要是为了消除数据差异和量纲的影响。主要方法有离差标准化、标准差标准化和小数定标。</p>
-<p><img src="/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305115609745.png" alt="image-20220305115609745"></p>
-<h3 id="数据描述——图表描述"><a href="#数据描述——图表描述" class="headerlink" title="数据描述——图表描述"></a>数据描述——图表描述</h3><p><strong>一、</strong>  <strong>分类数据描述</strong></p>
-<p><strong>（1）</strong>   <strong>频数分布表——单变量分布表</strong></p>
-<p>主要用于计数和汇总一个分类变量的数据，通过它可以使（结合题）的频数、比例等一目了然，从而为进一步分析做准备。</p>
-<p><strong>（2）</strong>   <strong>频数分布表——双变量列联表</strong></p>
-<p>主要用于计数和汇总两个分类变量的数据，通过它可以使（结合题）两个变量交叉分类的频数、比例等一目了然，从而为进一步分析做准备。</p>
-<p><strong>（3）</strong>   <strong>条形图</strong></p>
-<p>它可以用来展示各类别的绝对值和数据的分布特征。它通过相同宽度条形的长短来表示各类别的数值大小。绘制时，可以分别绘制（饮料类型）和（性别）两个简单条形图，也可只绘制一张（饮料类型）和（性别）的复式条形图，从而便于比较。</p>
-<p><strong>（4）</strong>   <strong>帕累托图</strong></p>
-<p>它可以用来比较各类别的频数大小。它是按各类别数据出现的频数多少排序后绘制的条形图，通过对条形图的排序，容易看出哪类数据出现得多，哪类数据出现的少。</p>
-<p><strong>（5）</strong>   <strong>饼图</strong></p>
-<p>它可以用来展示一个样本的结构。它通过一个圆来表示的数值大小，用圆内各扇形的角度来表示各类别的数值大小。绘制时，可以分别绘制（饮料类型）和（性别）两个简单饼图，也可只绘制一张（饮料类型）和（性别）的复式饼图，从而便于比较。</p>
-<p><strong>（6）</strong>   <strong>环形图</strong></p>
-<p>它可以显示多个样本（城市）各部分所占的相应比例，从而用来比较多个样本的结构。它是把饼图叠在一起，挖去中间的部分；图中每一个环都表示一个样本（城市），（城市）样本中的每一部分数据则用环中的一段表示。</p>
-<p><strong>此外，还有马赛克图（用于展示两个以上分类变量，满足条件才写）、脊柱图、扇形图等，此处不再一一详述。</strong></p>
-<p><strong>二、</strong> <strong>顺序数据描述</strong></p>
-<p><strong>（1）</strong>   <strong>频数分布表——累计频数分布表</strong></p>
-<p>主要用于计数和汇总顺序变量的数据，通过它可以使（结合题）的频数、比例、累积频数、累积频率等一目了然，从而为进一步分析做准备。</p>
-<p><strong>（2）</strong>   <strong>累计频数分布图</strong></p>
-<p>主要是用于展示顺序变量的<strong>累积频数分布情况</strong>。它是将各类别按级别大小进行升序或降序排列在横坐标上，用纵坐标表示各类别的频率，然后用折线绘制出累积频率。</p>
-<p>三、  数值型数据描述</p>
-<p><strong>（1）</strong>   <strong>频数分布表——分组表</strong></p>
-<p>主要是用于计数和汇总数值型分组数据。通过它可以使（结合题）分组后的频数、比例等一目了然，从而为进一步分析做准备。</p>
-<p><strong>用于展示数据分布特征的图形主要有以下几种：</strong></p>
-<p><strong>（2）</strong>   <strong>直方图</strong></p>
-<p>它可以用来展示分组数据的分布特征。它用矩形的面积来表示频数分布，在矩形的高度表示每一组的频数或频率，宽度则表示各组的组距。</p>
-<p><strong>直方图与条形图的区别与联系：</strong></p>
-<p><strong>区别：</strong> 条形图主要用来展示分类数据，其高度表示各类别频数的多少，其宽度是固定的；直方图则主要是用于展示数值型分组数据，是用面积表示频数分布，矩形的高度表示每一组的频数或频率，宽度则表示各组的组距，因此其高度和宽度均有意义。且由于分组数据具有连续性，直方图的各矩形通常是连续排列的，而条形图则是分开排列的。</p>
-<p><strong>联系：</strong> 二者都用来展示数据的分布情况；在平面直角坐标系中，二者的横轴都表示分组，纵轴都可表示频数或频率大小。</p>
-<p><strong>（3）</strong>   <strong>茎叶图</strong></p>
-<p>它不仅可以用来反映数据的分布特征，还可以保留原始数据的信息，更适用于观察少量数据的分布。它由“茎”和“叶”两部分构成。绘制时，首先将一个数值分成两部分，通常是以该数据的高位数值作为树茎，而叶上只保留该数值的最后一个数字。<strong>如数据125分成12|5。</strong></p>
-<p><strong>（4）</strong>   <strong>箱线图</strong></p>
-<p>它不仅可以用来反映原始数据的分布特征，还可以进行多组数据分布特征的比较。绘制时，先找出数据的最大值、最小值、中位数和两个四分位数；然后连接两个四分位数画出箱子；再将最大值和最小值与箱子相连，中位数在箱子中间。箱线图还可用来寻找离群点，从而来处理数据的异常值。</p>
-<p><strong>此外，垂线图、误差图、小提琴图等，此处不再一一详述。</strong></p>
-<p><strong>用于展示变量之间的关系的图形主要有以下几种：</strong></p>
-<p><strong>（5）</strong>   <strong>线图</strong></p>
-<p>它可以用于展示时间序列数据，反映现象随时间变化的特征。绘制时，时间一般绘在横轴，观测值绘在纵轴。一般情况下，横轴应长于纵轴，纵轴数据下端应从“0”开始（若起始数据与“0”相差大，可采用折断符号），以便于比较。</p>
-<p><strong>用于展示变量之间的关系的图形主要有以下几种：</strong></p>
-<p><strong>（1）</strong> <strong>散点图（两个数值型变量）</strong></p>
-<p>它可以用来展示和两个数值型变量之间的关系。它用横轴代表变量，纵轴代表变量（可以互换），每对数据（如。。）在坐标系中用一个点表示，形成个散点。通过观察散点的趋势可以粗略判断变量与变量之间的相关性。 </p>
-<p><strong>（2）气泡图（3个数值型变量）</strong></p>
-<p>它可以用来展示、和三个数值型变量之间的关系。绘制时，将变量放在横轴，将变量放在纵轴，而变量则用气泡的大小来表示。这样数据在图上就以气泡的形式呈现，方便分析。</p>
-<p><strong>（3）矩阵散点图（两个以上数值型变量）</strong></p>
-<p>它可以用来同时比较多个变量两两之间的关系。N个变量，可形成N*N个小矩阵，每个矩阵都对应两个变量之间的散点图，方便同时观察分析。</p>
-<p><strong>用于比较多个样本的相似性的图形主要有以下几种：</strong></p>
-<p><strong>（1）雷达图（两个以上数值型变量）</strong></p>
-<p>它是从一点出发，用每一条射线代表一个变量，多个变量的数据的连成线就围成了一个区域，多个样本就能绘制多个区域 （如此题中有__个样本，故能绘制出__个区域），从而方便研究各样本间的相似程度。</p>
-<p><strong>（6）</strong>   <strong>轮廓图（两个以上数值型变量）</strong></p>
-<p>它是用横轴表示各样本（或变量），纵轴表示每个样本的多个变量（或样本）的取值，将不同样本同一个变量的取值用折线连接。如该题中，可用横轴表示变量，纵轴表示样本，则绘制出__条样本折线，从而便于分析各个样本之间的相似程度。</p>
-<p><strong>此外，还有星图、脸谱图等。</strong></p>
-<h3 id="数据描述——统计量描述"><a href="#数据描述——统计量描述" class="headerlink" title="数据描述——统计量描述"></a>数据描述——统计量描述</h3><p><strong>一、  集中趋势度量</strong></p>
-<p><strong>分类数据：众数</strong></p>
-<p><strong>众数</strong>是一组数据中出现次数最多的变量值，常用于反映一组分类数据的集中趋势，且不受极端值影响。</p>
-<p><strong>顺序数据：中位数、四分位数</strong></p>
-<p><strong>中位数</strong>是一组数据排序后处于中间位置的变量值。<strong>四分位数</strong>是一组数据排序后处于25%和75%位置上的值。它们常用于反映一组顺序数据的集中趋势，且不受极端值影响。</p>
-<p><strong>数值型数据：平均数</strong></p>
-<p><strong>平均数</strong>是一组数据相加后除以数据的个数得到的结果，它的计算公式有多种，如简单平均数、加权平均数、几何平均数。主要是用于反映一组数值型数据的集中趋势，且易受极端值影响。</p>
-<p><strong>二、离散程度度量</strong></p>
-<p><strong>分类数据：异众比率</strong></p>
-<p><strong>异众比率</strong>是指非众数组的频数占总频数的比例，它主要用于衡量众数对一组数据的代表程度。其值越大，众数的代表性越差；值越小，众数代表性越好。</p>
-<p><strong>顺序数据：四分位差</strong></p>
-<p><strong>四分位差</strong>是上四分位数与下四分位数之差。它反映了中间50%数据的离散程度，其数值越小说明数据越集中，数值越大说明数据越发散。</p>
-<p><strong>数值型数据：方差和标准差</strong></p>
-<p><strong>方差</strong>是各变量值与其均值离差平方的平均数。方差的平方根成为<strong>标准差</strong>。它们是实际中应用最广的数值型数据离散程度测度值。其值越大，说明数据越分散。此外，还有极差、平均差等可以对离散程度进行测度。</p>
-<p><strong>此外，</strong> 还有极差，平均差等统计量有时也可以反映数值型数据的离散程度，不过极差描述的效果不太好，而平均差则不方便计算，故不常用。</p>
-<p>（注：数值型数据的<strong>相对位置度量</strong>用<strong>标准分数（sc）</strong> $ z_i &#x3D; \frac{x_i-\overline{x}}{s}$，如z&#x3D;-1.5，则表示该数值低于平均数的1.5倍标准差）</p>
-<p><strong>三、</strong> <strong>分布形状度量：偏态系数、峰态系数</strong></p>
-<p><strong>偏态系数</strong>是对数据分布对称性的测度，当分布对称时，其值为0；分布左偏时，其值为负；分布右偏时，其值为正。</p>
-<p><strong>峰态系数</strong>是对数据分布平峰或尖峰程度的测度，它是通过与标准正态分布的峰态系数进行比较来实现的，当分布为正态时，其值为0；分布为尖峰时，其值为正；分布为平峰时，其值为负。</p>
-<p><strong>四、</strong> <strong>相对离散程度：离散（变异）系数</strong></p>
-<p><strong>离散系数</strong>是一组数据的标准差与其相应的平均数之比，其计算公式为： $ v_s &#x3D; \frac{s}{\overline{x}}$  ，它主要用来比较不同样本之间的离散程度。离散系数越大，说明数据的离散程度越大；离散系数越小，则说明数据的离散程度越小。</p>
-<p><strong>五、统计分组（高级变量——&gt;低级变量）</strong></p>
-<p>根据统计研究的目的和客观现象的内在特点，按某个标志（或几个标志）把被研究的总体划分为若干个不同性质的组，称为<strong>统计分组。</strong></p>
-<p><strong>统计分组的作用有：</strong>（1）发现社会经济现象的特点和规律；（2）将复杂的社会经济现象划分为性质不同的各种类型；（3）反映总体内部结构；（4）揭示现象之间的依存关系。</p>
-<p><strong>科学的统计分组应遵循两个原则（MECE原则）：</strong></p>
-<p>（1） 必须符合“穷尽原则”，即总体中的每一个单位都有组可归。</p>
-<p>（2） 必须遵守“互斥原则”，即总体中任一单位只能归属于一组，而不能同时可能归属于几个组。</p>
-]]></content>
-      <categories>
-        <category>统计学</category>
-      </categories>
-      <tags>
-        <tag>描述统计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>推断统计学</title>
-    <url>/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/</url>
-    <content><![CDATA[<p>本文主要介绍使用样本推断总体的统计学方法，主要包括参数估计和假设检验。参数估计使用样本统计量估计总体参数，假设检验则使用样本数据推断对某一总体的假设是否成立，两者的理论基础都是大数定律和中心极限定理。</p>
-  <span id="more"></span>
-
-<p><img src="/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305160649887.png" alt="image-20220305160649887"></p>
-<h2 id="第一部分-抽样分布"><a href="#第一部分-抽样分布" class="headerlink" title="第一部分 抽样分布"></a>第一部分 抽样分布</h2><p><strong>1.  简述大数定律和中心极限定理及其意义。</strong></p>
-<p><strong>（1）大数定律：</strong> 在随机事件的大量重复出现中，往往呈现几乎必然的规律，这个规律就是大数定律。通俗地说就是，<strong>在试验不变的条件下，重复试验多次，随机事件的频率近似于它的概率。偶然中包含着某种必然。</strong></p>
-<p><strong>（2）中心极限定理：</strong> 在任意分布的总体中抽取样本，其样本均值的极限分布为正态分布。该定理概括了样本均值和总体分布之间的关系，样本均值分布在统计推断中的具体应用。</p>
-<p><strong>2.  简述卡方分布、t分布、F分布的定义、特点、应用。</strong></p>
-<p><strong>（1）$ \chi^2$分布：</strong></p>
-<p><strong>定义：</strong> 设随机变量 $x_1,x_2,x_3…,x_n$相互独立且服从正态分布，则它们的平方和 $\sum_{i&#x3D;1}^{n}{x_i^2}$服从自由度为n的$ \chi^2$分布。</p>
-<p><strong>特点：</strong> （1）自由度不同，$ \chi^2$分布的形状则不同；（2）它是一种非对称分布，当自由度n相当大时，接近于正态分布；（3）它的变量值始终为正。</p>
-<p><strong>应用：</strong> （1）用来构造t分布和F分布；（2）在拟合优度检验和独立性检验中用它来构造$ \chi^2$检验统计量；</p>
-<p><strong>（2）$t$ 分布：</strong></p>
-<p><strong>定义：</strong> 设随机变量X与Y相互独立，$X$~$ N(0,1) $, $Y$ ~$N(0,1)$ ，则$\frac{X}{Y&#x2F;n}$ 服从自由度为n的t分布。</p>
-<p><strong>特点：</strong> （1）自由度不同，分布的形状则不同；（2）它是一种对称分布，当自由度n相当大时，接近于正态分布；（3）它的密度函数为偶函数。</p>
-<p><strong>应用：</strong> （1）用于小样本均值的参数估计和假设检验。 </p>
-<p><strong>（3）$F$分布：</strong></p>
-<p><strong>定义：</strong> 设随机变量X与Y相互独立，$X$ ~ $\chi^2(n)$，$Y$ ~ $\chi^2(m)$ , 则$\frac{X&#x2F;n}{Y&#x2F;m}$服从第一自由度为n，第二自由度为m的F分布。</p>
-<p><strong>特点：</strong> （1）自由度不同，分布的形状则不同；（2）它是一种非对称分布；（3）它的变量值始终为正。</p>
-<p><strong>应用：</strong> （1）用于两总体方差比的参数估计和假设检验（2）在方差分析和回归分析中用于对参数进行统计推断。</p>
-<p><strong>3.   重复抽样和不重复抽样相比，抽样均值分布的标准差有什么不同？</strong></p>
-<p>（1）  在重复抽样条件下，样本均值$\overline{x}$ 的方差为$ \frac{\sigma^2}{n}$ ，在不重复抽样条件下，样本均值$\overline{x}$ 的方差为$ \frac{N-n}{N-1} \frac{\sigma^2}{n}$ ；</p>
-<p>（2）  在无限总体不重复情况下或有限总体$n\rightarrow N$  ，$ \frac{N-n}{N-1} \rightarrow 1 $  ，则$\overline{x}$ 的方差可近似为$ \frac{\sigma^2}{n}$ </p>
-<p><strong>4.  什么是统计量的标准误差？它有什么用途？</strong></p>
-<p>统计量的标准误差是指样本统计量分布的标准差。它用于衡量样本统计量的离散程度，在参数估计和假设检验中，它是用于衡量样本统计量与总体参数之间差距的一个重要尺度。</p>
-<p>标准误差与标准差的区别：标准差是根据原始观测值计算的，反映一组原始数据的离散程度。而标准误差是根据样本统计量计算的，反映统计量的离散程度。比如，样本均值的标准误差是根据多个样本的样本均值计算的，反映样本均值的离散程度。</p>
-<p><strong>5.  什么是抽样平均误差？影响抽样平均误差的因素有哪些？</strong></p>
-<p>抽样平均误差是指抽样平均数（或抽样成数）的标准差。它反映抽样平均数（或抽样成数）与总体平均数（或总体成数）的平均误差程度。</p>
-<p>影响抽样平均误差的因素有四个：</p>
-<p>（1）  样本单位数目。在其他条件不变的情况下，抽样数目越多，抽样误差越小；抽样数目越少，抽样误差越大。当n&#x3D;N时，就是全面调查，抽样误差此时为零。</p>
-<p>（2）  总体标志变异程度。其他条件不变的情况下，总体标志变异程度越大，抽样误差越大；总体标志变异程度越小，抽样误差越小。</p>
-<p>（3）  抽样方法。一般讲，不重复抽样的抽样误差要小于重复抽样的抽样误差。当n相对N非常小时，两种抽样方法的抽样误差相差很小，可忽略不计。</p>
-<p>（4）  抽样组织方式。采用不同的抽样组织方式，也会有不同的抽样误差。一般讲分层抽样的抽样误差较小，而整群抽样的抽样误差较大。</p>
-<h2 id="第二部分-参数估计"><a href="#第二部分-参数估计" class="headerlink" title="第二部分 参数估计"></a>第二部分 参数估计</h2><p>参数估计就是用样本统计量去估计总体参数。</p>
-<p><strong>1.</strong> <strong>点估计和区间估计及其区别与联系</strong></p>
-<p><strong>点估计</strong>就是用样本统计量的某个取值直接作为总体参数的估计值。</p>
-<p><strong>区间估计</strong>是在点估计的基础上，给出总体参数估计的一个估计区间，该区间通常由样本统计量加减估计误差组成。</p>
-<p><strong>点估计的不足</strong>： 由于样本是随机的，抽出一个具体的样本得到的估计值可能不同于总体真值，因此还必须给出点估计值的可靠性，而其可靠性是由抽样的标准误差来衡量的，这表明一个具体的<strong>点估计值无法给出估计的可靠性度量，也无法说明点估计值与总体参数的接近程度，</strong>因此需要对总体参数进行区间估计。</p>
-<p><strong>2.</strong> <strong>区间估计的基本原理是什么？</strong></p>
-<p>下面以总体均值的区间估计为例来说明区间估计的基本原理：</p>
-<p>首先，由样本均值的抽样分布可知，在重复抽样或无限总体抽样的情况下，$ \overline{x}$ ~ $ N(\mu, \frac{\sigma^2}{n})$，由此可以求出$ \overline{x}$ 落在总体均值$\mu$两侧任何一个抽样标准差范围内的概率，而实际估计中，是要估计未知总体均值$\mu$，由于$ \overline{x}$ 与$\mu$的距离是对称的，因此，当求得某个样本均值$ \overline{x_0}$ 落在$\mu$的两个标准差范围内，反过来，$\mu$也就被包含在以$ \overline{x_0}$ 为中心左右两个标准差范围内。</p>
-<p>因此约有95%的样本均值会落在$\mu$的两个标准差范围内时，也就是说，约有95%的样本均值所构造的两个标准差的区间会包含$\mu$。</p>
-<p><strong>3.</strong> <strong>置信区间、置信度、精度（或误差范围——精度的反义）及其关系</strong></p>
-<p><strong>置信区间：</strong> 是指在区间估计中，由样本统计量所构造的总体参数的估计区间。</p>
-<p><strong>置信水平（置信度）：</strong> 如果将构造置信区间的步骤重复多次，置信区间中包含总体参数真值的次数所占的比率就是置信度。 </p>
-<p><strong>置信区间与置信度的关系：</strong>当样本量给定时，置信区间的宽度随着置信水平的增大而增大；当置信水平固定时，置信区间的宽度随样本量的增大而减小，也就是说，较大的样本所提供的有关总体的信息要比较小的样本多。</p>
-<p><strong>置信度与精度的关系：</strong>当样本量给定时，误差范围随着置信度的增大而增大，即精度随置信度的增加而减小；当置信度固定时，误差范围随着样本量的增大而减小。因此，可通过增加样本量来提高精度。</p>
-<p><strong>4.</strong> <strong>对置信区间的深层次思考</strong></p>
-<p>（1）  用某种方法构造的所有区间中，有95%的区间包含总体参数的真值，5%的区间不包含，该区间称为<strong>置信水平为95%的置信区间。</strong></p>
-<p>（2）   总体参数的真值是固定未知的，而样本构造的区间不是固定的；<strong>置信区间是一个随机区间</strong>，会因样本不同而变化，并且不是所有的区间都包含总体。</p>
-<p>（3）   实际估计中往往只抽取一个样本，因此用该样本所构造的<strong>特定区间“总是包含”或“绝对不包含”参数的真值</strong>，不存在“以多大的概率包含总体参数”的问题。概率只是用来衡量多次抽样得到的区间中大概有多少区间包含参数的真值。</p>
-<p>而“明天有80%的几率下雨”是贝叶斯学派的说法！</p>
-<p><strong>5.</strong> <strong>一个总体参数的区间估计（重复抽样或无限总体抽样情况下）</strong></p>
-<p><img src="/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305163943512.png" alt="image-20220305163943512"></p>
-<p><strong>6.</strong> <strong>两个总体参数的区间估计（重复抽样或无限总体抽样情况下）</strong></p>
-<p><img src="/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305164008254.png" alt="image-20220305164008254"></p>
-<p><strong>7.   样本量的确定</strong></p>
-<p>$ \overline{x}$ ~ $ N(\mu, \frac{\sigma^2}{n})$，标准化后：$ z &#x3D; \frac{\overline{x}-\mu}{\sigma &#x2F; \sqrt{n}}$ ~  $ N(0, 1)$</p>
-<p>假设显著性水平为$\alpha$， 则总体均值$\mu$ 在$1-\alpha$ 置信水平下单置信区间为：$[\ \overline{x}\pm z_{\alpha&#x2F;2}\ \frac{\sigma}{\sqrt{n}}\ ]$</p>
-<p>计算过程：$P(|\frac{\overline{x}-\mu}{\sigma&#x2F;\sqrt{n}}|≤z_{\alpha&#x2F;2}) &#x3D; 1-\alpha &#x3D;&gt;-z_{\alpha&#x2F;2} ≤ \frac{\overline{x}-\mu}{\sigma&#x2F;\sqrt{n}} ≤ z_{\alpha&#x2F;2} &#x3D;&gt; \overline{x}- z_{\alpha&#x2F;2}\ \frac{\sigma}{\sqrt{n}} ≤ \mu ≤ \overline{x}+ z_{\alpha&#x2F;2}\ \frac{\sigma}{\sqrt{n}}$</p>
-<p>样本均值：$\overline{x_0} &#x3D; \frac{\sum_{i&#x3D;1}^{n}{x_i}}{n}$</p>
-<p>样本方差：$s^2 &#x3D; \frac{\sum_{i&#x3D;1}^{n}(x_i - \overline{x_0})^2}{n-1}$</p>
-<p>设估计误差为$ E &#x3D; z_{\alpha&#x2F;2}\ \frac{\sigma}{\sqrt{n}}$ ，则$ n &#x3D; \frac{(z_{\alpha&#x2F;2}^2)\sigma^2}{E^2}$ </p>
-<h2 id="第三部分-假设检验"><a href="#第三部分-假设检验" class="headerlink" title="第三部分 假设检验"></a>第三部分 假设检验</h2><p>对总体参数提出假设的基础上，利用样本信息来判断假设是否成立。</p>
-<p><strong>1.  假设检验的基本思想、特点？</strong></p>
-<p>假设检验依据的基本原理是小概率原理，在检验中小概率通常人为事先指定。</p>
-<p>特点：（1）采用逻辑上的反正法，先假设为真，再进行检验是否有足够的理由拒绝该假设。（2）假设检验采用的反证法带有概率性质，即事先根据具体情况人为规定“小概率”。</p>
-<p><strong>2.  “假设检验的基本思路是：概率性质的反证法；主要依据的是：小概率事件原理”。</strong></p>
-<p> 假设检验采用的是概率性质的反证法，遵循的推断依据是统计中的“小概率原理”，即小概率事件在一次试验中几乎不会发生。例如：一种产品的次品率假设其为0.01%，它是小概率，随机抽取一个产品是次品的概率“几乎不可能发生”，若发生了，则可断定该产品的次品率不是很小，否则我们就不会轻易抽到次品了。</p>
-<p>假设检验就是利用样本信息对事先假定的总体情况作出推断，它不是毫无根据的，而是在一定的统计概率下支持这种推断。</p>
-<p><strong>4.  为何在决策时要避免使用“接受原假设H0这样的措辞？</strong></p>
-<p>（1） 在假设检验时，当拒绝原假设时，表明样本提供的证据证明原假设是错误的；当没有拒绝原假设时，只是说明该样本没有足够的证据证明假设是错误的，而没法证明假设是正确的。</p>
-<p>（2） 此外，假设检验中通常是先控制犯第一类错误  ，而犯第二类错误的大小未知，故为了避免犯第二类错误的风险，一般要避免使用这种措辞。</p>
-<p><strong>5.  单侧检验的建立问题</strong></p>
-<p>（1）   先判断统计量是正还是负，若为正则选右侧，若为负则选左侧；</p>
-<p>（2）   若指标为正向指标，我们希望他越大越好，则选择右侧检验；</p>
-<p>（3）   若指标为正向指标，我们希望他越小越好，则选择左侧检验；</p>
-<p><strong>6.  假设检验中的两类错误及其区别与联系</strong></p>
-<p><strong>第一类错误</strong>是原假设  为真却被拒绝了，犯这种错误的概率记为$\alpha$，故又叫$\alpha$错误或弃真错误，其中 ， $\alpha &#x3D; P{第一类错误} &#x3D; P{拒绝H_0|H_0正确} $</p>
-<p><strong>第二类错误</strong>是原假设错误却没有被拒绝，犯这种错误的概率记为$\beta$，故又叫$\beta$错误或取伪错误，其中， $\beta &#x3D; P{第二类错误} &#x3D; P{不拒绝H_0|H_0错误} $</p>
-<p>  在实际生活当中，第一类错误代表的是生产者的风险（不可的事却做了），第二类错误是代表的是使用者的风险（可做的事却没做）。</p>
-<p>  <strong>联系：</strong>对于一定的样本量  ，如果减小错误  ，就会增大犯错误  的机会；若减小错误  ，也会增大犯错误  的机会。要使  和  同时变小，只有增大样本量。</p>
-<p><strong>7.  假设检验中应该先控制哪一类错误？</strong></p>
-<p>由于在样本量一定的情况下，  错误和  错误此消彼长，一般来说，发生哪一类错误的后果更严重，就应该首先控制哪类错误发生的概率。但由于犯第一类错误的概率可以由研究者事先控制，而犯第二类错误的概率则相对难以计算，因此在假设检验中，往往先控制第一类错误。</p>
-<p><strong>8.  临界值法及其优缺点？</strong></p>
-<p>临界值法是通过事先给定的显著性水平计算出临界值，给出拒绝域，然后再根据样本计算统计量看是否落入拒绝域中。其好处是，在给定了显著性水平后，拒绝域的位置就确定了，进行决策界限清晰，但缺陷是进行决策面临的风险是笼统的，而根据不同的样本结果进行决策时，面临的风险是有差别的，为了精确的反映风险度，可以利用P值进行决策。</p>
-<p><strong>9.  P 值及其决策原理？</strong></p>
-<p>P值就是当原假设为真时所得到的样本观测结果或更极端结果出现的概率。如果P值很小，说明这种情况发生的概率很小，而如果出现了，根据小概率原理，就有理由拒绝原假设，P值越小，拒绝原假设的理由就越充分。因为P值本身就代表了显著性水平，所以可以用它直接做决策，或者也可以与给定的显著性水平比较做决策。P值的大小取决于三个因素：样本数据与原假设的差异；样本量大小；假设参数的总体分布。</p>
-<p><strong>10.  置信区间法及其决策原理</strong></p>
-<p>当给定显著性水平后，可以用区间估计得出未知参数的置信区间，再通过计算样本统计量，看是否落入置信区间中，若落入则不拒绝，若不落入则拒绝。</p>
-<p><strong>11.  假设检验的步骤</strong></p>
-<p>第一步：提出假设。</p>
-<p>  原假设  ：</p>
-<p>   备择假设  ：</p>
-<p> 第二步：计算检验统计量。</p>
-<p>​    ……</p>
-<p> 第三步：做出决策。给定显著性水平  （  一般取0.01或0.05）。若采用临界值法决策，则先通过显著性水平  计算出临界值确定拒绝域，若检验统计量值落入拒绝域则拒绝原假设，否则就不拒绝原假设。</p>
-<p>若采用P值法决策，则先用样本数据计算出P值，再与事先人为给定的显著性水平比较，若P&lt;  则拒绝原假设；否则就不拒绝原假设。</p>
-]]></content>
-      <categories>
-        <category>统计学</category>
-      </categories>
-      <tags>
-        <tag>统计推断</tag>
+        <tag>量化分析</tag>
       </tags>
   </entry>
   <entry>
@@ -1044,106 +511,891 @@ Cramer&#39;s V        : 0.322
       </tags>
   </entry>
   <entry>
-    <title>量化分析方法</title>
-    <url>/2022/08/08/220808-%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="如何从定性分析转变为定量分析？"><a href="#如何从定性分析转变为定量分析？" class="headerlink" title="如何从定性分析转变为定量分析？"></a>如何从定性分析转变为定量分析？</h2><p><strong>例: 明天天气怎么样？</strong></p>
-<ol>
-<li><p>变量抽离: 天气状况</p>
-</li>
-<li><p>寻找衡量标准: 背景是明天要去室外打球，主要关心下不下雨</p>
-</li>
-<li><p>根据信息量大小由小到大扩充变量信息</p>
-<span id="more"></span>
+    <title>推断统计学</title>
+    <url>/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/</url>
+    <content><![CDATA[<p>本文主要介绍使用样本推断总体的统计学方法，主要包括参数估计和假设检验。参数估计使用样本统计量估计总体参数，假设检验则使用样本数据推断对某一总体的假设是否成立，两者的理论基础都是大数定律和中心极限定理。</p>
+  <span id="more"></span>
 
-<ul>
-<li>二分类变量: 好(不下雨），不好(下雨）</li>
-<li>顺序变量: 极差(下暴雨），差(下大雨），一般(下小雨），好(晴天），很好(阴天)</li>
-<li>数值型变量: 下雨量，室外温度</li>
-</ul>
+<p><img src="/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305160649887.png" alt="image-20220305160649887"></p>
+<h2 id="第一部分-抽样分布"><a href="#第一部分-抽样分布" class="headerlink" title="第一部分 抽样分布"></a>第一部分 抽样分布</h2><p><strong>1.  简述大数定律和中心极限定理及其意义。</strong></p>
+<p><strong>（1）大数定律：</strong> 在随机事件的大量重复出现中，往往呈现几乎必然的规律，这个规律就是大数定律。通俗地说就是，<strong>在试验不变的条件下，重复试验多次，随机事件的频率近似于它的概率。偶然中包含着某种必然。</strong></p>
+<p><strong>（2）中心极限定理：</strong> 在任意分布的总体中抽取样本，其样本均值的极限分布为正态分布。该定理概括了样本均值和总体分布之间的关系，样本均值分布在统计推断中的具体应用。</p>
+<p><strong>2.  简述卡方分布、t分布、F分布的定义、特点、应用。</strong></p>
+<p><strong>（1）$ \chi^2$分布：</strong></p>
+<p><strong>定义：</strong> 设随机变量 $x_1,x_2,x_3…,x_n$相互独立且服从正态分布，则它们的平方和 $\sum_{i&#x3D;1}^{n}{x_i^2}$服从自由度为n的$ \chi^2$分布。</p>
+<p><strong>特点：</strong> （1）自由度不同，$ \chi^2$分布的形状则不同；（2）它是一种非对称分布，当自由度n相当大时，接近于正态分布；（3）它的变量值始终为正。</p>
+<p><strong>应用：</strong> （1）用来构造t分布和F分布；（2）在拟合优度检验和独立性检验中用它来构造$ \chi^2$检验统计量；</p>
+<p><strong>（2）$t$ 分布：</strong></p>
+<p><strong>定义：</strong> 设随机变量X与Y相互独立，$X$~$ N(0,1) $, $Y$ ~$N(0,1)$ ，则$\frac{X}{Y&#x2F;n}$ 服从自由度为n的t分布。</p>
+<p><strong>特点：</strong> （1）自由度不同，分布的形状则不同；（2）它是一种对称分布，当自由度n相当大时，接近于正态分布；（3）它的密度函数为偶函数。</p>
+<p><strong>应用：</strong> （1）用于小样本均值的参数估计和假设检验。 </p>
+<p><strong>（3）$F$分布：</strong></p>
+<p><strong>定义：</strong> 设随机变量X与Y相互独立，$X$ ~ $\chi^2(n)$，$Y$ ~ $\chi^2(m)$ , 则$\frac{X&#x2F;n}{Y&#x2F;m}$服从第一自由度为n，第二自由度为m的F分布。</p>
+<p><strong>特点：</strong> （1）自由度不同，分布的形状则不同；（2）它是一种非对称分布；（3）它的变量值始终为正。</p>
+<p><strong>应用：</strong> （1）用于两总体方差比的参数估计和假设检验（2）在方差分析和回归分析中用于对参数进行统计推断。</p>
+<p><strong>3.   重复抽样和不重复抽样相比，抽样均值分布的标准差有什么不同？</strong></p>
+<p>（1）  在重复抽样条件下，样本均值$\overline{x}$ 的方差为$ \frac{\sigma^2}{n}$ ，在不重复抽样条件下，样本均值$\overline{x}$ 的方差为$ \frac{N-n}{N-1} \frac{\sigma^2}{n}$ ；</p>
+<p>（2）  在无限总体不重复情况下或有限总体$n\rightarrow N$  ，$ \frac{N-n}{N-1} \rightarrow 1 $  ，则$\overline{x}$ 的方差可近似为$ \frac{\sigma^2}{n}$ </p>
+<p><strong>4.  什么是统计量的标准误差？它有什么用途？</strong></p>
+<p>统计量的标准误差是指样本统计量分布的标准差。它用于衡量样本统计量的离散程度，在参数估计和假设检验中，它是用于衡量样本统计量与总体参数之间差距的一个重要尺度。</p>
+<p>标准误差与标准差的区别：标准差是根据原始观测值计算的，反映一组原始数据的离散程度。而标准误差是根据样本统计量计算的，反映统计量的离散程度。比如，样本均值的标准误差是根据多个样本的样本均值计算的，反映样本均值的离散程度。</p>
+<p><strong>5.  什么是抽样平均误差？影响抽样平均误差的因素有哪些？</strong></p>
+<p>抽样平均误差是指抽样平均数（或抽样成数）的标准差。它反映抽样平均数（或抽样成数）与总体平均数（或总体成数）的平均误差程度。</p>
+<p>影响抽样平均误差的因素有四个：</p>
+<p>（1）  样本单位数目。在其他条件不变的情况下，抽样数目越多，抽样误差越小；抽样数目越少，抽样误差越大。当n&#x3D;N时，就是全面调查，抽样误差此时为零。</p>
+<p>（2）  总体标志变异程度。其他条件不变的情况下，总体标志变异程度越大，抽样误差越大；总体标志变异程度越小，抽样误差越小。</p>
+<p>（3）  抽样方法。一般讲，不重复抽样的抽样误差要小于重复抽样的抽样误差。当n相对N非常小时，两种抽样方法的抽样误差相差很小，可忽略不计。</p>
+<p>（4）  抽样组织方式。采用不同的抽样组织方式，也会有不同的抽样误差。一般讲分层抽样的抽样误差较小，而整群抽样的抽样误差较大。</p>
+<h2 id="第二部分-参数估计"><a href="#第二部分-参数估计" class="headerlink" title="第二部分 参数估计"></a>第二部分 参数估计</h2><p>参数估计就是用样本统计量去估计总体参数。</p>
+<p><strong>1.</strong> <strong>点估计和区间估计及其区别与联系</strong></p>
+<p><strong>点估计</strong>就是用样本统计量的某个取值直接作为总体参数的估计值。</p>
+<p><strong>区间估计</strong>是在点估计的基础上，给出总体参数估计的一个估计区间，该区间通常由样本统计量加减估计误差组成。</p>
+<p><strong>点估计的不足</strong>： 由于样本是随机的，抽出一个具体的样本得到的估计值可能不同于总体真值，因此还必须给出点估计值的可靠性，而其可靠性是由抽样的标准误差来衡量的，这表明一个具体的<strong>点估计值无法给出估计的可靠性度量，也无法说明点估计值与总体参数的接近程度，</strong>因此需要对总体参数进行区间估计。</p>
+<p><strong>2.</strong> <strong>区间估计的基本原理是什么？</strong></p>
+<p>下面以总体均值的区间估计为例来说明区间估计的基本原理：</p>
+<p>首先，由样本均值的抽样分布可知，在重复抽样或无限总体抽样的情况下，$ \overline{x}$ ~ $ N(\mu, \frac{\sigma^2}{n})$，由此可以求出$ \overline{x}$ 落在总体均值$\mu$两侧任何一个抽样标准差范围内的概率，而实际估计中，是要估计未知总体均值$\mu$，由于$ \overline{x}$ 与$\mu$的距离是对称的，因此，当求得某个样本均值$ \overline{x_0}$ 落在$\mu$的两个标准差范围内，反过来，$\mu$也就被包含在以$ \overline{x_0}$ 为中心左右两个标准差范围内。</p>
+<p>因此约有95%的样本均值会落在$\mu$的两个标准差范围内时，也就是说，约有95%的样本均值所构造的两个标准差的区间会包含$\mu$。</p>
+<p><strong>3.</strong> <strong>置信区间、置信度、精度（或误差范围——精度的反义）及其关系</strong></p>
+<p><strong>置信区间：</strong> 是指在区间估计中，由样本统计量所构造的总体参数的估计区间。</p>
+<p><strong>置信水平（置信度）：</strong> 如果将构造置信区间的步骤重复多次，置信区间中包含总体参数真值的次数所占的比率就是置信度。 </p>
+<p><strong>置信区间与置信度的关系：</strong>当样本量给定时，置信区间的宽度随着置信水平的增大而增大；当置信水平固定时，置信区间的宽度随样本量的增大而减小，也就是说，较大的样本所提供的有关总体的信息要比较小的样本多。</p>
+<p><strong>置信度与精度的关系：</strong>当样本量给定时，误差范围随着置信度的增大而增大，即精度随置信度的增加而减小；当置信度固定时，误差范围随着样本量的增大而减小。因此，可通过增加样本量来提高精度。</p>
+<p><strong>4.</strong> <strong>对置信区间的深层次思考</strong></p>
+<p>（1）  用某种方法构造的所有区间中，有95%的区间包含总体参数的真值，5%的区间不包含，该区间称为<strong>置信水平为95%的置信区间。</strong></p>
+<p>（2）   总体参数的真值是固定未知的，而样本构造的区间不是固定的；<strong>置信区间是一个随机区间</strong>，会因样本不同而变化，并且不是所有的区间都包含总体。</p>
+<p>（3）   实际估计中往往只抽取一个样本，因此用该样本所构造的<strong>特定区间“总是包含”或“绝对不包含”参数的真值</strong>，不存在“以多大的概率包含总体参数”的问题。概率只是用来衡量多次抽样得到的区间中大概有多少区间包含参数的真值。</p>
+<p>而“明天有80%的几率下雨”是贝叶斯学派的说法！</p>
+<p><strong>5.</strong> <strong>一个总体参数的区间估计（重复抽样或无限总体抽样情况下）</strong></p>
+<p><img src="/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305163943512.png" alt="image-20220305163943512"></p>
+<p><strong>6.</strong> <strong>两个总体参数的区间估计（重复抽样或无限总体抽样情况下）</strong></p>
+<p><img src="/2022/08/06/220806-%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305164008254.png" alt="image-20220305164008254"></p>
+<p><strong>7.   样本量的确定</strong></p>
+<p>$ \overline{x}$ ~ $ N(\mu, \frac{\sigma^2}{n})$，标准化后：$ z &#x3D; \frac{\overline{x}-\mu}{\sigma &#x2F; \sqrt{n}}$ ~  $ N(0, 1)$</p>
+<p>假设显著性水平为$\alpha$， 则总体均值$\mu$ 在$1-\alpha$ 置信水平下单置信区间为：$[\ \overline{x}\pm z_{\alpha&#x2F;2}\ \frac{\sigma}{\sqrt{n}}\ ]$</p>
+<p>计算过程：$P(|\frac{\overline{x}-\mu}{\sigma&#x2F;\sqrt{n}}|≤z_{\alpha&#x2F;2}) &#x3D; 1-\alpha &#x3D;&gt;-z_{\alpha&#x2F;2} ≤ \frac{\overline{x}-\mu}{\sigma&#x2F;\sqrt{n}} ≤ z_{\alpha&#x2F;2} &#x3D;&gt; \overline{x}- z_{\alpha&#x2F;2}\ \frac{\sigma}{\sqrt{n}} ≤ \mu ≤ \overline{x}+ z_{\alpha&#x2F;2}\ \frac{\sigma}{\sqrt{n}}$</p>
+<p>样本均值：$\overline{x_0} &#x3D; \frac{\sum_{i&#x3D;1}^{n}{x_i}}{n}$</p>
+<p>样本方差：$s^2 &#x3D; \frac{\sum_{i&#x3D;1}^{n}(x_i - \overline{x_0})^2}{n-1}$</p>
+<p>设估计误差为$ E &#x3D; z_{\alpha&#x2F;2}\ \frac{\sigma}{\sqrt{n}}$ ，则$ n &#x3D; \frac{(z_{\alpha&#x2F;2}^2)\sigma^2}{E^2}$ </p>
+<h2 id="第三部分-假设检验"><a href="#第三部分-假设检验" class="headerlink" title="第三部分 假设检验"></a>第三部分 假设检验</h2><p>对总体参数提出假设的基础上，利用样本信息来判断假设是否成立。</p>
+<p><strong>1.  假设检验的基本思想、特点？</strong></p>
+<p>假设检验依据的基本原理是小概率原理，在检验中小概率通常人为事先指定。</p>
+<p>特点：（1）采用逻辑上的反正法，先假设为真，再进行检验是否有足够的理由拒绝该假设。（2）假设检验采用的反证法带有概率性质，即事先根据具体情况人为规定“小概率”。</p>
+<p><strong>2.  “假设检验的基本思路是：概率性质的反证法；主要依据的是：小概率事件原理”。</strong></p>
+<p> 假设检验采用的是概率性质的反证法，遵循的推断依据是统计中的“小概率原理”，即小概率事件在一次试验中几乎不会发生。例如：一种产品的次品率假设其为0.01%，它是小概率，随机抽取一个产品是次品的概率“几乎不可能发生”，若发生了，则可断定该产品的次品率不是很小，否则我们就不会轻易抽到次品了。</p>
+<p>假设检验就是利用样本信息对事先假定的总体情况作出推断，它不是毫无根据的，而是在一定的统计概率下支持这种推断。</p>
+<p><strong>4.  为何在决策时要避免使用“接受原假设H0这样的措辞？</strong></p>
+<p>（1） 在假设检验时，当拒绝原假设时，表明样本提供的证据证明原假设是错误的；当没有拒绝原假设时，只是说明该样本没有足够的证据证明假设是错误的，而没法证明假设是正确的。</p>
+<p>（2） 此外，假设检验中通常是先控制犯第一类错误  ，而犯第二类错误的大小未知，故为了避免犯第二类错误的风险，一般要避免使用这种措辞。</p>
+<p><strong>5.  单侧检验的建立问题</strong></p>
+<p>（1）   先判断统计量是正还是负，若为正则选右侧，若为负则选左侧；</p>
+<p>（2）   若指标为正向指标，我们希望他越大越好，则选择右侧检验；</p>
+<p>（3）   若指标为正向指标，我们希望他越小越好，则选择左侧检验；</p>
+<p><strong>6.  假设检验中的两类错误及其区别与联系</strong></p>
+<p><strong>第一类错误</strong>是原假设  为真却被拒绝了，犯这种错误的概率记为$\alpha$，故又叫$\alpha$错误或弃真错误，其中 ， $\alpha &#x3D; P{第一类错误} &#x3D; P{拒绝H_0|H_0正确} $</p>
+<p><strong>第二类错误</strong>是原假设错误却没有被拒绝，犯这种错误的概率记为$\beta$，故又叫$\beta$错误或取伪错误，其中， $\beta &#x3D; P{第二类错误} &#x3D; P{不拒绝H_0|H_0错误} $</p>
+<p>  在实际生活当中，第一类错误代表的是生产者的风险（不可的事却做了），第二类错误是代表的是使用者的风险（可做的事却没做）。</p>
+<p>  <strong>联系：</strong>对于一定的样本量  ，如果减小错误  ，就会增大犯错误  的机会；若减小错误  ，也会增大犯错误  的机会。要使  和  同时变小，只有增大样本量。</p>
+<p><strong>7.  假设检验中应该先控制哪一类错误？</strong></p>
+<p>由于在样本量一定的情况下，  错误和  错误此消彼长，一般来说，发生哪一类错误的后果更严重，就应该首先控制哪类错误发生的概率。但由于犯第一类错误的概率可以由研究者事先控制，而犯第二类错误的概率则相对难以计算，因此在假设检验中，往往先控制第一类错误。</p>
+<p><strong>8.  临界值法及其优缺点？</strong></p>
+<p>临界值法是通过事先给定的显著性水平计算出临界值，给出拒绝域，然后再根据样本计算统计量看是否落入拒绝域中。其好处是，在给定了显著性水平后，拒绝域的位置就确定了，进行决策界限清晰，但缺陷是进行决策面临的风险是笼统的，而根据不同的样本结果进行决策时，面临的风险是有差别的，为了精确的反映风险度，可以利用P值进行决策。</p>
+<p><strong>9.  P 值及其决策原理？</strong></p>
+<p>P值就是当原假设为真时所得到的样本观测结果或更极端结果出现的概率。如果P值很小，说明这种情况发生的概率很小，而如果出现了，根据小概率原理，就有理由拒绝原假设，P值越小，拒绝原假设的理由就越充分。因为P值本身就代表了显著性水平，所以可以用它直接做决策，或者也可以与给定的显著性水平比较做决策。P值的大小取决于三个因素：样本数据与原假设的差异；样本量大小；假设参数的总体分布。</p>
+<p><strong>10.  置信区间法及其决策原理</strong></p>
+<p>当给定显著性水平后，可以用区间估计得出未知参数的置信区间，再通过计算样本统计量，看是否落入置信区间中，若落入则不拒绝，若不落入则拒绝。</p>
+<p><strong>11.  假设检验的步骤</strong></p>
+<p>第一步：提出假设。</p>
+<p>  原假设  ：</p>
+<p>   备择假设  ：</p>
+<p> 第二步：计算检验统计量。</p>
+<p>​    ……</p>
+<p> 第三步：做出决策。给定显著性水平  （  一般取0.01或0.05）。若采用临界值法决策，则先通过显著性水平  计算出临界值确定拒绝域，若检验统计量值落入拒绝域则拒绝原假设，否则就不拒绝原假设。</p>
+<p>若采用P值法决策，则先用样本数据计算出P值，再与事先人为给定的显著性水平比较，若P&lt;  则拒绝原假设；否则就不拒绝原假设。</p>
+]]></content>
+      <categories>
+        <category>统计学</category>
+      </categories>
+      <tags>
+        <tag>统计推断</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>描述统计学</title>
+    <url>/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/</url>
+    <content><![CDATA[<p>本文主要介绍了数据分析统计基础——统计描述。数据分析的前提就是要学会观察数据，了解数据，统计描述包括对数据的图表描述和统计量描述，它能让我们对数据有一个直观的认识，比如数据是否完整、是否存在异常、服从什么分布、存在什么规律等，为数据预处理和数据分析做准备。</p>
+  <span id="more"></span>
+
+<h2 id="统计学基本概念"><a href="#统计学基本概念" class="headerlink" title="统计学基本概念"></a>统计学基本概念</h2><p><img src="/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305122313250.png" alt="image-20220305122313250"></p>
+<p><strong>1.</strong>   <strong>举例解释下列概念：总体、样本、参数、统计量</strong></p>
+<p><strong>总体</strong>是包含研究对象的全部个体的集合，组成总体的每个元素称为个体。比如：要检验一批灯泡的使用寿命，这批灯泡构成的集合就是总体，每个灯泡就是一个个体。</p>
+<p><strong>样本</strong>是从总体中抽取的一部分元素的集合，构成样本的元素数目称为样本量。抽样的目的就是根据样本信息去推断总体特征。比如：从一批灯泡中随机抽取100个来推断这批灯泡的使用寿命，这100个灯泡就构成了一个样本，100就是该样本的样本量。</p>
+<p><strong>参数</strong>是用来描述总体特征的概括性数字度量，它是研究者想要了解的总体的某种特征值。由于总体数据通常是未知的，所以参数是一个未知的常数。</p>
+<p><strong>统计量</strong>是用来描述样本特征的概括性数字度量。它是根据样本数据计算出来的，由于抽样的随机性，因此统计量是样本的函数。</p>
+<p><strong>2.</strong>   <strong>分类数据、顺序数据和数值型数据的区别。</strong></p>
+<p>按照所采用的计量尺度的不同，可以将统计数据分为分类数据、顺序数据和数值型数据。</p>
+<p><strong>分类数据</strong>是只能归于某一类别的非数字型数据，它是对事物进行分类的结果，数据表现为类别，是用文字来表述的。</p>
+<p><strong>顺序数据</strong>是只能归于某一有序类别的非数字型数据。顺序数据虽然也是类别，但这些类别是有序的。</p>
+<p><strong>数值型数据</strong>是按数字尺度测量的观测值，其结果表现为具体的数值。现实中所处理的大多数数据都是数值型数据。</p>
+<p>分类数据和顺序数据说明的是事物的品质特征，通常是用文字来表述的，其结果均表现为类别，因而也可统称为定性数据或称品质数据；数值型数据说明的是现象的数量特征，通常是用数值来表现的，因此也可以称为定量数据或数量数据。</p>
+<p><strong>3.</strong>   <strong>统计的基本任务是什么？如何理解它们的内在关系？</strong></p>
+<p>统计的基本任务是对经济社会发展情况进行统计调查、统计分析，提供统计资料和统计咨询意见、实行统计监督。</p>
+<p>统计的信息、咨询和监督三大职能，是相互作用、相互促进、相辅相成和密切联系的。信息职能是统计最基本的职能，是保证咨询和监督职能得以有效发挥的前提。咨询和监督职能是在信息职能基础上的拓展和深化，是在充分发挥信息资源作用的基础上，对统计整体效能的提高。</p>
+<p><strong>4.</strong>   <strong>什么叫变异、变量和变量值，试举例说明。</strong></p>
+<p>标志在同一总体不同总体单位之间的差别称为变异。例如：人的性别标志表现为男、女；年龄标志表现为20岁、30岁等。</p>
+<p>变异标志又称为变量，是说明现象某种特征的概念，其特点是从一次观察到下一次观察结果会呈现出差别或变化。变量的具体取值称为变量值。具体包括：</p>
+<p>（1）  分类变量（2）  顺序变量（3）  数值型变量</p>
+<h2 id="数据的描述统计"><a href="#数据的描述统计" class="headerlink" title="数据的描述统计"></a>数据的描述统计</h2><p> <img src="/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305114123496.png" alt="image-20220305114123496"></p>
+<h3 id="数据收集"><a href="#数据收集" class="headerlink" title="数据收集"></a>数据收集</h3><p><strong>一、</strong>    <strong>数据的来源</strong></p>
+<p>从使用者的角度，分为间接来源和直接来源。</p>
+<ol>
+<li><strong>数据的间接来源</strong></li>
+</ol>
+<p>二手数据的搜集比较容易，采集数据的成本低，且作用广泛。局限</p>
+<p>性在于二手资料并不是为特定的研究问题而产生的，即其针对性不够。</p>
+<p>​    二手数据的评估（3W1H——who why when how）</p>
+<ol start="2">
+<li><p><strong>数据的直接来源</strong>——调查数据或实验数据</p>
 </li>
-<li><p>根据实际情况选择合适的量化层级进行辅助判断。</p>
-<ul>
-<li><p>场景一: 对天气要求极为苛刻，只要下雨就不去打球，二分类变量即可衡量</p>
-</li>
-<li><p>场景二: 对打球兴趣度极高，只要不是下大暴雨就行，顺序变量即可衡量</p>
-</li>
-<li><p>场景三: 身体对下雨量和温度极度敏感，只能接受某个下雨量和温度范围，多下一毫米雨，高一度温度，就会导致发烧感冒，选数值型变量衡量</p>
-</li>
-</ul>
+<li><p><strong>统计数据质量的基本标准：</strong></p>
 </li>
 </ol>
+<p>（1）准确：用数字语言来反映客观实际；</p>
+<p>（2）快速：统计信息服务必须具有时效性和紧迫性；</p>
+<p>（3）完整：调查单位没有遗漏，调查项目没有缺陷，资料数据齐全；</p>
+<p>（4）精炼：统计信息具有针对性、时效性、精确性。</p>
+<p><strong>二、</strong>    <strong>调查数据</strong></p>
+<ol>
+<li><strong>概率抽样</strong>——包括等概率抽样和不等概率抽样</li>
+</ol>
+<p>概率抽样也称为随机抽样，是指遵循随机原则进行的抽样，总体中每个单位都有一定的机会被选入样本。</p>
+<p>其特点有：（1）抽样时是按一定的概率以随机原则抽取样本。（2）每个单位被抽中的概率是已知的，或是可以计算出来的。（3）当用样本对总体目标量进行估计时，要考虑到每个样本单位被抽中的概率。</p>
+<p><strong>常用抽样方式有：</strong></p>
+<p><strong>（1）</strong>  <strong>简单随机抽样</strong></p>
+<p>定义：从包括总体N个单位的抽样框中随机地、一个一个地抽取n个单位作为样本。</p>
+<p>特点：简单，直观。但抽样框不易构造，抽出单位分散、估计效率不高。</p>
+<p><strong>（2）</strong>  <strong>分层抽样</strong></p>
+<p>定义：将抽取单位按某种特征或某种规则划分为不同的层，然后从不同的层中独立、随机地抽取样本。</p>
+<p>特点：样本结构与总体结构类似，提高了估计精度，组织调查方便，还可对各层的目标量进行估计。</p>
+<p><strong>（3）</strong>  <strong>整群抽样</strong></p>
+<p>定义： 将总体中若干个单位合并为组，这样的组称为群。抽样时直接抽取群，然后对选中群中的所有单位全部实施调查。</p>
+<p>特点： 抽取样本时只需要群的抽样框，简化了工作量，但估计精度较差。</p>
+<p><strong>（4）</strong>  <strong>系统抽样</strong></p>
+<p>定义：将总体中的所有单位（抽样单位）按一定顺序排列，在规定范围内随机地抽取一个单位作为初始单位，然后按事先规定好的规则确定其样本单位。</p>
+<p>特点：操作简便，但对估计量方差的估计比较困难。</p>
+<p><strong>（5）</strong>  <strong>多阶段抽样</strong></p>
+<p>定义：采用类似整群抽样的方法，首先抽取群，然后再抽取群中的部分单位。这里群是初级抽样单位，第二阶段抽取的是最终抽取单位。</p>
+<p>特点：常用于大规模抽样当中。</p>
+<ol start="2">
+<li><strong>非概率抽样</strong></li>
+</ol>
+<p>指抽取样本时不是依据随机原则，而是根据研究目的对数据的要求，采用某种方式从总体中抽取部分单位对其实施调查。</p>
+<p><strong>非概率抽样一般可分为以下几种类型：</strong></p>
+<p>（1）  方便抽样：调查过程中由调查员依据方便原则抽样，其特点是成本低，易实施。</p>
+<p>（2）  判断抽样：研究人员根据经验、判断和对研究对象的了解，有目的地选择样本，根据不同目的有重点抽样、典型抽样、代表抽样。</p>
+<p>（3）  自愿抽样：被调查者自愿参加</p>
+<p>（4）  滚雪球抽样：调查对象继续推荐另一些调查对象</p>
+<p>（5）  配额抽样：类似分层抽样，先分类，再从各类中用方便抽样或判断抽样的方式选取样本单位。</p>
+<ol start="3">
+<li><strong>概率抽样与非概率抽样的比较</strong></li>
+</ol>
+<p>非概率抽样的特点是操作简便、失效快、成本低，且对抽样中的统计学专业技术要求不高，适合探索性的研究，调查的结果用于发现问题，为更深入的数量分析做准备。</p>
+<p>概率抽样则可用样本推断总体，对误差进行估计。</p>
+<ol start="4">
+<li><strong>搜集数据的基本方法：</strong> 自填式、面访式、电话式、观察式。</li>
+</ol>
+<p><strong>三、</strong>    <strong>数据误差</strong></p>
+<p><strong>统计数据的误差是指</strong>通过调查搜集到的数据与研究对象真实结果之间的差异。数据的误差有两类：抽样误差和非抽样误差</p>
+<p><strong>抽样误差是</strong>由抽样的随机性引起的样本结果与总体真值之间的误差，影响抽样误差大小的因素有样本量的大小和总体的变异性。通过增加样本量可以减小抽样误差，当样本量与总体单位相同时，就变成了普查，此时抽样误差就减小到0。</p>
+<p><strong>非抽样误差是</strong>指除抽样误差外的其他误差。抽样误差只存在于概率抽样中，而非抽样误差概率抽样和非概率抽样中都有。非抽样误差有如下几种类型：抽样框误差，回答误差，无回答误差，调查员误差，测量误差等。非抽样误差控制的重要方面是调查过程的质量。包括：调查员的挑选、调查员的培训、对调查过程进行控制的具体措施、对调查结果进行检验评估、对现场调查人员进行奖惩制度等。</p>
+<p><strong>抽样误差影响因素分析：</strong></p>
+<p>（1）样本量大小。在其他条件不变的情况下，样本量越大，抽样误差越小，当样本量为总体单位数目时即为普查，抽样误差则为0。</p>
+<p>（2）总体标志变异程度。在其他条件不变的情况下，总体标志变异程度越大，抽样误差越大。</p>
+<p>（3）抽样方法。一般而言，不重复抽样的抽样误差要小于重复抽样的抽样误差。当  时，两者差距不大。</p>
+<p>（4）抽样组织方式。一般而言，分层抽样的抽样误差较小，而整群抽样的抽样误差较大。</p>
+<p><strong>四、简述搜集数据的基本方法及其弱点。</strong></p>
+<p>（1）自填式。自填式是指在没有调查员协助的情况下由被调查者自己填写，完成调查问卷。其弱点：首先，问卷回收率较低。其次，自填式方法不适合结构复杂的问卷，对调查的内容有所局限。此外，自填式方法的调查周期通常比较长，调查人员也需要对问卷的递送和回收方法进行仔细的研究和选择。最后，对于在数据搜集过程中出现的问题，一般难以及时采取调改措施。</p>
+<p>（2）面访式。面访式是指现场调查中调查员与被调查者面对面，调查者提问、被调查者回答这种调查方式。其弱点：调查成本较高、调查质量的控制有难度、对于敏感性问题不易调查。</p>
+<p>（3）电话式。电话式是指调查人员通过打电话的方式向被调查者实施调查。其弱点：由于调查工具是电话，因此对电话拥有率不高的地区调查会受到限制；拒访率较高，且访问时间不能太长。</p>
+<p><strong>五、分层抽样与整群抽样有何异同？它们分别适合什么场合？</strong></p>
+<p>相同点：都是需要事先按某一标志对总体进行划分的随机抽样。</p>
+<p>不同点：分层抽样是先对总体进行结构分层，然后从不同层中独立、随机的抽取样本；整群抽样是将若干单位合并为一个群体，然后抽取这个群体里的所有对象进行调查。</p>
+<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p><strong>数据预处理包括：</strong> 数据审核、数据筛选、数据排序。其中数据审核中，对原始数据包括完整性审核和准确性审核；对二手数据还包括适用性审核和时效性审核。</p>
+<p><strong>一、数据清洗：</strong> 主要是为了保证数据的完整性和准确性，包括处理缺失值、识别和处理异常值。</p>
+<p>  <strong>处理缺失值的方法有：</strong> 删除整行、人工填写、用均值或中位数代替，用回归分析预测等</p>
+<p>  <strong>识别异常值的方法有：</strong> （1）用切比雪夫不等式或标准分数判断，数据在  范围外的则为异常值。（2）用箱线图判断，数据小于  或大于  则为异常值。（3）用聚类的方法判断，单个数据自成一类的则为异常值。</p>
+<p><strong>处理异常值的方法有：</strong> 删除异常值、将其作为缺失值处理、对其单独分析。</p>
+<p><strong>二、数据标准化：</strong>主要是为了消除数据差异和量纲的影响。主要方法有离差标准化、标准差标准化和小数定标。</p>
+<p><img src="/2022/08/05/220805-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%AD%A6/image-20220305115609745.png" alt="image-20220305115609745"></p>
+<h3 id="数据描述——图表描述"><a href="#数据描述——图表描述" class="headerlink" title="数据描述——图表描述"></a>数据描述——图表描述</h3><p><strong>一、</strong>  <strong>分类数据描述</strong></p>
+<p><strong>（1）</strong>   <strong>频数分布表——单变量分布表</strong></p>
+<p>主要用于计数和汇总一个分类变量的数据，通过它可以使（结合题）的频数、比例等一目了然，从而为进一步分析做准备。</p>
+<p><strong>（2）</strong>   <strong>频数分布表——双变量列联表</strong></p>
+<p>主要用于计数和汇总两个分类变量的数据，通过它可以使（结合题）两个变量交叉分类的频数、比例等一目了然，从而为进一步分析做准备。</p>
+<p><strong>（3）</strong>   <strong>条形图</strong></p>
+<p>它可以用来展示各类别的绝对值和数据的分布特征。它通过相同宽度条形的长短来表示各类别的数值大小。绘制时，可以分别绘制（饮料类型）和（性别）两个简单条形图，也可只绘制一张（饮料类型）和（性别）的复式条形图，从而便于比较。</p>
+<p><strong>（4）</strong>   <strong>帕累托图</strong></p>
+<p>它可以用来比较各类别的频数大小。它是按各类别数据出现的频数多少排序后绘制的条形图，通过对条形图的排序，容易看出哪类数据出现得多，哪类数据出现的少。</p>
+<p><strong>（5）</strong>   <strong>饼图</strong></p>
+<p>它可以用来展示一个样本的结构。它通过一个圆来表示的数值大小，用圆内各扇形的角度来表示各类别的数值大小。绘制时，可以分别绘制（饮料类型）和（性别）两个简单饼图，也可只绘制一张（饮料类型）和（性别）的复式饼图，从而便于比较。</p>
+<p><strong>（6）</strong>   <strong>环形图</strong></p>
+<p>它可以显示多个样本（城市）各部分所占的相应比例，从而用来比较多个样本的结构。它是把饼图叠在一起，挖去中间的部分；图中每一个环都表示一个样本（城市），（城市）样本中的每一部分数据则用环中的一段表示。</p>
+<p><strong>此外，还有马赛克图（用于展示两个以上分类变量，满足条件才写）、脊柱图、扇形图等，此处不再一一详述。</strong></p>
+<p><strong>二、</strong> <strong>顺序数据描述</strong></p>
+<p><strong>（1）</strong>   <strong>频数分布表——累计频数分布表</strong></p>
+<p>主要用于计数和汇总顺序变量的数据，通过它可以使（结合题）的频数、比例、累积频数、累积频率等一目了然，从而为进一步分析做准备。</p>
+<p><strong>（2）</strong>   <strong>累计频数分布图</strong></p>
+<p>主要是用于展示顺序变量的<strong>累积频数分布情况</strong>。它是将各类别按级别大小进行升序或降序排列在横坐标上，用纵坐标表示各类别的频率，然后用折线绘制出累积频率。</p>
+<p>三、  数值型数据描述</p>
+<p><strong>（1）</strong>   <strong>频数分布表——分组表</strong></p>
+<p>主要是用于计数和汇总数值型分组数据。通过它可以使（结合题）分组后的频数、比例等一目了然，从而为进一步分析做准备。</p>
+<p><strong>用于展示数据分布特征的图形主要有以下几种：</strong></p>
+<p><strong>（2）</strong>   <strong>直方图</strong></p>
+<p>它可以用来展示分组数据的分布特征。它用矩形的面积来表示频数分布，在矩形的高度表示每一组的频数或频率，宽度则表示各组的组距。</p>
+<p><strong>直方图与条形图的区别与联系：</strong></p>
+<p><strong>区别：</strong> 条形图主要用来展示分类数据，其高度表示各类别频数的多少，其宽度是固定的；直方图则主要是用于展示数值型分组数据，是用面积表示频数分布，矩形的高度表示每一组的频数或频率，宽度则表示各组的组距，因此其高度和宽度均有意义。且由于分组数据具有连续性，直方图的各矩形通常是连续排列的，而条形图则是分开排列的。</p>
+<p><strong>联系：</strong> 二者都用来展示数据的分布情况；在平面直角坐标系中，二者的横轴都表示分组，纵轴都可表示频数或频率大小。</p>
+<p><strong>（3）</strong>   <strong>茎叶图</strong></p>
+<p>它不仅可以用来反映数据的分布特征，还可以保留原始数据的信息，更适用于观察少量数据的分布。它由“茎”和“叶”两部分构成。绘制时，首先将一个数值分成两部分，通常是以该数据的高位数值作为树茎，而叶上只保留该数值的最后一个数字。<strong>如数据125分成12|5。</strong></p>
+<p><strong>（4）</strong>   <strong>箱线图</strong></p>
+<p>它不仅可以用来反映原始数据的分布特征，还可以进行多组数据分布特征的比较。绘制时，先找出数据的最大值、最小值、中位数和两个四分位数；然后连接两个四分位数画出箱子；再将最大值和最小值与箱子相连，中位数在箱子中间。箱线图还可用来寻找离群点，从而来处理数据的异常值。</p>
+<p><strong>此外，垂线图、误差图、小提琴图等，此处不再一一详述。</strong></p>
+<p><strong>用于展示变量之间的关系的图形主要有以下几种：</strong></p>
+<p><strong>（5）</strong>   <strong>线图</strong></p>
+<p>它可以用于展示时间序列数据，反映现象随时间变化的特征。绘制时，时间一般绘在横轴，观测值绘在纵轴。一般情况下，横轴应长于纵轴，纵轴数据下端应从“0”开始（若起始数据与“0”相差大，可采用折断符号），以便于比较。</p>
+<p><strong>用于展示变量之间的关系的图形主要有以下几种：</strong></p>
+<p><strong>（1）</strong> <strong>散点图（两个数值型变量）</strong></p>
+<p>它可以用来展示和两个数值型变量之间的关系。它用横轴代表变量，纵轴代表变量（可以互换），每对数据（如。。）在坐标系中用一个点表示，形成个散点。通过观察散点的趋势可以粗略判断变量与变量之间的相关性。 </p>
+<p><strong>（2）气泡图（3个数值型变量）</strong></p>
+<p>它可以用来展示、和三个数值型变量之间的关系。绘制时，将变量放在横轴，将变量放在纵轴，而变量则用气泡的大小来表示。这样数据在图上就以气泡的形式呈现，方便分析。</p>
+<p><strong>（3）矩阵散点图（两个以上数值型变量）</strong></p>
+<p>它可以用来同时比较多个变量两两之间的关系。N个变量，可形成N*N个小矩阵，每个矩阵都对应两个变量之间的散点图，方便同时观察分析。</p>
+<p><strong>用于比较多个样本的相似性的图形主要有以下几种：</strong></p>
+<p><strong>（1）雷达图（两个以上数值型变量）</strong></p>
+<p>它是从一点出发，用每一条射线代表一个变量，多个变量的数据的连成线就围成了一个区域，多个样本就能绘制多个区域 （如此题中有__个样本，故能绘制出__个区域），从而方便研究各样本间的相似程度。</p>
+<p><strong>（6）</strong>   <strong>轮廓图（两个以上数值型变量）</strong></p>
+<p>它是用横轴表示各样本（或变量），纵轴表示每个样本的多个变量（或样本）的取值，将不同样本同一个变量的取值用折线连接。如该题中，可用横轴表示变量，纵轴表示样本，则绘制出__条样本折线，从而便于分析各个样本之间的相似程度。</p>
+<p><strong>此外，还有星图、脸谱图等。</strong></p>
+<h3 id="数据描述——统计量描述"><a href="#数据描述——统计量描述" class="headerlink" title="数据描述——统计量描述"></a>数据描述——统计量描述</h3><p><strong>一、  集中趋势度量</strong></p>
+<p><strong>分类数据：众数</strong></p>
+<p><strong>众数</strong>是一组数据中出现次数最多的变量值，常用于反映一组分类数据的集中趋势，且不受极端值影响。</p>
+<p><strong>顺序数据：中位数、四分位数</strong></p>
+<p><strong>中位数</strong>是一组数据排序后处于中间位置的变量值。<strong>四分位数</strong>是一组数据排序后处于25%和75%位置上的值。它们常用于反映一组顺序数据的集中趋势，且不受极端值影响。</p>
+<p><strong>数值型数据：平均数</strong></p>
+<p><strong>平均数</strong>是一组数据相加后除以数据的个数得到的结果，它的计算公式有多种，如简单平均数、加权平均数、几何平均数。主要是用于反映一组数值型数据的集中趋势，且易受极端值影响。</p>
+<p><strong>二、离散程度度量</strong></p>
+<p><strong>分类数据：异众比率</strong></p>
+<p><strong>异众比率</strong>是指非众数组的频数占总频数的比例，它主要用于衡量众数对一组数据的代表程度。其值越大，众数的代表性越差；值越小，众数代表性越好。</p>
+<p><strong>顺序数据：四分位差</strong></p>
+<p><strong>四分位差</strong>是上四分位数与下四分位数之差。它反映了中间50%数据的离散程度，其数值越小说明数据越集中，数值越大说明数据越发散。</p>
+<p><strong>数值型数据：方差和标准差</strong></p>
+<p><strong>方差</strong>是各变量值与其均值离差平方的平均数。方差的平方根成为<strong>标准差</strong>。它们是实际中应用最广的数值型数据离散程度测度值。其值越大，说明数据越分散。此外，还有极差、平均差等可以对离散程度进行测度。</p>
+<p><strong>此外，</strong> 还有极差，平均差等统计量有时也可以反映数值型数据的离散程度，不过极差描述的效果不太好，而平均差则不方便计算，故不常用。</p>
+<p>（注：数值型数据的<strong>相对位置度量</strong>用<strong>标准分数（sc）</strong> $ z_i &#x3D; \frac{x_i-\overline{x}}{s}$，如z&#x3D;-1.5，则表示该数值低于平均数的1.5倍标准差）</p>
+<p><strong>三、</strong> <strong>分布形状度量：偏态系数、峰态系数</strong></p>
+<p><strong>偏态系数</strong>是对数据分布对称性的测度，当分布对称时，其值为0；分布左偏时，其值为负；分布右偏时，其值为正。</p>
+<p><strong>峰态系数</strong>是对数据分布平峰或尖峰程度的测度，它是通过与标准正态分布的峰态系数进行比较来实现的，当分布为正态时，其值为0；分布为尖峰时，其值为正；分布为平峰时，其值为负。</p>
+<p><strong>四、</strong> <strong>相对离散程度：离散（变异）系数</strong></p>
+<p><strong>离散系数</strong>是一组数据的标准差与其相应的平均数之比，其计算公式为： $ v_s &#x3D; \frac{s}{\overline{x}}$  ，它主要用来比较不同样本之间的离散程度。离散系数越大，说明数据的离散程度越大；离散系数越小，则说明数据的离散程度越小。</p>
+<p><strong>五、统计分组（高级变量——&gt;低级变量）</strong></p>
+<p>根据统计研究的目的和客观现象的内在特点，按某个标志（或几个标志）把被研究的总体划分为若干个不同性质的组，称为<strong>统计分组。</strong></p>
+<p><strong>统计分组的作用有：</strong>（1）发现社会经济现象的特点和规律；（2）将复杂的社会经济现象划分为性质不同的各种类型；（3）反映总体内部结构；（4）揭示现象之间的依存关系。</p>
+<p><strong>科学的统计分组应遵循两个原则（MECE原则）：</strong></p>
+<p>（1） 必须符合“穷尽原则”，即总体中的每一个单位都有组可归。</p>
+<p>（2） 必须遵守“互斥原则”，即总体中任一单位只能归属于一组，而不能同时可能归属于几个组。</p>
+]]></content>
+      <categories>
+        <category>统计学</category>
+      </categories>
+      <tags>
+        <tag>描述统计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>类别变量分析（R语言实现）</title>
+    <url>/2022/08/04/220804-%E7%B1%BB%E5%88%AB%E5%8F%98%E9%87%8F%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/</url>
+    <content><![CDATA[<p>本文主要介绍基于R实现类别变量分析，主要包括：</p>
+<p>（1）<strong>拟合优度检验</strong>用于检验 <strong>一个分类变量各类别的观察频数与期望频数是否有显著性差异，</strong> 或者说是检验一个分类变量各类别观察频数的分布是否符合某一理论分布。</p>
+<p>（2）<strong>独立性检验</strong>主要是用于分析判断两个分类变量是否独立。它是在假设两分类变量独立的情况下计算出理论频数，从而再与观察频数作比较，看是否有显著性差异。</p>
+  <span id="more"></span>
+
+
+
+<h2 id="一个分类变量的拟合优度检验"><a href="#一个分类变量的拟合优度检验" class="headerlink" title="一个分类变量的拟合优度检验"></a>一个分类变量的拟合优度检验</h2><h3 id="期望频数相等时的拟合优度检验"><a href="#期望频数相等时的拟合优度检验" class="headerlink" title="期望频数相等时的拟合优度检验"></a>期望频数相等时的拟合优度检验</h3><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">load<span class="punctuation">(</span><span class="string">&quot;Rdata\\example\\ch7\\example7_1.RData&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">example7_1</span><br></pre></td></tr></table></figure>
+
+
+<table class="dataframe">
+<caption>A data.frame: 4 × 2</caption>
+<thead>
+    <tr><th></th><th scope="col">饮料类型</th><th scope="col">人数</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>碳酸饮料</td><td>525</td></tr>
+    <tr><th scope="row">2</th><td>矿泉水  </td><td>550</td></tr>
+    <tr><th scope="row">3</th><td>果汁    </td><td>470</td></tr>
+    <tr><th scope="row">4</th><td>其他    </td><td>455</td></tr>
+</tbody>
+</table>
+
+
+
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">chisq.test<span class="punctuation">(</span>example7_1<span class="operator">$</span>人数<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>    Chi-squared test for given probabilities
+
+data:  example7_1$人数
+X-squared = 12.1, df = 3, p-value = 0.007048
+</code></pre>
+<h3 id="期望频数不相等时的拟合优度检验"><a href="#期望频数不相等时的拟合优度检验" class="headerlink" title="期望频数不相等时的拟合优度检验"></a>期望频数不相等时的拟合优度检验</h3><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">load<span class="punctuation">(</span><span class="string">&quot;Rdata\\example\\ch7\\example7_2.RData&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">example7_2</span><br></pre></td></tr></table></figure>
+
+
+<table class="dataframe">
+<caption>A data.frame: 5 × 3</caption>
+<thead>
+    <tr><th scope="col">受教育程度</th><th scope="col">离婚家庭数</th><th scope="col">期望比例</th></tr>
+    <tr><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>小学及以下</td><td> 30</td><td>0.20</td></tr>
+    <tr><td>初中      </td><td>110</td><td>0.35</td></tr>
+    <tr><td>高中      </td><td> 80</td><td>0.25</td></tr>
+    <tr><td>大学      </td><td> 25</td><td>0.12</td></tr>
+    <tr><td>研究生    </td><td> 15</td><td>0.08</td></tr>
+</tbody>
+</table>
+
+
+
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">chisq.test<span class="punctuation">(</span>example7_2<span class="operator">$</span>离婚家庭数<span class="punctuation">,</span> p <span class="operator">=</span> example7_2<span class="operator">$</span>期望比例<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>    Chi-squared test for given probabilities
+
+data:  example7_2$离婚家庭数
+X-squared = 19.586, df = 4, p-value = 0.0006028
+</code></pre>
+<h2 id="两个分类变量的独立性检验（列联分析）"><a href="#两个分类变量的独立性检验（列联分析）" class="headerlink" title="两个分类变量的独立性检验（列联分析）"></a>两个分类变量的独立性检验（列联分析）</h2><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 数据已经是列联表了</span></span><br><span class="line">x <span class="operator">&lt;-</span> <span class="built_in">c</span><span class="punctuation">(</span><span class="number">126</span><span class="punctuation">,</span><span class="number">158</span><span class="punctuation">,</span><span class="number">35</span><span class="punctuation">,</span><span class="number">34</span><span class="punctuation">,</span><span class="number">82</span><span class="punctuation">,</span><span class="number">65</span><span class="punctuation">)</span></span><br><span class="line">M <span class="operator">&lt;-</span> matrix<span class="punctuation">(</span>x<span class="punctuation">,</span> nr<span class="operator">=</span><span class="number">2</span><span class="punctuation">,</span> nc<span class="operator">=</span><span class="number">3</span><span class="punctuation">,</span> byrow<span class="operator">=</span><span class="literal">TRUE</span><span class="punctuation">,</span> <span class="built_in">dimnames</span><span class="operator">=</span><span class="built_in">list</span><span class="punctuation">(</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;满意&quot;</span><span class="punctuation">,</span><span class="string">&quot;不满意&quot;</span><span class="punctuation">)</span><span class="punctuation">,</span><span class="built_in">c</span><span class="punctuation">(</span><span class="string">&quot;东部&quot;</span><span class="punctuation">,</span><span class="string">&quot;中部&quot;</span><span class="punctuation">,</span><span class="string">&quot;西部&quot;</span><span class="punctuation">)</span><span class="punctuation">)</span><span class="punctuation">)</span></span><br><span class="line">M</span><br><span class="line">chisq.test<span class="punctuation">(</span>M<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+<table class="dataframe">
+<caption>A matrix: 2 × 3 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope="col">东部</th><th scope="col">中部</th><th scope="col">西部</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">满意</th><td>126</td><td>158</td><td>35</td></tr>
+    <tr><th scope="row">不满意</th><td> 34</td><td> 82</td><td>65</td></tr>
+</tbody>
+</table>
+
+
+<pre><code>    Pearson&#39;s Chi-squared test
+
+data:  M
+X-squared = 51.827, df = 2, p-value = 5.572e-12
+</code></pre>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 根据原始数据进行检验</span></span><br><span class="line">load<span class="punctuation">(</span><span class="string">&quot;Rdata\\example\\ch7\\example7_3.RData&quot;</span><span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算列联表</span></span><br><span class="line">fre_table <span class="operator">&lt;-</span> table<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br><span class="line">fre_table</span><br><span class="line"></span><br><span class="line"><span class="comment"># 独立性检验</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>fre_table<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+    <tr><th></th><th scope="col">满意度</th><th scope="col">地区</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">2</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">3</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">4</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">5</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">6</th><td>满意</td><td>东部</td></tr>
+</tbody>
+</table>
+
+<pre><code>        地区
+满意度   东部 西部 中部
+  不满意   34   65   82
+  满意    126   35  158
+
+
+    Pearson&#39;s Chi-squared test
+
+data:  fre_table
+X-squared = 51.827, df = 2, p-value = 5.572e-12
+</code></pre>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 是否满意与地区是否相互独立（独立性检验） 等价于 各地区的满意度是否符合均匀分布（拟合优度检验）</span></span><br><span class="line"><span class="comment"># 因此，当检验两个分类变量是否独立，且其中一个变量为二分类变量时，拟合优度检验可以同样适用</span></span><br><span class="line"><span class="comment"># 根据原始数据进行检验</span></span><br><span class="line">load<span class="punctuation">(</span><span class="string">&quot;Rdata\\example\\ch7\\example7_3.RData&quot;</span><span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算实际频数</span></span><br><span class="line">fre_table <span class="operator">&lt;-</span> table<span class="punctuation">(</span>example7_3<span class="punctuation">[</span>example7_3<span class="operator">$</span>满意度 <span class="operator">==</span> <span class="string">&quot;满意&quot;</span><span class="punctuation">,</span> <span class="punctuation">]</span><span class="operator">$</span>地区<span class="punctuation">)</span></span><br><span class="line">fre_table</span><br><span class="line"></span><br><span class="line"><span class="comment"># 独立性检验</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>fre_table<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+<table class="dataframe">
+<caption>A data.frame: 6 × 2</caption>
+<thead>
+    <tr><th></th><th scope="col">满意度</th><th scope="col">地区</th></tr>
+    <tr><th></th><th scope="col">&lt;fct&gt;</th><th scope="col">&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">2</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">3</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">4</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">5</th><td>满意</td><td>东部</td></tr>
+    <tr><th scope="row">6</th><td>满意</td><td>东部</td></tr>
+</tbody>
+</table>
+
+
+<pre><code>东部 西部 中部 
+ 126   35  158 
+
+
+    Chi-squared test for given probabilities
+
+data:  fre_table
+X-squared = 76.596, df = 2, p-value &lt; 2.2e-16
+</code></pre>
+<h2 id="两个分类变量的相关性度量"><a href="#两个分类变量的相关性度量" class="headerlink" title="两个分类变量的相关性度量"></a>两个分类变量的相关性度量</h2><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">load<span class="punctuation">(</span><span class="string">&quot;D:\\Rdata\\example\\ch7\\example7_3.RData&quot;</span><span class="punctuation">)</span></span><br><span class="line">head<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+<table>
+<thead><tr><th scope="col">满意度</th><th scope="col">地区</th></tr></thead>
+<tbody>
+    <tr><td>满意</td><td>东部</td></tr>
+    <tr><td>满意</td><td>东部</td></tr>
+    <tr><td>满意</td><td>东部</td></tr>
+    <tr><td>满意</td><td>东部</td></tr>
+    <tr><td>满意</td><td>东部</td></tr>
+    <tr><td>满意</td><td>东部</td></tr>
+</tbody>
+</table>
+
+
+
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算列联表</span></span><br><span class="line">fre_table <span class="operator">&lt;-</span> table<span class="punctuation">(</span>example7_3<span class="punctuation">)</span></span><br><span class="line">fre_table</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>        地区
+满意度   东部 西部 中部
+  不满意   34   65   82
+  满意    126   35  158
+</code></pre>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># install.packages(&#x27;vcd&#x27;)</span></span><br><span class="line">library<span class="punctuation">(</span>vcd<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Likelihood Ratio 似然比检验</span></span><br><span class="line"><span class="comment"># Pearson          皮尔逊检验(卡方检验)</span></span><br><span class="line"><span class="comment"># Phi相关系数、Contingency Coeff列联系数、Cramer&#x27;s V 系数</span></span><br><span class="line">assocstats<span class="punctuation">(</span>fre_table<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+<pre><code>                    X^2 df   P(&gt; X^2)
+Likelihood Ratio 51.326  2 7.1559e-12
+Pearson          51.827  2 5.5718e-12
+
+Phi-Coefficient   : NA 
+Contingency Coeff.: 0.306 
+Cramer&#39;s V        : 0.322 
+</code></pre>
+]]></content>
+      <categories>
+        <category>统计学</category>
+      </categories>
+      <tags>
+        <tag>R语言</tag>
+        <tag>推断统计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>描述统计分析（R语言实现）</title>
+    <url>/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/</url>
+    <content><![CDATA[<p>统计学是一门专门研究如何收集、处理、分析、解释数据并从数据中得出结论的科学。</p>
+<p>一般而言，我们通常将对数据的分析分为两大部分：描述统计分析和推断统计分析。</p>
+<p><strong>描述统计分析</strong> ，可以帮助我们快速了解随机事件的现状，它的基本原理就是信息的凝练和浓缩。用简单的统计量和图表去概况我们所关注的某部分信息，而忽略其他嘈杂信息，整个过程其实就是一个信息筛选和浓缩的过程。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/image-20220804231411913.png"></p>
+  <span id="more"></span>
+
+<p>举个简单的例子：婚介所给你推荐了10个女士的个人信息，包括：身高、体重、年龄、学历……，但是，你最关注的只是学历，因此，在众多的信息里，只有学历这个信息对你而言是有用的，你只需要把10个人的学历信息筛选出来进行比较即可，而不需要关注过多的其他信息，造成时间的浪费。<strong>这就是一个简单的信息筛选过程。</strong></p>
+<p>再举个例子：如果你想了解你目前的薪资处于当前城市的什么水平，最“严谨”的办法当然是，把这个城市的所有人的薪资都统计出来，然后排个序，看自己的薪资再所有人当中能排到哪个位置。但是，显然这是不可取的。因此，我们就需要进行如下工作：</p>
+<ol>
+<li>**信息筛选（随机抽样）： **抽取部分与城市薪资分布整体结构近似的人群进行调查。</li>
+<li>**信息浓缩（概括性度量）： **计算样本的中位数，通过观察你距离样本中位数的位置，大致能推断你在这个城市的薪资水平。</li>
+</ol>
+<p><strong>从这个过程我们可以看出，通过信息的筛选和浓缩，我们从需要了解一个城市所有人的薪资大小简化到了只需要了解一个统计量（中位数）的大小。</strong></p>
+<p>但是，肯定会有人有疑问：虽说简单了，但是也损失了很多信息，而且极可能把我们关注的信息也损失了，我们也不知道结果准不准确？有多准确？对于这个问题，如果来判断准不准确？误差是多少？能否按照规律进行预测？…….这些就是我们推断统计部分需要来回答的问题了。</p>
+<p>我们需要清楚的是，描述统计的作用就是通过信息筛选和信息浓缩<strong>快速了解现状</strong>。就好比两军开战，要先知己知彼，洞察敌情，至于什么时候开战？如果判断开战的时机？这个就是我们统计推断要解决的事情。</p>
+<h2 id="数据信息的分类"><a href="#数据信息的分类" class="headerlink" title="数据信息的分类"></a>数据信息的分类</h2><p>现实世界的数据信息以各种形态存在，为了更好的对他们进行搜集和分析，我们把具有相同性质的数据信息进行如下分类。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB.png"></p>
+<p>非结构化数据处理相对复杂，有专门的学科进行研究。在这里，我们主要来分析结构化数据。</p>
+<h2 id="分类数据的描述性分析"><a href="#分类数据的描述性分析" class="headerlink" title="分类数据的描述性分析"></a>分类数据的描述性分析</h2><p>分类数据是只能归于某一类别的非数字型数据，它是对事物进行分类的结果，数据表现为类别，是用文字来表述的。</p>
+<h3 id="图表描述分析"><a href="#图表描述分析" class="headerlink" title="图表描述分析"></a>图表描述分析</h3><p>对分类变量的图表描述分析，主要分为对比分析和占比分析。</p>
+<h4 id="对比分析：条形图"><a href="#对比分析：条形图" class="headerlink" title="对比分析：条形图"></a>对比分析：条形图</h4><p>通常，我们使用条形图来对比不同类别的频数大小，快速直观的了解各类别的”好坏“情况。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%9D%A1%E5%BD%A2%E5%9B%BE.png"></p>
+<h4 id="占比分析：帕累托图和扇形图"><a href="#占比分析：帕累托图和扇形图" class="headerlink" title="占比分析：帕累托图和扇形图"></a>占比分析：帕累托图和扇形图</h4><p>对于分类变量，我们除了想了解数据整体的情况，还需要了解各部分在整体中的占比（即影响权重），常用的占比分析方法就是帕累托分析。</p>
+<p><strong>帕累托法则，又称为二八原则，即20%的人贡献了80%的价值。它常用来对用户进行分类，寻找出核心价值用户。</strong></p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E5%B8%95%E7%B4%AF%E6%89%98%E5%9B%BE.png"></p>
+<p>扇形图能更加直观的看出各类别占比的大小顺序，方便类别直接进行比较。（个人不推荐使用饼图）</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%89%87%E5%BD%A2%E5%9B%BE.png"></p>
+<h3 id="统计量描述分析"><a href="#统计量描述分析" class="headerlink" title="统计量描述分析"></a>统计量描述分析</h3><h4 id="描述水平的统计量：众数"><a href="#描述水平的统计量：众数" class="headerlink" title="描述水平的统计量：众数"></a>描述水平的统计量：众数</h4><p>咱们公司的明星产品是什么？哪个小区的人口最多？为了回答类似这样的问题，我们可以使用众数 $M_0$ 来进行衡量。<strong>众数是频数最高的那个类别值，通过它我们可以了解哪个类别出现的概率会更高，即哪款产品可能更受用户喜爱。</strong></p>
+<h4 id="描述差异的统计量：异众比率"><a href="#描述差异的统计量：异众比率" class="headerlink" title="描述差异的统计量：异众比率"></a>描述差异的统计量：异众比率</h4><p>描述数据的统计量通常都是成对出现的，在上面，我们通过众数了解到了销量最好的明星产品，但是，这个明星产品是否可以作为”代表“，来代表所有产品的销售情况呢？是不是通过它的销售好坏，就可以直接衡量所有产品整体的销售好坏呢？</p>
+<p>我们需要一个评判标准，那就是异众比率。异众比率是指除了众数以外其他类别的总频数占总样本量的比例，即除了明星产品，其他产品的销量占总销量的比例。</p>
+<p>如果异众比率小，则说明销量主要集中在明星产品，众数的代表性好，反之，则代表性差，不能用众数去代表整体的情况。</p>
+<p><strong>注：根据二八法则，通常认为异众比率在0.2以下，众数的代表性就很好。</strong></p>
+<h2 id="顺序数据的描述性分析"><a href="#顺序数据的描述性分析" class="headerlink" title="顺序数据的描述性分析"></a>顺序数据的描述性分析</h2><h3 id="图表描述分析-1"><a href="#图表描述分析-1" class="headerlink" title="图表描述分析"></a>图表描述分析</h3><p><strong>（1）</strong>   <strong>频数分布表——累计频数分布表</strong></p>
+<p>主要用于计数和汇总顺序变量的数据，通过它可以使频数、比例、累积频数、累积频率等一目了然，从而为进一步分析做准备。</p>
+<p><strong>（2）</strong>   <strong>累计频数分布图</strong></p>
+<p>主要是用于展示顺序变量的<strong>累积频数分布情况</strong>。它是将各类别按级别大小进行升序或降序排列在横坐标上，用纵坐标表示各类别的频率，然后用折线绘制出累积频率。</p>
+<h3 id="统计量描述分析-1"><a href="#统计量描述分析-1" class="headerlink" title="统计量描述分析"></a>统计量描述分析</h3><h4 id="描述水平的统计量：中位数、四分位数"><a href="#描述水平的统计量：中位数、四分位数" class="headerlink" title="描述水平的统计量：中位数、四分位数"></a>描述水平的统计量：中位数、四分位数</h4><p><strong>中位数</strong>是一组数据排序后处于中间位置的变量值。<strong>四分位数</strong>是一组数据排序后处于25%和75%位置上的值。它们常用于反映一组顺序数据的集中趋势，且不受极端值影响。</p>
+<h4 id="描述差异的统计量：四分位差"><a href="#描述差异的统计量：四分位差" class="headerlink" title="描述差异的统计量：四分位差"></a>描述差异的统计量：四分位差</h4><p><strong>四分位差</strong>是上四分位数与下四分位数之差。它反映了中间50%数据的离散程度，其数值越小说明数据越集中，数值越大说明数据越发散。</p>
+<h2 id="数值型数据的描述性分析"><a href="#数值型数据的描述性分析" class="headerlink" title="数值型数据的描述性分析"></a>数值型数据的描述性分析</h2><h3 id="图表描述分析-2"><a href="#图表描述分析-2" class="headerlink" title="图表描述分析"></a>图表描述分析</h3><p><strong>用于展示数据分布特征的图形主要有以下几种：</strong></p>
+<p><strong>（1）</strong> <strong>直方图</strong></p>
+<p>主要用于观察分组数据的分布特征，通常可以结合核密度线进行观察，可用于进行正态性检验。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E7%9B%B4%E6%96%B9%E5%9B%BE.png"></p>
+<p><strong>直方图与条形图的区别与联系：</strong></p>
+<p><strong>区别：</strong>条形图主要用来展示分类数据，其高度表示各类别频数的多少，其宽度是固定的；直方图则主要是用于展示数值型分组数据，是用面积表示频数分布，矩形的高度表示每一组的频数或频率，宽度则表示各组的组距，因此其高度和宽度均有意义。且由于分组数据具有连续性，直方图的各矩形通常是连续排列的，而条形图则是分开排列的。</p>
+<p><strong>联系：</strong>二者都用来展示数据的分布情况；在平面直角坐标系中，二者的横轴都表示分组，纵轴都可表示频数或频率大小。</p>
+<p><strong>（2）</strong> <strong>茎叶图</strong></p>
+<p>它不仅可以用来反映数据的分布特征，还可以保留原始数据的信息，更适用于观察少量数据的分布。它由“茎”和“叶”两部分构成。绘制时，首先将一个数值分成两部分，通常是以该数据的高位数值作为树茎，而叶上只保留该数值的最后一个数字。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E8%8C%8E%E5%8F%B6%E5%9B%BE.png"></p>
+<p><strong>（3）</strong> <strong>箱线图</strong></p>
+<p>它不仅可以用来反映原始数据的分布特征，还可以进行多组数据分布特征的比较。箱形图是由5个统计量组合而成的图形，它们分别是：“最大值”、“最小值”、中位数、上四分位数和下四分位数。</p>
+<p><strong>“最大值和最小值”：</strong>在箱形图中的最大值其实是指去除异常值后的最大值和最小值，然后将它们作为整体图形的上下两条边界线。</p>
+<p>判断异常值的异常值截断点计算方式如下：</p>
+<p>上异常值截断点 &#x3D; 上四分位数 + 1.5*IQR（IQR即四分位差）</p>
+<p>下异常值截断点 &#x3D; 下四分位数 - 1.5*IQR（IQR即四分位差）</p>
+<p><strong>中位数</strong>：代表数据集中趋势位置的数，它表示这组数据大部分是集中在哪个数的附近，在这组数据中即表示了大多数的学生成绩是在75.5分左右。</p>
+<p><strong>四分位差（IQR)：</strong>IQR &#x3D; Q3（上四分位数）-Q1（下四分位数）。</p>
+<p>四分位差表示了一组数据中间50%的数据的离散程度，通过它我们可以来衡量中位数的代表性。如果IQR较大，则说明中间50%的数据相对分散，中位数的代表性则不好；如果IQR较小，则说明中间50%的数据相对集中，中位数的代表性则较好。</p>
+<p><strong>此外，</strong>我们还可以通过图形的整体长度，即极差来观察数据的整体分散程度。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E7%AE%B1%E7%BA%BF%E5%9B%BE.png"></p>
+<p><strong>用于展示变量之间的关系的图形主要有以下几种：</strong></p>
+<p><strong>（4）</strong> <strong>散点图（两个数值型变量）</strong></p>
+<p>它可以用来展示两个数值型变量之间的关系，一个变量在横轴，一个变量在纵轴，通过观察散点的趋势判断两变量的相关性。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%95%A3%E7%82%B9%E5%9B%BE.png"></p>
+<p><strong>（5）气泡图（三个数值型变量）</strong></p>
+<p>它可以用来展示三个数值型变量之间的关系。第一个变量用横轴表示，第二个变量用纵轴表示，第三个变量用气泡的大小表示。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E6%B0%94%E6%B3%A1%E5%9B%BE.png"></p>
+<p><strong>用于比较多个样本的相似性的图形主要有以下几种：</strong></p>
+<p><strong>（6）雷达图（两个以上数值型变量）</strong></p>
+<p>它是从一点出发，用每一条射线代表一个变量，多个变量的数据的连成线就围成了一个区域，多个样本就能绘制多个区域 ，从而方便研究各样本间的相似程度。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E9%9B%B7%E8%BE%BE%E5%9B%BE.png"></p>
+<p><strong>（7）轮廓图（两个以上数值型变量）</strong></p>
+<p>它是用横轴表示各样本，纵轴表示每个样本的多个变量的取值，将不同样本同一个变量的取值用折线连接，从而便于分析各个样本之间的相似程度。</p>
+<p><img src="/2022/08/03/220803-%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E5%9F%BA%E4%BA%8ER/%E8%BD%AE%E5%BB%93%E5%9B%BE.png"></p>
+<h3 id="统计量描述分析-2"><a href="#统计量描述分析-2" class="headerlink" title="统计量描述分析"></a>统计量描述分析</h3><h4 id="描述水平的统计量：平均数"><a href="#描述水平的统计量：平均数" class="headerlink" title="描述水平的统计量：平均数"></a>描述水平的统计量：平均数</h4><p><strong>平均数</strong>的计算公式有多种，如简单平均数、加权平均数、几何平均数。主要是用于反映一组数值型数据的集中趋势，<strong>且易受极端值影响。</strong></p>
+<h4 id="描述差异的统计量：方差和标准差"><a href="#描述差异的统计量：方差和标准差" class="headerlink" title="描述差异的统计量：方差和标准差"></a>描述差异的统计量：方差和标准差</h4><p><strong>方差</strong>是各变量值与其均值离差平方的平均数。方差的平方根成为<strong>标准差</strong>。它们是实际中应用最广的数值型数据离散程度测度值。其值越大，说明数据越分散。此外，还有极差、平均差等可以对离散程度进行测度。</p>
+<p><strong>此外，</strong>还有极差，平均差等统计量有时也可以反映数值型数据的离散程度，不过极差易受极端值影响，而平均差的数学性质较差，故不常用。</p>
+<p>（注：数值型数据的<strong>相对位置度量</strong>用<strong>标准分数（sc）</strong>$ z_i &#x3D; \frac{x_i-\overline{x}}{s}$，如z&#x3D;-1.5，则表示该数值低于平均数的1.5倍标准差）</p>
+<h4 id="分布形状度量：偏态系数、峰态系数"><a href="#分布形状度量：偏态系数、峰态系数" class="headerlink" title="分布形状度量：偏态系数、峰态系数"></a>分布形状度量：偏态系数、峰态系数</h4><p><strong>偏态系数</strong>是对数据分布对称性的测度，当分布对称时，其值为0；分布左偏时，其值为负；分布右偏时，其值为正。</p>
+<p><strong>峰态系数</strong>是对数据分布平峰或尖峰程度的测度，它是通过与标准正态分布的峰态系数进行比较来实现的，当分布为正态时，其值为0；分布为尖峰时，其值为正；分布为平峰时，其值为负。</p>
+<h4 id="相对离散程度：离散（变异）系数"><a href="#相对离散程度：离散（变异）系数" class="headerlink" title="相对离散程度：离散（变异）系数"></a>相对离散程度：离散（变异）系数</h4><p><strong>离散系数</strong>是一组数据的标准差与其相应的平均数之比，它主要用来比较不同样本之间的离散程度。离散系数越大，说明数据的离散程度越大；离散系数越小，则说明数据的离散程度越小。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<li>描述性分析主要是用图表和统计量来观察随机现象的特征规律；</li>
+<li>图表简单、直观，可以帮助我们快速发现规律、监控异常；</li>
+<li>统计量则浓缩了与目标最相关的信息，可以通过样本统计量来预估总体特征，除了上面常见的统计量之外，我们在实际工作中，一般是提取随机现象的特征统计量，如常见的业务指标，来描述实际业务当中随机变化的现象的规律和特征。</li>
+<li>总而言之，统计描述分析就是对总体信息进行抽取、筛选、浓缩、描述的过程。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>统计学</category>
+      </categories>
+      <tags>
+        <tag>描述统计</tag>
+        <tag>R语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NPS用户净推荐分析</title>
+    <url>/2022/08/02/220802-NPS%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/</url>
+    <content><![CDATA[<p>NPS (Net Promoter Score) 可以<strong>衡量客户体验</strong>并<strong>预测业务增长</strong>。这一指标改变了商业世界，为全球的客户体验管理提供了可以参考的核心指标。</p>
+<p><img src="/2022/08/02/220802-NPS%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/NPS.jpg" alt="NPS"></p>
+  <span id="more"></span>
+
+<h2 id="NPS-计算"><a href="#NPS-计算" class="headerlink" title="NPS 计算"></a>NPS 计算</h2><p>调研提问方式：”您有多大可能把我们（或这个产品&#x2F;服务&#x2F;品牌等等）推荐给朋友或同事？请从0-10分打分。“</p>
+<p>受访者分为以下几类：</p>
+<ul>
+<li><strong>推荐者（Promoter）</strong>（9-10分）：是忠诚的爱好者，他们会继续购买并推荐他人，从而促进增长。</li>
+<li><strong>被动者（Passive）</strong>（7-分）：很满意，但很容易受到竞争产品的攻击。</li>
+<li><strong>批评者（Detractor）</strong>（0-6分）：是不满意的客户，他们可能会通过负面的口碑来损害您的品牌并阻碍增长。</li>
+</ul>
+<p>从推荐者的百分比中减去批评者的百分比会得出净推荐者分数，其范围可以从低到 -100（如果每个客户都是批评者）到最高 100（如果每个客户都是推荐者）。</p>
+<p><strong>净推荐值(NPS)&#x3D;(推荐者数&#x2F;总样本数)×100% - (批评者数&#x2F;总样本数)×100%</strong></p>
+<h3 id="CEM的核心指标"><a href="#CEM的核心指标" class="headerlink" title="CEM的核心指标"></a>CEM的核心指标</h3><p>CEM （Customer Experience Management）</p>
+<p>将NPS用作衡量客户对品牌整体印象的关键指标。因为NPS是增长的领先指标，所以它为您的客户体验管理（CEM）计划提供了最佳的选择。将NPS与来自客户历程中各个角度的其他指标和见解相辅相成，您可以全面，切实地查看客户体验绩效。</p>
+<h2 id="NPS-预测增长"><a href="#NPS-预测增长" class="headerlink" title="NPS 预测增长"></a>NPS 预测增长</h2><p>改善客户体验的商业利益</p>
+<p>在改变商业世界十多年后，NPS仍然是唯一可以预测业务增长的客户体验。<strong>NPS 的经济学源于推荐者，被动者和批评者的行为差异。</strong>通过多种方式集中精力提高NPS，以提高业务绩效。</p>
+<h3 id="更高的利润和支出"><a href="#更高的利润和支出" class="headerlink" title="更高的利润和支出"></a>更高的利润和支出</h3><p><strong>推荐者通常不如其他客户对价格敏感</strong>，因为他们认为他们从贵公司整体上获得了良好的价值。对于<strong>价格更敏感的批评者</strong>而言，情况恰恰相反。同时，<strong>推荐者购买的商品比批评者购买的商品更多</strong>。他们倾向于通过自己喜欢的品牌整合更多的商品类别。<strong>推荐者对新产品和品牌扩展的兴趣</strong>也超过了批评者或被动者。</p>
+<h3 id="更高的保留率"><a href="#更高的保留率" class="headerlink" title="更高的保留率"></a>更高的保留率</h3><p>批评者通常比推荐者更容易出现问题，这意味着他们与您的公司之间的关系较短且利润较低。挽救那些批评者，将他们变成推荐者，从而并获得更高的利润。（有时候也可以战略性放弃这部分人群，因为批评者的获客成本往往很高，且容易给公司造成负面影响）</p>
+<h3 id="更好的口碑"><a href="#更好的口碑" class="headerlink" title="更好的口碑"></a>更好的口碑</h3><p>有多少新客户是因为声誉或推荐而选择您的公司？这些新客户的终生价值（包括销售或营销费用的任何节省）将大部分来自于推荐者。另一方面，批评者会导致负面的口口相传，因此您可以将这种拖累增长的成本归因于他们。</p>
+<p>总而言之，推荐者可以帮你减少获客成本，提高增长；而批评者则会增加你的获客成本，降低增长。</p>
+<h2 id="比较您的净促销员分数"><a href="#比较您的净促销员分数" class="headerlink" title="比较您的净促销员分数"></a>比较您的净促销员分数</h2><p>NPS基准测试指导您的目标和计划</p>
+<p>“我的 NPS 应该是多少？” 简单的问题，复杂的答案。NPS会因行业，地区或客户特征（例如年龄，收入水平或与公司在一起的时间）而异。</p>
+<p><img src="https://www.netpromoter.com/wp-content/uploads/2016/06/2016-b2c-sps-sector-averages.jpg" alt="B2C基准"></p>
+<p>因此，要了解您的净促销员得分，您<strong>必须将该得分与您的行业内以及直接和间接竞争对手的得分进行比较</strong>。得分高于竞争水平的公司发展更快，更成功。</p>
+<h3 id="使用NPS跟踪用户体验"><a href="#使用NPS跟踪用户体验" class="headerlink" title="使用NPS跟踪用户体验"></a>使用NPS跟踪用户体验</h3><p>NPS 分数是客户体验好坏的标志。NPS高于竞争对手的公司往往会增长更快并取得更大的成功。使用您自己的 NPS 分数（并查看竞争对手的分数），可以来跟踪您为提高客户体验的努力是否成功。</p>
+<p>参考网站：<a href="https://www.netpromoter.com/compare/">https://www.netpromoter.com/compare/</a></p>
+<h2 id="使用Power-BI-搭建-NPS-模型"><a href="#使用Power-BI-搭建-NPS-模型" class="headerlink" title="使用Power BI 搭建 NPS 模型"></a>使用Power BI 搭建 NPS 模型</h2><p><img src="/2022/08/02/220802-NPS%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/NPS%E6%A8%A1%E5%9E%8B.jpg" alt="NPS模型"></p>
 ]]></content>
       <categories>
         <category>数据分析</category>
         <category>方法论</category>
       </categories>
       <tags>
-        <tag>量化分析</tag>
+        <tag>用户分析</tag>
+        <tag>NPS</tag>
+        <tag>满意度分析</tag>
       </tags>
   </entry>
   <entry>
-    <title>Git学习笔记</title>
-    <url>/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>学习地址：<a href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
+    <title>Python控制流语句</title>
+    <url>/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
+    <content><![CDATA[<p>程序的流程结构可以概括为三种：① 顺序结构；② 分支结构；③ 循环结构。本文主要介绍Python的条件判断语句和循环语句。</p>
 <span id="more"></span>
 
-<h2 id="Git本地仓库"><a href="#Git本地仓库" class="headerlink" title="Git本地仓库"></a>Git本地仓库</h2><h3 id="创建版本库"><a href="#创建版本库" class="headerlink" title="创建版本库"></a>创建版本库</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 创建版本库</span></span></span><br><span class="line">mkdir learngit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 进入learngit目录</span></span></span><br><span class="line">cd learngit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 指定仓库</span></span></span><br><span class="line">git init</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 新建文件：版本1</span></span></span><br><span class="line">vim readme.txt</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># ins输入</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Git is a version control system.</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Git is a free software.</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Esc退出，:wq保存</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 把文件添加到仓库</span></span></span><br><span class="line">git add readme.txt</span><br><span class="line">git commit -m&quot;wrote a readme.txt&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="条件判断语句"><a href="#条件判断语句" class="headerlink" title="条件判断语句"></a>条件判断语句</h2><h3 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if 条件:</span><br><span class="line">    条件为真（True）执行操作</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/image-20220222175747138.png" alt="image-20220222175835406"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入您的年龄：&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> x&gt;=<span class="number">18</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输出结果：您是一个成年人！&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>请输入您的年龄： 18
 
 
+输出结果：您是一个成年人！
+</code></pre>
+<p>&amp;emsp;  </p>
+<p>&amp;emsp;  </p>
+<h3 id="if-else语句"><a href="#if-else语句" class="headerlink" title="if- else语句"></a>if- else语句</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if 条件:</span><br><span class="line">    条件为真（True）执行操作</span><br><span class="line">else：</span><br><span class="line">    条件为假（False）执行操作</span><br></pre></td></tr></table></figure>
 
-<h3 id="查看修改记录"><a href="#查看修改记录" class="headerlink" title="查看修改记录"></a>查看修改记录</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 修改文件：版本2</span></span></span><br><span class="line">vim readme.txt</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># ins输入，修改第一行为</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Git is a distributed version control system.</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Esc退出，:wq保存</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查看仓库状态</span></span></span><br><span class="line">git status</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查看修改内容</span></span></span><br><span class="line">git diff</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 把文件添加到仓库</span></span></span><br><span class="line">git add readme.txt</span><br><span class="line">git commit -m&quot;add distributed&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/image-20220222180032671.png" alt="image-20220222180032671"></p>
+<p>用代码来描述上面这个图</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入您的年龄：&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> x&gt;=<span class="number">18</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输出结果：你是成年人！&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：你是未成年人！&#x27;</span>)    </span><br></pre></td></tr></table></figure>
+
+<pre><code>请输入您的年龄： 8
 
 
+输出结果：你是未成年人！
+</code></pre>
+<p>&amp;emsp;  </p>
+<p>&amp;emsp;  </p>
+<h3 id="if-elif-else语句"><a href="#if-elif-else语句" class="headerlink" title="if - elif - else语句"></a>if - elif - else语句</h3><p>所以if语句的完整形式就是：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> &lt;条件判断<span class="number">1</span>&gt;:</span><br><span class="line">    &lt;执行<span class="number">1</span>&gt;</span><br><span class="line"><span class="keyword">elif</span> &lt;条件判断<span class="number">2</span>&gt;:</span><br><span class="line">    &lt;执行<span class="number">2</span>&gt;</span><br><span class="line"><span class="keyword">elif</span> &lt;条件判断<span class="number">3</span>&gt;:</span><br><span class="line">    &lt;执行<span class="number">3</span>&gt;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    &lt;执行<span class="number">4</span>&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h3 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a>版本回退</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 修改文件：版本3</span></span></span><br><span class="line">vim readme.txt</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># ins输入，修改第二行为</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Git is free software distributed under the GPL.</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># Esc退出，:wq保存</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>if语句执行有个特点，它是从上往下判断</li>
+<li>如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else</li>
+<li>所以，请测试并解释为什么下面的程序打印的是“少年”：</li>
+</ul>
+<p><img src="/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/image-20220222180247453.png" alt="image-20220222180247453"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">age = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> age&gt;=<span class="number">18</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：成年&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> age&gt;=<span class="number">6</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：少年&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> age&gt;=<span class="number">1</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：小孩&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：婴儿&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查看版本历史记录：显示从最近到最远的提交日志</span></span></span><br><span class="line">git log</span><br><span class="line">git log --pretty=oneline</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 回退到上一版本（版本2）</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100</span></span></span><br><span class="line">git reset --hard HEAD^</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 重新回到版本1</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 找到版本1的commit id</span></span></span><br><span class="line">git reflog</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 根据版本1的commit id，重新回到版本1</span></span></span><br><span class="line">git reset --hard 150fa61</span><br></pre></td></tr></table></figure>
+<pre><code>请输入你的年龄： 8
 
 
+输出结果：少年
+</code></pre>
+<p>&amp;emsp;  </p>
+<p>&amp;emsp;  </p>
+<h3 id="if-嵌套"><a href="#if-嵌套" class="headerlink" title="if 嵌套"></a>if 嵌套</h3><p>if嵌套</p>
+<p>通过学习if的基本用法，已经知道了</p>
+<p>当需要满足条件去做事情的这种情况需要使用if<br>当满足条件时做事情A，不满足条件做事情B的这种情况使用if-else<br>想一想有这样一个场景：<br>一个小姐姐想坐公交去天安门，那么需要的是小姐姐卡上的余额大于2元，这才能上公交车；<br>之后呢如果车上有座位，小姐姐才能坐下。<br>即实际的情况某个判断是再另外一个判断成立的基础上进行的，这样的情况该怎样解决呢？</p>
+<p>答：</p>
+<p>if嵌套</p>
+<p><strong>代码描述上述场景</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入卡上余额：&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> y&gt;=<span class="number">2</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：能上公交车&#x27;</span>)</span><br><span class="line">    s = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入空座位数：&quot;</span>))</span><br><span class="line">    <span class="keyword">if</span> s&gt;<span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;输出结果：坐车去天安门&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;输出结果：站着去天安门&#x27;</span>) </span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：不能去天安门&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3><p><strong>工作区（Working Directory）</strong></p>
-<p>就是你在电脑里能看到的目录，比如<code>learngit</code>文件夹就是一个工作区</p>
-<p><strong>版本库（Repository）</strong></p>
-<p>工作区有一个隐藏目录<code>.git</code>，这个不算工作区，而是Git的版本库。</p>
-<p>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支<code>master</code>，以及指向<code>master</code>的一个指针叫<code>HEAD</code>。</p>
-<p>每次修改，如果不用<code>git add</code>到暂存区，那就不会加入到<code>commit</code>中</p>
-<p><img src="/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/0.jpeg"></p>
-<h3 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a>撤销修改</h3><p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令<code>git checkout -- file</code>。</p>
-<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<code>git reset HEAD &lt;file&gt;</code>，就回到了场景1，第二步按场景1操作。</p>
-<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考<strong>版本回退</strong>一节，不过前提是没有推送到远程库。</p>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 删除工作区中的文件readme.txt</span></span></span><br><span class="line">rm readme.txt</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 同步删除版本库中的文件</span></span></span><br><span class="line">git rm readme.txt</span><br><span class="line">git commit -m&quot;remove readme.txt&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 撤回修改（删除）</span></span></span><br><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+<pre><code>请输入卡上余额： 5
 
-<p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
-<h2 id="Git远程仓库"><a href="#Git远程仓库" class="headerlink" title="Git远程仓库"></a>Git远程仓库</h2><h3 id="关联GitHub"><a href="#关联GitHub" class="headerlink" title="关联GitHub"></a>关联GitHub</h3><p>本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，因此需要给GitHub添加本地的SSH Key进行关联。</p>
-<p><strong>第1步：创建SSH Key。</strong></p>
-<p>在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有<code>id_rsa</code>和<code>id_rsa.pub</code>这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 创建SSH Key</span></span></span><br><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查找.shh所在目录</span></span></span><br><span class="line">ll -d ~/.ssh</span><br></pre></td></tr></table></figure>
 
-<p>把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可。</p>
-<p>在用户主目录里找到<code>.ssh</code>目录，里面有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥，可以放心地告诉任何人。</p>
-<p><strong>第2步：GitHub添加SSH Key。</strong></p>
-<p>登陆GitHub，打开“Account settings”，“SSH Keys”页面：</p>
-<p>然后，点“Add SSH Key”，填上任意Title，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容：</p>
-<p><img src="/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/0.png"></p>
-<h3 id="从本地上传到GitHub"><a href="#从本地上传到GitHub" class="headerlink" title="从本地上传到GitHub"></a>从本地上传到GitHub</h3><p>在本地工作区下执行：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 将该目录下的本地仓库与某个GitHub仓库关联</span></span></span><br><span class="line">git remote add origin git@github.com:GitHub账号名/仓库名.git</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 将本地的【版本库!!!】上传到GitHub仓库</span></span></span><br><span class="line">git push -u origin master</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 查看远程库信息</span></span></span><br><span class="line">git remote -v</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 解除与远程库的关系</span></span></span><br><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
+输出结果：能上公交车
 
-<p>把本地库的内容推送到远程，用<code>git push</code>命令，实际上是把当前分支<code>master</code>推送到远程。</p>
-<p>由于远程库是空的，第一次推送<code>master</code>分支时，需加上<code>-u</code>参数，Git不但会把本地的<code>master</code>分支内容推送的远程新的<code>master</code>分支，还会把本地的<code>master</code>分支和远程的<code>master</code>分支关联起来，以后的推送，使用<code>git push origin master</code>即可。</p>
-<p>注意：推送的是版本库，不是工作区！！！</p>
-<p>因此，更新流程是：<strong>工作区-&gt;版本库-&gt;远程库</strong></p>
-<h3 id="从GitHub克隆到本地"><a href="#从GitHub克隆到本地" class="headerlink" title="从GitHub克隆到本地"></a>从GitHub克隆到本地</h3><p>在本地工作区下执行：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 从GitHub克隆到本地</span></span></span><br><span class="line">git clone git@github.com:GitHub账号名/仓库名.git</span><br></pre></td></tr></table></figure>
 
+请输入空座位数： 0
+
+
+输出结果：站着去天安门
+</code></pre>
+<p>if嵌套的格式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件<span class="number">1</span>:</span><br><span class="line"></span><br><span class="line">       满足条件<span class="number">1</span> 做的事情<span class="number">1</span></span><br><span class="line">       满足条件<span class="number">1</span> 做的事情<span class="number">2</span></span><br><span class="line">       ...(省略)...</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> 条件<span class="number">2</span>:</span><br><span class="line">           满足条件<span class="number">2</span> 做的事情<span class="number">1</span></span><br><span class="line">           满足条件<span class="number">2</span> 做的事情<span class="number">2</span></span><br><span class="line">           ...(省略)...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>&amp;emsp;  </p>
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><p>循环语句的使用场景</p>
+<p>这一天老师让你抄写十遍”我错了”</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;......&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>我错了
+我错了
+我错了
+我错了
+我错了
+......
+</code></pre>
+<p>&amp;emsp;  </p>
+<p>&amp;emsp;  </p>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p>只要while后面的条件判断为True，那么就会一直执行循环体内的语句。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> 条件:</span><br><span class="line">        条件满足时，做的事情<span class="number">1</span></span><br><span class="line">        条件满足时，做的事情<span class="number">2</span></span><br><span class="line">        条件满足时，做的事情<span class="number">3</span></span><br><span class="line">        ...(省略)...</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/image-20220222180328852.png" alt="image-20220222180328852"></p>
+<p><strong>例1：打印出1-100</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i&lt;=<span class="number">100</span>:</span><br><span class="line">    <span class="built_in">print</span>(i, end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    i += <span class="number">1</span>   <span class="comment"># i = i+1</span></span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;循环结束才输出&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 循环结束才输出
+</code></pre>
+<p>&amp;emsp;  </p>
+<p>&amp;emsp;<br><strong>例2：计算1~100的累积和（包含1和100）</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = <span class="number">0</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i&lt;=<span class="number">100</span>:</span><br><span class="line">    s += i  <span class="comment"># s=0+1+2+3</span></span><br><span class="line">    i += <span class="number">1</span>   <span class="comment"># i = 4</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;s = &quot;</span>, s)</span><br></pre></td></tr></table></figure>
+
+<pre><code>s =  5050
+</code></pre>
+<p>&amp;emsp;  </p>
+<p>&amp;emsp;  </p>
+<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p>像while循环一样，for可以完成循环的功能。</p>
+<p>在Python中 for循环可以遍历任何序列的项目，如一个列表或者一个字符串等。</p>
+<p>for循环的格式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 列表或者字符串等:</span><br><span class="line">    循环满足条件时执行的代码</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">range</span>(<span class="number">100</span>, <span class="number">10</span>, -<span class="number">5</span>)   <span class="comment"># 终止位置取不到</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">100</span>, <span class="number">10</span>, -<span class="number">5</span>) ))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">101</span>, <span class="number">2</span>):   <span class="comment">#range(开始位置, 终止为止， 步长)</span></span><br><span class="line">    <span class="built_in">print</span>(i+<span class="number">1</span>, end=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;python&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(i)  <span class="comment"># 取字符串中的每一个字符</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>p
+y
+t
+h
+o
+n
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">&#x27;a&#x27;</span>, <span class="number">12</span>, <span class="literal">True</span>, [<span class="number">1</span>, <span class="number">2</span>], (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), &#123;<span class="number">1</span>:<span class="number">1</span>, <span class="number">2</span>:<span class="number">2</span>&#125;, &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;]:</span><br><span class="line">    <span class="built_in">print</span>(i)  <span class="comment"># 取列表中的每一个元素  ， 遍历</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>a
+12
+True
+[1, 2]
+(1, 2, 3)
+&#123;1: 1, 2: 2&#125;
+&#123;1, 2, 3&#125;
+</code></pre>
+<p>&amp;emsp;  </p>
+<p>&amp;emsp;  </p>
+<h2 id="跳转语句"><a href="#跳转语句" class="headerlink" title="跳转语句"></a>跳转语句</h2><h3 id="break语句"><a href="#break语句" class="headerlink" title="break语句"></a>break语句</h3><p>break语句可以终止当前的循环，包括while和for在内的所有控制语句。</p>
+<p>这就好比你绕圈跑步，开始打算跑5圈。跑了2圈半，感觉要拉肚子了，你就停下来，不跑了，找厕所去了。</p>
+<p>结束当前循环;此时，算作你跑了2圈。</p>
+<h4 id="在单层的for循环中"><a href="#在单层的for循环中" class="headerlink" title="在单层的for循环中"></a>在单层的for循环中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;123456789&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;我是在循环结束之后再输出！&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+我是在循环结束之后再输出！
+</code></pre>
+<p><strong>当i&#x3D;‘5’的时候, 就会碰见break而打断整个循环。</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;123456789&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> i==<span class="string">&#x27;5&#x27;</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;i=5时，结束循环！&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+2
+3
+4
+我是在循环结束之后再输出！
+</code></pre>
+<h4 id="在多层的for循环当中"><a href="#在多层的for循环当中" class="headerlink" title="在多层的for循环当中"></a>在多层的for循环当中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&#x27;世界杯在召唤我&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> name:</span><br><span class="line">        <span class="keyword">if</span> x == <span class="string">&#x27;在&#x27;</span>: </span><br><span class="line">             <span class="keyword">break</span>       <span class="comment">#打断的是最内层的for循环，但仍然继续执行外层循环</span></span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;——————我是&#123;&#125;次大循环结束之后的优美的分割线——————&quot;</span>.<span class="built_in">format</span>(i+<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;这句话在for循环后，与for循环无关&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>世
+界
+杯
+——————我是1次大循环结束之后的优美的分割线——————
+世
+界
+杯
+——————我是2次大循环结束之后的优美的分割线——————
+世
+界
+杯
+——————我是3次大循环结束之后的优美的分割线——————
+这句话在for循环后，与for循环无关
+</code></pre>
+<p><strong>注意多层循环的时候，打断的是最内层的循环</strong></p>
+<p>&amp;emsp;  </p>
+<p>&amp;emsp;  </p>
+<h4 id="在while循环中"><a href="#在while循环中" class="headerlink" title="在while循环中"></a>在while循环中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i&lt;<span class="number">10</span>:</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">5</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;while循环结束之后我才输出&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>0
+1
+2
+3
+4
+while循环结束之后我才输出
+</code></pre>
+<p><strong>多层的while循环也是打断的是最内层的循环</strong></p>
+<p>&amp;ensp;<br>&amp;emsp;     </p>
+<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><ul>
+<li>continue的作用：用来结束本次循环，紧接着执行下一次的循环。</li>
+<li>这就好比你绕圈跑步，一开始打算跑5圈。 </li>
+<li>跑了2圈半，发现好像落下钱包在起跑点了，终止跑第二圈。</li>
+<li>然后你回到起跑点找钱包，找到钱包，然后继续重新跑，算作从第3圈开始跑。</li>
+<li>这里你要注意的是：<ul>
+<li>break用来结束当前代码块的最内层循环。</li>
+<li>continue用来结束当前代码块的本次循环。</li>
+</ul>
+</li>
+</ul>
+<h4 id="在for循环中"><a href="#在for循环中" class="headerlink" title="在for循环中"></a>在for循环中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&#x27;世界杯在召唤我&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> name:</span><br><span class="line">    <span class="keyword">if</span> x == <span class="string">&#x27;在&#x27;</span>: </span><br><span class="line">        <span class="keyword">continue</span>  <span class="comment"># 结束本次循环后，继续执行</span></span><br><span class="line">    <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+
+<pre><code>世
+界
+杯
+召
+唤
+我
+</code></pre>
+<p>&amp;emsp;  </p>
+<p>&amp;emsp;  </p>
+<h4 id="在while循环中-1"><a href="#在while循环中-1" class="headerlink" title="在while循环中"></a>在while循环中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i&lt;<span class="number">6</span>:</span><br><span class="line">    i = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">3</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+2
+4
+5
+6
+</code></pre>
+<p><strong>注意:</strong></p>
+<p><strong>break&#x2F;continue只能用在循环中，除此以外不能单独使用</strong>   </p>
+<p><strong>break&#x2F;continue在嵌套循环中，只对最近的一层循环起作用</strong></p>
+<h3 id="pass空语句"><a href="#pass空语句" class="headerlink" title="pass空语句"></a>pass空语句</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;Python&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="string">&#x27;h&#x27;</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+<pre><code>P
+y
+t
+o
+n
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;Python&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="string">&#x27;h&#x27;</span>:</span><br><span class="line">       <span class="comment"># pass      # 这样会使程序不完整，会报错</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>  File &quot;&lt;ipython-input-36-616b3339dffb&gt;&quot;, line 4
+    else:
+       ^
+IndentationError: expected an indented block
+</code></pre>
+<p><strong>如果我们上面的pass不写（或者用注释代替），会报错，因为if语句是不完整的：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">从上面对比可以知道，pass是空语句，是为了保持程序结构的完整性。</span><br><span class="line">pass 不做任何事情，一般用做占位语句。</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>大数据开发</category>
-        <category>Git教程</category>
+        <category>数据分析</category>
+        <category>Python教程</category>
       </categories>
       <tags>
-        <tag>网站开发</tag>
-        <tag>Git</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1779,258 +2031,6 @@ abccba
 
 <pre><code>输出结果： 1
 </code></pre>
-]]></content>
-      <categories>
-        <category>数据分析</category>
-        <category>Python教程</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python控制流语句</title>
-    <url>/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/</url>
-    <content><![CDATA[<p>程序的流程结构可以概括为三种：① 顺序结构；② 分支结构；③ 循环结构。本文主要介绍Python的条件判断语句和循环语句。</p>
-<span id="more"></span>
-
-<h2 id="条件判断语句"><a href="#条件判断语句" class="headerlink" title="条件判断语句"></a>条件判断语句</h2><h3 id="if-语句"><a href="#if-语句" class="headerlink" title="if 语句"></a>if 语句</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if 条件:</span><br><span class="line">    条件为真（True）执行操作</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/image-20220222175747138.png" alt="image-20220222175835406"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入您的年龄：&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> x&gt;=<span class="number">18</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输出结果：您是一个成年人！&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>请输入您的年龄： 18
-
-
-输出结果：您是一个成年人！
-</code></pre>
-<p>&amp;emsp;  </p>
-<p>&amp;emsp;  </p>
-<h3 id="if-else语句"><a href="#if-else语句" class="headerlink" title="if- else语句"></a>if- else语句</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if 条件:</span><br><span class="line">    条件为真（True）执行操作</span><br><span class="line">else：</span><br><span class="line">    条件为假（False）执行操作</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/image-20220222180032671.png" alt="image-20220222180032671"></p>
-<p>用代码来描述上面这个图</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">x = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入您的年龄：&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> x&gt;=<span class="number">18</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;输出结果：你是成年人！&quot;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：你是未成年人！&#x27;</span>)    </span><br></pre></td></tr></table></figure>
-
-<pre><code>请输入您的年龄： 8
-
-
-输出结果：你是未成年人！
-</code></pre>
-<p>&amp;emsp;  </p>
-<p>&amp;emsp;  </p>
-<h3 id="if-elif-else语句"><a href="#if-elif-else语句" class="headerlink" title="if - elif - else语句"></a>if - elif - else语句</h3><p>所以if语句的完整形式就是：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> &lt;条件判断<span class="number">1</span>&gt;:</span><br><span class="line">    &lt;执行<span class="number">1</span>&gt;</span><br><span class="line"><span class="keyword">elif</span> &lt;条件判断<span class="number">2</span>&gt;:</span><br><span class="line">    &lt;执行<span class="number">2</span>&gt;</span><br><span class="line"><span class="keyword">elif</span> &lt;条件判断<span class="number">3</span>&gt;:</span><br><span class="line">    &lt;执行<span class="number">3</span>&gt;</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    &lt;执行<span class="number">4</span>&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>if语句执行有个特点，它是从上往下判断</li>
-<li>如果在某个判断上是True，把该判断对应的语句执行后，就忽略掉剩下的elif和else</li>
-<li>所以，请测试并解释为什么下面的程序打印的是“少年”：</li>
-</ul>
-<p><img src="/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/image-20220222180247453.png" alt="image-20220222180247453"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">age = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入你的年龄：&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> age&gt;=<span class="number">18</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：成年&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> age&gt;=<span class="number">6</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：少年&#x27;</span>)</span><br><span class="line"><span class="keyword">elif</span> age&gt;=<span class="number">1</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：小孩&#x27;</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：婴儿&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>请输入你的年龄： 8
-
-
-输出结果：少年
-</code></pre>
-<p>&amp;emsp;  </p>
-<p>&amp;emsp;  </p>
-<h3 id="if-嵌套"><a href="#if-嵌套" class="headerlink" title="if 嵌套"></a>if 嵌套</h3><p>if嵌套</p>
-<p>通过学习if的基本用法，已经知道了</p>
-<p>当需要满足条件去做事情的这种情况需要使用if<br>当满足条件时做事情A，不满足条件做事情B的这种情况使用if-else<br>想一想有这样一个场景：<br>一个小姐姐想坐公交去天安门，那么需要的是小姐姐卡上的余额大于2元，这才能上公交车；<br>之后呢如果车上有座位，小姐姐才能坐下。<br>即实际的情况某个判断是再另外一个判断成立的基础上进行的，这样的情况该怎样解决呢？</p>
-<p>答：</p>
-<p>if嵌套</p>
-<p><strong>代码描述上述场景</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y = <span class="built_in">float</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入卡上余额：&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> y&gt;=<span class="number">2</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：能上公交车&#x27;</span>)</span><br><span class="line">    s = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;请输入空座位数：&quot;</span>))</span><br><span class="line">    <span class="keyword">if</span> s&gt;<span class="number">0</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;输出结果：坐车去天安门&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;输出结果：站着去天安门&#x27;</span>) </span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;输出结果：不能去天安门&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>请输入卡上余额： 5
-
-
-输出结果：能上公交车
-
-
-请输入空座位数： 0
-
-
-输出结果：站着去天安门
-</code></pre>
-<p>if嵌套的格式</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件<span class="number">1</span>:</span><br><span class="line"></span><br><span class="line">       满足条件<span class="number">1</span> 做的事情<span class="number">1</span></span><br><span class="line">       满足条件<span class="number">1</span> 做的事情<span class="number">2</span></span><br><span class="line">       ...(省略)...</span><br><span class="line"></span><br><span class="line">       <span class="keyword">if</span> 条件<span class="number">2</span>:</span><br><span class="line">           满足条件<span class="number">2</span> 做的事情<span class="number">1</span></span><br><span class="line">           满足条件<span class="number">2</span> 做的事情<span class="number">2</span></span><br><span class="line">           ...(省略)...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>&amp;emsp;  </p>
-<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><p>循环语句的使用场景</p>
-<p>这一天老师让你抄写十遍”我错了”</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;我错了&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;......&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>我错了
-我错了
-我错了
-我错了
-我错了
-......
-</code></pre>
-<p>&amp;emsp;  </p>
-<p>&amp;emsp;  </p>
-<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p>只要while后面的条件判断为True，那么就会一直执行循环体内的语句。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> 条件:</span><br><span class="line">        条件满足时，做的事情<span class="number">1</span></span><br><span class="line">        条件满足时，做的事情<span class="number">2</span></span><br><span class="line">        条件满足时，做的事情<span class="number">3</span></span><br><span class="line">        ...(省略)...</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2022/02/22/Python%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5/image-20220222180328852.png" alt="image-20220222180328852"></p>
-<p><strong>例1：打印出1-100</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i&lt;=<span class="number">100</span>:</span><br><span class="line">    <span class="built_in">print</span>(i, end=<span class="string">&#x27; &#x27;</span>)</span><br><span class="line">    i += <span class="number">1</span>   <span class="comment"># i = i+1</span></span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;循环结束才输出&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 循环结束才输出
-</code></pre>
-<p>&amp;emsp;  </p>
-<p>&amp;emsp;<br><strong>例2：计算1~100的累积和（包含1和100）</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s = <span class="number">0</span></span><br><span class="line">i = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i&lt;=<span class="number">100</span>:</span><br><span class="line">    s += i  <span class="comment"># s=0+1+2+3</span></span><br><span class="line">    i += <span class="number">1</span>   <span class="comment"># i = 4</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;s = &quot;</span>, s)</span><br></pre></td></tr></table></figure>
-
-<pre><code>s =  5050
-</code></pre>
-<p>&amp;emsp;  </p>
-<p>&amp;emsp;  </p>
-<h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p>像while循环一样，for可以完成循环的功能。</p>
-<p>在Python中 for循环可以遍历任何序列的项目，如一个列表或者一个字符串等。</p>
-<p>for循环的格式</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> 临时变量 <span class="keyword">in</span> 列表或者字符串等:</span><br><span class="line">    循环满足条件时执行的代码</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">range</span>(<span class="number">100</span>, <span class="number">10</span>, -<span class="number">5</span>)   <span class="comment"># 终止位置取不到</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">100</span>, <span class="number">10</span>, -<span class="number">5</span>) ))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30, 25, 20, 15]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">101</span>, <span class="number">2</span>):   <span class="comment">#range(开始位置, 终止为止， 步长)</span></span><br><span class="line">    <span class="built_in">print</span>(i+<span class="number">1</span>, end=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;python&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(i)  <span class="comment"># 取字符串中的每一个字符</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>p
-y
-t
-h
-o
-n
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">&#x27;a&#x27;</span>, <span class="number">12</span>, <span class="literal">True</span>, [<span class="number">1</span>, <span class="number">2</span>], (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), &#123;<span class="number">1</span>:<span class="number">1</span>, <span class="number">2</span>:<span class="number">2</span>&#125;, &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;]:</span><br><span class="line">    <span class="built_in">print</span>(i)  <span class="comment"># 取列表中的每一个元素  ， 遍历</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>a
-12
-True
-[1, 2]
-(1, 2, 3)
-&#123;1: 1, 2: 2&#125;
-&#123;1, 2, 3&#125;
-</code></pre>
-<p>&amp;emsp;  </p>
-<p>&amp;emsp;  </p>
-<h2 id="跳转语句"><a href="#跳转语句" class="headerlink" title="跳转语句"></a>跳转语句</h2><h3 id="break语句"><a href="#break语句" class="headerlink" title="break语句"></a>break语句</h3><p>break语句可以终止当前的循环，包括while和for在内的所有控制语句。</p>
-<p>这就好比你绕圈跑步，开始打算跑5圈。跑了2圈半，感觉要拉肚子了，你就停下来，不跑了，找厕所去了。</p>
-<p>结束当前循环;此时，算作你跑了2圈。</p>
-<h4 id="在单层的for循环中"><a href="#在单层的for循环中" class="headerlink" title="在单层的for循环中"></a>在单层的for循环中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;123456789&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;我是在循环结束之后再输出！&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-2
-3
-4
-5
-6
-7
-8
-9
-我是在循环结束之后再输出！
-</code></pre>
-<p><strong>当i&#x3D;‘5’的时候, 就会碰见break而打断整个循环。</strong></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;123456789&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> i==<span class="string">&#x27;5&#x27;</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;i=5时，结束循环！&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-2
-3
-4
-我是在循环结束之后再输出！
-</code></pre>
-<h4 id="在多层的for循环当中"><a href="#在多层的for循环当中" class="headerlink" title="在多层的for循环当中"></a>在多层的for循环当中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&#x27;世界杯在召唤我&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> name:</span><br><span class="line">        <span class="keyword">if</span> x == <span class="string">&#x27;在&#x27;</span>: </span><br><span class="line">             <span class="keyword">break</span>       <span class="comment">#打断的是最内层的for循环，但仍然继续执行外层循环</span></span><br><span class="line">        <span class="built_in">print</span>(x)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;——————我是&#123;&#125;次大循环结束之后的优美的分割线——————&quot;</span>.<span class="built_in">format</span>(i+<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;这句话在for循环后，与for循环无关&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>世
-界
-杯
-——————我是1次大循环结束之后的优美的分割线——————
-世
-界
-杯
-——————我是2次大循环结束之后的优美的分割线——————
-世
-界
-杯
-——————我是3次大循环结束之后的优美的分割线——————
-这句话在for循环后，与for循环无关
-</code></pre>
-<p><strong>注意多层循环的时候，打断的是最内层的循环</strong></p>
-<p>&amp;emsp;  </p>
-<p>&amp;emsp;  </p>
-<h4 id="在while循环中"><a href="#在while循环中" class="headerlink" title="在while循环中"></a>在while循环中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i&lt;<span class="number">10</span>:</span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">5</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line">    i += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;while循环结束之后我才输出&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>0
-1
-2
-3
-4
-while循环结束之后我才输出
-</code></pre>
-<p><strong>多层的while循环也是打断的是最内层的循环</strong></p>
-<p>&amp;ensp;<br>&amp;emsp;     </p>
-<h3 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h3><ul>
-<li>continue的作用：用来结束本次循环，紧接着执行下一次的循环。</li>
-<li>这就好比你绕圈跑步，一开始打算跑5圈。 </li>
-<li>跑了2圈半，发现好像落下钱包在起跑点了，终止跑第二圈。</li>
-<li>然后你回到起跑点找钱包，找到钱包，然后继续重新跑，算作从第3圈开始跑。</li>
-<li>这里你要注意的是：<ul>
-<li>break用来结束当前代码块的最内层循环。</li>
-<li>continue用来结束当前代码块的本次循环。</li>
-</ul>
-</li>
-</ul>
-<h4 id="在for循环中"><a href="#在for循环中" class="headerlink" title="在for循环中"></a>在for循环中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">name = <span class="string">&#x27;世界杯在召唤我&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> name:</span><br><span class="line">    <span class="keyword">if</span> x == <span class="string">&#x27;在&#x27;</span>: </span><br><span class="line">        <span class="keyword">continue</span>  <span class="comment"># 结束本次循环后，继续执行</span></span><br><span class="line">    <span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-
-<pre><code>世
-界
-杯
-召
-唤
-我
-</code></pre>
-<p>&amp;emsp;  </p>
-<p>&amp;emsp;  </p>
-<h4 id="在while循环中-1"><a href="#在while循环中-1" class="headerlink" title="在while循环中"></a>在while循环中</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">i = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> i&lt;<span class="number">6</span>:</span><br><span class="line">    i = i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> i==<span class="number">3</span>:</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">    <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-
-<pre><code>1
-2
-4
-5
-6
-</code></pre>
-<p><strong>注意:</strong></p>
-<p><strong>break&#x2F;continue只能用在循环中，除此以外不能单独使用</strong>   </p>
-<p><strong>break&#x2F;continue在嵌套循环中，只对最近的一层循环起作用</strong></p>
-<h3 id="pass空语句"><a href="#pass空语句" class="headerlink" title="pass空语句"></a>pass空语句</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;Python&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="string">&#x27;h&#x27;</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-
-<pre><code>P
-y
-t
-o
-n
-</code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&#x27;Python&#x27;</span>:</span><br><span class="line">    <span class="keyword">if</span> i == <span class="string">&#x27;h&#x27;</span>:</span><br><span class="line">       <span class="comment"># pass      # 这样会使程序不完整，会报错</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br></pre></td></tr></table></figure>
-
-
-<pre><code>  File &quot;&lt;ipython-input-36-616b3339dffb&gt;&quot;, line 4
-    else:
-       ^
-IndentationError: expected an indented block
-</code></pre>
-<p><strong>如果我们上面的pass不写（或者用注释代替），会报错，因为if语句是不完整的：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">从上面对比可以知道，pass是空语句，是为了保持程序结构的完整性。</span><br><span class="line">pass 不做任何事情，一般用做占位语句。</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>数据分析</category>

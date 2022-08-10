@@ -81,7 +81,253 @@
       </tags>
   </entry>
   <entry>
-    <title>Git学习笔记</title>
+    <title>Linux文件系统</title>
+    <url>/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<p>Linux文件系统中的文件是数据的集合，文件系统不仅包含着文件中的数据而且还有文件系统的结构，所有Linux 用户和程序看到的文件、目录、软连接及文件保护信息等都存储在其中。Linux下的所有文件和目录。这些文件及目录构以一个树状的结构，构成了Linux中的文件系统。</p>
+<span id="more"></span>
+
+<p>在Linux中普通文件和目录文件保存在称为块物理设备的磁盘或者磁带上。<strong>一套Linux系统支持若干物理盘，每个物理盘可定义一个或者多个文件系统。</strong>每个文件系统由逻辑块的序列组成，一个逻辑盘空间一般划分为几个用途各不相同的部分，即引导块、超级块、inode区以及数据区等。操作系统用于明确磁盘分区上的文件的方法和数据结构，即文件在磁盘上的组织方法。</p>
+<p>Linux最早引入的文件系统类型是MINIX。MINIX文件系统由MINIX操作系统定义，有一定的局限性，如文件名最长14个字符，文件最长64M字节。第一个专门为Linux设计的文件系统是EXT（Extended File System），但目前流行最广的是EXT4。但是因为EXT4的一些问题，出现了各方面细节更好的<strong>XFS类型文件系统</strong>，它也是现在的centos7系统默认的文件系统类型。</p>
+<p>CentOS7可以通过命令查看文件系统的类型：<strong>cat &#x2F;etc&#x2F;fstab。Windows系统文件格式一般是NTFS，优盘文件格式一般是FAT32。</strong></p>
+<p>Linux根据文件形式主要将文件分为目录和普通文件，以树的形式进行组织，如下图</p>
+<p><img src="/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220410162320688.png" alt="image-20220410162320688"></p>
+<p>目录或者文件的名称长度不超过255个字符，文件或者目录是由以下字符构成：</p>
+<ul>
+<li>Uppercase letters (A-Z)</li>
+<li>Lowercase letters (a-z)</li>
+<li>Numbers (0-9)</li>
+<li>Underscore (_)</li>
+<li>Period(.)</li>
+<li>Comma(,)</li>
+</ul>
+<p><strong>注意： 1、文件和目录是区分大小写的； 2、Linux对文件的扩展名没有强制要求。</strong></p>
+<h3 id="Linux文件系统核心目录结构"><a href="#Linux文件系统核心目录结构" class="headerlink" title="Linux文件系统核心目录结构"></a>Linux文件系统核心目录结构</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">执行命令：ll /</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220410162413698.png" alt="image-20220410162413698"></p>
+<h3 id="Linux目录结构详解"><a href="#Linux目录结构详解" class="headerlink" title="Linux目录结构详解"></a>Linux目录结构详解</h3><table>
+<thead>
+<tr>
+<th>目录</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;</td>
+<td>根目录，一般根目录下只存放目录，不要存放文件，&#x2F;etc、&#x2F;bin、&#x2F;dev、&#x2F;lib、&#x2F;sbin应该和根目录放置在一个分区中</td>
+</tr>
+<tr>
+<td>&#x2F;bin:&#x2F;usr&#x2F;bin</td>
+<td>可执行二进制文件的目录，如常用的命令ls、tar、mv、cat等</td>
+</tr>
+<tr>
+<td>&#x2F;boot</td>
+<td>放置linux系统启动时用到的一些文件。&#x2F;boot&#x2F;vmlinuz为linux的内核文件，以及&#x2F;boot&#x2F;gurb。建议单独分区，分区大小100M即可</td>
+</tr>
+<tr>
+<td>&#x2F;dev</td>
+<td>存放linux系统下的设备文件，访问该目录下某个文件，相当于访问某个设备，常用的是挂载光驱mount &#x2F;dev&#x2F;cdrom  &#x2F;mnt</td>
+</tr>
+<tr>
+<td>&#x2F;etc</td>
+<td>系统配置文件存放的目录，不建议在此目录下存放可执行文件，重要的配置文件有&#x2F;etc&#x2F;inittab、&#x2F;etc&#x2F;gateways、&#x2F;etc&#x2F;resolv.conf、&#x2F;etc&#x2F;fstab、&#x2F;etc&#x2F;init.d、&#x2F;etc&#x2F;X11、&#x2F;etc&#x2F;sysconfig、&#x2F;etc&#x2F;xinetd.d修改配置文件之前记得备份。注：&#x2F;etc&#x2F;X11存放与x  windows有关的设置</td>
+</tr>
+<tr>
+<td>&#x2F;home</td>
+<td>系统默认的用户家目录，新增用户账号时，用户的家目录都存放在此目录下，~表示当前用户的家目录，test表示用户test的家目录。建议单独分区，并设置较大的磁盘空间，方便用户存放数据</td>
+</tr>
+<tr>
+<td>&#x2F;lib:&#x2F;lib64:&#x2F;usr&#x2F;lib:&#x2F;usr&#x2F;local&#x2F;lib</td>
+<td>系统使用的函数库的目录，程序在执行过程中，需要调用一些额外的参数时需要函数库的协助，比较重要的目录为&#x2F;lib&#x2F;modules</td>
+</tr>
+<tr>
+<td>&#x2F;lost+found</td>
+<td>系统异常产生错误时，会将一些遗失的片段放置于此目录下，通常这个目录会自动出现在装置目录下。如加载硬盘于&#x2F;disk  中，此目录下就会自动产生目录&#x2F;disk&#x2F;lost+found</td>
+</tr>
+<tr>
+<td>&#x2F;mnt:&#x2F;media</td>
+<td>光盘默认挂载点，通常光盘挂载于&#x2F;mnt&#x2F;cdrom下，也不一定，可以选择任意位置进行挂载</td>
+</tr>
+<tr>
+<td>&#x2F;opt</td>
+<td>给主机额外安装软件所摆放的目录。如：FC4使用的Fedora  社群开发软件，如果想要自行安装新的KDE桌面软件，可以将该软件安装在该目录下。以前的Linux系统中，习惯放置在 &#x2F;usr&#x2F;local目录下option</td>
+</tr>
+<tr>
+<td>&#x2F;proc</td>
+<td>此目录的数据都在内存中，如系统核心，外部设备，网络状态，由于数据都存放于内存中，所以不占用磁盘空间，比较重要的目录有&#x2F;proc&#x2F;cpuinfo、&#x2F;proc&#x2F;interrupts、&#x2F;proc&#x2F;dma、&#x2F;proc&#x2F;ioports、&#x2F;proc&#x2F;net&#x2F;*等process</td>
+</tr>
+<tr>
+<td>&#x2F;root</td>
+<td>系统管理员root的家目录，系统第一个启动的分区为&#x2F;，所以最好将&#x2F;root和&#x2F;放置在一个分区下</td>
+</tr>
+<tr>
+<td>&#x2F;sbin:&#x2F;usr&#x2F;sbin:&#x2F;usr&#x2F;local&#x2F;sbin</td>
+<td>放置系统管理员使用的可执行命令，如fdisk、shutdown、mount等。与&#x2F;bin不同的是，这几个目录是给系统管理员root使用的命令，一般用户只能”查看”而不能设置和使用。</td>
+</tr>
+<tr>
+<td>&#x2F;srv</td>
+<td>服务启动之后需要访问的数据目录，如www服务需要访问的网页数据存放在&#x2F;srv&#x2F;www内service</td>
+</tr>
+<tr>
+<td>&#x2F;sys</td>
+<td>类似于&#x2F;proc的特殊文件系统，存放内核数据信息</td>
+</tr>
+<tr>
+<td>&#x2F;tmp</td>
+<td>一般用户或正在执行的程序临时存放文件的目录,任何人都可以访问,重要数据不可放置在此目录下</td>
+</tr>
+<tr>
+<td>&#x2F;usr</td>
+<td>应用程序存放目录，     &#x2F;usr&#x2F;bin 存放应用程序          &#x2F;usr&#x2F;share 存放共享数据     &#x2F;usr&#x2F;local:存放软件升级包     &#x2F;usr&#x2F;lib 存放不能直接运行的，却是许多程序运行所必需的一些函数库文件</td>
+</tr>
+<tr>
+<td>&#x2F;var</td>
+<td>放置系统执行过程中经常变化的文件，如：     &#x2F;var&#x2F;log：随时更改的日志文件          &#x2F;var&#x2F;log&#x2F;message：所有的登录文件存放目录     &#x2F;var&#x2F;spool&#x2F;mail：邮件存放的目录        &#x2F;var&#x2F;run：程序或服务启动     &#x2F;usr&#x2F;share&#x2F;doc: 系统说明文件存放目录    &#x2F;usr&#x2F;share&#x2F;man: 程序说明文件存放目录</td>
+</tr>
+</tbody></table>
+<h3 id="Linux目录结构使用建议"><a href="#Linux目录结构使用建议" class="headerlink" title="Linux目录结构使用建议"></a>Linux目录结构使用建议</h3><p>1、用户应该将文件存储在自己的主目录及其子目录下</p>
+<p>2、系统绝大多数设置&#x2F;配置都在&#x2F;etc目录下</p>
+<p>3、不要修改“&#x2F;”或者“&#x2F;usr”目录下的任何内容，除非你真的清楚你在做什么，也就是说“&#x2F;”目录最好和安装好系统之初保持一致</p>
+<p>4、大多数工具和应用软件程序都安装在&#x2F;bin，&#x2F;sbin，&#x2F;usr&#x2F;bin，&#x2F;usr&#x2F;sbin，&#x2F;usr&#x2F;local&#x2F;bin</p>
+<p>5、文件或者目录都有唯一的绝对路径，没有盘符的概念</p>
+<h3 id="Linux系统磁盘分区管理"><a href="#Linux系统磁盘分区管理" class="headerlink" title="Linux系统磁盘分区管理"></a>Linux系统磁盘分区管理</h3><p>对于分区表通常有<strong>MBR分区表</strong>和<strong>GPT分区表</strong>。对于磁盘大小小于2T的磁盘，我们可以使用fdisk和parted命令工具进行分区。</p>
+<p>对于MBR分区表的特点（通常使用fdisk命令进行分区）所支持的最大磁盘大小：2T，<strong>最多支持4个主分区或者是3个主分区加上一个扩展分区。</strong></p>
+<p>对于GPT分区表的特点（使用parted命令进行分区）支持最大卷：18EB（1EB&#x3D;1024TB），<strong>最多支持128个主分区</strong>，所以对于GPT的分区表来说，基本就<strong>没有什么主分区和逻辑分区的区别</strong>了。</p>
+<ul>
+<li><strong>MBR分区介绍</strong></li>
+</ul>
+<p>1、可以分为主分区、扩展分区、逻辑分区</p>
+<p>2、硬盘采用hdX格式表示，X代表a.b.c.d（硬盘）</p>
+<p>3、系统最多只有4个IDE设备，其中第一个IDE设备名称为hda，第4个为hdd</p>
+<p><strong>主分区：</strong>一个硬盘最多只能有4个主分区，主分区采用hdXN的格式，hdX为硬盘，N是1-4的数字，分别表示4个主分区，第一个硬盘的第一个主分区，表示为hda1，以此类推</p>
+<p><strong>扩展分区：</strong>扩展分区作为特殊的主分区需要占用硬盘分区表中4个分区记录中的1个记录</p>
+<p><strong>逻辑分区：</strong>逻辑分区只能建立在扩展分区中，可以建立文件系统。逻辑分区同样采用了hdXN 的格式，区别在于，逻辑分区的N是从5开始算的，第一个硬盘的第2个逻辑分区就为hda6</p>
+<p>注意：IDE设备： hda2, hdb3等等</p>
+<p>SCSI设备&#x2F;SATA设备： sda2, sdb3等等</p>
+<ul>
+<li><strong>Linux和Windows分区对比</strong></li>
+</ul>
+<p><img src="/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220410161630812.png" alt="image-20220410161630812"></p>
+<h3 id="Linux分区规划"><a href="#Linux分区规划" class="headerlink" title="Linux分区规划"></a>Linux分区规划</h3><p>重点关注这四个方面的分区情况：</p>
+<p><strong>&#x2F;swap：</strong>交换分区，用来支持虚拟内存的分区，通常放在单独的分区，其大小为内存容量的1～2倍。</p>
+<p><strong>&#x2F;：</strong>根分区，它只存放启动系统所需的文件和系统配置文件，应放置在ext3fs主分区中，单独分区。</p>
+<p><strong>&#x2F;boot：</strong>启动分区，容量小于等于128MB，通常可以单独分区，存放Linux内核和其他与内核有关的文件。</p>
+<p><strong>&#x2F;home：</strong>用户的宿主目录，通常将其设置在独立的分区中，为以后方便的磁盘定额做准备。</p>
+<h3 id="Linux目录终端使用"><a href="#Linux目录终端使用" class="headerlink" title="Linux目录终端使用"></a>Linux目录终端使用</h3><p>如果有桌面版系统，则：</p>
+<p><img src="/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220410163327311.png" alt="image-20220410163327311"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@mycentos7701 ~]# </span><br><span class="line"></span><br><span class="line">root: 当前连接的用户名</span><br><span class="line">@： 固定符号</span><br><span class="line">mycentos7701  主机名称</span><br><span class="line">~ 代表家目录  /root     </span><br><span class="line"></span><br><span class="line">[a@mycentos7701 ~] </span><br><span class="line">~ /home/a/</span><br><span class="line"></span><br><span class="line">如果是root用户的话，就是#</span><br><span class="line">如果是普通用户的话，就是$</span><br><span class="line"></span><br><span class="line">如果是普通用户hadoop，那么家目录就是：/home/hadoop/</span><br><span class="line">如果是系统管理员root，那么家目录就是：/root/</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Linux终端工具：</strong>SecureCRT、SFTP工具、Filezilla工具、Xshell</p>
+]]></content>
+      <categories>
+        <category>大数据开发</category>
+        <category>Linux教程</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>大数据</tag>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux简介</title>
+    <url>/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<p>Linux系统是一套<strong>免费使用和自由传播的类UNIX操作系统</strong>（主要用在服务器上），是一个基于POSIX和UNIX的<strong>多用户、多任务、支持多线程和多CPU的操作系统</strong>。它能运行主要的UNIX工具软件、应用程序和网络协议。它支持32位和64位硬件。Linux继承了UNIX以网络为核心的设计思想，是一个性能稳定的<strong>多用户网络操作系统</strong>。</p>
+<p>与目前流行的Windows相比，Linux是一个免费开放源代码的操作系统，其支持多用户多任务等优秀特点，吸引了一大批从事Linux研究和应用的爱好者。</p>
+<span id="more"></span>
+
+<h3 id="Linux系统的应用领域"><a href="#Linux系统的应用领域" class="headerlink" title="Linux系统的应用领域"></a>Linux系统的应用领域</h3><p><strong>1、Linux 服务器</strong><br>Linux最主要的应用领域是基础服务器应用，可以提供Web服务器 、FTP服务器、Gopher、SMTP&#x2F;POP3、Proxy&#x2F;Cache 、DHCP服务器 、DNS等服务器，支持服务器集群，支持虚拟主机、虚拟服务、VPN等，最著名的LAMP&#x2F;LNMP架构。</p>
+<p><strong>2、嵌入式Linux系统</strong><br>Linux运行稳定、对网络的良好支持性、低成本，且可以根据需要进行软件裁剪，内核最小可以达到几百KB等特点，使其近些年来在嵌入式领域的应用得到非常大的提高。</p>
+<p><strong>3、桌面应用</strong><br>关于此领域是传统Linux 领域最薄弱的环节，被windows所压制，近些年来随着ubuntu、fedora等优秀桌面环境的兴起，同时各大硬件厂商对其支持的加大，linux在个人桌面领域的占有率在逐渐的提高。典型代表：ubuntu、fedora、suse linux。</p>
+<h3 id="Linux系统架构组成"><a href="#Linux系统架构组成" class="headerlink" title="Linux系统架构组成"></a>Linux系统架构组成</h3><p><img src="/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/image-20220415152356780.png" alt="image-20220415152356780"></p>
+<p><strong>内核，Shell和文件系统一起形成了基本的操作系统结构。</strong></p>
+<blockquote>
+<p><strong>Linux内核作者介绍</strong></p>
+</blockquote>
+<p><img src="/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/image-20220410160330804.png" alt="image-20220410160330804"></p>
+<p>林纳斯·本纳第克特·托瓦兹（Linus Benedict Torvalds, 1969-12-28，芬兰人），著名电脑程序员、黑客。Linux内核发明人以及GNU计划的合作者。托瓦兹利用个人时间及器材创造出了这套当今全球最流行的操作系统（作业系统）内核之一。</p>
+<p>他毕业于赫尔辛基大学计算机科学系，1997年至2003年在美国加州硅谷任职于全美达公司（Transmeta Corporation）参与该公司芯片的code morph技术研发。后受聘于开放源码发展实验室（OSDL : Open Source Development Labs,Inc），全力开发Linux内核。现任职于Linux基金会。</p>
+<h4 id="Linux内核及其版本"><a href="#Linux内核及其版本" class="headerlink" title="Linux内核及其版本"></a><strong>Linux内核及其版本</strong></h4><p>严格来讲，Linux不是一个操作系统，Linux只是一个操作系统中的内核。<strong>内核建立了计算机软件与硬件之间通讯的平台</strong>。内核提供系统服务，比如文件管理、虚拟内存、设备I&#x2F;O、进程管理等。</p>
+<p><strong>1、Kernel实现操作系统的基本功能</strong></p>
+<ul>
+<li>​	硬件方面：控制硬件设备，内存管理，硬件接口，基本I&#x2F;O</li>
+<li>​	软件方面：管理文件系统，为程序分配内存和CPU时间等</li>
+</ul>
+<p><strong>2、版本号有三个数字组成：r.x.y</strong></p>
+<ul>
+<li>​	r：目前发布的Kernel版本</li>
+<li>​	x：偶数：稳定版本，奇数：开发中版本（现已不适用）</li>
+<li>​	y：错误修补的次数</li>
+</ul>
+<p>3、范例：现在最新的linux内核版本是：5.5.6 <a href="https://www.kernel.org/">https://www.kernel.org/</a><br>     <strong>要注意区分linux发型版本和linux内核版本。两者不是同一个事物</strong></p>
+<h4 id="Linux发行套件及版本"><a href="#Linux发行套件及版本" class="headerlink" title="Linux发行套件及版本"></a><strong>Linux发行套件及版本</strong></h4><p>1、Linux 发行套件（Distribution）</p>
+<p>​	以Linux Kernel为核心，搭配各种应用程序和工具的软件集合。包括桌面环境，办公条件，媒体播放等</p>
+<p>2、目前有200余种Linux Distribution</p>
+<p>3、相对于内核版本，发行套件的版本号随发布者的不同而不同，与系统内核的版本号是相对独立的</p>
+<p><img src="/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/image-20220410160838748.png" alt="image-20220410160838748"></p>
+<h3 id="Linux系统下载"><a href="#Linux系统下载" class="headerlink" title="Linux系统下载"></a>Linux系统下载</h3><p>Linux系统有上百个不同的组织、公司、机构研发并发布出不同的版本，其中红帽公司作为一家成熟的操作系统厂商提供可靠的Linux系统和完善的求援服务：红帽企业linux系统（RedHat Enterprise Linux, RHEL），它的市场占有量很高，认可度也非常高。</p>
+<p>主流：主流企业级Linux系统仍旧是RedHat（收费）或者CentOS。<br>免费：CentOS和RedHat差别不大，基于Red Hat Linux提供的可自由使用源代码的CentOS是一个企业级Linux发行版本。CentOS的yum命令支持在线升级，可以即时更新系统，不像RedHat那样需要花钱购买支持服务。</p>
+<p>CentOS阿里云下载地址：<a href="http://mirrors.aliyun.com/centos/">http://mirrors.aliyun.com/centos/</a></p>
+<p>CentOS北京理工大学下载：<a href="http://mirror.bit.edu.cn/centos/">http://mirror.bit.edu.cn/centos/</a></p>
+<p>企业级的CentOS的主流的版本是centos-6.x，还有差不多一半的企业选择依旧使用的是centos6，开始陆续使用centos-7.x</p>
+<h3 id="vmware介绍和安装"><a href="#vmware介绍和安装" class="headerlink" title="vmware介绍和安装"></a>vmware介绍和安装</h3><p><strong>Vmware软件介绍</strong></p>
+<p>Vmware公司出品的一套虚拟化软件，可以在物理机上用软件的方式模拟出虚拟的计算机系统，而虚拟出的计算机系统可以像一台真实的机器一样，安装操作系统，运行软件等。类似的产品还有Oracle出品的免费版虚拟机软件VirtualBox</p>
+<p>Vmware官网：<a href="http://www.vmware.com/">http://www.vmware.com</a></p>
+<p>Vmware优点</p>
+<p>​	A、不需要分区或重新开机就能在同一台PC机上使用两种以上的操作系统。</p>
+<p>​	B、本机系统可以与虚拟机系统网络通信</p>
+<p>​	C、可以随时修改虚拟机操作系统环境</p>
+<blockquote>
+<p><strong>虚拟机工作的原理：</strong><br>1、我们现在有一台计算机A<br>2、在A中安装了虚拟机软件S<br>3、通过S软件，把A的资源进行抽象细分。<br>4、从A中分离出来一些虚拟的资源来进行新的系统centos的安装和使用<br>5、A与S当中的B1和B2通过S当中的虚拟网卡来进行通信</p>
+<p>最终简单的说：其实就是在A操作系统中安装了虚拟机软件S，通过S又在A中安装了另外一个操作系统B</p>
+</blockquote>
+<p><img src="/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/image-20220410171941613.png" alt="image-20220410171941613"></p>
+<p><strong>通过VMWare安装Centos7操作系统</strong></p>
+<p>在通过vmware安装centos7的时候分成两个环节：</p>
+<p><strong>1、vmware设置centos7相关的资源的配置环节</strong></p>
+<ul>
+<li>​	内存</li>
+<li>​	磁盘大小</li>
+<li>​	磁盘类型</li>
+<li>​	网络类型</li>
+<li>​	ISO镜像地址</li>
+<li>​	….<br>​	<strong>目的：配置安装什么操作系统，给定了多少资源</strong></li>
+</ul>
+<p><strong>2、进入到centos7的系统安装环节</strong></p>
+<ul>
+<li>​	指定时区和时间</li>
+<li>​	指定网络IP</li>
+<li>​	指定主机名</li>
+<li>​	指定root账户</li>
+<li>​	….</li>
+</ul>
+<h3 id="Vmware快照和克隆"><a href="#Vmware快照和克隆" class="headerlink" title="Vmware快照和克隆"></a>Vmware快照和克隆</h3><p><strong>快照的含义：</strong>对某一个特定文件系统在某一个特定时间内的一个具有只读属性的镜像。当你需要重复的返回到某一系统状态，又不想创建多个虚拟机的时候，就可以使用快照功能。</p>
+<p><strong>克隆的含义：</strong>在VMware软件中，克隆和快照功能很像，但是不同。一个虚拟机的克隆就是原始虚拟机全部状态的一个拷贝，或者说一个镜像。克隆的过程并不影响原始虚拟机，克隆的操作一但完成，克隆的虚拟机就可以脱离原始虚拟机独立存在，而且在克隆的虚拟机中和原始虚拟机中的操作是相对独立的，不相互影响。克隆过程中，VMware会生成和原始虚拟机不同的MAC地址和UUID，这就允许克隆的虚拟机和原始虚拟机在同一网络中出现，并且不会产生任何冲突。 VMware支持两种类型的克隆：完整克隆和链接克隆。</p>
+<p><strong>Vmware克隆虚拟机详细步骤：</strong></p>
+<ol>
+<li>准备一台你要克隆的虚拟机，保证是关闭状态。</li>
+<li>在vmware中选中你的虚拟机，右键，选择“管理”，再选择“克隆”</li>
+<li>在“克隆源”中，可以选择“当前状态”，如果有快照，也可以选择“快照”</li>
+<li>在“克隆类型”中，最好选择“完整克隆”</li>
+<li>在“新虚拟机名称”中，指定虚拟机名称，和存放路径，然后点击完成，进行克隆</li>
+<li>重新生成MAC地址</li>
+<li>修改IP地址</li>
+<li>如果有配置主机名称的话，记得修改主机名称</li>
+</ol>
+]]></content>
+      <categories>
+        <category>大数据开发</category>
+        <category>Linux教程</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>大数据</tag>
+        <tag>操作系统</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git学习笔记(1)</title>
     <url>/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>学习地址：<a href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
 <span id="more"></span>

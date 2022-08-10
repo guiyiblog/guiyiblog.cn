@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.cn/"/>
-  <updated>2022-08-09T15:02:48.560Z</updated>
+  <updated>2022-08-10T13:43:13.118Z</updated>
   <id>http://guiyiblog.cn/</id>
   
   <author>
@@ -17,11 +17,62 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Git学习笔记</title>
+    <title>Linux文件系统</title>
+    <link href="http://guiyiblog.cn/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://guiyiblog.cn/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</id>
+    <published>2022-08-11T14:32:21.000Z</published>
+    <updated>2022-08-10T13:43:13.118Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Linux文件系统中的文件是数据的集合，文件系统不仅包含着文件中的数据而且还有文件系统的结构，所有Linux 用户和程序看到的文件、目录、软连接及文件保护信息等都存储在其中。Linux下的所有文件和目录。这些文件及目录构以一个树状的结构，构成了Linux中的文件系统。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大数据开发" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Linux教程" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Linux%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Linux" scheme="http://guiyiblog.cn/tags/Linux/"/>
+    
+    <category term="大数据" scheme="http://guiyiblog.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="操作系统" scheme="http://guiyiblog.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux简介</title>
+    <link href="http://guiyiblog.cn/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/"/>
+    <id>http://guiyiblog.cn/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/</id>
+    <published>2022-08-10T14:32:21.000Z</published>
+    <updated>2022-08-10T13:39:38.397Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Linux系统是一套&lt;strong&gt;免费使用和自由传播的类UNIX操作系统&lt;/strong&gt;（主要用在服务器上），是一个基于POSIX和UNIX的&lt;strong&gt;多用户、多任务、支持多线程和多CPU的操作系统&lt;/strong&gt;。它能运行主要的UNIX工具软件、应用程序和网络协议。它支持32位和64位硬件。Linux继承了UNIX以网络为核心的设计思想，是一个性能稳定的&lt;strong&gt;多用户网络操作系统&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;与目前流行的Windows相比，Linux是一个免费开放源代码的操作系统，其支持多用户多任务等优秀特点，吸引了一大批从事Linux研究和应用的爱好者。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="大数据开发" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Linux教程" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Linux%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="Linux" scheme="http://guiyiblog.cn/tags/Linux/"/>
+    
+    <category term="大数据" scheme="http://guiyiblog.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="操作系统" scheme="http://guiyiblog.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git学习笔记(1)</title>
     <link href="http://guiyiblog.cn/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://guiyiblog.cn/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2022-08-09T14:32:21.000Z</published>
-    <updated>2022-08-09T15:02:48.560Z</updated>
+    <updated>2022-08-10T13:38:20.409Z</updated>
     
     
     <summary type="html">&lt;p&gt;学习地址：&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/896043488029600&quot;&gt;https://www.liaoxuefeng.com/wiki/896043488029600&lt;/a&gt;&lt;/p&gt;</summary>

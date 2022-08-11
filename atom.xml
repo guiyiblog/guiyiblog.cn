@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.cn/"/>
-  <updated>2022-08-10T13:43:13.118Z</updated>
+  <updated>2022-08-10T13:44:10.104Z</updated>
   <id>http://guiyiblog.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://guiyiblog.cn/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
     <id>http://guiyiblog.cn/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</id>
     <published>2022-08-11T14:32:21.000Z</published>
-    <updated>2022-08-10T13:43:13.118Z</updated>
+    <updated>2022-08-10T13:44:10.104Z</updated>
     
     
     <summary type="html">&lt;p&gt;Linux文件系统中的文件是数据的集合，文件系统不仅包含着文件中的数据而且还有文件系统的结构，所有Linux 用户和程序看到的文件、目录、软连接及文件保护信息等都存储在其中。Linux下的所有文件和目录。这些文件及目录构以一个树状的结构，构成了Linux中的文件系统。&lt;/p&gt;</summary>
@@ -274,6 +274,30 @@
     
     
     <category term="网站开发" scheme="http://guiyiblog.cn/tags/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>刻意练习</title>
+    <link href="http://guiyiblog.cn/2022/08/01/220801-%E5%88%BB%E6%84%8F%E7%BB%83%E4%B9%A0/"/>
+    <id>http://guiyiblog.cn/2022/08/01/220801-%E5%88%BB%E6%84%8F%E7%BB%83%E4%B9%A0/</id>
+    <published>2022-08-01T04:00:00.000Z</published>
+    <updated>2022-08-11T14:55:04.555Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;每天两小时数据分析技能学习，用热爱成就事业，用坚持锻造专业！&lt;/strong&gt;&lt;/p&gt;
+&lt;iframe title=&quot;日程数据监控&quot; width=&quot;800&quot; height=&quot;486&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="刻意练习" scheme="http://guiyiblog.cn/categories/%E5%88%BB%E6%84%8F%E7%BB%83%E4%B9%A0/"/>
+    
     
   </entry>
   

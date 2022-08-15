@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.cn/"/>
-  <updated>2022-08-13T08:14:28.245Z</updated>
+  <updated>2022-08-15T14:55:11.553Z</updated>
   <id>http://guiyiblog.cn/</id>
   
   <author>
@@ -15,6 +15,112 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java学习笔记-Day3</title>
+    <link href="http://guiyiblog.cn/2022/08/16/220816-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day3/"/>
+    <id>http://guiyiblog.cn/2022/08/16/220816-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day3/</id>
+    <published>2022-08-16T14:32:21.000Z</published>
+    <updated>2022-08-15T14:55:11.553Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Part4：数组操作&quot;&gt;&lt;a href=&quot;#Part4：数组操作&quot; class=&quot;headerlink&quot; title=&quot;Part4：数组操作&quot;&gt;&lt;/a&gt;Part4：数组操作&lt;/h2&gt;&lt;h3 id=&quot;数组的声明和创建&quot;&gt;&lt;a href=&quot;#数组的声明和创建&quot; class=&quot;headerlink&quot; title=&quot;数组的声明和创建&quot;&gt;&lt;/a&gt;数组的声明和创建&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;数组的四个基本特点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;其长度是确定的。数组一旦被创建，它的大小就是不可以改变的；&lt;/li&gt;
+&lt;li&gt;其元素必须是相同类型，不允许出现混合类型；&lt;/li&gt;
+&lt;li&gt;数组中的元素可以是任何数据类型，包括基本类型和引用类型；&lt;/li&gt;
+&lt;li&gt;数组变量属引用类型，数组也可以看成是对象，数组中的每个元素相当于该对象的成员变量，数组本身就是对象，Java中对象是在堆中的，因此数组无论保存原始类型还是其他对象类型，&lt;strong&gt;数组对象本身是在堆中的。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;</summary>
+    
+    
+    
+    <category term="大数据开发" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Java教程" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Java%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="大数据" scheme="http://guiyiblog.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="Java" scheme="http://guiyiblog.cn/tags/Java/"/>
+    
+    <category term="JavaSE" scheme="http://guiyiblog.cn/tags/JavaSE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java学习笔记-Day2</title>
+    <link href="http://guiyiblog.cn/2022/08/15/220815-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day2/"/>
+    <id>http://guiyiblog.cn/2022/08/15/220815-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day2/</id>
+    <published>2022-08-15T14:32:21.000Z</published>
+    <updated>2022-08-15T14:53:46.520Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Part3：Java流程控制&quot;&gt;&lt;a href=&quot;#Part3：Java流程控制&quot; class=&quot;headerlink&quot; title=&quot;Part3：Java流程控制&quot;&gt;&lt;/a&gt;Part3：Java流程控制&lt;/h2&gt;&lt;h3 id=&quot;Scanner对象&quot;&gt;&lt;a href=&quot;#Scanner对象&quot; class=&quot;headerlink&quot; title=&quot;Scanner对象&quot;&gt;&lt;/a&gt;Scanner对象&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;next()：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一定要读取到有效字符后才可以结束输入；&lt;/li&gt;
+&lt;li&gt;对输入有效字符之前遇到的空白，next()方法会自动将其去掉；&lt;/li&gt;
+&lt;li&gt;只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符；&lt;/li&gt;
+&lt;li&gt;next()不能得到带有空格的字符串。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;nextLine():&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;以Enter为结束符，也就是说nextLine()方法返回的是输入回车之前的所有字符；&lt;/li&gt;
+&lt;li&gt;可以获得空白。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="大数据开发" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Java教程" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Java%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="大数据" scheme="http://guiyiblog.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="Java" scheme="http://guiyiblog.cn/tags/Java/"/>
+    
+    <category term="JavaSE" scheme="http://guiyiblog.cn/tags/JavaSE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java学习笔记-Day1</title>
+    <link href="http://guiyiblog.cn/2022/08/14/220814-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day1/"/>
+    <id>http://guiyiblog.cn/2022/08/14/220814-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day1/</id>
+    <published>2022-08-14T14:32:21.000Z</published>
+    <updated>2022-08-15T14:57:24.872Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;学习地址：&lt;a href=&quot;https://www.kuangstudy.com/course&quot;&gt;https://www.kuangstudy.com/course&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Part-1：Java入门&quot;&gt;&lt;a href=&quot;#Part-1：Java入门&quot; class=&quot;headerlink&quot; title=&quot;Part 1：Java入门&quot;&gt;&lt;/a&gt;Part 1：Java入门&lt;/h2&gt;&lt;h3 id=&quot;什么是计算机？&quot;&gt;&lt;a href=&quot;#什么是计算机？&quot; class=&quot;headerlink&quot; title=&quot;什么是计算机？&quot;&gt;&lt;/a&gt;什么是计算机？&lt;/h3&gt;&lt;p&gt;计算机是能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备，由硬件和软件组成。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;计算机硬件&lt;/strong&gt;：CPU、IO设备、内存……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/08/14/220814-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day1/image-20220216112111310.png&quot; alt=&quot;image-20220216112111310&quot;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;计算机软件&lt;/strong&gt;：可以使计算机按照事先预定好的顺序完成特定的功能，按其功能可划分为&lt;strong&gt;系统软件&lt;/strong&gt;与&lt;strong&gt;应用软件&lt;/strong&gt;。&lt;ul&gt;
+&lt;li&gt;系统软件：DOS（Disk Operating System）、Windows、Linux、Unix、Mac、Android、iOS&lt;/li&gt;
+&lt;li&gt;应用软件：WPA、QQ、微信、英雄联盟……&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="大数据开发" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Java教程" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/Java%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="大数据" scheme="http://guiyiblog.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="Java" scheme="http://guiyiblog.cn/tags/Java/"/>
+    
+    <category term="JavaSE" scheme="http://guiyiblog.cn/tags/JavaSE/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux系统管理</title>
@@ -256,9 +362,9 @@
     <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
     
     
-    <category term="推断统计" scheme="http://guiyiblog.cn/tags/%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1/"/>
-    
     <category term="R语言" scheme="http://guiyiblog.cn/tags/R%E8%AF%AD%E8%A8%80/"/>
+    
+    <category term="推断统计" scheme="http://guiyiblog.cn/tags/%E6%8E%A8%E6%96%AD%E7%BB%9F%E8%AE%A1/"/>
     
   </entry>
   
@@ -280,9 +386,9 @@
     <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
     
     
-    <category term="R语言" scheme="http://guiyiblog.cn/tags/R%E8%AF%AD%E8%A8%80/"/>
-    
     <category term="描述统计" scheme="http://guiyiblog.cn/tags/%E6%8F%8F%E8%BF%B0%E7%BB%9F%E8%AE%A1/"/>
+    
+    <category term="R语言" scheme="http://guiyiblog.cn/tags/R%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   

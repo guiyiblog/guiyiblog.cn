@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.cn/"/>
-  <updated>2022-08-21T07:23:50.565Z</updated>
+  <updated>2022-08-27T06:55:00.514Z</updated>
   <id>http://guiyiblog.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTML基础</title>
+    <link href="http://guiyiblog.cn/2022/08/27/220827-HTML%E5%9F%BA%E7%A1%80/"/>
+    <id>http://guiyiblog.cn/2022/08/27/220827-HTML%E5%9F%BA%E7%A1%80/</id>
+    <published>2022-08-27T14:32:21.000Z</published>
+    <updated>2022-08-27T06:55:00.514Z</updated>
+    
+    
+    <summary type="html">&lt;h3 id=&quot;什么是HTML&quot;&gt;&lt;a href=&quot;#什么是HTML&quot; class=&quot;headerlink&quot; title=&quot;什么是HTML&quot;&gt;&lt;/a&gt;什么是HTML&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;HTML：&lt;/strong&gt;Hyper Text Markup Language（超文本标记语言）&lt;/p&gt;
+&lt;p&gt;超文本包括：文字、图片、音频、视频、动画等。&lt;/p&gt;
+&lt;p&gt;浏览器打开网页，右键-检查，即可查看&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2022/08/27/220827-HTML%E5%9F%BA%E7%A1%80/image-20220827145402886.png&quot; alt=&quot;image-20220827145402886&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="前端基础" scheme="http://guiyiblog.cn/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="HTML" scheme="http://guiyiblog.cn/categories/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/HTML/"/>
+    
+    
+    <category term="前端开发" scheme="http://guiyiblog.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="HTML" scheme="http://guiyiblog.cn/tags/HTML/"/>
+    
+    <category term="网页开发" scheme="http://guiyiblog.cn/tags/%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>HDFS的API操作</title>
@@ -527,30 +555,6 @@
     <category term="NPS" scheme="http://guiyiblog.cn/tags/NPS/"/>
     
     <category term="满意度分析" scheme="http://guiyiblog.cn/tags/%E6%BB%A1%E6%84%8F%E5%BA%A6%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>个人网站说明</title>
-    <link href="http://guiyiblog.cn/2022/08/01/220801-%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%AF%B4%E6%98%8E/"/>
-    <id>http://guiyiblog.cn/2022/08/01/220801-%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%AF%B4%E6%98%8E/</id>
-    <published>2022-08-01T04:00:00.000Z</published>
-    <updated>2022-08-09T14:18:32.407Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;生命转瞬即逝，唯有思想、灵感与爱永存。&lt;/p&gt;
-&lt;p&gt;Life is fleeting, but thought, inspiration and love remain forever.&lt;/p&gt;
-&lt;p&gt;您好！我是归一，欢迎来到我的个人网站！&lt;/p&gt;
-&lt;p&gt;归一，源自我对生活的感悟，老子在《道德经》中有言：“道生一，一生二，二生三，三生万物。“世间的万事万物都可由简到繁，化繁为简。”一”既是起点，也是终点。“归一”对我来说，不仅是一种生活的态度，更是一种为人处世的哲学。&lt;/p&gt;
-&lt;p&gt;2022年8月1日，我开始正式维护我的个人博客，在这里记录和分享我的学习、工作和生活。&lt;/p&gt;
-&lt;p&gt;之前，我在其他网站上也写过一些文章，但总感觉寄人篱下，有着各种限制，而且无论是CSDN、知乎、简书都有着它自己的产品定位，我希望自己有自己的个性，希望在我走过的岁月能留下属于自己的足迹，希望能有一件能让我一直坚持且不求回报做下去的事情，我想这也是网上很多志同道合的小伙伴热衷于建立自己的个人网站的原因。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="说明文档" scheme="http://guiyiblog.cn/categories/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/"/>
-    
-    
-    <category term="网站开发" scheme="http://guiyiblog.cn/tags/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   

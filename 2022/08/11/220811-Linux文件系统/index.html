@@ -118,7 +118,7 @@
 <p>Linux最早引入的文件系统类型是MINIX。MINIX文件系统由MINIX操作系统定义，有一定的局限性，如文件名最长14个字符，文件最长64M字节。第一个专门为Linux设计的文件系统是EXT（Extended File System），但目前流行最广的是EXT4。但是因为EXT4的一些问题，出现了各方面细节更好的<strong>XFS类型文件系统</strong>，它也是现在的centos7系统默认的文件系统类型。</p>
 <p>CentOS7可以通过命令查看文件系统的类型：<strong>cat &#x2F;etc&#x2F;fstab。Windows系统文件格式一般是NTFS，优盘文件格式一般是FAT32。</strong></p>
 <p>Linux根据文件形式主要将文件分为目录和普通文件，以树的形式进行组织，如下图</p>
-<p><img src="/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220410162320688.png" alt="image-20220410162320688"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220410162320688.png" alt="image-20220410162320688"></p>
 <p>目录或者文件的名称长度不超过255个字符，文件或者目录是由以下字符构成：</p>
 <ul>
 <li>Uppercase letters (A-Z)</li>
@@ -131,7 +131,7 @@
 <p><strong>注意： 1、文件和目录是区分大小写的； 2、Linux对文件的扩展名没有强制要求。</strong></p>
 <h3 id="Linux文件系统核心目录结构"><a href="#Linux文件系统核心目录结构" class="headerlink" title="Linux文件系统核心目录结构"></a>Linux文件系统核心目录结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">执行命令：ll /</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220410162413698.png" alt="image-20220410162413698"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220410162413698.png" alt="image-20220410162413698"></p>
 <h3 id="Linux目录结构详解"><a href="#Linux目录结构详解" class="headerlink" title="Linux目录结构详解"></a>Linux目录结构详解</h3><table>
 <thead>
 <tr>
@@ -234,14 +234,14 @@
 <ul>
 <li><strong>Linux和Windows分区对比</strong></li>
 </ul>
-<p><img src="/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220410161630812.png" alt="image-20220410161630812"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220410161630812.png" alt="image-20220410161630812"></p>
 <h3 id="Linux分区规划"><a href="#Linux分区规划" class="headerlink" title="Linux分区规划"></a>Linux分区规划</h3><p>重点关注这四个方面的分区情况：</p>
 <p><strong>&#x2F;swap：</strong>交换分区，用来支持虚拟内存的分区，通常放在单独的分区，其大小为内存容量的1～2倍。</p>
 <p><strong>&#x2F;：</strong>根分区，它只存放启动系统所需的文件和系统配置文件，应放置在ext3fs主分区中，单独分区。</p>
 <p><strong>&#x2F;boot：</strong>启动分区，容量小于等于128MB，通常可以单独分区，存放Linux内核和其他与内核有关的文件。</p>
 <p><strong>&#x2F;home：</strong>用户的宿主目录，通常将其设置在独立的分区中，为以后方便的磁盘定额做准备。</p>
 <h3 id="Linux目录终端使用"><a href="#Linux目录终端使用" class="headerlink" title="Linux目录终端使用"></a>Linux目录终端使用</h3><p>如果有桌面版系统，则：</p>
-<p><img src="/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220410163327311.png" alt="image-20220410163327311"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220410163327311.png" alt="image-20220410163327311"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[root@mycentos7701 ~]# </span><br><span class="line"></span><br><span class="line">root: 当前连接的用户名</span><br><span class="line">@： 固定符号</span><br><span class="line">mycentos7701  主机名称</span><br><span class="line">~ 代表家目录  /root     </span><br><span class="line"></span><br><span class="line">[a@mycentos7701 ~] </span><br><span class="line">~ /home/a/</span><br><span class="line"></span><br><span class="line">如果是root用户的话，就是#</span><br><span class="line">如果是普通用户的话，就是$</span><br><span class="line"></span><br><span class="line">如果是普通用户hadoop，那么家目录就是：/home/hadoop/</span><br><span class="line">如果是系统管理员root，那么家目录就是：/root/</span><br></pre></td></tr></table></figure>
 
 

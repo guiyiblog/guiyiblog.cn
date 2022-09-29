@@ -113,7 +113,7 @@
        
   <p>HDFS采用了主从（Master&#x2F;Slave）结构模型，一个HDFS集群是由一个NameNode和若干个DataNode组成的。</p>
 <p>其中，NameNode作为主服务器，管理文件系统的命名空间和客户端对文件的访问操作；集群中的DataNode管理存储的数据。</p>
-<p><img src="/2022/08/20/220820-HDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220417133316685.png"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220417133316685.png"></p>
 <span id="more"></span>
 
 <h2 id="HDFS分布式文件系统"><a href="#HDFS分布式文件系统" class="headerlink" title="HDFS分布式文件系统"></a>HDFS分布式文件系统</h2><h3 id="HDFS设计思想"><a href="#HDFS设计思想" class="headerlink" title="HDFS设计思想"></a>HDFS设计思想</h3><h4 id="HDFS核心设计思想：分散存储、冗余备份"><a href="#HDFS核心设计思想：分散存储、冗余备份" class="headerlink" title="HDFS核心设计思想：分散存储、冗余备份"></a>HDFS核心设计思想：分散存储、冗余备份</h4><p>1、如果一个文件中有10个数值（一行一个，并且都是可以用int来度量）， 现在求10个数值的和。</p>
@@ -169,7 +169,7 @@
 <li>大文件被切割成小文件，使用分而治之的思想对同一个文件进行管理</li>
 <li>每个切分之后的块都进行冗余存储，高可用不丢失</li>
 </ul>
-<p><img src="/2022/08/20/220820-HDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220417133157053.png"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220417133157053.png"></p>
 <pre><code>真实文件存储的参考位置： /software/hadoop/data/datanode/current/BP-1075021137-192.168.22.136-1630242976706/current/finalized/subdir0/subdir30 
 
 一个节点能否存一个文件的多个数据块？可以
@@ -194,7 +194,7 @@ hadoop04： blk_02 blk_04
 <h4 id="HDFS架构"><a href="#HDFS架构" class="headerlink" title="HDFS架构"></a>HDFS架构</h4><p><strong>1、namenode：</strong>掌管文件系统的目录树，处理客户端的请求，保存元数据信息 </p>
 <p><strong>2、datanode：</strong>存储实际的数据的，处理真正的读写 </p>
 <p><strong>3、secondnamenode：</strong>分担namenode压力的，协助合并元数据信息</p>
-<p><img src="/2022/08/20/220820-HDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220417133316685.png"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220417133316685.png"></p>
 <p><strong>详细补充解释：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1、NameNode（nn）：是Master，管理者节点。</span><br><span class="line">（1）管理HDFS的名称空间</span><br><span class="line">（2）配置副本策略</span><br><span class="line">（3）管理数据块（Block）映射信息</span><br><span class="line">（4）处理客户端读写请求</span><br><span class="line">2、DataNode：是Work，NameNode下达命令，DataNode执行实际的操作。</span><br><span class="line">（1）存储实际的数据块</span><br><span class="line">（2）执行数据块的读/写操作</span><br><span class="line">3、Client：是客户端。</span><br><span class="line">（1）文件切分。文件上传HDFS的时候，Client将文件切分成一个一个的Block，然后进行上传</span><br><span class="line">（2）与NameNode交互，获取文件的位置信息</span><br><span class="line">（3）与DataNode交互，读取或者写入数据</span><br><span class="line">（4）Client提供一些命令来管理HDFS，比如NN格式化</span><br><span class="line">（5）Client提供一些命令来访问HDFS，比如对HDFS查询操作</span><br><span class="line">4、Secondary NameNode：不是NameNode的热备。当NameNode挂掉的时候，它并不能马上替换</span><br><span class="line">NameNode并提供服务。</span><br><span class="line">帮助NameNode，分担其工作量，比如定期合并Fsimage和Edits，并返回给NameNode</span><br></pre></td></tr></table></figure>
 
@@ -271,10 +271,10 @@ hadoop04： blk_02 blk_04
 <li>第二个副本块选取跟第一个副本的存储节点相邻机架的任意一个节点</li>
 <li>第三个副本存储在和第二个副本块所在机架不同的节点上</li>
 </ol>
-<p><img src="/2022/08/20/220820-HDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220417143531505.png"></p>
-<h3 id="HDFS的读写流程"><a href="#HDFS的读写流程" class="headerlink" title="HDFS的读写流程"></a>HDFS的读写流程</h3><p><img src="/2022/08/20/220820-HDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220425213439330.png"></p>
-<p><img src="/2022/08/20/220820-HDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220425213332004.png" alt="image-20220425213332004"></p>
-<h4 id="NameNode和SecondaryNameNode联合工作流程"><a href="#NameNode和SecondaryNameNode联合工作流程" class="headerlink" title="NameNode和SecondaryNameNode联合工作流程"></a>NameNode和SecondaryNameNode联合工作流程</h4><p><img src="/2022/08/20/220820-HDFS%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/image-20220425221317725.png"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220417143531505.png"></p>
+<h3 id="HDFS的读写流程"><a href="#HDFS的读写流程" class="headerlink" title="HDFS的读写流程"></a>HDFS的读写流程</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220425213439330.png"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220425213332004.png" alt="image-20220425213332004"></p>
+<h4 id="NameNode和SecondaryNameNode联合工作流程"><a href="#NameNode和SecondaryNameNode联合工作流程" class="headerlink" title="NameNode和SecondaryNameNode联合工作流程"></a>NameNode和SecondaryNameNode联合工作流程</h4><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220425221317725.png"></p>
 <h3 id="HDFS的shell操作"><a href="#HDFS的shell操作" class="headerlink" title="HDFS的shell操作"></a>HDFS的shell操作</h3><h4 id="启动Hadoop集群"><a href="#启动Hadoop集群" class="headerlink" title="启动Hadoop集群"></a>启动Hadoop集群</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-dfs.sh</span><br><span class="line">sbin/start-yarn.sh</span><br><span class="line">sbin/start-all.sh</span><br></pre></td></tr></table></figure>
 
 

@@ -118,12 +118,12 @@
 <h3 id="Linux系统的应用领域"><a href="#Linux系统的应用领域" class="headerlink" title="Linux系统的应用领域"></a>Linux系统的应用领域</h3><p><strong>1、Linux 服务器</strong><br>Linux最主要的应用领域是基础服务器应用，可以提供Web服务器 、FTP服务器、Gopher、SMTP&#x2F;POP3、Proxy&#x2F;Cache 、DHCP服务器 、DNS等服务器，支持服务器集群，支持虚拟主机、虚拟服务、VPN等，最著名的LAMP&#x2F;LNMP架构。</p>
 <p><strong>2、嵌入式Linux系统</strong><br>Linux运行稳定、对网络的良好支持性、低成本，且可以根据需要进行软件裁剪，内核最小可以达到几百KB等特点，使其近些年来在嵌入式领域的应用得到非常大的提高。</p>
 <p><strong>3、桌面应用</strong><br>关于此领域是传统Linux 领域最薄弱的环节，被windows所压制，近些年来随着ubuntu、fedora等优秀桌面环境的兴起，同时各大硬件厂商对其支持的加大，linux在个人桌面领域的占有率在逐渐的提高。典型代表：ubuntu、fedora、suse linux。</p>
-<h3 id="Linux系统架构组成"><a href="#Linux系统架构组成" class="headerlink" title="Linux系统架构组成"></a>Linux系统架构组成</h3><p><img src="/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/image-20220415152356780.png" alt="image-20220415152356780"></p>
+<h3 id="Linux系统架构组成"><a href="#Linux系统架构组成" class="headerlink" title="Linux系统架构组成"></a>Linux系统架构组成</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220415152356780.png" alt="image-20220415152356780"></p>
 <p><strong>内核，Shell和文件系统一起形成了基本的操作系统结构。</strong></p>
 <blockquote>
 <p><strong>Linux内核作者介绍</strong></p>
 </blockquote>
-<p><img src="/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/image-20220410160330804.png" alt="image-20220410160330804"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220410160330804.png" alt="image-20220410160330804"></p>
 <p>林纳斯·本纳第克特·托瓦兹（Linus Benedict Torvalds, 1969-12-28，芬兰人），著名电脑程序员、黑客。Linux内核发明人以及GNU计划的合作者。托瓦兹利用个人时间及器材创造出了这套当今全球最流行的操作系统（作业系统）内核之一。</p>
 <p>他毕业于赫尔辛基大学计算机科学系，1997年至2003年在美国加州硅谷任职于全美达公司（Transmeta Corporation）参与该公司芯片的code morph技术研发。后受聘于开放源码发展实验室（OSDL : Open Source Development Labs,Inc），全力开发Linux内核。现任职于Linux基金会。</p>
 <h4 id="Linux内核及其版本"><a href="#Linux内核及其版本" class="headerlink" title="Linux内核及其版本"></a><strong>Linux内核及其版本</strong></h4><p>严格来讲，Linux不是一个操作系统，Linux只是一个操作系统中的内核。<strong>内核建立了计算机软件与硬件之间通讯的平台</strong>。内核提供系统服务，比如文件管理、虚拟内存、设备I&#x2F;O、进程管理等。</p>
@@ -143,7 +143,7 @@
 <p>​	以Linux Kernel为核心，搭配各种应用程序和工具的软件集合。包括桌面环境，办公条件，媒体播放等</p>
 <p>2、目前有200余种Linux Distribution</p>
 <p>3、相对于内核版本，发行套件的版本号随发布者的不同而不同，与系统内核的版本号是相对独立的</p>
-<p><img src="/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/image-20220410160838748.png" alt="image-20220410160838748"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220410160838748.png" alt="image-20220410160838748"></p>
 <h3 id="Linux系统下载"><a href="#Linux系统下载" class="headerlink" title="Linux系统下载"></a>Linux系统下载</h3><p>Linux系统有上百个不同的组织、公司、机构研发并发布出不同的版本，其中红帽公司作为一家成熟的操作系统厂商提供可靠的Linux系统和完善的求援服务：红帽企业linux系统（RedHat Enterprise Linux, RHEL），它的市场占有量很高，认可度也非常高。</p>
 <p>主流：主流企业级Linux系统仍旧是RedHat（收费）或者CentOS。<br>免费：CentOS和RedHat差别不大，基于Red Hat Linux提供的可自由使用源代码的CentOS是一个企业级Linux发行版本。CentOS的yum命令支持在线升级，可以即时更新系统，不像RedHat那样需要花钱购买支持服务。</p>
 <p>CentOS阿里云下载地址：<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/">http://mirrors.aliyun.com/centos/</a></p>
@@ -160,7 +160,7 @@
 <p><strong>虚拟机工作的原理：</strong><br>1、我们现在有一台计算机A<br>2、在A中安装了虚拟机软件S<br>3、通过S软件，把A的资源进行抽象细分。<br>4、从A中分离出来一些虚拟的资源来进行新的系统centos的安装和使用<br>5、A与S当中的B1和B2通过S当中的虚拟网卡来进行通信</p>
 <p>最终简单的说：其实就是在A操作系统中安装了虚拟机软件S，通过S又在A中安装了另外一个操作系统B</p>
 </blockquote>
-<p><img src="/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/image-20220410171941613.png" alt="image-20220410171941613"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220410171941613.png" alt="image-20220410171941613"></p>
 <p><strong>通过VMWare安装Centos7操作系统</strong></p>
 <p>在通过vmware安装centos7的时候分成两个环节：</p>
 <p><strong>1、vmware设置centos7相关的资源的配置环节</strong></p>

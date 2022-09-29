@@ -135,14 +135,14 @@
 <li>栈内存——存储局部变量；</li>
 <li>堆内存——存储对象、数组。</li>
 </ol>
-<p><img src="/2022/08/16/220816-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day3/image-20220510103622755.png"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220510103622755.png"></p>
 <p> <strong>比如主函数里的语句<code>int[] arr=new int[3];</code>在内存中是怎么被定义的：</strong></p>
 <p>主函数先进栈，在栈中定义一个变量arr，接下来为arr赋值。实体（对象）创建在堆里，在堆里首先通过new关键字开辟一个空间，然后给这个实体分配一个内存地址（内存在存储数据的时候都是通过地址来体现的，地址是一块连续的二进制）。数组都有一个索引，数组这个<strong>实体（对象arr）</strong>在堆内存中产生之后每一个空间都会进行默认的初始化（数组默认为0），不同的类型初始化的值不一样。</p>
 <p>在堆和栈里分别创建了变量和实体：</p>
-<p><img src="/2022/08/16/220816-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day3/image-20220814123041233.png"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220814123041233.png"></p>
 <p>  <strong>那么堆和栈是怎么联系起来的呢?</strong></p>
 <p>我们刚刚说过给堆分配了一个地址，把堆的地址赋给arr，arr就通过地址指向了数组。所以arr想操纵数组时，就通过地址，而不是直接把实体都赋给它。这种我们不再叫他基本数据类型，而叫引用数据类型。称为arr引用了堆内存当中的实体。（可以理解为c或c++的指针，Java成长自c++和c++很像，优化了c++）  </p>
-<p><img src="/2022/08/16/220816-Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Day3/image-20220814123051117.png"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220814123051117.png"></p>
 <h3 id="Arrays类"><a href="#Arrays类" class="headerlink" title="Arrays类"></a>Arrays类</h3><p><strong>数组的工具类：java.util.Arrays</strong></p>
 <p>由于数组对象本身没有什么方法可以供我们调用，但API中提供了一个工具类Arrays供我们使用，从而可以对数据对象进行一些基本的操作。</p>
 <p>Arrays类中的方法都是static修饰的静态方法，在使用的时候可以直接使用类目进行调用，而“不用”使用对象来调用（注意：是“不用”而不是“不能”）。</p>

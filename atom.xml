@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.cn/"/>
-  <updated>2023-03-26T14:02:51.445Z</updated>
+  <updated>2023-03-26T14:45:02.567Z</updated>
   <id>http://guiyiblog.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://guiyiblog.cn/2023/03/22/220801-%E5%88%BB%E6%84%8F%E7%BB%83%E4%B9%A0/"/>
+    <id>http://guiyiblog.cn/2023/03/22/220801-%E5%88%BB%E6%84%8F%E7%BB%83%E4%B9%A0/</id>
+    <published>2023-03-22T13:35:29.009Z</published>
+    <updated>2023-03-26T14:45:02.567Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;hr&gt;
+&lt;p&gt;title:刻意练习&lt;br&gt;date:2022-08-01</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>在线教育全链路数据分析</title>
@@ -500,31 +522,6 @@
     
     
     <summary type="html">&lt;h3 id=&quot;Linux命令格式&quot;&gt;&lt;a href=&quot;#Linux命令格式&quot; class=&quot;headerlink&quot; title=&quot;Linux命令格式&quot;&gt;&lt;/a&gt;Linux命令格式&lt;/h3&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Linux的命令格式：命令 [命令选项]  [命令参数]，例如：ls -l /&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;注意：三者之间要空格隔开，其中命令选项分为长格式和短格式。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;短格式用&amp;#x27;-&amp;#x27;表示，比如：-l，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;长格式用&amp;quot;--&amp;quot;表示，比如：--help，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;也可以使用组合格式，比如：-a -l  等价于 -la 或者 -al &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Linux的命令提示符：&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#：管理员用户&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$：普通用户&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Linux以回车键表示命令结束，如果linux命令需要折行输入，那么可以以\表示每行结束&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="大数据" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    <category term="Linux" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Linux/"/>
-    
-    
-    <category term="Linux" scheme="http://guiyiblog.cn/tags/Linux/"/>
-    
-    <category term="大数据" scheme="http://guiyiblog.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    <category term="操作系统" scheme="http://guiyiblog.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux文件系统</title>
-    <link href="http://guiyiblog.cn/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://guiyiblog.cn/2022/08/11/220811-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</id>
-    <published>2022-08-11T14:32:21.000Z</published>
-    <updated>2022-09-29T10:58:40.312Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Linux文件系统中的文件是数据的集合，文件系统不仅包含着文件中的数据而且还有文件系统的结构，所有Linux 用户和程序看到的文件、目录、软连接及文件保护信息等都存储在其中。Linux下的所有文件和目录。这些文件及目录构以一个树状的结构，构成了Linux中的文件系统。&lt;/p&gt;</summary>
     
     
     

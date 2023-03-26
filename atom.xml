@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.cn/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.cn/"/>
-  <updated>2022-09-29T10:54:41.958Z</updated>
+  <updated>2023-03-26T14:02:51.445Z</updated>
   <id>http://guiyiblog.cn/</id>
   
   <author>
@@ -15,6 +15,79 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在线教育全链路数据分析</title>
+    <link href="http://guiyiblog.cn/2023/03/11/230311-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E5%85%A8%E9%93%BE%E8%B7%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    <id>http://guiyiblog.cn/2023/03/11/230311-%E5%9C%A8%E7%BA%BF%E6%95%99%E8%82%B2%E5%85%A8%E9%93%BE%E8%B7%AF%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</id>
+    <published>2023-03-11T04:00:00.000Z</published>
+    <updated>2023-03-26T14:02:51.445Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;K12在线教育的服务模式主要是“先体验，后入学”，在正式课程前面设置有体验课程。体验课程不仅能帮助机构了解学生当前的学习水平、学习习惯，针对性的挖掘学生潜在的学习需求，还能帮助家长和学生更加充分的了解培训机构，找到与其适合的课程和老师，提前融入到课程环境当中。&lt;/p&gt;
+&lt;p&gt;为了挖掘更多小学生群体的培训学习需求，降低学生体验课程的门槛，提高正式课程的转化率，公司开设小学0元体验课程，增设小学业务中心-转化部，负责小学0元课程的课程设计、课程运营以及转化工作。&lt;/p&gt;
+&lt;iframe title=&quot;Report Section&quot; width=&quot;800&quot; height=&quot;486&quot; src=&quot;https://app.powerbi.com/view?r=eyJrIjoiOTk2MGE3MTktYmY2YS00ZjY2LTkyMDQtYjg4N2YyODQyZWE3IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;</summary>
+    
+    
+    
+    <category term="项目作品" scheme="http://guiyiblog.cn/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>游戏数据分析和预测模型</title>
+    <link href="http://guiyiblog.cn/2023/03/09/230309-%E6%B8%B8%E6%88%8F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%92%8C%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B/"/>
+    <id>http://guiyiblog.cn/2023/03/09/230309-%E6%B8%B8%E6%88%8F%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%92%8C%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B/</id>
+    <published>2023-03-09T04:00:00.000Z</published>
+    <updated>2023-03-26T14:04:01.632Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;针对用户规模较小的游戏，往往top100的玩家就能贡献整个游戏收入的90%以上，因此，针对这类小游戏，我们重点关注头部玩家的用户体验和经营情况。&lt;/p&gt;
+&lt;iframe title=&quot;韩分黑月数据监控模板&quot; width=&quot;800&quot; height=&quot;486&quot; src=&quot;https://app.powerbi.com/view?r=eyJrIjoiNWQ3YjdkMjAtOTZhMS00ODllLWJiNzgtZGMzMjBjZmYyZjQxIiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&amp;pageName=ReportSection240a5c2f0d47d62d1d42&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;</summary>
+    
+    
+    
+    <category term="项目作品" scheme="http://guiyiblog.cn/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>NPS用户净推荐分析</title>
+    <link href="http://guiyiblog.cn/2023/03/01/230301-NPS%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/"/>
+    <id>http://guiyiblog.cn/2023/03/01/230301-NPS%E7%94%A8%E6%88%B7%E5%87%80%E6%8E%A8%E8%8D%90%E5%88%86%E6%9E%90/</id>
+    <published>2023-03-01T04:00:00.000Z</published>
+    <updated>2023-03-26T14:05:00.382Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;NPS (Net Promoter Score) 可以&lt;strong&gt;衡量客户体验&lt;/strong&gt;并&lt;strong&gt;预测业务增长&lt;/strong&gt;。这一指标改变了商业世界，为全球的客户体验管理提供了可以参考的核心指标。&lt;/p&gt;
+&lt;iframe title=&quot;NPS 用户净推荐分析-V1.0&quot; width=&quot;800&quot; height=&quot;486&quot; src=&quot;https://app.powerbi.com/view?r=eyJrIjoiMzhkZjFlZTEtZDA1OS00NDMyLWFmOTItYWFiNjA5YzhmZWQ4IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&amp;pageName=ReportSection9d801961b6b87e8da4fa&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;</summary>
+    
+    
+    
+    <category term="项目作品" scheme="http://guiyiblog.cn/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数据分析职业分析</title>
+    <link href="http://guiyiblog.cn/2022/12/10/221210-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%88%E8%81%8C%E4%B8%9A%E5%88%86%E6%9E%90/"/>
+    <id>http://guiyiblog.cn/2022/12/10/221210-%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B8%88%E8%81%8C%E4%B8%9A%E5%88%86%E6%9E%90/</id>
+    <published>2022-12-10T04:00:00.000Z</published>
+    <updated>2023-03-22T15:18:14.066Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;strong&gt;作者注：&lt;/strong&gt;本文为作者于2019年5月5日发布在知乎的文章：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/64672284&quot;&gt;https://zhuanlan.zhihu.com/p/64672284&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;文章简介&quot;&gt;&lt;a href=&quot;#文章简介&quot; class=&quot;headerlink&quot; title=&quot;文章简介&quot;&gt;&lt;/a&gt;文章简介&lt;/h2&gt;&lt;p&gt;本文主要介绍了对“数据分析师”的全国招聘信息进行分析的详细步骤，使用的分析工具是Python。数据爬取自BOSS直聘近期的数据分析师招聘信息，文章不介绍爬虫步骤。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="项目作品" scheme="http://guiyiblog.cn/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JavaWeb-Maven</title>
@@ -465,107 +538,6 @@
     <category term="大数据" scheme="http://guiyiblog.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
     <category term="操作系统" scheme="http://guiyiblog.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux简介</title>
-    <link href="http://guiyiblog.cn/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/"/>
-    <id>http://guiyiblog.cn/2022/08/10/220810-Linux%E7%AE%80%E4%BB%8B/</id>
-    <published>2022-08-10T14:32:21.000Z</published>
-    <updated>2022-09-29T10:58:35.347Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Linux系统是一套&lt;strong&gt;免费使用和自由传播的类UNIX操作系统&lt;/strong&gt;（主要用在服务器上），是一个基于POSIX和UNIX的&lt;strong&gt;多用户、多任务、支持多线程和多CPU的操作系统&lt;/strong&gt;。它能运行主要的UNIX工具软件、应用程序和网络协议。它支持32位和64位硬件。Linux继承了UNIX以网络为核心的设计思想，是一个性能稳定的&lt;strong&gt;多用户网络操作系统&lt;/strong&gt;。&lt;/p&gt;
-&lt;p&gt;与目前流行的Windows相比，Linux是一个免费开放源代码的操作系统，其支持多用户多任务等优秀特点，吸引了一大批从事Linux研究和应用的爱好者。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大数据" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    <category term="Linux" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Linux/"/>
-    
-    
-    <category term="Linux" scheme="http://guiyiblog.cn/tags/Linux/"/>
-    
-    <category term="大数据" scheme="http://guiyiblog.cn/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    <category term="操作系统" scheme="http://guiyiblog.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git学习笔记</title>
-    <link href="http://guiyiblog.cn/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>http://guiyiblog.cn/2022/08/09/220809-Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
-    <published>2022-08-09T14:32:21.000Z</published>
-    <updated>2022-09-29T10:58:30.175Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;学习地址：&lt;a href=&quot;https://www.liaoxuefeng.com/wiki/896043488029600&quot;&gt;https://www.liaoxuefeng.com/wiki/896043488029600&lt;/a&gt;&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="大数据" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    <category term="Git" scheme="http://guiyiblog.cn/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Git/"/>
-    
-    
-    <category term="网站开发" scheme="http://guiyiblog.cn/tags/%E7%BD%91%E7%AB%99%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="Git" scheme="http://guiyiblog.cn/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>量化分析方法</title>
-    <link href="http://guiyiblog.cn/2022/08/08/220808-%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/"/>
-    <id>http://guiyiblog.cn/2022/08/08/220808-%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/</id>
-    <published>2022-08-08T14:32:21.000Z</published>
-    <updated>2022-08-05T01:11:47.953Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;如何从定性分析转变为定量分析？&quot;&gt;&lt;a href=&quot;#如何从定性分析转变为定量分析？&quot; class=&quot;headerlink&quot; title=&quot;如何从定性分析转变为定量分析？&quot;&gt;&lt;/a&gt;如何从定性分析转变为定量分析？&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;例: 明天天气怎么样？&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;变量抽离: 天气状况&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;寻找衡量标准: 背景是明天要去室外打球，主要关心下不下雨&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;根据信息量大小由小到大扩充变量信息&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary>
-    
-    
-    
-    <category term="数据分析" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
-    <category term="方法论" scheme="http://guiyiblog.cn/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/%E6%96%B9%E6%B3%95%E8%AE%BA/"/>
-    
-    
-    <category term="量化分析" scheme="http://guiyiblog.cn/tags/%E9%87%8F%E5%8C%96%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用统计推断方法</title>
-    <link href="http://guiyiblog.cn/2022/08/07/220807-%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD%E6%96%B9%E6%B3%95/"/>
-    <id>http://guiyiblog.cn/2022/08/07/220807-%E5%B8%B8%E7%94%A8%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD%E6%96%B9%E6%B3%95/</id>
-    <published>2022-08-07T06:37:08.000Z</published>
-    <updated>2022-09-29T03:09:11.903Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文主要介绍基于参数估计和假设检验的统计推断应用方法，主要包括：&lt;/p&gt;
-&lt;p&gt;（1）分类数据分析 &lt;strong&gt;（统计的是各类别样本频数）&lt;/strong&gt; ：&lt;/p&gt;
-&lt;p&gt;① 拟合优度分析：检验一个分类变量是否符合某一理论分布；或一个分类变量（可以是多分类）对另一个&lt;strong&gt;二分类&lt;/strong&gt;变量对影响是否显著；&lt;/p&gt;
-&lt;p&gt;② 独立性检验（或列联分析）：检验两个分类变量交叉是否是独立的；&lt;/p&gt;
-&lt;p&gt;（2）数值型数据分析 &lt;strong&gt;（统计的是样本的某个指标）&lt;/strong&gt; ：&lt;/p&gt;
-&lt;p&gt;① 方差分析：检验分类变量对数值型变量对影响是否显著；（若分类变量为&lt;strong&gt;二分类变量&lt;/strong&gt;则可以使用z检验或t检验）&lt;/p&gt;
-&lt;p&gt;② 回归分析：用于预测一个或多个自变量对某一个因变量的影响趋势，量化自变量对因变量的影响程度&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="统计学" scheme="http://guiyiblog.cn/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
-    
-    
-    <category term="统计推断" scheme="http://guiyiblog.cn/tags/%E7%BB%9F%E8%AE%A1%E6%8E%A8%E6%96%AD/"/>
     
   </entry>
   

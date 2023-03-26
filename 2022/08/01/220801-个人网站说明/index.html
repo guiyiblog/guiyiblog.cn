@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1k</span>
+            <span class="post-count">1.2k</span>
         </span>
     </span>
 
@@ -190,7 +190,19 @@
 </ul>
 <p><a target="_blank" rel="noopener" href="http://t.zoukankan.com/emmmmmm-p-10904768.html">http://t.zoukankan.com/emmmmmm-p-10904768.html</a></p>
 <p><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/256352.html">https://help.aliyun.com/document_detail/256352.html</a></p>
-<h2 id="V2023-03"><a href="#V2023-03" class="headerlink" title="V2023.03"></a>V2023.03</h2><h3 id="V2023-03-22"><a href="#V2023-03-22" class="headerlink" title="V2023.03.22"></a>V2023.03.22</h3> 
+<h2 id="V2023-03"><a href="#V2023-03" class="headerlink" title="V2023.03"></a>V2023.03</h2><h3 id="V2023-03-22"><a href="#V2023-03-22" class="headerlink" title="V2023.03.22"></a>V2023.03.22</h3><h4 id="hexo本地项目迁移"><a href="#hexo本地项目迁移" class="headerlink" title="hexo本地项目迁移"></a>hexo本地项目迁移</h4><blockquote>
+<p>将本地hexo博客项目备份, 或者将本地项目换个文件夹.</p>
+</blockquote>
+<p>简单的三个步骤:</p>
+<ol>
+<li>在新环境下新建文件夹<br> 新建的文件夹用来放置之前的项目<br> 注意: <strong>不要用hexo init初始化</strong></li>
+<li>复制原先项目文件<br> 这里我们只需要复制除了.deploy_git, node_modules, public三个文件夹之外, 其他的文件全部复制到新建文件夹里面.</li>
+<li>安装所需插件(node_modules)<br> 在新建文件夹内, 右键git bash here<br> 输入命令:</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install //已经安装阿里镜像的可以用cnpm install</span><br></pre></td></tr></table></figure>
+
+<p>这一步是根据package.json文件安装需要的模块, 具体文件内容可以自己打开看看.</p>
+ 
       <!-- reward -->
       
       <div id="reword-out">

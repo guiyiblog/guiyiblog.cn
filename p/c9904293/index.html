@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="数据分析师的成长博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>HDFS分布式文件系统 |  归一</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="归一" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-220820-HDFS分布式文件系统"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  HDFS分布式文件系统
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/p/c9904293/" class="article-date">
+  <time datetime="2022-08-20T14:32:21.000Z" itemprop="datePublished">2022-08-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a> / <a class="article-category-link" href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/">Hadoop</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">15 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>HDFS采用了主从（Master&#x2F;Slave）结构模型，一个HDFS集群是由一个NameNode和若干个DataNode组成的。</p>
+<p>其中，NameNode作为主服务器，管理文件系统的命名空间和客户端对文件的访问操作；集群中的DataNode管理存储的数据。</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220417133316685.png"></p>
+<span id="more"></span>
+
+<h2 id="HDFS分布式文件系统"><a href="#HDFS分布式文件系统" class="headerlink" title="HDFS分布式文件系统"></a>HDFS分布式文件系统</h2><h3 id="HDFS设计思想"><a href="#HDFS设计思想" class="headerlink" title="HDFS设计思想"></a>HDFS设计思想</h3><h4 id="HDFS核心设计思想：分散存储、冗余备份"><a href="#HDFS核心设计思想：分散存储、冗余备份" class="headerlink" title="HDFS核心设计思想：分散存储、冗余备份"></a>HDFS核心设计思想：分散存储、冗余备份</h4><p>1、如果一个文件中有10个数值（一行一个，并且都是可以用int来度量）， 现在求10个数值的和。</p>
+<p>思路：<br>    （1）一行一行读取文件的内容<br>    （2）帮读取到的文本内容转化为Int类型<br>    （3）帮转化之后的值进行累加<br>    （4）输出</p>
+<p>2、假如，这样的文件有很大一堆， 并且每个文件都很大，而且每个文件里面的内容都很多。</p>
+<p>例如：现在有10000个文件，每个文件2T，文件里面的内容依然是每行一个数值，要求这一堆文件的所有数值的和。</p>
+<pre><code>如果说用1的思路来说，最终可能也可以计算出来结果，但是效率比较低，大概率算不来。
+
+一行一行读取文件的内容   串行！！！
+
+改进方案： 串行 --》 并行
+
+分布式计算：
+    1、第一个阶段：先将大的任务切分成多个小的任务，然后让集群中的每个节点来对这些小的任务来执行计算
+    2、第二个阶段：需要将第一个阶段的中间临时结果进行最终的汇总
+</code></pre>
+<p>3、又有个问题：该10000个2T的文件应该怎么分布， 才能让这10000个任务的执行效率达到最高？</p>
+<p>​	如果集群有10000个节点，这样每个节点上面存放一个文件，然后在对应的节点上面启动对应的计算任务，这样效率最高。</p>
+<pre><code>计算在a节点， 数据存在b节点
+数据传输   效率问题
+</code></pre>
+<p><strong>4、数据的处理：存储和计算是怎么设计的？</strong></p>
+<p>​	谷歌在设计大数据解决方案的时候，存储和计算两个方案是相互依赖的</p>
+<ul>
+<li><p><strong>存储：HDFS</strong> </p>
+</li>
+<li><p><strong>计算：MapReduce</strong></p>
+</li>
+<li><p><strong>在设计存储的时候，必须要考虑计算的问题</strong></p>
+</li>
+<li><p><strong>在设计计算的时候，必须要考虑存储的问题</strong></p>
+<p>  HDFS的设计思路：<br>  要帮存储到HDFS集群中的数据均匀的分散的存储到整个集群中<br>  举个例子：<br>      100g数据，集群有100个节点，按照1g的大小进行切分存储，每个节点要存储1g的数据量<br><br><br>      100g数据，集群有90个节点，按照1g的大小进行切分存储，其中90台服务器中有10台需要存储2g的数据，其余80台服务器需要存储1g的数据<br>      假设1g的数据需要1秒钟的计算时间，那么整个任务需要 2 秒钟的计算时间<br><br>      100g数据，集群有90个节点，按照512M的大小进行切分存储，其中90台服务器中有20台需要存储1.5g的数据，其余70台服务器需要存储1g的数据<br>      假设1g的数据需要1秒钟的计算时间，那么整个任务需要 1.5 秒钟的计算时间<br><br>      从上面的结果来看，切分的块是不是越小越好<br><br>      但是： 小文件如果多，会有问题<br>          access.log 100g<br>              block0 50g<br>              block1 50g<br><br>          access.log 100g<br>              block0 20g<br>              block1 20g<br>              block2 20g<br>              block3 20g<br>              block4 20g<br>      对于用户来说，一个文件存储进来的时候被HDFS切分了，当用户下载这个大文件的时候，还需要给完整的合并回来。也就是需要给拼装回来，并且拼装的顺序不能错。<br><br>      从上面的结果来看，切分的块是不是越大越好<br><br>      中庸思想<br><br>      不大不小 ： HDFS在设计的时候就考虑到了不同的应用场景中的情况，在不同的场景中，有可能需要的块的大小不一样，可以配置。<br><br>      这个块的大小的配置，可以自行配置<br>      有默认的大小：<br>      Hadoop2.x版本以前，默认的是64M<br>      Hadoop2.x（含）版本以后，默认的是128M<br><br>  到目前为止：<br>      让大数据能够存入到HDFS，并且需要考虑到计算的效率问题，让这个文件进行切分存储，并且需要让这些切分存储的文件块能够比较均匀的分散的存储到集群中。<br><br>  解决存问题:<br>      数据量大，一台集群放不下，使用多态集群存储<br>      一个节点存不下，加节点。<br><br>  HDFS集群，理论上，可以通过无限制的加集群来完成存储。<br>  但是，加到一定的时候是有上限的<br>  1、HDFS集群是主从架构<br>      主从架构也就意味着主节点能够管理的从节点的个数是有上限的。<br>  2、无限制的加集群，能加的机器的可靠性不是特别高。成本和效率<br>      给数据存储到集群中中，有可能会出现数据丢失的情况。</p>
+</li>
+</ul>
+<p><strong>5、HDFS是怎么保障数据的安全的？</strong></p>
+<p>HDFS使用了一种最有效也是最笨重的方式：存储多份 </p>
+<p>数据节点hadoop1、hadoop2、hadoop3，只要有一个节点存活，数据就安全。</p>
+<p><strong>多份数据的存储有原则的：</strong></p>
+<ul>
+<li>数据的备份的个数由客户端指定的</li>
+<li>如果一份数据存储多份，这些多份的数据完全没有必要在一个节点上</li>
+</ul>
+<p><strong>也就是：</strong></p>
+<ul>
+<li><p>如果集群有3个数据存储节点，数据指定存储4份，结果HDFS只会存储3份。</p>
+</li>
+<li><p>HDFS的集群中的任意一个数据节点，肯定没有两份完全一模一样的数据。</p>
+</li>
+</ul>
+<p><strong>6、HDFS核心思想</strong></p>
+<p><strong>总结：分散存储、冗余备份</strong></p>
+<ul>
+<li>大文件被切割成小文件，使用分而治之的思想对同一个文件进行管理</li>
+<li>每个切分之后的块都进行冗余存储，高可用不丢失</li>
+</ul>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220417133157053.png"></p>
+<pre><code>真实文件存储的参考位置： /software/hadoop/data/datanode/current/BP-1075021137-192.168.22.136-1630242976706/current/finalized/subdir0/subdir30 
+
+一个节点能否存一个文件的多个数据块？可以
+如果只有3个节点，结果存储的那个文件被切分成了4个块。所以一定有一个数据节点存储了其中的2个数据块。
+
+一个文件存储了多份，只需要关注某个数据块的多个 副本 的分布就可以啦
+
+blk_01: hadoop02 hadoop03 
+blk_02: hadoop03 hadoop04
+blk_03: hadoop02 hadoop03 
+blk_04: hadoop03 hadoop04 
+
+给上面的数据反过来看：
+
+hadoop02： blk_01 blk_03
+hadoop03： blk_01 blk_02 blk_03 blk_04
+hadoop04： blk_02 blk_04
+
+如果是上面的情况，怎么样保证安全？
+只要宕机的节点的数量少于副本冗余的数量，就一定能保证安全。
+</code></pre>
+<h4 id="HDFS架构"><a href="#HDFS架构" class="headerlink" title="HDFS架构"></a>HDFS架构</h4><p><strong>1、namenode：</strong>掌管文件系统的目录树，处理客户端的请求，保存元数据信息 </p>
+<p><strong>2、datanode：</strong>存储实际的数据的，处理真正的读写 </p>
+<p><strong>3、secondnamenode：</strong>分担namenode压力的，协助合并元数据信息</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220417133316685.png"></p>
+<p><strong>详细补充解释：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1、NameNode（nn）：是Master，管理者节点。</span><br><span class="line">（1）管理HDFS的名称空间</span><br><span class="line">（2）配置副本策略</span><br><span class="line">（3）管理数据块（Block）映射信息</span><br><span class="line">（4）处理客户端读写请求</span><br><span class="line">2、DataNode：是Work，NameNode下达命令，DataNode执行实际的操作。</span><br><span class="line">（1）存储实际的数据块</span><br><span class="line">（2）执行数据块的读/写操作</span><br><span class="line">3、Client：是客户端。</span><br><span class="line">（1）文件切分。文件上传HDFS的时候，Client将文件切分成一个一个的Block，然后进行上传</span><br><span class="line">（2）与NameNode交互，获取文件的位置信息</span><br><span class="line">（3）与DataNode交互，读取或者写入数据</span><br><span class="line">（4）Client提供一些命令来管理HDFS，比如NN格式化</span><br><span class="line">（5）Client提供一些命令来访问HDFS，比如对HDFS查询操作</span><br><span class="line">4、Secondary NameNode：不是NameNode的热备。当NameNode挂掉的时候，它并不能马上替换</span><br><span class="line">NameNode并提供服务。</span><br><span class="line">帮助NameNode，分担其工作量，比如定期合并Fsimage和Edits，并返回给NameNode</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="HDFS使用注意事项"><a href="#HDFS使用注意事项" class="headerlink" title="HDFS使用注意事项"></a>HDFS使用注意事项</h4><p><strong>HDFS不适于以下操作：</strong></p>
+<ol>
+<li>要求高的数据访问：比如毫秒级</li>
+<li>小文件存取：寻道时间超过读取时间</li>
+<li>并发写入、文件随机修改：一个文件只能有一个写，仅仅支持append追加</li>
+<li>不适合存储小文件：存储一个1亿个小文件，大小仅仅1t，但是消耗掉20g左右的内存</li>
+</ol>
+<h3 id="HDFS三大机制"><a href="#HDFS三大机制" class="headerlink" title="HDFS三大机制"></a>HDFS三大机制</h3><h4 id="心跳机制"><a href="#心跳机制" class="headerlink" title="心跳机制"></a>心跳机制</h4><p><strong>HDFS的心跳：</strong></p>
+<p>集群分布式、跨网络。 跨网络有数据延迟和丢失问题。</p>
+<p>datanode每间隔一段时间就会跟namenode去联系一次，证明自己还活着，让namenode能够识别到当前的集群还有多少个datanode存活。</p>
+<p>每次间隔一个固定的时长，datanode都会发送一个心跳数据给namenode，如果过了很长一段时间namenode没有接受到datanode的心跳数据包，那么namenode就要有一个标准来判断datanode是否真的宕机掉。</p>
+<p><strong>作用：</strong></p>
+<ol>
+<li>让namenode能够识别到datanode的存活状态</li>
+<li>心跳数据包</li>
+</ol>
+<p>​	（1）从节点的自身状态：磁盘使用量、块的数量、块的状态</p>
+<p>​	（2）这个从节点所保存的所有的块的信息：file1.txt   blk_001  blk_002</p>
+<p>​		每一个从节点上线之后，会帮自身所持有的的数据块通过心跳汇报给namenode，当namenode接收到所有的datanode的汇报信息之后，就能统计出来，哪些文件的哪些数据块的多个副本的分布情况。<br>​		blk_001： hadoop01 hadoop02<br>​		blk_002： hadoop02 hadoop03 </p>
+<p><strong>HDFS启动流程：</strong></p>
+<ol>
+<li>先启动namenode进程</li>
+<li>加载namenode文件夹当中存储的磁盘元数据信息（fsimage  edits ）</li>
+<li>namenode在启动完毕之后，会在namenode节点启动一个服务，等待所有的datanode上线 并汇报他们的数据块的内容</li>
+<li>datanode一旦上线，就会通过心跳机制帮自身所持有的block块信息全部汇报给namenode</li>
+<li>只有当namenode等到了所有的datanode的上线，并且帮所有的块信息都汇报完毕之后，最后namenode才能够得知，整个集群的所有的文件的数据块的副本都存储。</li>
+</ol>
+<p><strong>元数据：</strong></p>
+<ol>
+<li>目录树结构</li>
+<li>每个文件的数据块的存储的节点位置</li>
+</ol>
+<p><strong>假如hdfs集群非常大，会出现下面情况：</strong></p>
+<ol>
+<li>元数据信息fsimage文件特别大，加载到内存所需要的时间会变长</li>
+<li>datanode节点多，并且每个datanode节点保存的数据块的个数也变多</li>
+</ol>
+<p>因此，随着hdfs集群的增大，集群启动的时候所消耗的资源也越来越多。</p>
+<p><strong>总结：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">心跳：</span><br><span class="line">汇报：是datanode给namenode发信息</span><br><span class="line">命令：是namenode给datanode发信息</span><br><span class="line"></span><br><span class="line">namenode判断datanode是否存活有个标准： 超时标准</span><br><span class="line">timeout = 10 * 心跳时长 + 2 * 检测心跳机制是否正常工作的时间</span><br><span class="line"></span><br><span class="line">心跳时长：dfs.heartbeat.interval 3秒</span><br><span class="line">检测心跳机制是否正常工作的时间：dfs.recheck.interval 5分钟</span><br><span class="line">总数是： 630 秒</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="安全模式"><a href="#安全模式" class="headerlink" title="安全模式"></a>安全模式</h4><p>在集群没有完全启动的这个时间段内，客户端可不可以进行上传下载呢？ 不可以。</p>
+<p>在正常的启动范围内，HDFS集群会进入安全模式，在安全模式中，hdfs集群不能正常对外提供服务。</p>
+<p><strong>Namenode进入安全模式：</strong></p>
+<ol>
+<li>当hdfs集群中的datanode宕机之后，hdfs后台会启动一些服务，做自我恢复</li>
+<li>当丢失的数据块的比例超过 0.1% 的时候会自动的进入安全模式</li>
+</ol>
+<p><strong>Namenode退出安全模式：</strong></p>
+<ol>
+<li>找出问题所在 ，进行修复 （比如修复宕机的 datanode）</li>
+<li>手动通过命令强行退出（但是并没有真正解决数据丢失问题）</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">安全模式相关命令：</span><br><span class="line">hdfs dfsadmin -safemode get   查看</span><br><span class="line">hdfs dfsadmin -safemode enter 进入</span><br><span class="line">hdfs dfsadmin -safemode leave 离开</span><br><span class="line">hdfs dfsadmin -safemode wait  等待</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="副本存放策略"><a href="#副本存放策略" class="headerlink" title="副本存放策略"></a>副本存放策略</h4><p>副本存放策略：就是决定一个数据块的多个副本（默认是3个） 到底应该选取哪些服务器的节点进行存储。</p>
+<p><strong>存储原则：</strong></p>
+<ol>
+<li>任意的一个节点上面不要存储两个一样的副本块</li>
+<li>如果一个数据块要保存完整的3个副本，至少需要3个数据节点</li>
+</ol>
+<p><strong>副本存放策略：</strong></p>
+<ol>
+<li>第一个副本块选取和客户端相同的节点上</li>
+<li>第二个副本块选取跟第一个副本的存储节点相邻机架的任意一个节点</li>
+<li>第三个副本存储在和第二个副本块所在机架不同的节点上</li>
+</ol>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220417143531505.png"></p>
+<h3 id="HDFS的读写流程"><a href="#HDFS的读写流程" class="headerlink" title="HDFS的读写流程"></a>HDFS的读写流程</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220425213439330.png"></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220425213332004.png" alt="image-20220425213332004"></p>
+<h4 id="NameNode和SecondaryNameNode联合工作流程"><a href="#NameNode和SecondaryNameNode联合工作流程" class="headerlink" title="NameNode和SecondaryNameNode联合工作流程"></a>NameNode和SecondaryNameNode联合工作流程</h4><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220425221317725.png"></p>
+<h3 id="HDFS的shell操作"><a href="#HDFS的shell操作" class="headerlink" title="HDFS的shell操作"></a>HDFS的shell操作</h3><h4 id="启动Hadoop集群"><a href="#启动Hadoop集群" class="headerlink" title="启动Hadoop集群"></a>启动Hadoop集群</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-dfs.sh</span><br><span class="line">sbin/start-yarn.sh</span><br><span class="line">sbin/start-all.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="查看-dfs-集群工作状态"><a href="#查看-dfs-集群工作状态" class="headerlink" title="查看 dfs 集群工作状态"></a>查看 dfs 集群工作状态</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfsadmin -report</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="mkdir：创建-x2F-zz文件夹"><a href="#mkdir：创建-x2F-zz文件夹" class="headerlink" title="-mkdir：创建&#x2F;zz文件夹"></a>-mkdir：创建&#x2F;zz文件夹</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /zz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="appendToFile：追加文件操作"><a href="#appendToFile：追加文件操作" class="headerlink" title="-appendToFile：追加文件操作"></a>-appendToFile：追加文件操作</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put wordcount.txt /bb/cc</span><br><span class="line">hadoop fs -appendToFile aa.txt /bb/cc/wordcount.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="moveFromLocal：从本地剪切到HDFS"><a href="#moveFromLocal：从本地剪切到HDFS" class="headerlink" title="-moveFromLocal：从本地剪切到HDFS"></a>-moveFromLocal：从本地剪切到HDFS</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim aa.txt</span><br><span class="line">输入：</span><br><span class="line">aa</span><br><span class="line">具体命令：</span><br><span class="line">hadoop fs -moveFromLocal ./aa.txt /zz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="moveToLocal：从-hdfs-剪切到本地"><a href="#moveToLocal：从-hdfs-剪切到本地" class="headerlink" title="-moveToLocal：从 hdfs 剪切到本地"></a>-moveToLocal：从 hdfs 剪切到本地</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">功能：从 hdfs 剪切到本地</span><br><span class="line">示例：hadoop fs - moveToLocal /aa/bb/cc/dd /home/hadoop/a.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="copyFromLocal：从本地拷贝到HDFS"><a href="#copyFromLocal：从本地拷贝到HDFS" class="headerlink" title="-copyFromLocal：从本地拷贝到HDFS"></a>-copyFromLocal：从本地拷贝到HDFS</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">功能：从本地文件系统中拷贝文件到HDFS路径去</span><br><span class="line">vim bb.txt</span><br><span class="line">bb</span><br><span class="line">hadoop fs -copyFromLocal bb.txt /zz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="copyToLocal：从-hdfs-拷贝到本地"><a href="#copyToLocal：从-hdfs-拷贝到本地" class="headerlink" title="-copyToLocal：从 hdfs 拷贝到本地"></a>-copyToLocal：从 hdfs 拷贝到本地</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">功能：从 hdfs 拷贝到本地</span><br><span class="line">示例：hadoop fs -copyToLocal /aaa/jdk.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="put：等同于copyFromLocal"><a href="#put：等同于copyFromLocal" class="headerlink" title="-put：等同于copyFromLocal"></a>-put：等同于copyFromLocal</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim cc.txt</span><br><span class="line">cc</span><br><span class="line">hadoop fs -put ./cc.txt /zz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="get：从hdfs下载文件到本地"><a href="#get：从hdfs下载文件到本地" class="headerlink" title="-get：从hdfs下载文件到本地"></a>-get：从hdfs下载文件到本地</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">功能：等同于copyToLocal，就是从 hdfs 下载文件到本地</span><br><span class="line">示例：hadoop fs -get /aaa/jdk.tar.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="appendToFile：-追加文件"><a href="#appendToFile：-追加文件" class="headerlink" title="-appendToFile： 追加文件"></a>-appendToFile： 追加文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim dd.txt</span><br><span class="line">dd</span><br><span class="line">[root@hadoop10 data]# hadoop fs -appendToFile dd.txt /zz/bb.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="ls-显示目录信息"><a href="#ls-显示目录信息" class="headerlink" title="-ls: 显示目录信息"></a>-ls: 显示目录信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -ls /zz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="cat：显示文件内容"><a href="#cat：显示文件内容" class="headerlink" title="-cat：显示文件内容"></a>-cat：显示文件内容</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat /zz/aa.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="chgrp、-chmod、-chown：修改文件权限"><a href="#chgrp、-chmod、-chown：修改文件权限" class="headerlink" title="-chgrp、-chmod、-chown：修改文件权限"></a>-chgrp、-chmod、-chown：修改文件权限</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -chmod 666 /zz/aa.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="mkdir：创建路径"><a href="#mkdir：创建路径" class="headerlink" title="-mkdir：创建路径"></a>-mkdir：创建路径</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /yy</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="cp：从HDFS拷贝到HDFS"><a href="#cp：从HDFS拷贝到HDFS" class="headerlink" title="-cp：从HDFS拷贝到HDFS"></a>-cp：从HDFS拷贝到HDFS</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">功能：从HDFS的一个路径拷贝到HDFS的另一个路径</span><br><span class="line">hadoop fs -cp /zz/aa.txt /yy</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="mv：在HDFS目录中移动文件"><a href="#mv：在HDFS目录中移动文件" class="headerlink" title="-mv：在HDFS目录中移动文件"></a>-mv：在HDFS目录中移动文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mv /zz/aa.txt /yy</span><br><span class="line">hadoop fs -mv /zz/bb.txt /yy</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="tail：显示一个文件的末尾1kb的数据"><a href="#tail：显示一个文件的末尾1kb的数据" class="headerlink" title="-tail：显示一个文件的末尾1kb的数据"></a>-tail：显示一个文件的末尾1kb的数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -tail /yy/dd.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="rm：删除文件或文件夹"><a href="#rm：删除文件或文件夹" class="headerlink" title="-rm：删除文件或文件夹"></a>-rm：删除文件或文件夹</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rm /zz/dd.txt</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="rm-r：递归删除目录及目录里面内容"><a href="#rm-r：递归删除目录及目录里面内容" class="headerlink" title="-rm -r：递归删除目录及目录里面内容"></a>-rm -r：递归删除目录及目录里面内容</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rm -r /zz</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="du：统计文件夹的大小信息"><a href="#du：统计文件夹的大小信息" class="headerlink" title="-du：统计文件夹的大小信息"></a>-du：统计文件夹的大小信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -du -s -h /yy</span><br><span class="line">3 6 /yy</span><br><span class="line">hadoop fs -du -h /zz</span><br><span class="line">3 3 /zz/aa.txt</span><br><span class="line">6 6 /zz/bb.txt</span><br><span class="line"></span><br><span class="line">说明：第一个3表示文件大小；第二个3表示3*1个副本；/yy表示查看的目录</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="setrep：设置HDFS中文件的副本数量"><a href="#setrep：设置HDFS中文件的副本数量" class="headerlink" title="-setrep：设置HDFS中文件的副本数量"></a>-setrep：设置HDFS中文件的副本数量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -setrep 5 /yy/aa.txt</span><br><span class="line"></span><br><span class="line">这里设置的副本数只是记录在NameNode的元数据中，是否真的会有这么多副本，还得看DataNode的数量。</span><br><span class="line">目前只有2个datanode节点，最多也就2个副本，只有从节点数的增加到5台时，副本数才能达到5</span><br><span class="line"></span><br><span class="line">页面上拷贝剪切的时候的出错</span><br><span class="line">Couldn&#x27;t move file aa.txt. Forbidden</span><br><span class="line">给文件夹属性也改成777</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="help：输出这个命令参数手册"><a href="#help：输出这个命令参数手册" class="headerlink" title="-help：输出这个命令参数手册"></a>-help：输出这个命令参数手册</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">功能：输出这个命令参数手册</span><br><span class="line">hadoop fs -help</span><br><span class="line">-ls</span><br><span class="line">功能：显示目录信息</span><br><span class="line">示例： hadoop fs -ls hdfs://hadoop0:9000/</span><br><span class="line">备注：这些参数中，所有的 hdfs 路径都可以简写成 hadoop fs -ls / 等同上条命令的效果</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="rmdir：删除空目录"><a href="#rmdir：删除空目录" class="headerlink" title="-rmdir：删除空目录"></a>-rmdir：删除空目录</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">功能：删除空目录</span><br><span class="line">示例：hadoop fs -rmdir /aaa/bbb/ccc</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="text：以字符形式打印一个文件的内容"><a href="#text：以字符形式打印一个文件的内容" class="headerlink" title="-text：以字符形式打印一个文件的内容"></a>-text：以字符形式打印一个文件的内容</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">功能：以字符形式打印一个文件的内容</span><br><span class="line">示例：hadoop fs -text /weblog/access_log.1</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="df：统计文件系统的可用空间信息"><a href="#df：统计文件系统的可用空间信息" class="headerlink" title="-df：统计文件系统的可用空间信息"></a>-df：统计文件系统的可用空间信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">功能：统计文件系统的可用空间信息</span><br><span class="line">示例：hadoop fs -df -h /</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="count：统计指定目录下的文件节点数量"><a href="#count：统计指定目录下的文件节点数量" class="headerlink" title="-count：统计指定目录下的文件节点数量"></a>-count：统计指定目录下的文件节点数量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">功能：统计一个指定目录下的文件节点数量</span><br><span class="line">示例：hadoop fs -count /aaa/</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="setrep：设置-hdfs-中文件的副本数量"><a href="#setrep：设置-hdfs-中文件的副本数量" class="headerlink" title="-setrep：设置 hdfs 中文件的副本数量"></a>-setrep：设置 hdfs 中文件的副本数量</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">功能：设置 hdfs 中文件的副本数量</span><br><span class="line">示例：hadoop fs -setrep 3 /aaa/jdk.tar.gz</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://guiyiblog.cn/p/c9904293/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HDFS/" rel="tag">HDFS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hadoop/" rel="tag">Hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" rel="tag">分布式文件系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag">大数据</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/p/16dc59bd/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            HDFS的API操作
+          
+        </div>
+      </a>
+    
+    
+      <a href="/p/982a2f8b/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Hadoop简介</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2023
+        <i class="ri-heart-fill heart_icon"></i> 归一
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="归一"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81">项目作品</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

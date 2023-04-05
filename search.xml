@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>个人网站说明</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/cfcb6e47/</url>
     <content><![CDATA[<p>生命转瞬即逝，唯有思想、灵感与爱永存。</p>
 <p>Life is fleeting, but thought, inspiration and love remain forever.</p>
 <p>您好！我是归一，欢迎来到我的个人网站！</p>
@@ -104,7 +104,7 @@
   </entry>
   <entry>
     <title>刻意练习</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/2e543a56/</url>
     <content><![CDATA[<p><strong>每天1小时数据分析技能学习，用热爱成就事业，用坚持锻造专业！</strong></p>
 <iframe title="日程数据监控" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiYmIwZDdmZWEtZWQ4OC00YmMyLTk5YjEtNTcyMjkzNzAwNWM4IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&pageName=ReportSection3d21ab029abe43e7ce90" frameborder="0" allowfullscreen="true"></iframe>
 
@@ -117,7 +117,7 @@
   </entry>
   <entry>
     <title>在线教育全链路数据分析</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/939b/</url>
     <content><![CDATA[<h3 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a><strong>项目简介</strong></h3><ol>
 <li><p><strong>我们团队在做一件什么事？</strong></p>
 <p>团队所属在线教育公司-线下业务中心-转化部，主要工作是承接线下小学流量，通过免费或低价体验课程对用户进行服务并引导其购买正式课程，核心目标是通过不断优化课程策略和服务，提高PV转化率，快速覆盖市场用户，提高市场中付费用户的占比。</p>
@@ -351,7 +351,7 @@
   </entry>
   <entry>
     <title>NPS用户净推荐分析</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/e056df13/</url>
     <content><![CDATA[<p>NPS (Net Promoter Score) 可以<strong>衡量客户体验</strong>并<strong>预测业务增长</strong>。这一指标改变了商业世界，为全球的客户体验管理提供了可以参考的核心指标。</p>
 <iframe title="NPS 用户净推荐分析-V1.0" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiMzhkZjFlZTEtZDA1OS00NDMyLWFmOTItYWFiNjA5YzhmZWQ4IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&pageName=ReportSection9d801961b6b87e8da4fa" frameborder="0" allowfullscreen="true"></iframe>
 
@@ -390,7 +390,7 @@
   </entry>
   <entry>
     <title>数据分析职业分析</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/510368d3/</url>
     <content><![CDATA[<p><strong>作者注：</strong>本文为作者于2019年5月5日发布在知乎的文章：<a href="https://zhuanlan.zhihu.com/p/64672284">https://zhuanlan.zhihu.com/p/64672284</a></p>
 <h2 id="文章简介"><a href="#文章简介" class="headerlink" title="文章简介"></a>文章简介</h2><p>本文主要介绍了对“数据分析师”的全国招聘信息进行分析的详细步骤，使用的分析工具是Python。数据爬取自BOSS直聘近期的数据分析师招聘信息，文章不介绍爬虫步骤。</p>
   <span id="more"></span>
@@ -452,7 +452,7 @@
   </entry>
   <entry>
     <title>JavaWeb-Maven</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/fbc56413/</url>
     <content><![CDATA[<h2 id="5、Maven"><a href="#5、Maven" class="headerlink" title="5、Maven"></a>5、Maven</h2><p>为什么要学Maven？</p>
 <ol>
 <li>在Javaweb开发中，需要使用大量的jar包，需要手动导入；</li>
@@ -512,7 +512,7 @@
   </entry>
   <entry>
     <title>JavaWeb-HTTP协议</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/d8ad1f04/</url>
     <content><![CDATA[<h2 id="4、HTTP"><a href="#4、HTTP" class="headerlink" title="4、HTTP"></a>4、HTTP</h2><h3 id="4-1、什么是HTTP"><a href="#4-1、什么是HTTP" class="headerlink" title="4.1、什么是HTTP"></a>4.1、什么是HTTP</h3><p>HTTP（超文本传输协议）是一个简单的请求-响应协议，它通常运行在TCP之上。</p>
 <ul>
 <li>文本：html，字符串，…</li>
@@ -585,7 +585,7 @@
   </entry>
   <entry>
     <title>JavaWeb-Tomcat</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/9ecb83c3/</url>
     <content><![CDATA[<h2 id="3、Tomcat"><a href="#3、Tomcat" class="headerlink" title="3、Tomcat"></a>3、Tomcat</h2><h3 id="3-1、安装Tomcat"><a href="#3-1、安装Tomcat" class="headerlink" title="3.1、安装Tomcat"></a>3.1、安装Tomcat</h3><p><a href="https://tomcat.apache.org/download-10.cgi">https://tomcat.apache.org/download-10.cgi</a></p>
 <h3 id="3-2、Tomcat启动和配置"><a href="#3-2、Tomcat启动和配置" class="headerlink" title="3.2、Tomcat启动和配置"></a>3.2、Tomcat启动和配置</h3><p><strong>文件夹作用</strong></p>
 <p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220904104902961.png" alt="image-20220904104902961"></p>
@@ -646,7 +646,7 @@
   </entry>
   <entry>
     <title>JavaWeb-Web服务器</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/c4e645ce/</url>
     <content><![CDATA[<p>Web服务器是使用HTTP（超文本传输协议）和其他协议来响应通过万维网发出的客户端请求的软件和硬件。Web服务器的主要工作是通过存储，处理和向用户交付网页来显示网站内容。除了HTTP，Web服务器还支持SMTP（简单邮件传输协议）和FTP（文件传输协议），用于电子邮件，文件传输和存储。</p>
 <p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/b219ebc4b74543a95d384898aa9e6e88b80114d3.jpeg@f_auto" alt="img"></p>
 <span id="more"></span>
@@ -700,7 +700,7 @@
   </entry>
   <entry>
     <title>JavaWeb-基本概念</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/82a91f4e/</url>
     <content><![CDATA[<h2 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h2><h3 id="1-1、前言"><a href="#1-1、前言" class="headerlink" title="1.1、前言"></a>1.1、前言</h3><p>web开发：</p>
 <ul>
 <li>web，网页的意思，<a href="http://www.baidu.com/">www.baidu.com</a></li>
@@ -777,7 +777,7 @@
   </entry>
   <entry>
     <title>HTML基础</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/e173abca/</url>
     <content><![CDATA[<h3 id="什么是HTML"><a href="#什么是HTML" class="headerlink" title="什么是HTML"></a>什么是HTML</h3><p><strong>HTML：</strong>Hyper Text Markup Language（超文本标记语言）</p>
 <p>超文本包括：文字、图片、音频、视频、动画等。</p>
 <p>浏览器打开网页，右键-检查，即可查看</p>
@@ -874,7 +874,7 @@
   </entry>
   <entry>
     <title>HDFS的API操作</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/16dc59bd/</url>
     <content><![CDATA[<h3 id="HDFS的API操作"><a href="#HDFS的API操作" class="headerlink" title="HDFS的API操作"></a>HDFS的API操作</h3><p>在 Java 中操作 HDFS, 主要涉及以下 Class</p>
 <ol>
 <li><code>Configuration</code>：该类的对象封装了客户端或者服务器的配置</li>
@@ -897,7 +897,7 @@
   </entry>
   <entry>
     <title>HDFS分布式文件系统</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/c9904293/</url>
     <content><![CDATA[<p>HDFS采用了主从（Master&#x2F;Slave）结构模型，一个HDFS集群是由一个NameNode和若干个DataNode组成的。</p>
 <p>其中，NameNode作为主服务器，管理文件系统的命名空间和客户端对文件的访问操作；集群中的DataNode管理存储的数据。</p>
 <p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220417133316685.png"></p>
@@ -1185,7 +1185,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Hadoop简介</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/982a2f8b/</url>
     <content><![CDATA[<p><strong>大数据（Big Data）</strong>：指的是传统数据处理应用软件不足以处理（存储和计算）它们的大而复杂的数据集。</p>
 <p><strong>主要解决海量数据的存储和海量数据的运算问题。</strong></p>
 <span id="more"></span>
@@ -1226,7 +1226,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Java学习笔记-Day4</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/cabdc1d2/</url>
     <content><![CDATA[<h2 id="Part5：面向对象编程"><a href="#Part5：面向对象编程" class="headerlink" title="Part5：面向对象编程"></a>Part5：面向对象编程</h2><h3 id="什么是面向对象"><a href="#什么是面向对象" class="headerlink" title="什么是面向对象"></a>什么是面向对象</h3><p>面向对象编程（Object-Oriented Programming, OOP）</p>
 <p>面向对象编程的本质就是：<strong>以类的方式组织代码，以对象的方式封装数据。</strong></p>
 <p>从现实的角度：先有对象，再有类。对象是具体的事物，类是对对象的抽象。</p>
@@ -1380,7 +1380,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Java学习笔记-Day3</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/54d95471/</url>
     <content><![CDATA[<h2 id="Part4：数组操作"><a href="#Part4：数组操作" class="headerlink" title="Part4：数组操作"></a>Part4：数组操作</h2><h3 id="数组的声明和创建"><a href="#数组的声明和创建" class="headerlink" title="数组的声明和创建"></a>数组的声明和创建</h3><p><strong>数组的四个基本特点</strong></p>
 <ol>
 <li>其长度是确定的。数组一旦被创建，它的大小就是不可以改变的；</li>
@@ -1448,7 +1448,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Java学习笔记-Day2</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/23de64e7/</url>
     <content><![CDATA[<h2 id="Part3：Java流程控制"><a href="#Part3：Java流程控制" class="headerlink" title="Part3：Java流程控制"></a>Part3：Java流程控制</h2><h3 id="Scanner对象"><a href="#Scanner对象" class="headerlink" title="Scanner对象"></a>Scanner对象</h3><ul>
 <li><p><strong>next()：</strong></p>
 <ul>
@@ -1520,7 +1520,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Java学习笔记-Day1</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/bad7355d/</url>
     <content><![CDATA[<p>学习地址：<a href="https://www.kuangstudy.com/course">https://www.kuangstudy.com/course</a></p>
 <h2 id="Part-1：Java入门"><a href="#Part-1：Java入门" class="headerlink" title="Part 1：Java入门"></a>Part 1：Java入门</h2><h3 id="什么是计算机？"><a href="#什么是计算机？" class="headerlink" title="什么是计算机？"></a>什么是计算机？</h3><p>计算机是能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备，由硬件和软件组成。</p>
 <ul>
@@ -1976,7 +1976,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Linux系统管理</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/6c72ecbc/</url>
     <content><![CDATA[<h2 id="Linux网络管理"><a href="#Linux网络管理" class="headerlink" title="Linux网络管理"></a>Linux网络管理</h2><h3 id="Linux网络管理：IP地址管理"><a href="#Linux网络管理：IP地址管理" class="headerlink" title="Linux网络管理：IP地址管理"></a>Linux网络管理：IP地址管理</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">查询IP：ip addr</span><br></pre></td></tr></table></figure>
 
 <p>配置静态IP：</p>
@@ -2084,7 +2084,7 @@ hadoop04： blk_02 blk_04
 <p>SSH是由客户端和服务端的软件组成的<br>服务端是一个守护进程(sshd)，他在后台运行并响应来自客户端的连接请求。<br>客户端包含ssh程序以及像scp（远程拷贝）、slogin（远程登陆）、sftp（安全文件传输）等其他的应用程序。</p>
 <p>首先确保服务器是否安装了ssh服务：<br> [root@mycentos7 ~]# yum list installed | grep openssh-server<br>正常情况下，CentOS7是安装了的。或者你只要能使用SecureCRT、Xshell等工具连接，那都是正常的。</p>
 <h3 id="Linux中SSH协议：具体配置"><a href="#Linux中SSH协议：具体配置" class="headerlink" title="Linux中SSH协议：具体配置"></a>Linux中SSH协议：具体配置</h3><p>准备两台虚拟机：A和B，假如A要登陆B，或者安全访问B</p>
-<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#x72;&#111;&#x6f;&#x74;&#64;&#49;&#57;&#x32;&#x2e;&#49;&#x36;&#56;&#46;&#49;&#x32;&#51;&#x2e;&#x31;&#x35;&#x32;">&#x72;&#111;&#x6f;&#x74;&#64;&#49;&#57;&#x32;&#x2e;&#49;&#x36;&#56;&#46;&#49;&#x32;&#51;&#x2e;&#x31;&#x35;&#x32;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
+<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#114;&#x6f;&#x6f;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#49;&#50;&#x33;&#x2e;&#x31;&#53;&#x32;">&#114;&#x6f;&#x6f;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#49;&#50;&#x33;&#x2e;&#x31;&#53;&#x32;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
 <h3 id="Linux中SSH协议：原理"><a href="#Linux中SSH协议：原理" class="headerlink" title="Linux中SSH协议：原理"></a>Linux中SSH协议：原理</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220415151926777.png" alt="image-20220415151926777"></p>
 ]]></content>
       <categories>
@@ -2099,7 +2099,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Linux常用命令</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/d0edc1ed/</url>
     <content><![CDATA[<h3 id="Linux命令格式"><a href="#Linux命令格式" class="headerlink" title="Linux命令格式"></a>Linux命令格式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Linux的命令格式：命令 [命令选项]  [命令参数]，例如：ls -l /</span><br><span class="line">注意：三者之间要空格隔开，其中命令选项分为长格式和短格式。</span><br><span class="line">短格式用&#x27;-&#x27;表示，比如：-l，</span><br><span class="line">长格式用&quot;--&quot;表示，比如：--help，</span><br><span class="line">也可以使用组合格式，比如：-a -l  等价于 -la 或者 -al </span><br><span class="line"></span><br><span class="line">Linux的命令提示符：</span><br><span class="line">#：管理员用户</span><br><span class="line">$：普通用户</span><br><span class="line"></span><br><span class="line">Linux以回车键表示命令结束，如果linux命令需要折行输入，那么可以以\表示每行结束</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
@@ -2155,7 +2155,7 @@ hadoop04： blk_02 blk_04
 <h3 id="Linux命令学习方式"><a href="#Linux命令学习方式" class="headerlink" title="Linux命令学习方式"></a>Linux命令学习方式</h3><p>对于不会使用的命令：可以使用man命令来查看它的帮助文档：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">man clear</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2022/08/12/220812-Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/image-20220410163840831.png" alt="image-20220410163840831"></p>
+<p><img src="/p/d0edc1ed/image-20220410163840831.png" alt="image-20220410163840831"></p>
 <p><strong>命令学习网站</strong></p>
 <ul>
 <li><a href="http://man.linuxde.net/">http://man.linuxde.net/</a></li>
@@ -2258,7 +2258,7 @@ hadoop04： blk_02 blk_04
 
 
 
-<h3 id="Linux文本编辑器vim"><a href="#Linux文本编辑器vim" class="headerlink" title="Linux文本编辑器vim"></a>Linux文本编辑器vim</h3><p><img src="/2022/08/12/220812-Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/image-20220415143740795.png" alt="image-20220415143740795"></p>
+<h3 id="Linux文本编辑器vim"><a href="#Linux文本编辑器vim" class="headerlink" title="Linux文本编辑器vim"></a>Linux文本编辑器vim</h3><p><img src="/p/d0edc1ed/image-20220415143740795.png" alt="image-20220415143740795"></p>
 <p>学会使用vi编辑器是学习Linux系统的必备技术之一，因为一般的Linux服务器是没有GUI界面的，Linux运维及开发人员基本上都是通过命令行的方式进行文本编辑或程序编写的。vi编辑器是Linux内置的文本编辑器，几乎所有的类unix系统中都内置了vi编辑器，而其它编辑器则不一定，另外很多软件会调用vi编辑进行内容编写，例如crontab定时任务。较之于其它编辑器或GUI编辑器，vi编辑速度是最快的。<strong>VIM是它的增强版本</strong>，VI有三种基本工作模式，分别是：</p>
 <ul>
 <li>命令模式（command mode）、或者叫一般模式</li>
@@ -2327,7 +2327,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Linux文件系统</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/a4b4101b/</url>
     <content><![CDATA[<p>Linux文件系统中的文件是数据的集合，文件系统不仅包含着文件中的数据而且还有文件系统的结构，所有Linux 用户和程序看到的文件、目录、软连接及文件保护信息等都存储在其中。Linux下的所有文件和目录。这些文件及目录构以一个树状的结构，构成了Linux中的文件系统。</p>
 <span id="more"></span>
 
@@ -2477,7 +2477,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Linux简介</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/cf0ea7a1/</url>
     <content><![CDATA[<p>Linux系统是一套<strong>免费使用和自由传播的类UNIX操作系统</strong>（主要用在服务器上），是一个基于POSIX和UNIX的<strong>多用户、多任务、支持多线程和多CPU的操作系统</strong>。它能运行主要的UNIX工具软件、应用程序和网络协议。它支持32位和64位硬件。Linux继承了UNIX以网络为核心的设计思想，是一个性能稳定的<strong>多用户网络操作系统</strong>。</p>
 <p>与目前流行的Windows相比，Linux是一个免费开放源代码的操作系统，其支持多用户多任务等优秀特点，吸引了一大批从事Linux研究和应用的爱好者。</p>
 <span id="more"></span>
@@ -2573,7 +2573,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>Git学习笔记</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/a91eaa72/</url>
     <content><![CDATA[<p>学习地址：<a href="https://www.liaoxuefeng.com/wiki/896043488029600">https://www.liaoxuefeng.com/wiki/896043488029600</a></p>
 <span id="more"></span>
 
@@ -2638,7 +2638,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>量化分析方法</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/caa30177/</url>
     <content><![CDATA[<h2 id="如何从定性分析转变为定量分析？"><a href="#如何从定性分析转变为定量分析？" class="headerlink" title="如何从定性分析转变为定量分析？"></a>如何从定性分析转变为定量分析？</h2><p><strong>例: 明天天气怎么样？</strong></p>
 <ol>
 <li><p>变量抽离: 天气状况</p>
@@ -2676,7 +2676,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>常用统计推断方法</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/c906b463/</url>
     <content><![CDATA[<p>本文主要介绍基于参数估计和假设检验的统计推断应用方法，主要包括：</p>
 <p>（1）分类数据分析 <strong>（统计的是各类别样本频数）</strong> ：</p>
 <p>① 拟合优度分析：检验一个分类变量是否符合某一理论分布；或一个分类变量（可以是多分类）对另一个<strong>二分类</strong>变量对影响是否显著；</p>
@@ -3003,7 +3003,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>推断统计学</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/b56a4992/</url>
     <content><![CDATA[<p>本文主要介绍使用样本推断总体的统计学方法，主要包括参数估计和假设检验。参数估计使用样本统计量估计总体参数，假设检验则使用样本数据推断对某一总体的假设是否成立，两者的理论基础都是大数定律和中心极限定理。</p>
   <span id="more"></span>
 
@@ -3112,7 +3112,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>描述统计学</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/20d88d5d/</url>
     <content><![CDATA[<p>本文主要介绍了数据分析统计基础——统计描述。数据分析的前提就是要学会观察数据，了解数据，统计描述包括对数据的图表描述和统计量描述，它能让我们对数据有一个直观的认识，比如数据是否完整、是否存在异常、服从什么分布、存在什么规律等，为数据预处理和数据分析做准备。</p>
   <span id="more"></span>
 
@@ -3303,7 +3303,7 @@ hadoop04： blk_02 blk_04
   </entry>
   <entry>
     <title>类别变量分析（R语言实现）</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/5b2ef515/</url>
     <content><![CDATA[<p>本文主要介绍基于R实现类别变量分析，主要包括：</p>
 <p>（1）<strong>拟合优度检验</strong>用于检验 <strong>一个分类变量各类别的观察频数与期望频数是否有显著性差异，</strong> 或者说是检验一个分类变量各类别观察频数的分布是否符合某一理论分布。</p>
 <p>（2）<strong>独立性检验</strong>主要是用于分析判断两个分类变量是否独立。它是在假设两分类变量独立的情况下计算出理论频数，从而再与观察频数作比较，看是否有显著性差异。</p>
@@ -3499,7 +3499,7 @@ Cramer&#39;s V        : 0.322
   </entry>
   <entry>
     <title>描述统计分析（R语言实现）</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/f6bd95a8/</url>
     <content><![CDATA[<p>统计学是一门专门研究如何收集、处理、分析、解释数据并从数据中得出结论的科学。</p>
 <p>一般而言，我们通常将对数据的分析分为两大部分：描述统计分析和推断统计分析。</p>
 <p><strong>描述统计分析</strong> ，可以帮助我们快速了解随机事件的现状，它的基本原理就是信息的凝练和浓缩。用简单的统计量和图表去概况我们所关注的某部分信息，而忽略其他嘈杂信息，整个过程其实就是一个信息筛选和浓缩的过程。</p>
@@ -3597,7 +3597,7 @@ Cramer&#39;s V        : 0.322
   </entry>
   <entry>
     <title>NPS用户净推荐分析</title>
-    <url>/fz/undefined.html</url>
+    <url>/p/e056df13/</url>
     <content><![CDATA[<p>NPS (Net Promoter Score) 可以<strong>衡量客户体验</strong>并<strong>预测业务增长</strong>。这一指标改变了商业世界，为全球的客户体验管理提供了可以参考的核心指标。</p>
 <p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/NPS.jpg" alt="NPS"></p>
   <span id="more"></span>

@@ -1,2 +1,2 @@
-# guiyiblog.cn
-www.guiyiblog.cn
+# guiyiblog.com
+www.guiyiblog.com

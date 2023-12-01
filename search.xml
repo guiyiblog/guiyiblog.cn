@@ -88,12 +88,20 @@
 <p>简单的三个步骤:</p>
 <ol>
 <li>在新环境下新建文件夹<br> 新建的文件夹用来放置之前的项目<br> 注意: <strong>不要用hexo init初始化</strong></li>
-<li>复制原先项目文件<br> 这里我们只需要复制除了.deploy_git, node_modules, public三个文件夹之外, 其他的文件全部复制到新建文件夹里面.</li>
+<li>复制原先项目文件</li>
 <li>安装所需插件(node_modules)<br> 在新建文件夹内, 右键git bash here<br> 输入命令:</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install //已经安装阿里镜像的可以用cnpm install</span><br></pre></td></tr></table></figure>
 
 <p>这一步是根据package.json文件安装需要的模块, 具体文件内容可以自己打开看看.</p>
+<h2 id="V2023-05"><a href="#V2023-05" class="headerlink" title="V2023.05"></a>V2023.05</h2><h3 id="V203-05-27"><a href="#V203-05-27" class="headerlink" title="V203.05.27"></a>V203.05.27</h3><h4 id="Hexo文件目录解析"><a href="#Hexo文件目录解析" class="headerlink" title="Hexo文件目录解析"></a>Hexo文件目录解析</h4><p>参考博客：<a href="https://segmentfault.com/a/1190000018237272">https://segmentfault.com/a/1190000018237272</a></p>
+<blockquote>
+<p>执行hexo generate，根据source，更新 public。</p>
+</blockquote>
+<blockquote>
+<p>执行hexo deploy，根据public，更新 .deploy_git。</p>
+</blockquote>
+<h4 id="生成网站短链"><a href="#生成网站短链" class="headerlink" title="生成网站短链"></a>生成网站短链</h4><p>参考博文：<a href="https://blog.feizhuqwq.com/20">https://blog.feizhuqwq.com/20</a></p>
 ]]></content>
       <categories>
         <category>说明文档</category>
@@ -112,8 +120,212 @@
 
 ]]></content>
       <categories>
-        <category>项目作品</category>
+        <category>说明文档</category>
       </categories>
+  </entry>
+  <entry>
+    <title>关于搭建数据分析师能力模型的思考</title>
+    <url>/p/9aa0b83c/</url>
+    <content><![CDATA[<p>自2019年从事数据分析工作以来，已快有5个年头，在这个节点上，有必要重新对职业进行一次深度的思考，来解决当下职业发展的瓶颈期、迷茫期。<br>基于以往对数据分析的学习和在工作中实践理解，让我发现数据分析不仅仅是工具、技能，它更是一种思维方式和解决问题的能力——一种将现实问题转换为数据问题的思维方式，用数据方法解决现实问题的能力。</p>
+<p>我们姑且将这种“能力”<strong>定义为：</strong>在特定业务背景下，将业务问题转换为数据问题，并合理利用数据工具帮助解决业务问题的能力。</p>
+  <span id="more"></span>
+
+<p>根据数据分析解决业务问题的一般思路，可以概况为5项能力，分别为：</p>
+<ol>
+<li>业务理解能力</li>
+<li>数据获取能力</li>
+<li>数据处理能力</li>
+<li>数据分析能力</li>
+<li>数据表达能力</li>
+</ol>
+<p>其中，每项能力又可以做如下拆解：</p>
+<iframe title="博客目录结构" width="800" height="486" src="https://www.processon.com/embed/6549d3d97dbb5d054746fd62"></iframe>
+
+<h3 id="1、业务理解能力"><a href="#1、业务理解能力" class="headerlink" title="1、业务理解能力"></a>1、业务理解能力</h3><h4 id="1-1、背景梳理和问题归纳"><a href="#1-1、背景梳理和问题归纳" class="headerlink" title="1.1、背景梳理和问题归纳"></a>1.1、背景梳理和问题归纳</h4><p>解决问题的第一步是找到并理解问题，做到具体问题具体分析。因此，针对某特定的业务问题，我们需要先了解问题所处的业务背景，然后归纳总结出需要解决的关键问题。</p>
+<p>在这里，我们采用<strong>“商业画布”</strong>中的方法论用来快速梳理业务背景，归纳业务核心问题。</p>
+<p>商业画布由 9 个方格组成，每一个方格的含义分别为：</p>
+<ul>
+<li><strong>VP(Value Propositions)价值主张</strong>——提供的产品或服务</li>
+<li><strong>KS(Customer Segments)客户群体</strong> ——产品或服务的目标用户</li>
+<li><strong>CH(Channels)渠道</strong>——渠道是指企业向客户提供产品或服务的途径和方式。渠道可以包括线上和线下的销售渠道、推广渠道、售后服务渠道等，以便满足客户需求和提高销售效率。</li>
+<li><strong>CR(Customer Relationships)客户关系</strong>——客户关系是指企业与客户之间建立的关系，以便提高客户忠诚度和满意度。客户关系可以包括个性化服务、快速响应、客户反馈等方式，以便企业能够更好地了解客户需求和反馈。</li>
+<li><strong>RS(Revenue Streams)收入来源</strong>——收入流是指企业从产品或服务销售中获得的收入来源。收入流可以基于产品或服务的不同属性、销售渠道、客户类型等多种因素进行分类，以便企业能够更好地了解市场需求和收益结构。</li>
+<li><strong>KR(Key Resources)核心资源</strong>——关键资源是指企业为提供产品或服务所必须拥有的资源和能力。关键资源可以包括物质资源、人力资源、技术资源等多种形式，以便企业能够更好地保持竞争优势和提高产品或服务的质量和效率。</li>
+<li><strong>KA(Key Activity)关键活动</strong>——关键活动是指企业必须执行的核心活动，以提供产品或服务并实现商业目标。关键业务活动可以包括生产、运营、销售、市场营销等多种活动，以便企业能够更好地实现商业战略和目标。</li>
+<li><strong>CS(Cost Structure)成本结构</strong>——成本结构是指企业为提供产品或服务所必须承担的成本和费用。成本结构可以包括直接成本、间接成本、固定成本、变动成本等多种类型，以便企业能够更好地了解成本结构和优化成本管理。</li>
+<li><strong>KP(Key Partnerships)重要合作</strong>——重要合作是指企业与其他组织或企业建立的合作关系，以实现共同的商业目标。重要合作伙伴关系可以包括供应商、合作伙伴、分销商等多种类型，以便企业能够更好地利用外部资源和优势，提高产品或服务的质量和效率。</li>
+</ul>
+<p>Canvas 的使用者需要按照一定的顺序：首先要了解目标用户群（客户群体），再确定他们的需求（价值主张），想好如何接触到他们（渠道），如何维护好他们（客户关系），怎么盈利（收入流），凭借什么筹码实现盈利（核心资源），为了持续盈利必须要做的运营活动（关键活动），能向你伸出援手的人（合伙人），以及根据综合成本定价（成本结构）。</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201151623570.png"></p>
+<p>其中，寻找客户群体，提供价值服务，可以用以下方式进行匹配（原文：<a href="https://baijiahao.baidu.com/s?id=1759323222082691709&wfr=spider&for=pc">什么是商业画布？</a>)</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201154607704.png"></p>
+<h4 id="1-2、问题拆解"><a href="#1-2、问题拆解" class="headerlink" title="1.2、问题拆解"></a>1.2、问题拆解</h4><p>问题拆解采用的是<strong>“分而治之”</strong>的思想，将复杂的大问题，拆解成简单的小问题，然后再逐个击破。常用的方法是公式法和分类法，其中分类法需要遵循<strong>MECE法则</strong>，即分类需满足<strong>“相互独立，完全穷尽”</strong>。</p>
+<p>例如，问题是：”如何提高某化妆品的销售额？”</p>
+<p>易知，<code>销售额=销售量×单价</code>，因此，想要提高销售额，则可从提高销售量或者提高单价入手。</p>
+<p>若改化妆品是由多个销售渠道进行销售，则可以用分类法进行拆分：</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201160600102.png"></p>
+<p>通过拆解分析每个渠道的销售额状况，根据实际情况对每个渠道进行目标分配，从而提高总的销售额。</p>
+<h4 id="1-3、问题转换"><a href="#1-3、问题转换" class="headerlink" title="1.3、问题转换"></a>1.3、问题转换</h4><p>问题转换采用的是<strong>“映射转换”</strong>的思想，想要用数据方法解决现实问题，最关键的一步就是将现实问题映射转换为数据问题。在这里，我们可以参考<a href="https://www.leixue.com/ask/what-is-the-basic-principle-of-relational-database">关系型数据库的基本原理</a>和<a href="https://www.zhihu.com/question/31021366/answer/2782939791">面向对象编程的思维方式</a>。</p>
+<p>关系型数据库的基本原理是基于关系模型来管理数据，它使用了数学中的关系集合理论来描述数据库中的表格和字段。</p>
+<p>关系模型是一种思维方式，用于把实际世界中的实体（如人、事件、地点等）和关系（如联系、拥有等）表示成一种可供计算机处理的数据结构，从而将实际世界的实体和关系转换成数据库中的表格和字段。</p>
+<p>因此，学习掌握构建E-R关系图是熟练进行“映射转换”必不可少的技能。</p>
+<h3 id="2、数据获取能力"><a href="#2、数据获取能力" class="headerlink" title="2、数据获取能力"></a>2、数据获取能力</h3><h4 id="2-1-内部数据获取"><a href="#2-1-内部数据获取" class="headerlink" title="2.1 内部数据获取"></a>2.1 内部数据获取</h4><p>内部数据可以根据“商业画布”中各个环节产生的数据进行划分。其中，重点需要关注的是：用户数据和财务数据。其中，用户数据一般通过前端埋点获取，而财务数据通过传统的ERP系统或后端埋点的方式获取。</p>
+<p>对于内部数据的获取，我们需要做到了解数据从无到有产生的中间过程，这有助于我们清楚的理解数据代表的业务含义和数据质量的好坏。通常，如果我们只需要进行销售数据分析、经营数据分析，那么熟练掌握SQL提取现有数据就够了，但是，当我们需要进行用户数据分析、产品数据分析时，则需要进一步了解数据埋点的原理和设计数据埋点方案，针对特定业务问题，分析师不仅需要知道通过什么样的数据去分析解决，还得清楚如何获取到这些数据，即用户在何时何地产生何种行为的数据（简称<strong>事件数据</strong>）。</p>
+<p>数据埋点分为前端埋点和后端埋点。区分他们的简单方法就是：前端埋点是在客户端中记录埋点数据，后端埋点则是上报服务器记录埋点数据。</p>
+<p><code>经验贴：只有在实际工作中做过埋点工作，才能对底层的数据口径理解透彻。比如，虽然DAU我们都知道是叫做日活跃用户数，但每个公司，甚至每个业务对它的实际定义都不一样。什么叫做“日”，一个用户23:59分进入APP，次日00:05分退出算哪天的DAU？什么叫做“活跃”，是用户看到了“开屏广告”就算活跃，还是用户看到“首页”算活跃，还是必须上报后端调起启动接口才算？只有你对一个指标、一个数据了解到这种程度，你才算真正理解了这个数据。因此，等下次你看到某一个数据时，请去真正的去关心和了解它的出生和过往经历吧，要知道他经历种种磨难能走到你面前也实属不易。</code></p>
+<h4 id="2-2-外部数据获取"><a href="#2-2-外部数据获取" class="headerlink" title="2.2 外部数据获取"></a>2.2 外部数据获取</h4><p>外部数据通常通过调研和爬虫的方式进行获取。</p>
+<p>常见的外部数据获取网站有：</p>
+<ul>
+<li><a href="https://www.data.ai/cn/">https://www.data.ai/cn/</a></li>
+<li><a href="https://www.qimai.cn/">https://www.qimai.cn/</a></li>
+<li><a href="https://sensortower-china.com/zh-cn">https://sensortower-china.com/zh-cn</a></li>
+<li><a href="http://mi.talkingdata.com/">http://mi.talkingdata.com/</a></li>
+<li>……</li>
+</ul>
+<p>常见的爬虫工具有：Python、八爪鱼等</p>
+<h3 id="3、数据处理能力"><a href="#3、数据处理能力" class="headerlink" title="3、数据处理能力"></a>3、数据处理能力</h3><h4 id="3-1-结构化数据处理"><a href="#3-1-结构化数据处理" class="headerlink" title="3.1 结构化数据处理"></a>3.1 结构化数据处理</h4><p>结构化数据可以简单理解为是关系型数据库管理的数据，按数据量级大小，可以选择合适工具进行数据处理：</p>
+<ul>
+<li>Excel：单表≤10W行记录</li>
+<li>Power BI：单表≤100W行记录</li>
+<li>MySQL：单表≤1000W行记录</li>
+<li>Python：单表≤1亿行记录</li>
+<li>Hive：单表＞1亿行记录</li>
+</ul>
+<p>熟练使用以上各种工具进行常规的数据处理工作，是一名数据分析师的基础技能。</p>
+<h4 id="3-2-非结构化数据处理"><a href="#3-2-非结构化数据处理" class="headerlink" title="3.2 非结构化数据处理"></a>3.2 非结构化数据处理</h4><p>非结构化数据是指如文本、图片、视频等等的数据，针对这块的数据处理需求，在业务分析师当中不太常见。</p>
+<h3 id="4、数据分析能力"><a href="#4、数据分析能力" class="headerlink" title="4、数据分析能力"></a>4、数据分析能力</h3><h4 id="4-1-描述统计分析"><a href="#4-1-描述统计分析" class="headerlink" title="4.1 描述统计分析"></a>4.1 描述统计分析</h4><p>描述统计分析是指使用图表或者统计量描述数据的现状，因此它又可以分为：图表描述分析和统计量描述分析。</p>
+<p>图表描述相对简单，它的特点是能快速直观的观察数据变化的趋势、对比数据的好坏。统计量描述分析则要求我们熟悉各种统计量对应的业务含义（复杂问题中，还需要我们新定义业务统计量指标，这对我们的数据转换能力要求更高），从而选取正确的统计量对业务现状进行描述分析。</p>
+<p>详细的描述统计方法可参考我的另一篇文章：<a href="https://guiyiblog.com/p/20d88d5d/">描述统计学</a></p>
+<h4 id="4-2-推断统计分析"><a href="#4-2-推断统计分析" class="headerlink" title="4.2 推断统计分析"></a>4.2 推断统计分析</h4><p>推断统计分析主要是基于大数定律和中心极限定理，采用假设检验的思想，对抽取的样本数据进行推断分析。根据分析目的的不同，又可将其分为相关性分析和因果分析。</p>
+<p>相关性分析是研究变量之间是否相关，而不考虑他们的因果。比如：“一到冬天，我就长膘。”只能说明季节和我的体重有相关关系，但不能说有因果关系。因为“长膘”的真正原因是冬天吃得多（摄入能量多），动的少（消耗能量少）。季节只是和“长膘”相关，但不是导致“长膘”的原因。在业务场景中，最为广泛的应用就是<strong>AB测试</strong>。</p>
+<p>因果分析则需要我们先确定好因变量，再选取适当的自变量，研究其对因变量的影响，从而推导出他们因果关系的数学公式。在业务场景中便是我们常见的<strong>归因和预测分析</strong>。</p>
+<p>详细的推断统计方法可参考我的另一篇文章：<a href="https://guiyiblog.com/p/b56a4992/">推断统计学</a></p>
+<h3 id="5、数据表达能力"><a href="#5、数据表达能力" class="headerlink" title="5、数据表达能力"></a>5、数据表达能力</h3><h4 id="5-1-图表语言表达"><a href="#5-1-图表语言表达" class="headerlink" title="5.1 图表语言表达"></a>5.1 图表语言表达</h4><p>在实际业务中，图表按层级可分为：可视化对象（Visual）、报表（Report）、仪表板（Dashboard）。</p>
+<p>其中，主要区分报表和仪表板。报表主要以描述数据为主，不以引导读者得到数据结论为目的；而仪表板则是采用数据可视化的方式向读者讲述“故事”，需要引导读者从数据中得出结论。</p>
+<p>如下所示，仪表板在制作前的布局设计：</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201181506802.png"></p>
+<p>仪表板设计原则可遵循以下几点：</p>
+<ol>
+<li><strong>越简单越好。</strong>只保留与主题强相关的数据信息，拒绝使用各种花里胡哨的格式</li>
+<li><strong>使用布局和位置来吸引焦点。</strong>根据研究表明，读者的阅读位置的顺序优先级可以用下图来概况：<img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201181224467.png"></li>
+<li>统一格式化数字。合理使用逗号分割数字、保留小数位数、添加数字单位，帮助读者快速阅读理解数据含义。</li>
+<li>有效的使用标题和标签。始终在仪表板或报表上包含时间，如统计日期、更新日期等。为每个可视化对象使用描述性标题。理想的标签颜色有：软灰色、棕色、蓝色和绿色。</li>
+</ol>
+<p>常用的可视化工具有：Excel、Power BI、Tableau、PPT等等，根据使用的业务场景，可合理选择工具进行可视化图表的制作。</p>
+<h4 id="5-2-文字语言表达"><a href="#5-2-文字语言表达" class="headerlink" title="5.2 文字语言表达"></a>5.2 文字语言表达</h4><p>文字语言是数据分析师呈现分析结论、工作成功的重要手段，因此，在平时工作生活中，也需要提醒自己练习。关于这方面的训练方法，可以参考《金字塔原理》，里面详细阐述了使表达根据逻辑性的原理和训练方法，毕竟有一句话告诉我们：你表达没有逻辑，不是因为你不会说话，而是因为你不会思考。当你的思维有了逻辑，表达自然也就有了逻辑。</p>
+]]></content>
+      <categories>
+        <category>职业发展</category>
+        <category>能力模型</category>
+      </categories>
+      <tags>
+        <tag>能力模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>财务成本管理（1）</title>
+    <url>/p/314152c6/</url>
+    <content><![CDATA[<h2 id="第1章-财务管理基本原理"><a href="#第1章-财务管理基本原理" class="headerlink" title="第1章 财务管理基本原理"></a>第1章 财务管理基本原理</h2><p>财务管理的内容和职能</p>
+<p>财务管理的目标与利益相关者的要求</p>
+<p>财务管理的核心概念</p>
+<p>财务管理的基本理论</p>
+<p>金融工具与金融市场</p>
+<p>第2章 财务报表分析与财务预测</p>
+<p>财务报表分析的目的和方法</p>
+<p>财务比率分析</p>
+<p>财务预测的步骤和方法</p>
+<p>增长率与资本需求的测算</p>
+<p>第3章 价值评估基础</p>
+<p>利率</p>
+<p>货币的时间价值</p>
+<p>风险和报酬</p>
+<p>第4章 资本成本</p>
+<p>资本成本的构成和用途</p>
+<p>债务资本成本的估计</p>
+<p>普通股资本成本的估计</p>
+<p>混合筹资资本成本的估计</p>
+<p>加权平均资本成本的计算</p>
+<p>第5章 投资项目资本预算</p>
+<p>投资项目类型和评价程序</p>
+<p>投资项目的评价方法</p>
+<p>投资项目现金流量的估计</p>
+<p>投资项目的风险衡量与敏感性分析</p>
+<p>第6章 债券、股票价值评估</p>
+<p>债券价值评估</p>
+<p>普通股价值评估</p>
+<p>混合筹资工具价值评估</p>
+<p>第7章 期权价值评估</p>
+<p>期权的概念、类型和投资策略</p>
+<p>金融期权价值评估</p>
+<p>第8章 企业价值评估</p>
+<p>企业价值评估的目的和对象</p>
+<p>企业价值评估方法</p>
+<p>第9章 资本结构</p>
+<p>资本结构理论</p>
+<p>资本结构决策分析</p>
+<p>杠杆系数的衡量</p>
+<p>第10章 股利分配、股票分割与股票回购</p>
+<p>股利理论与股利政策</p>
+<p>股利种类、支付程序与分配方案</p>
+<p>股票分割与股票回购</p>
+<p>第11章 长期筹资</p>
+<p>普通股筹资</p>
+<p>长期债务筹资</p>
+<p>混合筹资</p>
+<p>租赁筹资</p>
+<p>第12章 营运资本管理</p>
+<p>营运资本管理策略</p>
+<p>现金管理</p>
+<p>应收款项管理</p>
+<p>短期债务筹资</p>
+<p>第13章 产品成本计算</p>
+<p>产品成本分类与变动成本法</p>
+<p>产品成本的归集和分配</p>
+<p>产品成本计算的品种法</p>
+<p>产品成本计算的分批法</p>
+<p>产品成本计算的分步法</p>
+<p>第14章 标准成本法</p>
+<p>标准成本及其制定</p>
+<p>标准成本的差异分析</p>
+<p>第15章 作业成本法</p>
+<p>作业成本法的概念与特点</p>
+<p>作业成本法的计算方法</p>
+<p>作业成本管理</p>
+<p>第16章 本量利分析</p>
+<p>本量利的一般关系</p>
+<p>保本分析</p>
+<p>保利分析</p>
+<p>利润敏感性分析</p>
+<p>第17章 短期经营决策</p>
+<p>短期经营决策概述</p>
+<p>生产决策</p>
+<p>定价决策</p>
+<p>订货决策</p>
+<p>第18章 全面预算</p>
+<p>全面预算概述</p>
+<p>全面预算的编制方法</p>
+<p>营业预算的编制</p>
+<p>财务预算的编制</p>
+<p>第19章 责任会计</p>
+<p>企业组织结构与责任中心划分</p>
+<p>成本中心</p>
+<p>利润中心</p>
+<p>投资中心</p>
+<p>第20章 业绩评价</p>
+<p>财务业绩评价与非财务业绩评价</p>
+<p>经济增加值</p>
+<p>平衡计分卡</p>
+<p>第21章 管理会计报告</p>
+<p>内部责任中心业绩报告</p>
+<p>质量成本报告</p>
+]]></content>
+      <categories>
+        <category>职业发展</category>
+        <category>财务数据分析</category>
+      </categories>
+      <tags>
+        <tag>注会</tag>
+      </tags>
   </entry>
   <entry>
     <title>在线教育全链路数据分析</title>
@@ -346,7 +558,7 @@
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>K12在线教育的这个数据项目，是我个人第一次从0到1做独立完成的一个项目，这个项目帮助我从一名初级数据分析师（只具备接需求和取数统计的分析师）成长为一名中级数据分析师（具备结合业务独立搭建数据分析监控&amp;分析体系，并业务数据模型的设计、开发和上线的能力），且让我更加明确了一名数据分析师需要扎根在业务当中，继续培养以业务为引导，用数据指导业务的能力。</p>
 ]]></content>
       <categories>
-        <category>项目作品</category>
+        <category>项目实战</category>
       </categories>
   </entry>
   <entry>
@@ -385,7 +597,7 @@
 <p>参考网站：<a href="https://www.netpromoter.com/compare/">https://www.netpromoter.com/compare/</a></p>
 ]]></content>
       <categories>
-        <category>项目作品</category>
+        <category>项目实战</category>
       </categories>
   </entry>
   <entry>
@@ -447,7 +659,7 @@
 <p>4）在北京、上海、深圳寻找高薪职位的概率更大；</p>
 ]]></content>
       <categories>
-        <category>项目作品</category>
+        <category>项目实战</category>
       </categories>
   </entry>
   <entry>
@@ -503,7 +715,7 @@
 
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -576,7 +788,7 @@
 <p>当你的浏览器中地址栏输入地址并回车的一瞬间到页面能够展示回来，经历了什么？</p>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -637,7 +849,7 @@
 
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -691,7 +903,7 @@
 </ol>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -768,7 +980,7 @@
 <p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220904100826164.png"></p>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -864,7 +1076,7 @@
 <p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220827144825570.png" alt="image-20220827144825570"></p>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>HTML</category>
       </categories>
       <tags>
@@ -885,7 +1097,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在 Java 中操作 HDFS, 主要涉及以下 Class</span></span><br><span class="line"><span class="comment">1. Configuration：该类的对象封装了客户端或者服务器的配置</span></span><br><span class="line"><span class="comment">2. FileSystem：该类的对象是一个文件系统对象, 可以用该对象的一些方法来对文件进行操作, 通过FileSystem 的静态方法 get 获得该对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.commons.compress.utils.IOUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URI;</span><br><span class="line"><span class="keyword">import</span> java.net.URISyntaxException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HdfsClientOpt</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">HdfsClientOpt</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HdfsClientOpt</span>();</span><br><span class="line">        client.getFileSystem();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">// 获取FileSystem</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式一：set+get</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getFileSystem</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//1.创建一个Configuration实例化对象</span></span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>();</span><br><span class="line">        <span class="comment">//2.设置文件系统类型</span></span><br><span class="line">        configuration.set(<span class="string">&quot;fs.defaultFS&quot;</span>, <span class="string">&quot;hdfs://hadoop10:8020&quot;</span>);</span><br><span class="line">        <span class="comment">//3.获取文件系统</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(configuration);</span><br><span class="line">        <span class="comment">//4.打印输出</span></span><br><span class="line">        System.out.println(fileSystem);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式二：set方式+通过newInstance</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getFileSystem2</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//1:创建Configuration对象</span></span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">conf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>();</span><br><span class="line">        <span class="comment">//2:设置文件系统类型</span></span><br><span class="line">        conf.set(<span class="string">&quot;fs.defaultFS&quot;</span>, <span class="string">&quot;hdfs://hadoop10:8020&quot;</span>);</span><br><span class="line">        <span class="comment">//3:获取指定文件系统</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.newInstance(conf);</span><br><span class="line">        <span class="comment">//4:输出测试</span></span><br><span class="line">        System.out.println(fileSystem);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式三：new URI+get</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getFileSystem3</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>), <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        System.out.println(<span class="string">&quot;fileSystem:&quot;</span> + fileSystem);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式四：newInstance+get</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getFileSystem4</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.newInstance(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>), <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        System.out.println(<span class="string">&quot;fileSystem:&quot;</span> + fileSystem);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//文件的遍历</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * hdfs文件的遍历</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">listFiles</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException &#123;</span><br><span class="line">        <span class="comment">//1、获取FileSystem实例</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        <span class="comment">//2、调用方法listFiles 获取 /目录下所有的文件信息</span></span><br><span class="line">        RemoteIterator&lt;LocatedFileStatus&gt; iterator = fileSystem.listFiles(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>), <span class="literal">true</span>);</span><br><span class="line">        <span class="comment">//3、遍历迭代器</span></span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            <span class="type">LocatedFileStatus</span> <span class="variable">fileStatus</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">            <span class="comment">//获取文件的绝对路径 : hdfs://hadoop10:8020/xxx</span></span><br><span class="line">            System.out.println(fileStatus.getPath() + <span class="string">&quot;======&quot;</span></span><br><span class="line">                    + fileStatus.getPath().getName());</span><br><span class="line">            System.out.println(fileStatus.getPermission());</span><br><span class="line">            System.out.println(fileStatus.getOwner());</span><br><span class="line">            System.out.println(fileStatus.getGroup());</span><br><span class="line">            System.out.println(fileStatus.getLen());</span><br><span class="line">            System.out.println(fileStatus.getModificationTime());</span><br><span class="line">            System.out.println(fileStatus.getReplication());</span><br><span class="line">            System.out.println(fileStatus.getBlockSize());</span><br><span class="line">            System.out.println(fileStatus.getPath().getName());</span><br><span class="line">            <span class="comment">//文件的block信息</span></span><br><span class="line">            BlockLocation[] blockLocations = fileStatus.getBlockLocations();</span><br><span class="line">            <span class="keyword">for</span> (BlockLocation blockLocation : blockLocations) &#123;</span><br><span class="line">                String[] hosts = blockLocation.getHosts();</span><br><span class="line">                System.out.println(<span class="string">&quot;block数量为: &quot;</span> + hosts.length);</span><br><span class="line">                <span class="keyword">for</span> (String host : hosts) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;主机为: &quot;</span> + host);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//创建文件夹</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建文件夹</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">mkdirs</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException,</span><br><span class="line">            InterruptedException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem实例</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>(), <span class="string">&quot;root&quot;</span>);</span><br><span class="line">        <span class="comment">//2:创建文件夹</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">bl</span> <span class="operator">=</span> fileSystem.mkdirs(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/aaa/bbb/ccc&quot;</span>));</span><br><span class="line">        System.out.println(bl);</span><br><span class="line">        <span class="comment">//3: 关闭FileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//文件的上传</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件的上传</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">uploadFile</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException,</span><br><span class="line">            InterruptedException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>(), <span class="string">&quot;root&quot;</span>);</span><br><span class="line">        <span class="comment">//2:调用方法，实现上传</span></span><br><span class="line">        fileSystem.copyFromLocalFile(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;D://test1.txt&quot;</span>), <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>));</span><br><span class="line">        <span class="comment">//3:关闭FileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//文件的下载</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件的下载方式一：使用copyToLocalFile</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">downloadFile1</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        <span class="comment">//2:调用方法，实现文件的下载</span></span><br><span class="line">        <span class="comment">// boolean delSrc 指是否将原文件删除</span></span><br><span class="line">        <span class="comment">// Path src 指要下载的文件路径</span></span><br><span class="line">        <span class="comment">// Path dst 指将文件下载到的路径</span></span><br><span class="line">        <span class="comment">// boolean useRawLocalFileSystem 是否开启文件校验 就是是否生成windows系统是上</span></span><br><span class="line">        <span class="comment">//面那个crc文件, 设置true，不会有crc文件。设置false在本地会有crc文件。</span></span><br><span class="line">        fileSystem.copyToLocalFile(<span class="literal">false</span>, <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/bb/cc/test1.txt&quot;</span>), <span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Path</span>(<span class="string">&quot;D://test1_down1.txt&quot;</span>), <span class="literal">false</span>);</span><br><span class="line">        <span class="comment">//3:关闭FileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件的下载方式二：通过输入输出流</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">downloadFile2</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        <span class="comment">//2:获取hdfs的输入流</span></span><br><span class="line">        <span class="type">FSDataInputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> fileSystem.open(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/test1.txt&quot;</span>));</span><br><span class="line">        <span class="comment">//3:获取本地路径的输出流</span></span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span></span><br><span class="line">                <span class="title class_">FileOutputStream</span>(<span class="string">&quot;D://test1_down2.txt&quot;</span>);</span><br><span class="line">        <span class="comment">//4:文件的拷贝</span></span><br><span class="line">        IOUtils.copy(inputStream, outputStream);</span><br><span class="line">        <span class="comment">//5:关闭流</span></span><br><span class="line">        IOUtils.closeQuietly(inputStream);</span><br><span class="line">        IOUtils.closeQuietly(outputStream);</span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//删除文件或文件夹</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteFileOrDir</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException,</span><br><span class="line">            InterruptedException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem（分布式文件系统）</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>(),<span class="string">&quot;root&quot;</span>);</span><br><span class="line">        <span class="comment">//2、删除操作</span></span><br><span class="line">        <span class="comment">//boolean b = fileSystem.delete(new Path(&quot;/test_big.txt&quot;));</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> fileSystem.delete(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/aa&quot;</span>));</span><br><span class="line">        System.out.println(b);</span><br><span class="line">        <span class="comment">//3、关闭FileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//文件的合并上传</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 小文件的合并上传</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">mergeFile</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException,</span><br><span class="line">            InterruptedException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem（分布式文件系统）</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>(),<span class="string">&quot;root&quot;</span>);</span><br><span class="line">        <span class="comment">//2:获取hdfs大文件的输出流</span></span><br><span class="line">        <span class="type">FSDataOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> fileSystem.create(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Path</span>(<span class="string">&quot;/test_big.txt&quot;</span>));</span><br><span class="line">        <span class="comment">//3:获取一个本地文件系统</span></span><br><span class="line">        <span class="type">LocalFileSystem</span> <span class="variable">localFileSystem</span> <span class="operator">=</span> FileSystem.getLocal(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Configuration</span>());</span><br><span class="line">        <span class="comment">//4:获取本地文件夹下所有文件的详情</span></span><br><span class="line">        FileStatus[] fileStatuses = localFileSystem.listStatus(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Path</span>(<span class="string">&quot;D:\\input&quot;</span>));</span><br><span class="line">        <span class="comment">//5:遍历每个文件，获取每个文件的输入流</span></span><br><span class="line">        <span class="keyword">for</span> (FileStatus fileStatus : fileStatuses) &#123;</span><br><span class="line">            <span class="type">FSDataInputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span></span><br><span class="line">                    localFileSystem.open(fileStatus.getPath());</span><br><span class="line">        <span class="comment">//6:将小文件的数据复制到大文件</span></span><br><span class="line">            IOUtils.copy(inputStream, outputStream);</span><br><span class="line">            IOUtils.closeQuietly(inputStream);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//7:关闭流</span></span><br><span class="line">        IOUtils.closeQuietly(outputStream);</span><br><span class="line">        localFileSystem.close();</span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>大数据</category>
+        <category>数据工程</category>
         <category>Hadoop</category>
       </categories>
       <tags>
@@ -1173,7 +1385,7 @@ hadoop04： blk_02 blk_04
 <h4 id="setrep：设置-hdfs-中文件的副本数量"><a href="#setrep：设置-hdfs-中文件的副本数量" class="headerlink" title="-setrep：设置 hdfs 中文件的副本数量"></a>-setrep：设置 hdfs 中文件的副本数量</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">功能：设置 hdfs 中文件的副本数量</span><br><span class="line">示例：hadoop fs -setrep 3 /aaa/jdk.tar.gz</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>大数据</category>
+        <category>数据工程</category>
         <category>Hadoop</category>
       </categories>
       <tags>
@@ -1216,7 +1428,7 @@ hadoop04： blk_02 blk_04
 <p>6、Hadoop 三大发行版本：Apache、Cloudera、Hortonworks</p>
 ]]></content>
       <categories>
-        <category>大数据</category>
+        <category>数据工程</category>
         <category>Hadoop</category>
       </categories>
       <tags>
@@ -1370,7 +1582,7 @@ hadoop04： blk_02 blk_04
 
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>JavaSE</category>
       </categories>
       <tags>
@@ -1438,7 +1650,7 @@ hadoop04： blk_02 blk_04
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhou.arr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 稀疏数组的压缩存储</span></span><br><span class="line"><span class="comment">// 将n*m稀疏数组用N*3的数组存储每个非0元素的地址和值（行、列、值）</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    第0行        n                     m                     非0元素个数</span></span><br><span class="line"><span class="comment">    第1行        第1个非0元素的行号       第1个非0元素的列号       第1个非0元素的值</span></span><br><span class="line"><span class="comment">    第2行        第2个非0元素的行号       第2个非0元素的列号       第2个非0元素的值</span></span><br><span class="line"><span class="comment">    第3行        第3个非0元素的行号       第3个非0元素的列号       第3个非0元素的值</span></span><br><span class="line"><span class="comment">    ...</span></span><br><span class="line"><span class="comment">    第N行        第N个非0元素的行号       第N个非0元素的列号       第N个非0元素的值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo03</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[][] nums = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line">        nums[<span class="number">2</span>][<span class="number">3</span>] = <span class="number">1</span>;  <span class="comment">// 第2行第3列，行号和列号从0开始</span></span><br><span class="line">        nums[<span class="number">5</span>][<span class="number">6</span>] = <span class="number">2</span>;</span><br><span class="line">        nums[<span class="number">9</span>][<span class="number">9</span>] = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 打印稀疏数组</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            System.out.println(Arrays.toString(nums[i]));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;===============================&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 压缩存储稀疏数组</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> nums[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i][j] != <span class="number">0</span>) &#123;</span><br><span class="line">                    N++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;N=&quot;</span>+N);</span><br><span class="line">        System.out.println(<span class="string">&quot;===============================&quot;</span>);</span><br><span class="line">        <span class="type">int</span>[][] arr = <span class="keyword">new</span> <span class="title class_">int</span>[N+<span class="number">1</span>][<span class="number">3</span>];</span><br><span class="line">        N = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i][j] != <span class="number">0</span>) &#123;</span><br><span class="line">                    N++;</span><br><span class="line">                    arr[N][<span class="number">0</span>] = i;</span><br><span class="line">                    arr[N][<span class="number">1</span>] = j;</span><br><span class="line">                    arr[N][<span class="number">2</span>] = nums[i][j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[<span class="number">0</span>][<span class="number">0</span>] = n;</span><br><span class="line">        arr[<span class="number">0</span>][<span class="number">1</span>] = m;</span><br><span class="line">        arr[<span class="number">0</span>][<span class="number">2</span>] = N;</span><br><span class="line">        <span class="comment">// 打印</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N+<span class="number">1</span>; i++) &#123;</span><br><span class="line">            System.out.println(Arrays.toString(arr[i]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>JavaSE</category>
       </categories>
       <tags>
@@ -1510,7 +1722,7 @@ hadoop04： blk_02 blk_04
 <h3 id="打印一个三角形"><a href="#打印一个三角形" class="headerlink" title="打印一个三角形"></a>打印一个三角形</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhou.process;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印一个三角形</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo09</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">5</span>; j &gt;= i; j--) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= i; k++) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> <span class="number">1</span>; m &lt; i; m++) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>JavaSE</category>
       </categories>
       <tags>
@@ -1966,7 +2178,7 @@ hadoop04： blk_02 blk_04
 <h3 id="包机制"><a href="#包机制" class="headerlink" title="包机制"></a>包机制</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 包语句的语法格式</span></span><br><span class="line"><span class="keyword">package</span> pkg1[.pkg2[.pkg3...]];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入包</span></span><br><span class="line"><span class="keyword">import</span> package1[.package2...].(classname|*);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一般利用公司域名倒置作为报名：com.zhou.×××</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Java开发</category>
         <category>JavaSE</category>
       </categories>
       <tags>
@@ -2084,11 +2296,11 @@ hadoop04： blk_02 blk_04
 <p>SSH是由客户端和服务端的软件组成的<br>服务端是一个守护进程(sshd)，他在后台运行并响应来自客户端的连接请求。<br>客户端包含ssh程序以及像scp（远程拷贝）、slogin（远程登陆）、sftp（安全文件传输）等其他的应用程序。</p>
 <p>首先确保服务器是否安装了ssh服务：<br> [root@mycentos7 ~]# yum list installed | grep openssh-server<br>正常情况下，CentOS7是安装了的。或者你只要能使用SecureCRT、Xshell等工具连接，那都是正常的。</p>
 <h3 id="Linux中SSH协议：具体配置"><a href="#Linux中SSH协议：具体配置" class="headerlink" title="Linux中SSH协议：具体配置"></a>Linux中SSH协议：具体配置</h3><p>准备两台虚拟机：A和B，假如A要登陆B，或者安全访问B</p>
-<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#114;&#x6f;&#x6f;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#49;&#50;&#x33;&#x2e;&#x31;&#53;&#x32;">&#114;&#x6f;&#x6f;&#116;&#64;&#x31;&#57;&#50;&#x2e;&#49;&#x36;&#56;&#x2e;&#49;&#50;&#x33;&#x2e;&#x31;&#53;&#x32;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
+<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#x72;&#111;&#x6f;&#116;&#64;&#x31;&#57;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#49;&#50;&#x33;&#x2e;&#49;&#53;&#x32;">&#x72;&#111;&#x6f;&#116;&#64;&#x31;&#57;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#49;&#50;&#x33;&#x2e;&#49;&#53;&#x32;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
 <h3 id="Linux中SSH协议：原理"><a href="#Linux中SSH协议：原理" class="headerlink" title="Linux中SSH协议：原理"></a>Linux中SSH协议：原理</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220415151926777.png" alt="image-20220415151926777"></p>
 ]]></content>
       <categories>
-        <category>大数据</category>
+        <category>数据工程</category>
         <category>Linux</category>
       </categories>
       <tags>
@@ -2316,7 +2528,7 @@ hadoop04： blk_02 blk_04
 
 ]]></content>
       <categories>
-        <category>大数据</category>
+        <category>数据工程</category>
         <category>Linux</category>
       </categories>
       <tags>
@@ -2466,7 +2678,7 @@ hadoop04： blk_02 blk_04
 <p><strong>Linux终端工具：</strong>SecureCRT、SFTP工具、Filezilla工具、Xshell</p>
 ]]></content>
       <categories>
-        <category>大数据</category>
+        <category>数据工程</category>
         <category>Linux</category>
       </categories>
       <tags>
@@ -2562,7 +2774,7 @@ hadoop04： blk_02 blk_04
 </ol>
 ]]></content>
       <categories>
-        <category>大数据</category>
+        <category>数据工程</category>
         <category>Linux</category>
       </categories>
       <tags>
@@ -2628,7 +2840,7 @@ hadoop04： blk_02 blk_04
 
 ]]></content>
       <categories>
-        <category>大数据</category>
+        <category>数据工程</category>
         <category>Git</category>
       </categories>
       <tags>
@@ -2668,7 +2880,7 @@ hadoop04： blk_02 blk_04
 ]]></content>
       <categories>
         <category>数据分析</category>
-        <category>方法论</category>
+        <category>统计分析方法</category>
       </categories>
       <tags>
         <tag>量化分析</tag>
@@ -2995,7 +3207,8 @@ hadoop04： blk_02 blk_04
 <p><strong>其中，自变量选择方法有：</strong> 最优子集法、逐步回归法、Lasso回归法、变量降维法</p>
 ]]></content>
       <categories>
-        <category>统计学</category>
+        <category>数据分析</category>
+        <category>统计分析方法</category>
       </categories>
       <tags>
         <tag>统计推断</tag>
@@ -3104,7 +3317,8 @@ hadoop04： blk_02 blk_04
 <p>若采用P值法决策，则先用样本数据计算出P值，再与事先人为给定的显著性水平比较，若P&lt;  则拒绝原假设；否则就不拒绝原假设。</p>
 ]]></content>
       <categories>
-        <category>统计学</category>
+        <category>数据分析</category>
+        <category>统计分析方法</category>
       </categories>
       <tags>
         <tag>统计推断</tag>
@@ -3295,7 +3509,8 @@ hadoop04： blk_02 blk_04
 <p>（2） 必须遵守“互斥原则”，即总体中任一单位只能归属于一组，而不能同时可能归属于几个组。</p>
 ]]></content>
       <categories>
-        <category>统计学</category>
+        <category>数据分析</category>
+        <category>统计分析方法</category>
       </categories>
       <tags>
         <tag>描述统计</tag>
@@ -3490,11 +3705,12 @@ Cramer&#39;s V        : 0.322
 </code></pre>
 ]]></content>
       <categories>
-        <category>统计学</category>
+        <category>数据分析</category>
+        <category>统计分析方法</category>
       </categories>
       <tags>
-        <tag>R语言</tag>
         <tag>推断统计</tag>
+        <tag>R语言</tag>
       </tags>
   </entry>
   <entry>
@@ -3588,53 +3804,24 @@ Cramer&#39;s V        : 0.322
 </ol>
 ]]></content>
       <categories>
-        <category>统计学</category>
+        <category>数据分析</category>
+        <category>统计分析方法</category>
       </categories>
       <tags>
-        <tag>描述统计</tag>
         <tag>R语言</tag>
+        <tag>描述统计</tag>
       </tags>
   </entry>
   <entry>
-    <title>NPS用户净推荐分析</title>
-    <url>/p/e056df13/</url>
-    <content><![CDATA[<p>NPS (Net Promoter Score) 可以<strong>衡量客户体验</strong>并<strong>预测业务增长</strong>。这一指标改变了商业世界，为全球的客户体验管理提供了可以参考的核心指标。</p>
-<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/NPS.jpg" alt="NPS"></p>
+    <title>博客目录结构</title>
+    <url>/p/7f337b91/</url>
+    <content><![CDATA[<iframe title="博客目录结构" width="800" height="486" src="https://www.processon.com/embed/6471ae2978dff312e1bd73f7"></iframe>
+
   <span id="more"></span>
 
-<h2 id="NPS-计算"><a href="#NPS-计算" class="headerlink" title="NPS 计算"></a>NPS 计算</h2><p>调研提问方式：”您有多大可能把我们（或这个产品&#x2F;服务&#x2F;品牌等等）推荐给朋友或同事？请从0-10分打分。“</p>
-<p>受访者分为以下几类：</p>
-<ul>
-<li><strong>推荐者（Promoter）</strong>（9-10分）：是忠诚的爱好者，他们会继续购买并推荐他人，从而促进增长。</li>
-<li><strong>被动者（Passive）</strong>（7-分）：很满意，但很容易受到竞争产品的攻击。</li>
-<li><strong>批评者（Detractor）</strong>（0-6分）：是不满意的客户，他们可能会通过负面的口碑来损害您的品牌并阻碍增长。</li>
-</ul>
-<p>从推荐者的百分比中减去批评者的百分比会得出净推荐者分数，其范围可以从低到 -100（如果每个客户都是批评者）到最高 100（如果每个客户都是推荐者）。</p>
-<p><strong>净推荐值(NPS)&#x3D;(推荐者数&#x2F;总样本数)×100% - (批评者数&#x2F;总样本数)×100%</strong></p>
-<h3 id="CEM的核心指标"><a href="#CEM的核心指标" class="headerlink" title="CEM的核心指标"></a>CEM的核心指标</h3><p>CEM （Customer Experience Management）</p>
-<p>将NPS用作衡量客户对品牌整体印象的关键指标。因为NPS是增长的领先指标，所以它为您的客户体验管理（CEM）计划提供了最佳的选择。将NPS与来自客户历程中各个角度的其他指标和见解相辅相成，您可以全面，切实地查看客户体验绩效。</p>
-<h2 id="NPS-预测增长"><a href="#NPS-预测增长" class="headerlink" title="NPS 预测增长"></a>NPS 预测增长</h2><p>改善客户体验的商业利益</p>
-<p>在改变商业世界十多年后，NPS仍然是唯一可以预测业务增长的客户体验。<strong>NPS 的经济学源于推荐者，被动者和批评者的行为差异。</strong>通过多种方式集中精力提高NPS，以提高业务绩效。</p>
-<h3 id="更高的利润和支出"><a href="#更高的利润和支出" class="headerlink" title="更高的利润和支出"></a>更高的利润和支出</h3><p><strong>推荐者通常不如其他客户对价格敏感</strong>，因为他们认为他们从贵公司整体上获得了良好的价值。对于<strong>价格更敏感的批评者</strong>而言，情况恰恰相反。同时，<strong>推荐者购买的商品比批评者购买的商品更多</strong>。他们倾向于通过自己喜欢的品牌整合更多的商品类别。<strong>推荐者对新产品和品牌扩展的兴趣</strong>也超过了批评者或被动者。</p>
-<h3 id="更高的保留率"><a href="#更高的保留率" class="headerlink" title="更高的保留率"></a>更高的保留率</h3><p>批评者通常比推荐者更容易出现问题，这意味着他们与您的公司之间的关系较短且利润较低。挽救那些批评者，将他们变成推荐者，从而并获得更高的利润。（有时候也可以战略性放弃这部分人群，因为批评者的获客成本往往很高，且容易给公司造成负面影响）</p>
-<h3 id="更好的口碑"><a href="#更好的口碑" class="headerlink" title="更好的口碑"></a>更好的口碑</h3><p>有多少新客户是因为声誉或推荐而选择您的公司？这些新客户的终生价值（包括销售或营销费用的任何节省）将大部分来自于推荐者。另一方面，批评者会导致负面的口口相传，因此您可以将这种拖累增长的成本归因于他们。</p>
-<p>总而言之，推荐者可以帮你减少获客成本，提高增长；而批评者则会增加你的获客成本，降低增长。</p>
-<h2 id="比较您的净促销员分数"><a href="#比较您的净促销员分数" class="headerlink" title="比较您的净促销员分数"></a>比较您的净促销员分数</h2><p>NPS基准测试指导您的目标和计划</p>
-<p>“我的 NPS 应该是多少？” 简单的问题，复杂的答案。NPS会因行业，地区或客户特征（例如年龄，收入水平或与公司在一起的时间）而异。</p>
-<p><img src="https://www.netpromoter.com/wp-content/uploads/2016/06/2016-b2c-sps-sector-averages.jpg" alt="B2C基准"></p>
-<p>因此，要了解您的净促销员得分，您<strong>必须将该得分与您的行业内以及直接和间接竞争对手的得分进行比较</strong>。得分高于竞争水平的公司发展更快，更成功。</p>
-<h3 id="使用NPS跟踪用户体验"><a href="#使用NPS跟踪用户体验" class="headerlink" title="使用NPS跟踪用户体验"></a>使用NPS跟踪用户体验</h3><p>NPS 分数是客户体验好坏的标志。NPS高于竞争对手的公司往往会增长更快并取得更大的成功。使用您自己的 NPS 分数（并查看竞争对手的分数），可以来跟踪您为提高客户体验的努力是否成功。</p>
-<p>参考网站：<a href="https://www.netpromoter.com/compare/">https://www.netpromoter.com/compare/</a></p>
-<h2 id="使用Power-BI-搭建-NPS-模型"><a href="#使用Power-BI-搭建-NPS-模型" class="headerlink" title="使用Power BI 搭建 NPS 模型"></a>使用Power BI 搭建 NPS 模型</h2><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/NPS%E6%A8%A1%E5%9E%8B.jpg" alt="NPS模型"></p>
 ]]></content>
       <categories>
-        <category>数据分析</category>
-        <category>方法论</category>
+        <category>说明文档</category>
       </categories>
-      <tags>
-        <tag>用户分析</tag>
-        <tag>NPS</tag>
-        <tag>满意度分析</tag>
-      </tags>
   </entry>
 </search>

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="数据分析师的成长博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>关于搭建数据分析师能力模型的思考 |  归一</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="归一" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-231130-关于搭建数据分析师能力模型的思考"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  关于搭建数据分析师能力模型的思考
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/p/9aa0b83c/" class="article-date">
+  <time datetime="2023-11-30T03:15:06.000Z" itemprop="datePublished">2023-11-30</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/">职业发展</a> / <a class="article-category-link" href="/categories/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/%E8%83%BD%E5%8A%9B%E6%A8%A1%E5%9E%8B/">能力模型</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>自2019年从事数据分析工作以来，已快有5个年头，在这个节点上，有必要重新对职业进行一次深度的思考，来解决当下职业发展的瓶颈期、迷茫期。<br>基于以往对数据分析的学习和在工作中实践理解，让我发现数据分析不仅仅是工具、技能，它更是一种思维方式和解决问题的能力——一种将现实问题转换为数据问题的思维方式，用数据方法解决现实问题的能力。</p>
+<p>我们姑且将这种“能力”<strong>定义为：</strong>在特定业务背景下，将业务问题转换为数据问题，并合理利用数据工具帮助解决业务问题的能力。</p>
+  <span id="more"></span>
+
+<p>根据数据分析解决业务问题的一般思路，可以概况为5项能力，分别为：</p>
+<ol>
+<li>业务理解能力</li>
+<li>数据获取能力</li>
+<li>数据处理能力</li>
+<li>数据分析能力</li>
+<li>数据表达能力</li>
+</ol>
+<p>其中，每项能力又可以做如下拆解：</p>
+<iframe title="博客目录结构" width="800" height="486" src="https://www.processon.com/embed/6549d3d97dbb5d054746fd62"></iframe>
+
+<h3 id="1、业务理解能力"><a href="#1、业务理解能力" class="headerlink" title="1、业务理解能力"></a>1、业务理解能力</h3><h4 id="1-1、背景梳理和问题归纳"><a href="#1-1、背景梳理和问题归纳" class="headerlink" title="1.1、背景梳理和问题归纳"></a>1.1、背景梳理和问题归纳</h4><p>解决问题的第一步是找到并理解问题，做到具体问题具体分析。因此，针对某特定的业务问题，我们需要先了解问题所处的业务背景，然后归纳总结出需要解决的关键问题。</p>
+<p>在这里，我们采用<strong>“商业画布”</strong>中的方法论用来快速梳理业务背景，归纳业务核心问题。</p>
+<p>商业画布由 9 个方格组成，每一个方格的含义分别为：</p>
+<ul>
+<li><strong>VP(Value Propositions)价值主张</strong>——提供的产品或服务</li>
+<li><strong>KS(Customer Segments)客户群体</strong> ——产品或服务的目标用户</li>
+<li><strong>CH(Channels)渠道</strong>——渠道是指企业向客户提供产品或服务的途径和方式。渠道可以包括线上和线下的销售渠道、推广渠道、售后服务渠道等，以便满足客户需求和提高销售效率。</li>
+<li><strong>CR(Customer Relationships)客户关系</strong>——客户关系是指企业与客户之间建立的关系，以便提高客户忠诚度和满意度。客户关系可以包括个性化服务、快速响应、客户反馈等方式，以便企业能够更好地了解客户需求和反馈。</li>
+<li><strong>RS(Revenue Streams)收入来源</strong>——收入流是指企业从产品或服务销售中获得的收入来源。收入流可以基于产品或服务的不同属性、销售渠道、客户类型等多种因素进行分类，以便企业能够更好地了解市场需求和收益结构。</li>
+<li><strong>KR(Key Resources)核心资源</strong>——关键资源是指企业为提供产品或服务所必须拥有的资源和能力。关键资源可以包括物质资源、人力资源、技术资源等多种形式，以便企业能够更好地保持竞争优势和提高产品或服务的质量和效率。</li>
+<li><strong>KA(Key Activity)关键活动</strong>——关键活动是指企业必须执行的核心活动，以提供产品或服务并实现商业目标。关键业务活动可以包括生产、运营、销售、市场营销等多种活动，以便企业能够更好地实现商业战略和目标。</li>
+<li><strong>CS(Cost Structure)成本结构</strong>——成本结构是指企业为提供产品或服务所必须承担的成本和费用。成本结构可以包括直接成本、间接成本、固定成本、变动成本等多种类型，以便企业能够更好地了解成本结构和优化成本管理。</li>
+<li><strong>KP(Key Partnerships)重要合作</strong>——重要合作是指企业与其他组织或企业建立的合作关系，以实现共同的商业目标。重要合作伙伴关系可以包括供应商、合作伙伴、分销商等多种类型，以便企业能够更好地利用外部资源和优势，提高产品或服务的质量和效率。</li>
+</ul>
+<p>Canvas 的使用者需要按照一定的顺序：首先要了解目标用户群（客户群体），再确定他们的需求（价值主张），想好如何接触到他们（渠道），如何维护好他们（客户关系），怎么盈利（收入流），凭借什么筹码实现盈利（核心资源），为了持续盈利必须要做的运营活动（关键活动），能向你伸出援手的人（合伙人），以及根据综合成本定价（成本结构）。</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201151623570.png"></p>
+<p>其中，寻找客户群体，提供价值服务，可以用以下方式进行匹配（原文：<a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1759323222082691709&wfr=spider&for=pc">什么是商业画布？</a>)</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201154607704.png"></p>
+<h4 id="1-2、问题拆解"><a href="#1-2、问题拆解" class="headerlink" title="1.2、问题拆解"></a>1.2、问题拆解</h4><p>问题拆解采用的是<strong>“分而治之”</strong>的思想，将复杂的大问题，拆解成简单的小问题，然后再逐个击破。常用的方法是公式法和分类法，其中分类法需要遵循<strong>MECE法则</strong>，即分类需满足<strong>“相互独立，完全穷尽”</strong>。</p>
+<p>例如，问题是：”如何提高某化妆品的销售额？”</p>
+<p>易知，<code>销售额=销售量×单价</code>，因此，想要提高销售额，则可从提高销售量或者提高单价入手。</p>
+<p>若改化妆品是由多个销售渠道进行销售，则可以用分类法进行拆分：</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201160600102.png"></p>
+<p>通过拆解分析每个渠道的销售额状况，根据实际情况对每个渠道进行目标分配，从而提高总的销售额。</p>
+<h4 id="1-3、问题转换"><a href="#1-3、问题转换" class="headerlink" title="1.3、问题转换"></a>1.3、问题转换</h4><p>问题转换采用的是<strong>“映射转换”</strong>的思想，想要用数据方法解决现实问题，最关键的一步就是将现实问题映射转换为数据问题。在这里，我们可以参考<a target="_blank" rel="noopener" href="https://www.leixue.com/ask/what-is-the-basic-principle-of-relational-database">关系型数据库的基本原理</a>和<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/31021366/answer/2782939791">面向对象编程的思维方式</a>。</p>
+<p>关系型数据库的基本原理是基于关系模型来管理数据，它使用了数学中的关系集合理论来描述数据库中的表格和字段。</p>
+<p>关系模型是一种思维方式，用于把实际世界中的实体（如人、事件、地点等）和关系（如联系、拥有等）表示成一种可供计算机处理的数据结构，从而将实际世界的实体和关系转换成数据库中的表格和字段。</p>
+<p>因此，学习掌握构建E-R关系图是熟练进行“映射转换”必不可少的技能。</p>
+<h3 id="2、数据获取能力"><a href="#2、数据获取能力" class="headerlink" title="2、数据获取能力"></a>2、数据获取能力</h3><h4 id="2-1-内部数据获取"><a href="#2-1-内部数据获取" class="headerlink" title="2.1 内部数据获取"></a>2.1 内部数据获取</h4><p>内部数据可以根据“商业画布”中各个环节产生的数据进行划分。其中，重点需要关注的是：用户数据和财务数据。其中，用户数据一般通过前端埋点获取，而财务数据通过传统的ERP系统或后端埋点的方式获取。</p>
+<p>对于内部数据的获取，我们需要做到了解数据从无到有产生的中间过程，这有助于我们清楚的理解数据代表的业务含义和数据质量的好坏。通常，如果我们只需要进行销售数据分析、经营数据分析，那么熟练掌握SQL提取现有数据就够了，但是，当我们需要进行用户数据分析、产品数据分析时，则需要进一步了解数据埋点的原理和设计数据埋点方案，针对特定业务问题，分析师不仅需要知道通过什么样的数据去分析解决，还得清楚如何获取到这些数据，即用户在何时何地产生何种行为的数据（简称<strong>事件数据</strong>）。</p>
+<p>数据埋点分为前端埋点和后端埋点。区分他们的简单方法就是：前端埋点是在客户端中记录埋点数据，后端埋点则是上报服务器记录埋点数据。</p>
+<p><code>经验贴：只有在实际工作中做过埋点工作，才能对底层的数据口径理解透彻。比如，虽然DAU我们都知道是叫做日活跃用户数，但每个公司，甚至每个业务对它的实际定义都不一样。什么叫做“日”，一个用户23:59分进入APP，次日00:05分退出算哪天的DAU？什么叫做“活跃”，是用户看到了“开屏广告”就算活跃，还是用户看到“首页”算活跃，还是必须上报后端调起启动接口才算？只有你对一个指标、一个数据了解到这种程度，你才算真正理解了这个数据。因此，等下次你看到某一个数据时，请去真正的去关心和了解它的出生和过往经历吧，要知道他经历种种磨难能走到你面前也实属不易。</code></p>
+<h4 id="2-2-外部数据获取"><a href="#2-2-外部数据获取" class="headerlink" title="2.2 外部数据获取"></a>2.2 外部数据获取</h4><p>外部数据通常通过调研和爬虫的方式进行获取。</p>
+<p>常见的外部数据获取网站有：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.data.ai/cn/">https://www.data.ai/cn/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.qimai.cn/">https://www.qimai.cn/</a></li>
+<li><a target="_blank" rel="noopener" href="https://sensortower-china.com/zh-cn">https://sensortower-china.com/zh-cn</a></li>
+<li><a target="_blank" rel="noopener" href="http://mi.talkingdata.com/">http://mi.talkingdata.com/</a></li>
+<li>……</li>
+</ul>
+<p>常见的爬虫工具有：Python、八爪鱼等</p>
+<h3 id="3、数据处理能力"><a href="#3、数据处理能力" class="headerlink" title="3、数据处理能力"></a>3、数据处理能力</h3><h4 id="3-1-结构化数据处理"><a href="#3-1-结构化数据处理" class="headerlink" title="3.1 结构化数据处理"></a>3.1 结构化数据处理</h4><p>结构化数据可以简单理解为是关系型数据库管理的数据，按数据量级大小，可以选择合适工具进行数据处理：</p>
+<ul>
+<li>Excel：单表≤10W行记录</li>
+<li>Power BI：单表≤100W行记录</li>
+<li>MySQL：单表≤1000W行记录</li>
+<li>Python：单表≤1亿行记录</li>
+<li>Hive：单表＞1亿行记录</li>
+</ul>
+<p>熟练使用以上各种工具进行常规的数据处理工作，是一名数据分析师的基础技能。</p>
+<h4 id="3-2-非结构化数据处理"><a href="#3-2-非结构化数据处理" class="headerlink" title="3.2 非结构化数据处理"></a>3.2 非结构化数据处理</h4><p>非结构化数据是指如文本、图片、视频等等的数据，针对这块的数据处理需求，在业务分析师当中不太常见。</p>
+<h3 id="4、数据分析能力"><a href="#4、数据分析能力" class="headerlink" title="4、数据分析能力"></a>4、数据分析能力</h3><h4 id="4-1-描述统计分析"><a href="#4-1-描述统计分析" class="headerlink" title="4.1 描述统计分析"></a>4.1 描述统计分析</h4><p>描述统计分析是指使用图表或者统计量描述数据的现状，因此它又可以分为：图表描述分析和统计量描述分析。</p>
+<p>图表描述相对简单，它的特点是能快速直观的观察数据变化的趋势、对比数据的好坏。统计量描述分析则要求我们熟悉各种统计量对应的业务含义（复杂问题中，还需要我们新定义业务统计量指标，这对我们的数据转换能力要求更高），从而选取正确的统计量对业务现状进行描述分析。</p>
+<p>详细的描述统计方法可参考我的另一篇文章：<a href="https://guiyiblog.com/p/20d88d5d/">描述统计学</a></p>
+<h4 id="4-2-推断统计分析"><a href="#4-2-推断统计分析" class="headerlink" title="4.2 推断统计分析"></a>4.2 推断统计分析</h4><p>推断统计分析主要是基于大数定律和中心极限定理，采用假设检验的思想，对抽取的样本数据进行推断分析。根据分析目的的不同，又可将其分为相关性分析和因果分析。</p>
+<p>相关性分析是研究变量之间是否相关，而不考虑他们的因果。比如：“一到冬天，我就长膘。”只能说明季节和我的体重有相关关系，但不能说有因果关系。因为“长膘”的真正原因是冬天吃得多（摄入能量多），动的少（消耗能量少）。季节只是和“长膘”相关，但不是导致“长膘”的原因。在业务场景中，最为广泛的应用就是<strong>AB测试</strong>。</p>
+<p>因果分析则需要我们先确定好因变量，再选取适当的自变量，研究其对因变量的影响，从而推导出他们因果关系的数学公式。在业务场景中便是我们常见的<strong>归因和预测分析</strong>。</p>
+<p>详细的推断统计方法可参考我的另一篇文章：<a href="https://guiyiblog.com/p/b56a4992/">推断统计学</a></p>
+<h3 id="5、数据表达能力"><a href="#5、数据表达能力" class="headerlink" title="5、数据表达能力"></a>5、数据表达能力</h3><h4 id="5-1-图表语言表达"><a href="#5-1-图表语言表达" class="headerlink" title="5.1 图表语言表达"></a>5.1 图表语言表达</h4><p>在实际业务中，图表按层级可分为：可视化对象（Visual）、报表（Report）、仪表板（Dashboard）。</p>
+<p>其中，主要区分报表和仪表板。报表主要以描述数据为主，不以引导读者得到数据结论为目的；而仪表板则是采用数据可视化的方式向读者讲述“故事”，需要引导读者从数据中得出结论。</p>
+<p>如下所示，仪表板在制作前的布局设计：</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201181506802.png"></p>
+<p>仪表板设计原则可遵循以下几点：</p>
+<ol>
+<li><strong>越简单越好。</strong>只保留与主题强相关的数据信息，拒绝使用各种花里胡哨的格式</li>
+<li><strong>使用布局和位置来吸引焦点。</strong>根据研究表明，读者的阅读位置的顺序优先级可以用下图来概况：<img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231201181224467.png"></li>
+<li>统一格式化数字。合理使用逗号分割数字、保留小数位数、添加数字单位，帮助读者快速阅读理解数据含义。</li>
+<li>有效的使用标题和标签。始终在仪表板或报表上包含时间，如统计日期、更新日期等。为每个可视化对象使用描述性标题。理想的标签颜色有：软灰色、棕色、蓝色和绿色。</li>
+</ol>
+<p>常用的可视化工具有：Excel、Power BI、Tableau、PPT等等，根据使用的业务场景，可合理选择工具进行可视化图表的制作。</p>
+<h4 id="5-2-文字语言表达"><a href="#5-2-文字语言表达" class="headerlink" title="5.2 文字语言表达"></a>5.2 文字语言表达</h4><p>文字语言是数据分析师呈现分析结论、工作成功的重要手段，因此，在平时工作生活中，也需要提醒自己练习。关于这方面的训练方法，可以参考《金字塔原理》，里面详细阐述了使表达根据逻辑性的原理和训练方法，毕竟有一句话告诉我们：你表达没有逻辑，不是因为你不会说话，而是因为你不会思考。当你的思维有了逻辑，表达自然也就有了逻辑。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://guiyiblog.com/p/9aa0b83c/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%83%BD%E5%8A%9B%E6%A8%A1%E5%9E%8B/" rel="tag">能力模型</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/p/314152c6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">财务成本管理（1）</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2023
+        <i class="ri-heart-fill heart_icon"></i> 归一
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="归一"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81">项目作品</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

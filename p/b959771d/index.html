@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>财务数据分析 |  归一</title>
+      <title>PQ条件列 |  归一</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -55,58 +55,210 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-220108-PQ条件列.md"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">财务数据分析</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2023" class="archive-year">2023</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/314152c6/" class="archive-article-date">
-  <time datetime="2023-07-25T04:00:00.000Z" itemprop="datePublished">07/25</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/314152c6/"
-    >财务成本管理（1）</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  PQ条件列
+</h1>
  
 
+      
     </header>
-    
-      
+     
+    <div class="article-meta">
+      <a href="/p/b959771d/" class="article-date">
+  <time datetime="2022-01-08T03:15:06.000Z" itemprop="datePublished">2022-01-08</time>
+</a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/">职业发展</a> / <a class="article-category-link" href="/categories/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/%E8%B4%A2%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">财务数据分析</a>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/Excel/">Excel</a>
   </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">262</span>
+        </span>
+    </span>
 
-    
-    
-  </div>
-</article>
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
       
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Excel不用IF函数，你一样可以进行条件判断！"><a href="#Excel不用IF函数，你一样可以进行条件判断！" class="headerlink" title="Excel不用IF函数，你一样可以进行条件判断！"></a>Excel不用IF函数，你一样可以进行条件判断！</h2><p><strong>“</strong> 本节内容将开始介绍Excel Power Query数据处理实用的18种方法中的第7种——新增条件列。下面，我们开始学习吧~<strong>”</strong></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231204200504837.png" alt="image-20231204200504837"></p>
+  <span id="more"></span>
+
+<h3 id="01-业务问题：如何将年龄分组？"><a href="#01-业务问题：如何将年龄分组？" class="headerlink" title="01 业务问题：如何将年龄分组？"></a>01 业务问题：如何将年龄分组？</h3><p>下面，我们来看这样一个问题：现有一个列员工的年龄信息，你想对它进行分组，查询各年龄段的员工人数，那么，如何来做呢？</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231204200928728.png" alt="image-20231204200928728"></p>
+<p><strong>下面，我们先用IF函数按照下面要求对它进行分组：</strong>	</p>
+<table>
+<thead>
+<tr>
+<th>&lt;&#x3D;10</th>
+<th>1-10岁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;&#x3D;25</td>
+<td>11-25岁</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;45</td>
+<td>26-45岁</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;60</td>
+<td>46-60岁</td>
+</tr>
+<tr>
+<td>&gt;60</td>
+<td>60岁以上</td>
+</tr>
+</tbody></table>
+<p><strong>我们在C2单元格输入IF函数嵌套公式如下图</strong></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231204200940434.png" alt="image-20231204200940434"></p>
+<p><strong>然后，回车运行公式，双击填充柄即可得到年龄分段</strong></p>
+<h3 id="02-使用Power-Query对年龄分组"><a href="#02-使用Power-Query对年龄分组" class="headerlink" title="02 使用Power Query对年龄分组"></a>02 使用Power Query对年龄分组</h3><p>在Excel Power Query中，我们可以使用【条件列】功能，对年龄进行分段。</p>
+<p>我们可以在【添加列】选项卡下找到【条件列】，如下图所示：</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231204201108928.png" alt="image-20231204201108928"></p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
       
     </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://guiyiblog.com/p/b959771d/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
   </div>
-  
-  
+
+   
+  <nav class="article-nav">
+    
+      <a href="/p/500d6555/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            PQ填充
+          
+        </div>
+      </a>
+    
+    
+      <a href="/p/8b3fdf08/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">PQ快速替换</div>
+      </a>
+    
+  </nav>
 
   
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -190,13 +342,37 @@
                         
                             <li>
                                 <small><a class="nav-item-link"
+                                          href="/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3">业务理解
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96">数据获取
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">数据处理
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
                                           href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90">数据分析
                                     </a></small>
                             </li>
                         
                             <li>
                                 <small><a class="nav-item-link"
-                                          href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98">项目作品
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE">数据表达
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B">分析案例
                                     </a></small>
                             </li>
                         
@@ -209,15 +385,6 @@
                 <!-- 找到这里，添加代码 -->
                 
                     <a class="nav-item-link" href="/archives">归档</a>
-                
-                
-                <!-- 到这里结束 -->
-            </li>
-        
-            <li class="nav-item">
-                <!-- 找到这里，添加代码 -->
-                
-                    <a class="nav-item-link" href="/tags">标签</a>
                 
                 
                 <!-- 到这里结束 -->
@@ -310,6 +477,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

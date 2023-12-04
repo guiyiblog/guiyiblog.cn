@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Java开发 |  归一</title>
+      <title>初识Excel Power Query |  归一</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -55,301 +55,197 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-220103-初识Excel Power Query"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">Java开发</h1>
-    
-    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  初识Excel Power Query
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/p/9d69d264/" class="article-date">
+  <time datetime="2022-01-03T03:15:06.000Z" itemprop="datePublished">2022-01-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/">数据处理</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/Excel/">Excel</a>
+  </div>
   
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">451</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/fbc56413/" class="archive-article-date">
-  <time datetime="2022-09-24T14:32:21.000Z" itemprop="datePublished">09/24</time>
-</a>
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/fbc56413/"
-    >JavaWeb-Maven</a> 
-</h2>
+  <h2 id="初识Excel-Power-Query"><a href="#初识Excel-Power-Query" class="headerlink" title="初识Excel Power Query"></a>初识Excel Power Query</h2><p><strong>“</strong>各位小伙伴们，大家好，我是归一，欢迎大家跟我一起来学习数据分析。在本节内容中，我们将来一起认识Excel Power Query，学习如何在  Excel 中进入Power Query平台。下面我们开始吧！<strong>”</strong></p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231204200305088.png" alt="image-20231204200305088"></p>
+  <span id="more"></span>
+
+<h3 id="01-什么是Excel-Power-Query？"><a href="#01-什么是Excel-Power-Query？" class="headerlink" title="01 什么是Excel Power Query？"></a>01 什么是Excel Power Query？</h3><p>Excel Power Query是Excel 用于数据分析的三大组件之一，其它两个分别是Excel Power Pivot和 Excel Power View。在微软Excel2010版和Excel2013版中作为插件使用，需要在官网进行下载，直到Excel 2016版之后微软便将其作为Excel的组成部分嵌入在软件当中。</p>
+<p>使用Excel2010版和Excel2013版的小伙伴可以到微软官网下载。</p>
+<p>Excel Power Query插件下载地址：</p>
+<p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-CN/download/details.aspx?id=39379">https://www.microsoft.com/zh-CN/download/details.aspx?id=39379</a></p>
+<p>（建议大家使用Excel2016专业版及以上版本，使用起来更稳定，能避免许多软件带来的小Bug）</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231204200419773.png" alt="image-20231204200419773"></p>
+<p>  Excel Power Query主要用于获取和转换数据，对不同源的数据进行整理加工。使用Power Query能帮助我们提高对<strong>表结构数据</strong>的处理速度，提高办公效率。Power Query的操作对象是<strong>表，</strong>在下节内容中，我们将来一起重新认识Excel中的<strong>表</strong>。</p>
+<h3 id="02-如何进入Excel-Power-Query？"><a href="#02-如何进入Excel-Power-Query？" class="headerlink" title="02 如何进入Excel Power Query？"></a>02 如何进入Excel Power Query？</h3><p>那么如何进入Excel Power Query界面呢？</p>
+<p>下面我们先来看一下Excel2010版和Excel2013版如何加载和进入Excel Power Query平台。</p>
+<ol>
+<li>在官网下载Excel Power Query插件；</li>
+<li>打开Excel COM加载项，勾选Excel Power Query组件；</li>
+</ol>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231204200430264.png" alt="image-20231204200430264"></p>
+<ol start="3">
+<li>任意选中一个空单元格，点击【从表】便可进入Excel Power  Query 界面：</li>
+</ol>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231204200440131.png" alt="image-20231204200440131"></p>
+<p>Excel2016专业版及以上版本中，Excel Power Query默认在数据选项卡下的【获取和转换】功能组中，点击【从表格】便可进入Excel Power Query界面：</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20231204200449501.png" alt="image-20231204200449501"></p>
  
-
-    </header>
-    
+      <!-- reward -->
       
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/JavaWeb/">JavaWeb</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/d8ad1f04/" class="archive-article-date">
-  <time datetime="2022-09-18T14:32:21.000Z" itemprop="datePublished">09/18</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/d8ad1f04/"
-    >JavaWeb-HTTP协议</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/JavaWeb/">JavaWeb</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/9ecb83c3/" class="archive-article-date">
-  <time datetime="2022-09-17T14:32:21.000Z" itemprop="datePublished">09/17</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/9ecb83c3/"
-    >JavaWeb-Tomcat</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/JavaWeb/">JavaWeb</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/c4e645ce/" class="archive-article-date">
-  <time datetime="2022-09-04T14:32:21.000Z" itemprop="datePublished">09/04</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/c4e645ce/"
-    >JavaWeb-Web服务器</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/JavaWeb/">JavaWeb</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/82a91f4e/" class="archive-article-date">
-  <time datetime="2022-09-03T14:32:21.000Z" itemprop="datePublished">09/03</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/82a91f4e/"
-    >JavaWeb-基本概念</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/JavaWeb/">JavaWeb</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/e173abca/" class="archive-article-date">
-  <time datetime="2022-08-27T14:32:21.000Z" itemprop="datePublished">08/27</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/e173abca/"
-    >HTML基础</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/HTML/">HTML</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/cabdc1d2/" class="archive-article-date">
-  <time datetime="2022-08-17T14:32:21.000Z" itemprop="datePublished">08/17</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/cabdc1d2/"
-    >Java学习笔记-Day4</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/JavaSE/">JavaSE</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/54d95471/" class="archive-article-date">
-  <time datetime="2022-08-16T14:32:21.000Z" itemprop="datePublished">08/16</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/54d95471/"
-    >Java学习笔记-Day3</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/JavaSE/">JavaSE</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/23de64e7/" class="archive-article-date">
-  <time datetime="2022-08-15T14:32:21.000Z" itemprop="datePublished">08/15</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/23de64e7/"
-    >Java学习笔记-Day2</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/JavaSE/">JavaSE</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/p/bad7355d/" class="archive-article-date">
-  <time datetime="2022-08-14T14:32:21.000Z" itemprop="datePublished">08/14</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/p/bad7355d/"
-    >Java学习笔记-Day1</a> 
-</h2>
- 
-
-    </header>
-    
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/">Java开发</a> / <a class="article-category-link" href="/categories/Java%E5%BC%80%E5%8F%91/JavaSE/">JavaSE</a>
-  </div>
-
-    
-    
-  </div>
-</article>
-      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
       
     </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://guiyiblog.com/p/9d69d264/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
   </div>
-  
-  
+
+   
+  <nav class="article-nav">
+    
+      <a href="/p/61101498/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            PQ横向合并
+          
+        </div>
+      </a>
+    
+    
+      <a href="/p/67255154/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Excel 单元格、区域和表</div>
+      </a>
+    
+  </nav>
 
   
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -433,13 +329,37 @@
                         
                             <li>
                                 <small><a class="nav-item-link"
+                                          href="/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3">业务理解
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96">数据获取
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">数据处理
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
                                           href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90">数据分析
                                     </a></small>
                             </li>
                         
                             <li>
                                 <small><a class="nav-item-link"
-                                          href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98">项目作品
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE">数据表达
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B">分析案例
                                     </a></small>
                             </li>
                         
@@ -452,15 +372,6 @@
                 <!-- 找到这里，添加代码 -->
                 
                     <a class="nav-item-link" href="/archives">归档</a>
-                
-                
-                <!-- 到这里结束 -->
-            </li>
-        
-            <li class="nav-item">
-                <!-- 找到这里，添加代码 -->
-                
-                    <a class="nav-item-link" href="/tags">标签</a>
                 
                 
                 <!-- 到这里结束 -->
@@ -553,6 +464,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

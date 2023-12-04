@@ -218,7 +218,7 @@
 <p>SSH是由客户端和服务端的软件组成的<br>服务端是一个守护进程(sshd)，他在后台运行并响应来自客户端的连接请求。<br>客户端包含ssh程序以及像scp（远程拷贝）、slogin（远程登陆）、sftp（安全文件传输）等其他的应用程序。</p>
 <p>首先确保服务器是否安装了ssh服务：<br> [root@mycentos7 ~]# yum list installed | grep openssh-server<br>正常情况下，CentOS7是安装了的。或者你只要能使用SecureCRT、Xshell等工具连接，那都是正常的。</p>
 <h3 id="Linux中SSH协议：具体配置"><a href="#Linux中SSH协议：具体配置" class="headerlink" title="Linux中SSH协议：具体配置"></a>Linux中SSH协议：具体配置</h3><p>准备两台虚拟机：A和B，假如A要登陆B，或者安全访问B</p>
-<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#x72;&#111;&#x6f;&#116;&#64;&#x31;&#57;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#49;&#50;&#x33;&#x2e;&#49;&#53;&#x32;">&#x72;&#111;&#x6f;&#116;&#64;&#x31;&#57;&#x32;&#46;&#49;&#x36;&#x38;&#46;&#49;&#50;&#x33;&#x2e;&#49;&#53;&#x32;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
+<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#114;&#111;&#111;&#116;&#64;&#49;&#57;&#x32;&#46;&#x31;&#x36;&#56;&#46;&#x31;&#50;&#x33;&#46;&#x31;&#x35;&#x32;">&#114;&#111;&#111;&#116;&#64;&#49;&#57;&#x32;&#46;&#x31;&#x36;&#56;&#46;&#x31;&#50;&#x33;&#46;&#x31;&#x35;&#x32;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
 <h3 id="Linux中SSH协议：原理"><a href="#Linux中SSH协议：原理" class="headerlink" title="Linux中SSH协议：原理"></a>Linux中SSH协议：原理</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220415151926777.png" alt="image-20220415151926777"></p>
  
       <!-- reward -->
@@ -390,57 +390,124 @@
     <aside class="sidebar on">
       <button class="navbar-toggle"></button>
 <nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="归一"></a>
-  </div>
-  
-  <ul class="nav nav-main">
     
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
-    </li>
+        <div class="logo">
+            <a href="/"><img src="/images/ayer-side.svg" alt="归一"></a>
+        </div>
     
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81">项目作品</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about">关于我</a>
-    </li>
-    
-  </ul>
+    <ul class="nav nav-main">
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/">主页</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories">分类<span
+                                class="menu-suffix">&#x1F525;</span></a>
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90">数据分析
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98">项目作品
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/archives">归档</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/tags">标签</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/about">关于</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+    </ul>
 </nav>
 <nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="搜索">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-    </li>
-  </ul>
+    <ul class="nav">
+        <li class="nav-item">
+            
+                <a class="nav-item-link nav-item-search" title="搜索">
+                    <i class="ri-search-line"></i>
+                </a>
+            
+            
+        </li>
+    </ul>
 </nav>
 <div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
+    <div class="local-search local-search-plugin">
   <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
   <div id="local-search-result" class="local-search-result"></div>
 </div>
 </div>
+
+<style>
+    .nav-main li ul {
+        display: none;
+    }
+
+    .nav-main li:hover ul {
+        display: block;
+        /*color: #dee2ec;*/
+        /*animation: swing ease-in-out 0.5s 1 alternate;*/
+    }
+
+    .sub-menu {
+        /*position: absolute;*/
+        position: relative;
+        background: #fff;
+        padding: 3px;
+        width: 8rem;
+        left: 10px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .menu-suffix {
+        display: inline-block;
+        padding: 5px;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+</style>
     </aside>
     <div id="mask"></div>
 

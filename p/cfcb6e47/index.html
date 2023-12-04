@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.2k</span>
+            <span class="post-count">1.4k</span>
         </span>
     </span>
 
@@ -202,7 +202,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install //已经安装阿里镜像的可以用cnpm install</span><br></pre></td></tr></table></figure>
 
 <p>这一步是根据package.json文件安装需要的模块, 具体文件内容可以自己打开看看.</p>
-<h2 id="V2023-05"><a href="#V2023-05" class="headerlink" title="V2023.05"></a>V2023.05</h2><h3 id="V203-05-27"><a href="#V203-05-27" class="headerlink" title="V203.05.27"></a>V203.05.27</h3><h4 id="Hexo文件目录解析"><a href="#Hexo文件目录解析" class="headerlink" title="Hexo文件目录解析"></a>Hexo文件目录解析</h4><p>参考博客：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018237272">https://segmentfault.com/a/1190000018237272</a></p>
+<h2 id="V2023-05"><a href="#V2023-05" class="headerlink" title="V2023.05"></a>V2023.05</h2><h3 id="V2023-05-27"><a href="#V2023-05-27" class="headerlink" title="V2023.05.27"></a>V2023.05.27</h3><h4 id="Hexo文件目录解析"><a href="#Hexo文件目录解析" class="headerlink" title="Hexo文件目录解析"></a>Hexo文件目录解析</h4><p>参考博客：<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018237272">https://segmentfault.com/a/1190000018237272</a></p>
 <blockquote>
 <p>执行hexo generate，根据source，更新 public。</p>
 </blockquote>
@@ -210,6 +210,12 @@
 <p>执行hexo deploy，根据public，更新 .deploy_git。</p>
 </blockquote>
 <h4 id="生成网站短链"><a href="#生成网站短链" class="headerlink" title="生成网站短链"></a>生成网站短链</h4><p>参考博文：<a target="_blank" rel="noopener" href="https://blog.feizhuqwq.com/20">https://blog.feizhuqwq.com/20</a></p>
+<h2 id="V2023-12"><a href="#V2023-12" class="headerlink" title="V2023.12"></a>V2023.12</h2><h3 id="V2023-12-04"><a href="#V2023-12-04" class="headerlink" title="V2023.12.04"></a>V2023.12.04</h3><h4 id="添加二级菜单"><a href="#添加二级菜单" class="headerlink" title="添加二级菜单"></a>添加二级菜单</h4><p>参考博客：<a target="_blank" rel="noopener" href="https://blog.justlovesmile.top/posts/14357.html?time=1701661084759">https://blog.justlovesmile.top/posts/14357.html?time=1701661084759</a></p>
+<p>Hexo主题导航栏添加二级菜单的简单方法</p>
+<p>第一步，找到所使用主题的导航栏文件，例如：Ayer主题的位于hexo\themes\ayer\layout_partial\sidebar.ejs</p>
+<p>第二步，打开文件，找到文件对应生成菜单的位置,一般在<li></li>内，在里面添加代码</p>
+<p>第三步，添加css,这是我的样式</p>
+<p>第四步，找到主题下的配置文件，如ayer的位于hexo\themes\ayer_config.yml，在需要的位置添加submenus，修改菜单menu信息</p>
  
       <!-- reward -->
       
@@ -303,9 +309,9 @@
       </a>
     
     
-      <a href="/p/7f337b91/" class="article-nav-link">
+      <a href="/p/2e543a56/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">博客目录结构</div>
+        <div class="article-nav-title">刻意练习</div>
       </a>
     
   </nav>
@@ -380,57 +386,124 @@
     <aside class="sidebar on">
       <button class="navbar-toggle"></button>
 <nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="归一"></a>
-  </div>
-  
-  <ul class="nav nav-main">
     
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
-    </li>
+        <div class="logo">
+            <a href="/"><img src="/images/ayer-side.svg" alt="归一"></a>
+        </div>
     
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories/%E9%A1%B9%E7%9B%AE%E4%BD%9C%E5%93%81">项目作品</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about">关于我</a>
-    </li>
-    
-  </ul>
+    <ul class="nav nav-main">
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/">主页</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories">分类<span
+                                class="menu-suffix">&#x1F525;</span></a>
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90">数据分析
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98">项目作品
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/archives">归档</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/tags">标签</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/about">关于</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+    </ul>
 </nav>
 <nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="搜索">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-    </li>
-  </ul>
+    <ul class="nav">
+        <li class="nav-item">
+            
+                <a class="nav-item-link nav-item-search" title="搜索">
+                    <i class="ri-search-line"></i>
+                </a>
+            
+            
+        </li>
+    </ul>
 </nav>
 <div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
+    <div class="local-search local-search-plugin">
   <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
   <div id="local-search-result" class="local-search-result"></div>
 </div>
 </div>
+
+<style>
+    .nav-main li ul {
+        display: none;
+    }
+
+    .nav-main li:hover ul {
+        display: block;
+        /*color: #dee2ec;*/
+        /*animation: swing ease-in-out 0.5s 1 alternate;*/
+    }
+
+    .sub-menu {
+        /*position: absolute;*/
+        position: relative;
+        background: #fff;
+        padding: 3px;
+        width: 8rem;
+        left: 10px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .menu-suffix {
+        display: inline-block;
+        padding: 5px;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+</style>
     </aside>
     <div id="mask"></div>
 

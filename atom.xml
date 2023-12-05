@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.com/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.com/"/>
-  <updated>2023-12-04T11:19:25.315Z</updated>
+  <updated>2023-12-05T03:40:31.159Z</updated>
   <id>http://guiyiblog.com/</id>
   
   <author>
@@ -17,19 +17,19 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>231204-内容社交行业常识梳理</title>
+    <title>内容社交行业常识梳理</title>
     <link href="http://guiyiblog.com/p/7ef0c61b/"/>
     <id>http://guiyiblog.com/p/7ef0c61b/</id>
     <published>2023-12-04T03:11:32.000Z</published>
-    <updated>2023-12-04T11:19:25.315Z</updated>
+    <updated>2023-12-05T03:40:31.159Z</updated>
     
     
     
     
-    <category term="业务理解" scheme="http://guiyiblog.com/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3/"/>
+    <category term="业务理解能力" scheme="http://guiyiblog.com/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/"/>
     
+    <category term="内容社交行业" scheme="http://guiyiblog.com/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/%E5%86%85%E5%AE%B9%E7%A4%BE%E4%BA%A4%E8%A1%8C%E4%B8%9A/"/>
     
-    <category term="能力模型" scheme="http://guiyiblog.com/tags/%E8%83%BD%E5%8A%9B%E6%A8%A1%E5%9E%8B/"/>
     
   </entry>
   
@@ -38,7 +38,7 @@
     <link href="http://guiyiblog.com/p/9aa0b83c/"/>
     <id>http://guiyiblog.com/p/9aa0b83c/</id>
     <published>2023-11-30T03:15:06.000Z</published>
-    <updated>2023-12-04T11:20:09.451Z</updated>
+    <updated>2023-12-05T03:39:54.080Z</updated>
     
     
     <summary type="html">&lt;p&gt;自2019年从事数据分析工作以来，已快有5个年头，在这个节点上，有必要重新对职业进行一次深度的思考，来解决当下职业发展的瓶颈期、迷茫期。&lt;br&gt;基于以往对数据分析的学习和在工作中实践理解，让我发现数据分析不仅仅是工具、技能，它更是一种思维方式和解决问题的能力——一种将现实问题转换为数据问题的思维方式，用数据方法解决现实问题的能力。&lt;/p&gt;
@@ -46,7 +46,7 @@
     
     
     
-    <category term="职业规划" scheme="http://guiyiblog.com/categories/%E8%81%8C%E4%B8%9A%E8%A7%84%E5%88%92/"/>
+    <category term="说明文档" scheme="http://guiyiblog.com/categories/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/"/>
     
     
     <category term="能力模型" scheme="http://guiyiblog.com/tags/%E8%83%BD%E5%8A%9B%E6%A8%A1%E5%9E%8B/"/>
@@ -58,7 +58,7 @@
     <link href="http://guiyiblog.com/p/314152c6/"/>
     <id>http://guiyiblog.com/p/314152c6/</id>
     <published>2023-07-25T04:00:00.000Z</published>
-    <updated>2023-12-04T11:22:28.105Z</updated>
+    <updated>2023-12-05T02:50:37.828Z</updated>
     
     
       
@@ -71,9 +71,9 @@
     
     
     
-    <category term="分析案例" scheme="http://guiyiblog.com/categories/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/"/>
+    <category term="数据表达能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="财务数据分析" scheme="http://guiyiblog.com/categories/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/%E8%B4%A2%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    <category term="财务数据分析" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/%E8%B4%A2%E5%8A%A1%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
     
     <category term="注会" scheme="http://guiyiblog.com/tags/%E6%B3%A8%E4%BC%9A/"/>
@@ -85,7 +85,7 @@
     <link href="http://guiyiblog.com/p/939b/"/>
     <id>http://guiyiblog.com/p/939b/</id>
     <published>2023-04-15T04:00:00.000Z</published>
-    <updated>2023-12-04T11:22:18.255Z</updated>
+    <updated>2023-12-05T02:50:31.770Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;项目简介&quot;&gt;&lt;a href=&quot;#项目简介&quot; class=&quot;headerlink&quot; title=&quot;项目简介&quot;&gt;&lt;/a&gt;&lt;strong&gt;项目简介&lt;/strong&gt;&lt;/h3&gt;&lt;ol&gt;
@@ -108,7 +108,9 @@
     
     
     
-    <category term="分析案例" scheme="http://guiyiblog.com/categories/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/"/>
+    <category term="数据表达能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/"/>
+    
+    <category term="分析案例" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/"/>
     
     
   </entry>
@@ -118,7 +120,7 @@
     <link href="http://guiyiblog.com/p/e056df13/"/>
     <id>http://guiyiblog.com/p/e056df13/</id>
     <published>2023-03-01T04:00:00.000Z</published>
-    <updated>2023-12-04T11:22:14.332Z</updated>
+    <updated>2023-12-05T02:50:26.325Z</updated>
     
     
     <summary type="html">&lt;p&gt;NPS (Net Promoter Score) 可以&lt;strong&gt;衡量客户体验&lt;/strong&gt;并&lt;strong&gt;预测业务增长&lt;/strong&gt;。这一指标改变了商业世界，为全球的客户体验管理提供了可以参考的核心指标。&lt;/p&gt;
@@ -126,7 +128,9 @@
     
     
     
-    <category term="分析案例" scheme="http://guiyiblog.com/categories/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/"/>
+    <category term="数据表达能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/"/>
+    
+    <category term="分析案例" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/"/>
     
     
   </entry>
@@ -136,7 +140,7 @@
     <link href="http://guiyiblog.com/p/510368d3/"/>
     <id>http://guiyiblog.com/p/510368d3/</id>
     <published>2022-12-10T04:00:00.000Z</published>
-    <updated>2023-12-04T11:22:06.803Z</updated>
+    <updated>2023-12-05T02:50:20.436Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;strong&gt;作者注：&lt;/strong&gt;本文为作者于2019年5月5日发布在知乎的文章：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/64672284&quot;&gt;https://zhuanlan.zhihu.com/p/64672284&lt;/a&gt;&lt;/p&gt;
@@ -144,7 +148,9 @@
     
     
     
-    <category term="分析案例" scheme="http://guiyiblog.com/categories/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/"/>
+    <category term="数据表达能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/"/>
+    
+    <category term="分析案例" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B/"/>
     
     
   </entry>

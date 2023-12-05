@@ -99,9 +99,22 @@
       </tags>
   </entry>
   <entry>
-    <title>内容社交行业常识梳理</title>
+    <title>业务指标体系梳理-微博</title>
     <url>/p/7ef0c61b/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>微博（旧称：新浪微博）于2009年8月上线，是一家社交媒体平台；2014年3月27日，新浪微博正式更名为微博；4月17日晚，新浪公司旗下微博业务正式登陆纳斯达克，股票代码WB。</p>
+<p>2023年11月9日，微博发布2023年第三季度财报。三季度微博总营收4.422亿美元，约合32.07亿元人民币，剔除汇率因素，总营收同比增长2%。其中，<strong>广告营收达到3.893亿美元</strong>，约合28.25亿元人民币，剔除汇率因素，广告收入同比增长3%。三季度微博调整后净利润1.366亿美元，约合人民币9.94亿元，剔除汇率因素，同比增长17%。用户方面，截至三季度末，<strong>微博月活跃用户达到6.05亿</strong>，同比净增约2100万，<strong>日活跃用户达到2.6亿</strong>，同比净增约800万。</p>
+  <span id="more"></span>
+
+<h3 id="1、商业画布（Business-canvas）"><a href="#1、商业画布（Business-canvas）" class="headerlink" title="1、商业画布（Business canvas）"></a>1、商业画布（Business canvas）</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E7%94%BB%E5%B8%83-%E5%BE%AE%E5%8D%9A.png" alt="商业模式画布-微博"></p>
+<h3 id="2、业务流程图（Transaction-Flow-Diagram-TFD）"><a href="#2、业务流程图（Transaction-Flow-Diagram-TFD）" class="headerlink" title="2、业务流程图（Transaction Flow Diagram, TFD）"></a>2、业务流程图（Transaction Flow Diagram, TFD）</h3><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/业务流程图-微博.png" alt="业务流程图-微博" style="zoom:50%;">
+
+<h3 id="3、页面流程图（Page-Flow-Diagram）"><a href="#3、页面流程图（Page-Flow-Diagram）" class="headerlink" title="3、页面流程图（Page Flow Diagram）"></a>3、页面流程图（Page Flow Diagram）</h3><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/页面流程图-微博.png" alt="页面流程图-微博" style="zoom:50%;">
+
+<h3 id="4、功能流程图（Function-Flow-Diagram）"><a href="#4、功能流程图（Function-Flow-Diagram）" class="headerlink" title="4、功能流程图（Function Flow Diagram）"></a>4、功能流程图（Function Flow Diagram）</h3><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/功能流程图-微博.png" alt="功能流程图-微博" style="zoom:50%;">
+
+
+
+<h3 id="5、数据流程图（Data-Flow-Diagram）"><a href="#5、数据流程图（Data-Flow-Diagram）" class="headerlink" title="5、数据流程图（Data Flow Diagram）"></a>5、数据流程图（Data Flow Diagram）</h3>]]></content>
       <categories>
         <category>业务理解能力</category>
         <category>内容社交行业</category>
@@ -2186,7 +2199,7 @@ hadoop04： blk_02 blk_04
 <p>SSH是由客户端和服务端的软件组成的<br>服务端是一个守护进程(sshd)，他在后台运行并响应来自客户端的连接请求。<br>客户端包含ssh程序以及像scp（远程拷贝）、slogin（远程登陆）、sftp（安全文件传输）等其他的应用程序。</p>
 <p>首先确保服务器是否安装了ssh服务：<br> [root@mycentos7 ~]# yum list installed | grep openssh-server<br>正常情况下，CentOS7是安装了的。或者你只要能使用SecureCRT、Xshell等工具连接，那都是正常的。</p>
 <h3 id="Linux中SSH协议：具体配置"><a href="#Linux中SSH协议：具体配置" class="headerlink" title="Linux中SSH协议：具体配置"></a>Linux中SSH协议：具体配置</h3><p>准备两台虚拟机：A和B，假如A要登陆B，或者安全访问B</p>
-<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#x72;&#111;&#111;&#x74;&#x40;&#x31;&#57;&#x32;&#x2e;&#49;&#54;&#x38;&#x2e;&#49;&#50;&#x33;&#46;&#x31;&#53;&#50;">&#x72;&#111;&#111;&#x74;&#x40;&#x31;&#57;&#x32;&#x2e;&#49;&#54;&#x38;&#x2e;&#49;&#50;&#x33;&#46;&#x31;&#53;&#50;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
+<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#x72;&#x6f;&#111;&#x74;&#64;&#x31;&#57;&#x32;&#46;&#x31;&#x36;&#56;&#x2e;&#49;&#50;&#51;&#x2e;&#x31;&#53;&#x32;">&#x72;&#x6f;&#111;&#x74;&#64;&#x31;&#57;&#x32;&#46;&#x31;&#x36;&#56;&#x2e;&#49;&#50;&#51;&#x2e;&#x31;&#53;&#x32;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
 <h3 id="Linux中SSH协议：原理"><a href="#Linux中SSH协议：原理" class="headerlink" title="Linux中SSH协议：原理"></a>Linux中SSH协议：原理</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220415151926777.png" alt="image-20220415151926777"></p>
 ]]></content>
       <categories>
@@ -3819,12 +3832,11 @@ Cramer&#39;s V        : 0.322
       </tags>
   </entry>
   <entry>
-    <title>刻意练习</title>
-    <url>/p/2e543a56/</url>
-    <content><![CDATA[<p><strong>每天1小时数据分析技能学习，用热爱成就事业，用坚持锻造专业！</strong></p>
-<iframe title="日程数据监控" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiYmIwZDdmZWEtZWQ4OC00YmMyLTk5YjEtNTcyMjkzNzAwNWM4IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&pageName=ReportSection3d21ab029abe43e7ce90" frameborder="0" allowfullscreen="true"></iframe>
+    <title>博客目录结构</title>
+    <url>/p/7f337b91/</url>
+    <content><![CDATA[<iframe title="博客目录结构" width="800" height="486" src="https://www.processon.com/embed/6471ae2978dff312e1bd73f7"></iframe>
 
-
+  <span id="more"></span>
 
 ]]></content>
       <categories>
@@ -3832,11 +3844,12 @@ Cramer&#39;s V        : 0.322
       </categories>
   </entry>
   <entry>
-    <title>博客目录结构</title>
-    <url>/p/7f337b91/</url>
-    <content><![CDATA[<iframe title="博客目录结构" width="800" height="486" src="https://www.processon.com/embed/6471ae2978dff312e1bd73f7"></iframe>
+    <title>刻意练习</title>
+    <url>/p/2e543a56/</url>
+    <content><![CDATA[<p><strong>每天1小时数据分析技能学习，用热爱成就事业，用坚持锻造专业！</strong></p>
+<iframe title="日程数据监控" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiYmIwZDdmZWEtZWQ4OC00YmMyLTk5YjEtNTcyMjkzNzAwNWM4IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&pageName=ReportSection3d21ab029abe43e7ce90" frameborder="0" allowfullscreen="true"></iframe>
 
-  <span id="more"></span>
+
 
 ]]></content>
       <categories>

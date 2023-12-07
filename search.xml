@@ -123,13 +123,13 @@
   <entry>
     <title>财务成本管理（1）</title>
     <url>/p/314152c6/</url>
-    <content><![CDATA[  <span id="more"></span>
-
-<h2 id="第1章-财务管理基本原理"><a href="#第1章-财务管理基本原理" class="headerlink" title="第1章 财务管理基本原理"></a>第1章 财务管理基本原理</h2><p>财务管理的内容和职能</p>
+    <content><![CDATA[<h2 id="第1章-财务管理基本原理"><a href="#第1章-财务管理基本原理" class="headerlink" title="第1章 财务管理基本原理"></a>第1章 财务管理基本原理</h2><p>财务管理的内容和职能</p>
 <p>财务管理的目标与利益相关者的要求</p>
 <p>财务管理的核心概念</p>
 <p>财务管理的基本理论</p>
 <p>金融工具与金融市场</p>
+  <span id="more"></span>
+
 <p>第2章 财务报表分析与财务预测</p>
 <p>财务报表分析的目的和方法</p>
 <p>财务比率分析</p>
@@ -233,6 +233,7 @@
     <content><![CDATA[<h3 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a><strong>项目简介</strong></h3><ol>
 <li><p><strong>我们团队在做一件什么事？</strong></p>
 <p>团队所属在线教育公司-线下业务中心-转化部，主要工作是承接线下小学流量，通过免费或低价体验课程对用户进行服务并引导其购买正式课程，核心目标是通过不断优化课程策略和服务，提高PV转化率，快速覆盖市场用户，提高市场中付费用户的占比。</p>
+  <span id="more"></span>
 </li>
 <li><p><strong>我在团队中是做一件什么事？</strong></p>
 <p>我在团队的角色是数据组的一名数据分析师，主要工作分为两个方面：</p>
@@ -248,7 +249,7 @@
 </ol>
 <iframe title="Report Section" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiOTk2MGE3MTktYmY2YS00ZjY2LTkyMDQtYjg4N2YyODQyZWE3IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D" frameborder="0" allowfullscreen="true"></iframe>
 
-  <span id="more"></span>
+
 
 <h3 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h3><p>K12在线教育的服务模式主要是“先体验，后入学”，在正式课程前面设置有体验课程。体验课程不仅能帮助机构了解学生当前的学习水平、学习习惯，针对性的挖掘学生潜在的学习需求，还能帮助家长和学生更加充分的了解培训机构，找到与其适合的课程和老师，提前融入到课程环境当中。</p>
 <p>为了挖掘更多小学生群体的培训学习需求，降低学生体验课程的门槛，提高正式课程的转化率，公司开设小学0元体验课程，增设小学业务中心-转化部，负责小学0元课程的课程设计、课程运营以及转化工作。</p>

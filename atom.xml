@@ -61,18 +61,14 @@
     <link href="http://guiyiblog.com/p/314152c6/"/>
     <id>http://guiyiblog.com/p/314152c6/</id>
     <published>2023-07-25T04:00:00.000Z</published>
-    <updated>2023-12-05T03:42:02.896Z</updated>
+    <updated>2023-12-07T03:01:24.060Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">  &lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;第1章-财务管理基本原理&quot;&gt;&lt;a href=&quot;#第1章-财务管理基本原理&quot; class=&quot;headerlink&quot; title=&quot;第1章 财务管理基本原理&quot;&gt;&lt;/a&gt;第1章</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;第1章-财务管理基本原理&quot;&gt;&lt;a href=&quot;#第1章-财务管理基本原理&quot; class=&quot;headerlink&quot; title=&quot;第1章 财务管理基本原理&quot;&gt;&lt;/a&gt;第1章 财务管理基本原理&lt;/h2&gt;&lt;p&gt;财务管理的内容和职能&lt;/p&gt;
+&lt;p&gt;财务管理的目标与利益相关者的要求&lt;/p&gt;
+&lt;p&gt;财务管理的核心概念&lt;/p&gt;
+&lt;p&gt;财务管理的基本理论&lt;/p&gt;
+&lt;p&gt;金融工具与金融市场&lt;/p&gt;</summary>
     
     
     
@@ -90,26 +86,12 @@
     <link href="http://guiyiblog.com/p/939b/"/>
     <id>http://guiyiblog.com/p/939b/</id>
     <published>2023-04-15T04:00:00.000Z</published>
-    <updated>2023-12-05T02:50:31.770Z</updated>
+    <updated>2023-12-07T03:01:50.706Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;项目简介&quot;&gt;&lt;a href=&quot;#项目简介&quot; class=&quot;headerlink&quot; title=&quot;项目简介&quot;&gt;&lt;/a&gt;&lt;strong&gt;项目简介&lt;/strong&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;我们团队在做一件什么事？&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;团队所属在线教育公司-线下业务中心-转化部，主要工作是承接线下小学流量，通过免费或低价体验课程对用户进行服务并引导其购买正式课程，核心目标是通过不断优化课程策略和服务，提高PV转化率，快速覆盖市场用户，提高市场中付费用户的占比。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;我在团队中是做一件什么事？&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;我在团队的角色是数据组的一名数据分析师，主要工作分为两个方面：&lt;/p&gt;
-&lt;p&gt;1）搭建业务全链路数据监控体系：制定每期次业务目标，及时反馈业务方全链路各环节的数据现状，根据数据情况灵活调整策略促使各环节目标达成；&lt;/p&gt;
-&lt;p&gt;2）搭建业务全链路数据分析体系：深入业务思考和实践，和业务方一起分析复盘每期次服务过程和转化结果，为业务方提供多角度的数据分析，共同制定和优化业务策略，提高各环节效率和转化效果，促使团队目标达成。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;这件事我做到了什么程度，达到了什么结果？&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;1）在这个项目当中，我从0到1帮助团队搭建了业务全链路数据监控体系和全链路数据分析体系，为团队设计了一套通用的业务数据模型，并基于Power BI独立进行了数据底层模型的搭建和数据看板的设计开发，使数据侧能快速响应业务需求，将常规数据需求的产出时间由1~3天缩短至1天以内；&lt;/p&gt;
-&lt;p&gt;2）基于此模型，赋能团队其他成员，在组内进行宣讲，帮助组内同事快速掌握使用在线教育通用分析模型的能力，使其能再业务线快速扩张的阶段能独自承担一个业务线的数据需求；&lt;/p&gt;
-&lt;p&gt;3）不足之处：由于相关政策的影响，未能继续深耕业务，实现从1到n阶段的成长蜕变。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;以下为脱敏后简化的Power BI在线教育全链路分析样例作品，供参考：&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;iframe title=&quot;Report Section&quot; width=&quot;800&quot; height=&quot;486&quot; src=&quot;https://app.powerbi.com/view?r=eyJrIjoiOTk2MGE3MTktYmY2YS00ZjY2LTkyMDQtYjg4N2YyODQyZWE3IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;true&quot;&gt;&lt;/iframe&gt;</summary>
+&lt;p&gt;团队所属在线教育公司-线下业务中心-转化部，主要工作是承接线下小学流量，通过免费或低价体验课程对用户进行服务并引导其购买正式课程，核心目标是通过不断优化课程策略和服务，提高PV转化率，快速覆盖市场用户，提高市场中付费用户的占比。&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary>
     
     
     

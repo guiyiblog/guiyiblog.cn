@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="数据分析师的成长博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Python中的表结构对象 |  归一</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="归一" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-240307-Python中的表结构对象"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Python中的表结构对象
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/p/8759704b/" class="article-date">
+  <time datetime="2024-03-07T14:11:32.000Z" itemprop="datePublished">2024-03-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/">数据处理能力</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Python%E7%AF%87/">Python篇</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.9k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">12 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>在Python中Dataframe对象就是我们熟知的表结构对象，它具备构成表的基本元素：字段和记录。</p>
+<p>下面，我们先来简单了解下Dataframe的创建和基本构成。</p>
+  <span id="more"></span>
+
+<h3 id="1、Dataframe表的创建"><a href="#1、Dataframe表的创建" class="headerlink" title="1、Dataframe表的创建"></a>1、Dataframe表的创建</h3><p>Dataframe表通过<code>pd.Dataframe()</code>方法创建。</p>
+<p><strong><code>pd.DataFrame(data, index, columns)</code></strong>  </p>
+<ul>
+<li>data作为值，可以是二维数组、多维列表、多维元组、字典（键值必须是可迭代对象） </li>
+<li>index作为行索引  </li>
+<li>columns作为列索引</li>
+<li>dtype用于设置数据类型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 全部行输出</span></span><br><span class="line"><span class="keyword">from</span> IPython.core.interactiveshell <span class="keyword">import</span> InteractiveShell</span><br><span class="line"></span><br><span class="line">InteractiveShell.ast_node_interactivity = <span class="string">&quot;all&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入包</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用二维数组创建Dataframe表</span></span><br><span class="line">arr = np.zeros((<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">tb_arr = pd.DataFrame(data=arr, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])</span><br><span class="line">tb_arr</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用二维列表创建Dataframe表</span></span><br><span class="line">li = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]</span><br><span class="line">tb_li = pd.DataFrame(data=li, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])</span><br><span class="line">tb_li</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用二维元组创建Dataframe表</span></span><br><span class="line">tup = ((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), (<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>))</span><br><span class="line">tb_tup = pd.DataFrame(data=tup, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>], dtype=<span class="built_in">int</span>)</span><br><span class="line">tb_tup</span><br><span class="line">tb_tup.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+<pre><code>a    int32
+b    int32
+c    int32
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用字典创建Dataframe表</span></span><br><span class="line">dic = &#123;<span class="string">&#x27;a&#x27;</span>: (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), <span class="string">&#x27;b&#x27;</span>: (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), <span class="string">&#x27;c&#x27;</span>: (<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>)&#125;</span><br><span class="line">tb_dic = pd.DataFrame(data=dic, index=[<span class="string">&#x27;index1&#x27;</span>, <span class="string">&#x27;index2&#x27;</span>, <span class="string">&#x27;index3&#x27;</span>], dtype=<span class="built_in">str</span>)</span><br><span class="line">tb_dic</span><br><span class="line">tb_dic.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>index1</th>
+      <td>1</td>
+      <td>4</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>index2</th>
+      <td>2</td>
+      <td>5</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>index3</th>
+      <td>3</td>
+      <td>6</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+<pre><code>a    object
+b    object
+c    object
+dtype: object
+</code></pre>
+<p><strong>为什么三维数组不能生成Dataframe，但三维列表却可以？</strong></p>
+<blockquote>
+<p>三维列表（即列表的列表的列表）在Python中可以被视为一种嵌套的数据结构，其中每个内部列表都可以被看作是一个独立的序列（即一维数组）。<br>当你将三维列表转换为pandas DataFrame时，实际上你是在将这些内部列表（即二维列表）作为DataFrame的行或列来处理。</p>
+<p><strong>pandas的DataFrame构造函数可以接受一个嵌套的列表（或类似的可迭代对象），并尝试将这些内部列表转换为DataFrame的列。</strong></p>
+<p>值得注意的是，三维列表和三维数组在结构上有所不同。三维数组（如NumPy数组）是连续的内存块，其中的元素按照固定的步长排列，<br>而三维列表则是由嵌套的Python列表组成，每个内部列表都是独立的对象，可能存储在内存的不同位置。由于这种结构上的差异，<br>它们与pandas DataFrame的交互方式也会有所不同。NumPy数组提供了更高效的数值计算功能，而列表则提供了更灵活的数据结构。</p>
+</blockquote>
+<h3 id="2、Dataframe表的字段：Series对象"><a href="#2、Dataframe表的字段：Series对象" class="headerlink" title="2、Dataframe表的字段：Series对象"></a>2、Dataframe表的字段：Series对象</h3><p>Dataframe表的字段是Python中的Series对象</p>
+<p>Series是一种类似于一维数组的对象，是由一组数据(各种NumPy数据类型)以及一组与之相关的数据标签(即索引)组成。仅由一组数据也可产生简单的Series对象。<br>Series是Pandas包提供的一种Key-value型数据结构,其中Key为用户定义的显示index,每个显式index对应一个value值.</p>
+<p>它与Python列表的区别在于,Series的每个元素都带有两种index</p>
+<ul>
+<li>显示index : 由用户指定</li>
+<li>隐式index : 由系统自动分配(Series对象中每个元素的下标,类似Python”列表”的下标)</li>
+</ul>
+<p>Series的访问既可以通过显示index,也可以通过隐式index,</p>
+<p>在数据分析和数据科学项目中,一般用显式索引(index),而不是隐式下标,原因在于:当数据量很大时,很难准确定义其下标</p>
+<h4 id="2-1、Series对象的创建"><a href="#2-1、Series对象的创建" class="headerlink" title="2.1、Series对象的创建"></a>2.1、Series对象的创建</h4><p><strong>Series对象通过<code>pd.Series()</code>创建</strong></p>
+<p> <code>pd.Series(data, index, dtype, name) </code></p>
+<ul>
+<li>data可以是ndarray对象，列表，元组，字典等，其中字典的键直接作为显示索引</li>
+<li>index用于设置显示索引</li>
+<li>dtype用于设置数据类型</li>
+<li>name用于设置Series的名称</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">type</span>(tb_dic[<span class="string">&#x27;a&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>pandas.core.series.Series
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用列表创建Series对象</span></span><br><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    80
+数学    90
+英语    70
+Name: 分数, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用字典创建Series对象</span></span><br><span class="line">dic = &#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">123</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">456</span>, <span class="string">&#x27;c&#x27;</span>: <span class="string">&#x27;789&#x27;</span>&#125;</span><br><span class="line">ser_dic = pd.Series(dic, name=<span class="string">&quot;用字典创建&quot;</span>)  <span class="comment"># 把字典的键作为显示索引</span></span><br><span class="line"><span class="built_in">print</span>(ser_dic)</span><br></pre></td></tr></table></figure>
+
+<pre><code>a    123
+b    456
+c    789
+Name: 用字典创建, dtype: object
+</code></pre>
+<h3 id="2-2、Series对象的常用属性"><a href="#2-2、Series对象的常用属性" class="headerlink" title="2.2、Series对象的常用属性"></a>2.2、Series对象的常用属性</h3><ul>
+<li>ser.name：字段名</li>
+<li>ser.dtype：字段类型</li>
+<li>ser.size：字段大小</li>
+<li>ser.index：字段索引</li>
+<li>ser.values：字段值</li>
+<li>ser.is_unique：字段值是否唯一</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line">ser.name</span><br><span class="line">ser.dtype</span><br><span class="line">ser.size</span><br><span class="line">ser.index</span><br><span class="line">ser.values</span><br><span class="line">ser.is_unique</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;分数&#39;
+
+
+
+
+
+
+dtype(&#39;int64&#39;)
+
+
+
+
+
+
+3
+
+
+
+
+
+
+Index([&#39;语文&#39;, &#39;数学&#39;, &#39;英语&#39;], dtype=&#39;object&#39;)
+
+
+
+
+
+
+array([80, 90, 70], dtype=int64)
+
+
+
+
+
+
+True
+</code></pre>
+<h3 id="2-3、Series对象的常用方法"><a href="#2-3、Series对象的常用方法" class="headerlink" title="2.3、Series对象的常用方法"></a>2.3、Series对象的常用方法</h3><ul>
+<li>数据的增删改查</li>
+<li>数据清洗：排序、筛选、去重、缺失值处理</li>
+<li>数据统计：计数和非重复计数、平均值、分位数、最大和最小值、标准差</li>
+<li>一行转多行：列表展开</li>
+<li>自定义方法</li>
+</ul>
+<h4 id="2-31、字段的增删改查"><a href="#2-31、字段的增删改查" class="headerlink" title="2.31、字段的增删改查"></a>2.31、字段的增删改查</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 增加数据</span></span><br><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line">ser[<span class="string">&#x27;地理&#x27;</span>] = <span class="number">55</span>  <span class="comment"># 直接赋值法</span></span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"></span><br><span class="line">ser2 = pd.Series([<span class="number">99</span>], index=[<span class="string">&#x27;生物&#x27;</span>])</span><br><span class="line">ser = ser._append(ser2)</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    80
+数学    90
+英语    70
+地理    55
+Name: 分数, dtype: int64
+语文    80
+数学    90
+英语    70
+地理    55
+生物    99
+dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除数据</span></span><br><span class="line">ser = ser.drop(<span class="string">&#x27;生物&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    80
+数学    90
+英语    70
+地理    55
+dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更改数据</span></span><br><span class="line">ser[<span class="string">&#x27;语文&#x27;</span>] = <span class="number">70</span></span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="comment"># 更改字段类型</span></span><br><span class="line">ser = ser.astype(<span class="string">&#x27;int32&#x27;</span>)</span><br><span class="line">ser.dtypes</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70
+数学    90
+英语    70
+地理    55
+dtype: int64
+
+
+
+
+
+dtype(&#39;int32&#39;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询数据：切片</span></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="number">0</span>:<span class="number">2</span>])  <span class="comment"># 隐式索引</span></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="number">2</span>])  <span class="comment"># 隐式索引</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="string">&#x27;语文&#x27;</span>:<span class="string">&#x27;英语&#x27;</span>])  <span class="comment"># 显示索引</span></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="string">&#x27;语文&#x27;</span>])  <span class="comment"># 显示索引</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70
+数学    90
+dtype: int32
+70
+语文    70
+数学    90
+英语    70
+dtype: int32
+70
+</code></pre>
+<h4 id="2-32、字段的数据清洗"><a href="#2-32、字段的数据清洗" class="headerlink" title="2.32、字段的数据清洗"></a>2.32、字段的数据清洗</h4><p><strong>1）排序</strong></p>
+<ul>
+<li>ser.sort_index(ascending, inplace)</li>
+<li>ser.sort_values(ascending, inplace)</li>
+</ul>
+<p>ascending默认为True, 即升序排列<br>inplace默认为False，即不替换原始数据</p>
+<p><strong>2）筛选</strong></p>
+<ul>
+<li>ser.loc[条件表达式]</li>
+</ul>
+<p><strong>3）去重</strong></p>
+<ul>
+<li>ser.unique()</li>
+<li>ser.nunique() 返回不重复元素的个数</li>
+</ul>
+<p><strong>4）缺失值处理</strong></p>
+<ul>
+<li>ser.isna()</li>
+<li>ser.isnull()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 排序</span></span><br><span class="line"><span class="built_in">print</span>(ser.sort_index())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(ser.sort_values(ascending=<span class="literal">False</span>))  <span class="comment"># 按分数降序</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>地理    55
+数学    90
+英语    70
+语文    70
+dtype: int32
+数学    90
+语文    70
+英语    70
+地理    55
+dtype: int32
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 去重</span></span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="built_in">print</span>(ser.unique())  <span class="comment">## 字段去重</span></span><br><span class="line"><span class="built_in">print</span>(ser.nunique())  <span class="comment">## 非重复计数</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70
+数学    90
+英语    70
+地理    55
+dtype: int32
+[70 90 55]
+3
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 筛选</span></span><br><span class="line"><span class="built_in">print</span>((ser.loc[(ser &gt; <span class="number">60</span>) &amp; (ser &lt; <span class="number">90</span>)]))  <span class="comment"># 大于60分且小于90分的数据</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70
+英语    70
+dtype: int32
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 缺失值处理</span></span><br><span class="line">ser[<span class="string">&#x27;历史&#x27;</span>] = np.nan</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="built_in">print</span>(ser.isna())  <span class="comment"># 判断是否有缺失值</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70.0
+数学    90.0
+英语    70.0
+地理    55.0
+历史     NaN
+dtype: float64
+语文    False
+数学    False
+英语    False
+地理    False
+历史     True
+dtype: bool
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(ser.fillna(<span class="number">0</span>))  <span class="comment"># 填充缺失值</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70.0
+数学    90.0
+英语    70.0
+地理    55.0
+历史     0.0
+dtype: float64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(ser.dropna())  <span class="comment"># 删除缺失值</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70.0
+数学    90.0
+英语    70.0
+地理    55.0
+dtype: float64
+</code></pre>
+<h4 id="2-33、字段的数据统计"><a href="#2-33、字段的数据统计" class="headerlink" title="2.33、字段的数据统计"></a>2.33、字段的数据统计</h4><p><strong>1）计数和非重复计数</strong></p>
+<ul>
+<li>ser.count()：计数</li>
+<li>ser.nunique()：非重复计数</li>
+<li>ser.value_counts()：分类计数</li>
+</ul>
+<p><strong>2）平均值</strong></p>
+<ul>
+<li>ser.mean()</li>
+</ul>
+<p><strong>3）分位数</strong></p>
+<ul>
+<li>ser.median()</li>
+<li>ser.quantile()</li>
+</ul>
+<p><strong>4）最大和最小值</strong></p>
+<ul>
+<li>ser.max()</li>
+</ul>
+<p><strong>5）标准差</strong></p>
+<ul>
+<li>ser.std()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义分类型变量</span></span><br><span class="line">ser = pd.Series([<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>])</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 计数</span></span><br><span class="line">ser.count()</span><br><span class="line"><span class="comment"># 非重复计数</span></span><br><span class="line">ser.nunique()</span><br><span class="line"><span class="comment"># 分类计数</span></span><br><span class="line">ser.value_counts()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    A
+1    A
+2    B
+3    C
+dtype: object
+
+
+
+
+
+
+4
+
+
+
+
+
+
+3
+
+
+
+
+
+
+A    2
+B    1
+C    1
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义数值型变量</span></span><br><span class="line">ser = pd.Series(<span class="built_in">range</span>(<span class="number">5</span>))</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 平均数</span></span><br><span class="line">ser.mean()</span><br><span class="line"><span class="comment"># 中位数</span></span><br><span class="line">ser.median()</span><br><span class="line"><span class="comment"># 分位数</span></span><br><span class="line">ser.quantile(<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># 最大值</span></span><br><span class="line">ser.<span class="built_in">max</span>()</span><br><span class="line"><span class="comment"># 最小值</span></span><br><span class="line">ser.<span class="built_in">min</span>()</span><br><span class="line"><span class="comment"># 标准差</span></span><br><span class="line">ser.std()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    0
+1    1
+2    2
+3    3
+4    4
+dtype: int64
+
+
+
+
+
+
+2.0
+
+
+
+
+
+
+2.0
+
+
+
+
+
+
+2.0
+
+
+
+
+
+
+4
+
+
+
+
+
+
+0
+
+
+
+
+
+
+1.5811388300841898
+</code></pre>
+<h4 id="2-34、一行转多行"><a href="#2-34、一行转多行" class="headerlink" title="2.34、一行转多行"></a>2.34、一行转多行</h4><ul>
+<li>ser.explore()：可将字段中的列表元素展开为多行</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 列表元素展开</span></span><br><span class="line">ser.explode()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0            1
+1            2
+2            3
+3    [4, 5, 6]
+dtype: object
+
+
+
+
+
+
+0    1
+1    2
+2    3
+3    4
+3    5
+3    6
+dtype: object
+</code></pre>
+<h4 id="2-35、自定义方法"><a href="#2-35、自定义方法" class="headerlink" title="2.35、自定义方法"></a>2.35、自定义方法</h4><ul>
+<li>ser.map(lambda x: 函数表达式)</li>
+<li>ser.apply(lambda x: 函数表达式)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">ser.<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x + <span class="number">1</span>)</span><br><span class="line">ser.apply(<span class="keyword">lambda</span> x: x + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    2
+1    3
+2    4
+dtype: int64
+
+
+
+
+
+
+0    2
+1    3
+2    4
+dtype: int64
+</code></pre>
+<p><strong>ser.map()和ser.apply()的区别</strong></p>
+<p><strong><code>ser.map()</code></strong><br>map() 方法用于将一个函数应用于Series中的每个元素。它主要用于将一组值映射到另一组值，通常用于分类变量的转换或简单的元素级操作。map() 方法通常接受一个字典或一个函数作为参数。</p>
+<p><strong><code>ser.apply()</code></strong><br>apply() 方法也用于对Series中的每个元素应用一个函数，但它更加通用和灵活。apply() 方法可以接受任何可调用的对象（如函数、方法、Lambda表达式等），并且可以使用axis参数来指定操作是应用于Series的每个元素（axis&#x3D;0，默认值）还是应用于整个Series（axis&#x3D;1，这种情况对于Series并不常见，因为Series本身是一维的）。</p>
+<p><strong>区别总结</strong></p>
+<ul>
+<li><p>灵活性：apply() 方法更加灵活，可以接受任何可调用的对象，而 map() 通常只接受函数或字典。</p>
+</li>
+<li><p>性能：对于简单的映射操作，map() 通常比 apply() 更快，因为它针对这类操作进行了优化。然而，对于复杂的操作或需要更多控制的情况，apply() 提供了更大的灵活性。</p>
+</li>
+<li><p>用途：map() 更常用于简单的值映射，而 apply() 则更常用于更复杂的转换和计算。</p>
+</li>
+</ul>
+<h3 id="3、Dataframe表的常用属性和方法"><a href="#3、Dataframe表的常用属性和方法" class="headerlink" title="3、Dataframe表的常用属性和方法"></a>3、Dataframe表的常用属性和方法</h3><p>Dataframe表的字段是Python中的Series对象</p>
+<p>Series是一种类似于一维数组的对象，是由一组数据(各种NumPy数据类型)以及一组与之相关的数据标签(即索引)组成。仅由一组数据也可产生简单的Series对象。<br>Series是Pandas包提供的一种Key-value型数据结构,其中Key为用户定义的显示index,每个显式index对应一个value值.</p>
+<p>它与Python列表的区别在于,Series的每个元素都带有两种index</p>
+<ul>
+<li>显示index : 由用户指定</li>
+<li>隐式index : 由系统自动分配(Series对象中每个元素的下标,类似Python”列表”的下标)</li>
+</ul>
+<p>Series的访问既可以通过显示index,也可以通过隐式index,</p>
+<p>在数据分析和数据科学项目中,一般用显式索引(index),而不是隐式下标,原因在于:当数据量很大时,很难准确定义其下标</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://guiyiblog.com/p/8759704b/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/p/7ef0c61b/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">业务指标解析</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2024
+        <i class="ri-heart-fill heart_icon"></i> 归一
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+    
+        <div class="logo">
+            <a href="/"><img src="/images/ayer-side.svg" alt="归一"></a>
+        </div>
+    
+    <ul class="nav nav-main">
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/">主页</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/categories">分类</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B">业务理解能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/%E5%86%85%E5%AE%B9%E7%A4%BE%E4%BA%A4%E8%A1%8C%E4%B8%9A">内容社交行业
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E8%83%BD%E5%8A%9B">数据获取能力</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B">数据处理能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Excel">Excel
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/PowerBI">PowerBI
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/MySQL">MySQL
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Python">Python
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE">BigData
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%83%BD%E5%8A%9B">数据分析能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%83%BD%E5%8A%9B/%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95">统计分析方法
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B">数据表达能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B">分析案例
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/categories/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3">网站说明</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/about">关于</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+    </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+    <ul class="nav">
+        <li class="nav-item">
+            
+                <a class="nav-item-link nav-item-search" title="搜索">
+                    <i class="ri-search-line"></i>
+                </a>
+            
+            
+        </li>
+    </ul>
+</nav>
+<div class="search-form-wrap">
+    <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+
+<style>
+    .nav-main li ul {
+        display: none;
+    }
+
+    .nav-main li:hover ul {
+        display: block;
+        /*color: #dee2ec;*/
+        /*animation: swing ease-in-out 0.5s 1 alternate;*/
+    }
+
+    .sub-menu {
+        /*position: absolute;*/
+        position: relative;
+        background: rgba(0, 0, 0, 0);
+        color: rgba(0, 0, 0, 0);
+        padding: 3px;
+        width: 10rem;
+        left: 3rem;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .menu-suffix {
+        display: inline-block;
+        padding: 5px;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+</style>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

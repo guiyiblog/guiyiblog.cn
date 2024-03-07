@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.com/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.com/"/>
-  <updated>2023-12-08T08:37:13.472Z</updated>
+  <updated>2024-03-07T15:05:50.040Z</updated>
   <id>http://guiyiblog.com/</id>
   
   <author>
@@ -17,21 +17,57 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>业务指标体系梳理-微博</title>
+    <title>Python中的表结构对象</title>
+    <link href="http://guiyiblog.com/p/8759704b/"/>
+    <id>http://guiyiblog.com/p/8759704b/</id>
+    <published>2024-03-07T14:11:32.000Z</published>
+    <updated>2024-03-07T15:05:50.040Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在Python中Dataframe对象就是我们熟知的表结构对象，它具备构成表的基本元素：字段和记录。&lt;/p&gt;
+&lt;p&gt;下面，我们先来简单了解下Dataframe的创建和基本构成。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
+    
+    <category term="Python篇" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Python%E7%AF%87/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>业务指标解析</title>
     <link href="http://guiyiblog.com/p/7ef0c61b/"/>
     <id>http://guiyiblog.com/p/7ef0c61b/</id>
     <published>2023-12-04T03:11:32.000Z</published>
-    <updated>2023-12-08T08:37:13.472Z</updated>
+    <updated>2023-12-20T06:38:20.000Z</updated>
     
-    
-    <summary type="html">&lt;p&gt;微博（旧称：新浪微博）于2009年8月上线，是一家社交媒体平台；2014年3月27日，新浪微博正式更名为微博；4月17日晚，新浪公司旗下微博业务正式登陆纳斯达克，股票代码WB。&lt;/p&gt;
-&lt;p&gt;2023年11月9日，微博发布2023年第三季度财报。三季度微博总营收4.422亿美元，约合32.07亿元人民币，剔除汇率因素，总营收同比增长2%。其中，&lt;strong&gt;广告营收达到3.893亿美元&lt;/strong&gt;，约合28.25亿元人民币，剔除汇率因素，广告收入同比增长3%。三季度微博调整后净利润1.366亿美元，约合人民币9.94亿元，剔除汇率因素，同比增长17%。用户方面，截至三季度末，&lt;strong&gt;微博月活跃用户达到6.05亿&lt;/strong&gt;，同比净增约2100万，&lt;strong&gt;日活跃用户达到2.6亿&lt;/strong&gt;，同比净增约800万。&lt;/p&gt;</summary>
     
     
     
     <category term="业务理解能力" scheme="http://guiyiblog.com/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="内容社交行业" scheme="http://guiyiblog.com/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/%E5%86%85%E5%AE%B9%E7%A4%BE%E4%BA%A4%E8%A1%8C%E4%B8%9A/"/>
+    <category term="内容资讯行业" scheme="http://guiyiblog.com/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/%E5%86%85%E5%AE%B9%E8%B5%84%E8%AE%AF%E8%A1%8C%E4%B8%9A/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>内容平台通用分析方法</title>
+    <link href="http://guiyiblog.com/p/7ef0c61b/"/>
+    <id>http://guiyiblog.com/p/7ef0c61b/</id>
+    <published>2023-12-04T03:11:32.000Z</published>
+    <updated>2023-12-20T06:35:55.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;微博（旧称：新浪微博）于2009年8月上线，是一家社交媒体平台；2014年3月27日，新浪微博正式更名为微博；4月17日晚，新浪公司旗下微博业务正式登陆纳斯达克，股票代码WB。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="业务理解能力" scheme="http://guiyiblog.com/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/"/>
+    
+    <category term="内容资讯行业" scheme="http://guiyiblog.com/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/%E5%86%85%E5%AE%B9%E8%B5%84%E8%AE%AF%E8%A1%8C%E4%B8%9A/"/>
     
     
   </entry>
@@ -61,7 +97,7 @@
     <link href="http://guiyiblog.com/p/314152c6/"/>
     <id>http://guiyiblog.com/p/314152c6/</id>
     <published>2023-07-25T04:00:00.000Z</published>
-    <updated>2023-12-07T03:01:24.060Z</updated>
+    <updated>2023-12-11T02:48:05.744Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;第1章-财务管理基本原理&quot;&gt;&lt;a href=&quot;#第1章-财务管理基本原理&quot; class=&quot;headerlink&quot; title=&quot;第1章 财务管理基本原理&quot;&gt;&lt;/a&gt;第1章 财务管理基本原理&lt;/h2&gt;&lt;p&gt;财务管理的内容和职能&lt;/p&gt;
@@ -147,7 +183,7 @@
     <link href="http://guiyiblog.com/p/fbc56413/"/>
     <id>http://guiyiblog.com/p/fbc56413/</id>
     <published>2022-09-24T14:32:21.000Z</published>
-    <updated>2023-12-04T11:18:43.304Z</updated>
+    <updated>2023-12-11T02:47:54.255Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;5、Maven&quot;&gt;&lt;a href=&quot;#5、Maven&quot; class=&quot;headerlink&quot; title=&quot;5、Maven&quot;&gt;&lt;/a&gt;5、Maven&lt;/h2&gt;&lt;p&gt;为什么要学Maven？&lt;/p&gt;
@@ -158,9 +194,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/JavaWeb/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/JavaWeb/"/>
     
     
     <category term="网页开发" scheme="http://guiyiblog.com/tags/%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91/"/>
@@ -172,7 +210,7 @@
     <link href="http://guiyiblog.com/p/d8ad1f04/"/>
     <id>http://guiyiblog.com/p/d8ad1f04/</id>
     <published>2022-09-18T14:32:21.000Z</published>
-    <updated>2023-12-04T11:18:39.183Z</updated>
+    <updated>2023-12-11T02:47:51.280Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;4、HTTP&quot;&gt;&lt;a href=&quot;#4、HTTP&quot; class=&quot;headerlink&quot; title=&quot;4、HTTP&quot;&gt;&lt;/a&gt;4、HTTP&lt;/h2&gt;&lt;h3 id=&quot;4-1、什么是HTTP&quot;&gt;&lt;a href=&quot;#4-1、什么是HTTP&quot; class=&quot;headerlink&quot; title=&quot;4.1、什么是HTTP&quot;&gt;&lt;/a&gt;4.1、什么是HTTP&lt;/h3&gt;&lt;p&gt;HTTP（超文本传输协议）是一个简单的请求-响应协议，它通常运行在TCP之上。&lt;/p&gt;
@@ -184,9 +222,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/JavaWeb/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/JavaWeb/"/>
     
     
     <category term="网页开发" scheme="http://guiyiblog.com/tags/%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91/"/>
@@ -198,7 +238,7 @@
     <link href="http://guiyiblog.com/p/9ecb83c3/"/>
     <id>http://guiyiblog.com/p/9ecb83c3/</id>
     <published>2022-09-17T14:32:21.000Z</published>
-    <updated>2023-12-04T11:18:35.049Z</updated>
+    <updated>2023-12-11T02:47:48.477Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;3、Tomcat&quot;&gt;&lt;a href=&quot;#3、Tomcat&quot; class=&quot;headerlink&quot; title=&quot;3、Tomcat&quot;&gt;&lt;/a&gt;3、Tomcat&lt;/h2&gt;&lt;h3 id=&quot;3-1、安装Tomcat&quot;&gt;&lt;a href=&quot;#3-1、安装Tomcat&quot; class=&quot;headerlink&quot; title=&quot;3.1、安装Tomcat&quot;&gt;&lt;/a&gt;3.1、安装Tomcat&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://tomcat.apache.org/download-10.cgi&quot;&gt;https://tomcat.apache.org/download-10.cgi&lt;/a&gt;&lt;/p&gt;
@@ -207,9 +247,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/JavaWeb/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/JavaWeb/"/>
     
     
     <category term="网页开发" scheme="http://guiyiblog.com/tags/%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91/"/>
@@ -221,7 +263,7 @@
     <link href="http://guiyiblog.com/p/c4e645ce/"/>
     <id>http://guiyiblog.com/p/c4e645ce/</id>
     <published>2022-09-04T14:32:21.000Z</published>
-    <updated>2023-12-04T11:18:31.231Z</updated>
+    <updated>2023-12-11T02:47:45.381Z</updated>
     
     
     <summary type="html">&lt;p&gt;Web服务器是使用HTTP（超文本传输协议）和其他协议来响应通过万维网发出的客户端请求的软件和硬件。Web服务器的主要工作是通过存储，处理和向用户交付网页来显示网站内容。除了HTTP，Web服务器还支持SMTP（简单邮件传输协议）和FTP（文件传输协议），用于电子邮件，文件传输和存储。&lt;/p&gt;
@@ -229,9 +271,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/JavaWeb/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/JavaWeb/"/>
     
     
     <category term="网页开发" scheme="http://guiyiblog.com/tags/%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91/"/>
@@ -243,7 +287,7 @@
     <link href="http://guiyiblog.com/p/82a91f4e/"/>
     <id>http://guiyiblog.com/p/82a91f4e/</id>
     <published>2022-09-03T14:32:21.000Z</published>
-    <updated>2023-12-04T11:18:27.229Z</updated>
+    <updated>2023-12-11T02:47:42.106Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;1、基本概念&quot;&gt;&lt;a href=&quot;#1、基本概念&quot; class=&quot;headerlink&quot; title=&quot;1、基本概念&quot;&gt;&lt;/a&gt;1、基本概念&lt;/h2&gt;&lt;h3 id=&quot;1-1、前言&quot;&gt;&lt;a href=&quot;#1-1、前言&quot; class=&quot;headerlink&quot; title=&quot;1.1、前言&quot;&gt;&lt;/a&gt;1.1、前言&lt;/h3&gt;&lt;p&gt;web开发：&lt;/p&gt;
@@ -265,9 +309,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/JavaWeb/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="JavaWeb" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/JavaWeb/"/>
     
     
     <category term="网页开发" scheme="http://guiyiblog.com/tags/%E7%BD%91%E9%A1%B5%E5%BC%80%E5%8F%91/"/>
@@ -279,7 +325,7 @@
     <link href="http://guiyiblog.com/p/e173abca/"/>
     <id>http://guiyiblog.com/p/e173abca/</id>
     <published>2022-08-27T14:32:21.000Z</published>
-    <updated>2023-12-04T11:18:22.842Z</updated>
+    <updated>2023-12-11T02:47:38.991Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;什么是HTML&quot;&gt;&lt;a href=&quot;#什么是HTML&quot; class=&quot;headerlink&quot; title=&quot;什么是HTML&quot;&gt;&lt;/a&gt;什么是HTML&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;HTML：&lt;/strong&gt;Hyper Text Markup Language（超文本标记语言）&lt;/p&gt;
@@ -289,9 +335,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="HTML" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/HTML/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="HTML" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/HTML/"/>
     
     
     <category term="前端" scheme="http://guiyiblog.com/tags/%E5%89%8D%E7%AB%AF/"/>
@@ -305,7 +353,7 @@
     <link href="http://guiyiblog.com/p/16dc59bd/"/>
     <id>http://guiyiblog.com/p/16dc59bd/</id>
     <published>2022-08-21T14:32:21.000Z</published>
-    <updated>2023-05-27T07:58:36.856Z</updated>
+    <updated>2023-12-11T02:47:27.913Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;HDFS的API操作&quot;&gt;&lt;a href=&quot;#HDFS的API操作&quot; class=&quot;headerlink&quot; title=&quot;HDFS的API操作&quot;&gt;&lt;/a&gt;HDFS的API操作&lt;/h3&gt;&lt;p&gt;在 Java 中操作 HDFS, 主要涉及以下 Class&lt;/p&gt;
@@ -316,9 +364,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="Hadoop" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/Hadoop/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="Hadoop" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/"/>
     
     
     <category term="大数据" scheme="http://guiyiblog.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
@@ -336,7 +386,7 @@
     <link href="http://guiyiblog.com/p/c9904293/"/>
     <id>http://guiyiblog.com/p/c9904293/</id>
     <published>2022-08-20T14:32:21.000Z</published>
-    <updated>2023-05-27T07:58:33.784Z</updated>
+    <updated>2023-12-11T02:47:24.481Z</updated>
     
     
     <summary type="html">&lt;p&gt;HDFS采用了主从（Master&amp;#x2F;Slave）结构模型，一个HDFS集群是由一个NameNode和若干个DataNode组成的。&lt;/p&gt;
@@ -345,9 +395,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="Hadoop" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/Hadoop/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="Hadoop" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/"/>
     
     
     <category term="大数据" scheme="http://guiyiblog.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
@@ -365,7 +417,7 @@
     <link href="http://guiyiblog.com/p/982a2f8b/"/>
     <id>http://guiyiblog.com/p/982a2f8b/</id>
     <published>2022-08-18T14:32:21.000Z</published>
-    <updated>2023-05-27T07:58:20.134Z</updated>
+    <updated>2023-12-11T02:47:15.394Z</updated>
     
     
     <summary type="html">&lt;p&gt;&lt;strong&gt;大数据（Big Data）&lt;/strong&gt;：指的是传统数据处理应用软件不足以处理（存储和计算）它们的大而复杂的数据集。&lt;/p&gt;
@@ -373,9 +425,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="Hadoop" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/Hadoop/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="Hadoop" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/"/>
     
     
     <category term="大数据" scheme="http://guiyiblog.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
@@ -389,7 +443,7 @@
     <link href="http://guiyiblog.com/p/cabdc1d2/"/>
     <id>http://guiyiblog.com/p/cabdc1d2/</id>
     <published>2022-08-17T14:32:21.000Z</published>
-    <updated>2023-12-04T11:18:15.258Z</updated>
+    <updated>2023-12-11T02:46:38.725Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Part5：面向对象编程&quot;&gt;&lt;a href=&quot;#Part5：面向对象编程&quot; class=&quot;headerlink&quot; title=&quot;Part5：面向对象编程&quot;&gt;&lt;/a&gt;Part5：面向对象编程&lt;/h2&gt;&lt;h3 id=&quot;什么是面向对象&quot;&gt;&lt;a href=&quot;#什么是面向对象&quot; class=&quot;headerlink&quot; title=&quot;什么是面向对象&quot;&gt;&lt;/a&gt;什么是面向对象&lt;/h3&gt;&lt;p&gt;面向对象编程（Object-Oriented Programming, OOP）&lt;/p&gt;
@@ -399,9 +453,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="JavaSE" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/JavaSE/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="JavaSE" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/JavaSE/"/>
     
     
     <category term="Java" scheme="http://guiyiblog.com/tags/Java/"/>
@@ -415,7 +471,7 @@
     <link href="http://guiyiblog.com/p/54d95471/"/>
     <id>http://guiyiblog.com/p/54d95471/</id>
     <published>2022-08-16T14:32:21.000Z</published>
-    <updated>2023-12-04T11:18:11.186Z</updated>
+    <updated>2023-12-11T02:46:43.329Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Part4：数组操作&quot;&gt;&lt;a href=&quot;#Part4：数组操作&quot; class=&quot;headerlink&quot; title=&quot;Part4：数组操作&quot;&gt;&lt;/a&gt;Part4：数组操作&lt;/h2&gt;&lt;h3 id=&quot;数组的声明和创建&quot;&gt;&lt;a href=&quot;#数组的声明和创建&quot; class=&quot;headerlink&quot; title=&quot;数组的声明和创建&quot;&gt;&lt;/a&gt;数组的声明和创建&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;数组的四个基本特点&lt;/strong&gt;&lt;/p&gt;
@@ -428,9 +484,11 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="JavaSE" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/JavaSE/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
+    
+    <category term="JavaSE" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/JavaSE/"/>
     
     
     <category term="Java" scheme="http://guiyiblog.com/tags/Java/"/>
@@ -444,7 +502,7 @@
     <link href="http://guiyiblog.com/p/23de64e7/"/>
     <id>http://guiyiblog.com/p/23de64e7/</id>
     <published>2022-08-15T14:32:21.000Z</published>
-    <updated>2023-12-04T11:18:06.994Z</updated>
+    <updated>2023-12-11T02:46:46.236Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Part3：Java流程控制&quot;&gt;&lt;a href=&quot;#Part3：Java流程控制&quot; class=&quot;headerlink&quot; title=&quot;Part3：Java流程控制&quot;&gt;&lt;/a&gt;Part3：Java流程控制&lt;/h2&gt;&lt;h3 id=&quot;Scanner对象&quot;&gt;&lt;a href=&quot;#Scanner对象&quot; class=&quot;headerlink&quot; title=&quot;Scanner对象&quot;&gt;&lt;/a&gt;Scanner对象&lt;/h3&gt;&lt;ul&gt;
@@ -464,83 +522,16 @@
     
     
     
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
+    <category term="数据处理能力" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/"/>
     
-    <category term="JavaSE" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/JavaSE/"/>
+    <category term="大数据" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
-    
-    <category term="Java" scheme="http://guiyiblog.com/tags/Java/"/>
-    
-    <category term="编程语言" scheme="http://guiyiblog.com/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java学习笔记-Day1</title>
-    <link href="http://guiyiblog.com/p/bad7355d/"/>
-    <id>http://guiyiblog.com/p/bad7355d/</id>
-    <published>2022-08-14T14:32:21.000Z</published>
-    <updated>2023-12-04T11:17:58.576Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;学习地址：&lt;a href=&quot;https://www.kuangstudy.com/course&quot;&gt;https://www.kuangstudy.com/course&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Part-1：Java入门&quot;&gt;&lt;a href=&quot;#Part-1：Java入门&quot; class=&quot;headerlink&quot; title=&quot;Part 1：Java入门&quot;&gt;&lt;/a&gt;Part 1：Java入门&lt;/h2&gt;&lt;h3 id=&quot;什么是计算机？&quot;&gt;&lt;a href=&quot;#什么是计算机？&quot; class=&quot;headerlink&quot; title=&quot;什么是计算机？&quot;&gt;&lt;/a&gt;什么是计算机？&lt;/h3&gt;&lt;p&gt;计算机是能够按照程序运行，自动、高速处理海量数据的现代化智能电子设备，由硬件和软件组成。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;计算机硬件&lt;/strong&gt;：CPU、IO设备、内存……&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220216112111310.png&quot; alt=&quot;image-20220216112111310&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;计算机软件&lt;/strong&gt;：可以使计算机按照事先预定好的顺序完成特定的功能，按其功能可划分为&lt;strong&gt;系统软件&lt;/strong&gt;与&lt;strong&gt;应用软件&lt;/strong&gt;。&lt;ul&gt;
-&lt;li&gt;系统软件：DOS（Disk Operating System）、Windows、Linux、Unix、Mac、Android、iOS&lt;/li&gt;
-&lt;li&gt;应用软件：WPA、QQ、微信、英雄联盟……&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
-    
-    <category term="JavaSE" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/JavaSE/"/>
+    <category term="JavaSE" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE/JavaSE/"/>
     
     
     <category term="Java" scheme="http://guiyiblog.com/tags/Java/"/>
     
     <category term="编程语言" scheme="http://guiyiblog.com/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux系统管理</title>
-    <link href="http://guiyiblog.com/p/6c72ecbc/"/>
-    <id>http://guiyiblog.com/p/6c72ecbc/</id>
-    <published>2022-08-13T14:32:21.000Z</published>
-    <updated>2023-05-27T08:00:25.210Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;Linux网络管理&quot;&gt;&lt;a href=&quot;#Linux网络管理&quot; class=&quot;headerlink&quot; title=&quot;Linux网络管理&quot;&gt;&lt;/a&gt;Linux网络管理&lt;/h2&gt;&lt;h3 id=&quot;Linux网络管理：IP地址管理&quot;&gt;&lt;a href=&quot;#Linux网络管理：IP地址管理&quot; class=&quot;headerlink&quot; title=&quot;Linux网络管理：IP地址管理&quot;&gt;&lt;/a&gt;Linux网络管理：IP地址管理&lt;/h3&gt;&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;查询IP：ip addr&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;配置静态IP：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;先设置vmware中的该centos7系统的网络连接方式为NAT模式&lt;/li&gt;
-&lt;li&gt;在vmware中，从“编辑” &amp;gt; “虚拟网络编辑器” &amp;gt; “NAT模式” &amp;gt; “NAT设置” &lt;/li&gt;
-&lt;li&gt;进入到&amp;#x2F;etc&amp;#x2F;sysconfig&amp;#x2F;network-scripts，编辑ifcfg-ens33，如果是centos6的话，文件名则是ifcfg-ethX，X是一个数字，默认是0&lt;/li&gt;
-&lt;li&gt;使用vi命令编辑ifcfg-ens33文件，增加或者修改这些设置&lt;/li&gt;
-&lt;li&gt;重启网卡：service network restart&lt;/li&gt;
-&lt;/ol&gt;</summary>
-    
-    
-    
-    <category term="数据工程" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/"/>
-    
-    <category term="Linux" scheme="http://guiyiblog.com/categories/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/Linux/"/>
-    
-    
-    <category term="Linux" scheme="http://guiyiblog.com/tags/Linux/"/>
-    
-    <category term="大数据" scheme="http://guiyiblog.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-    <category term="操作系统" scheme="http://guiyiblog.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   

@@ -99,11 +99,748 @@
       </tags>
   </entry>
   <entry>
-    <title>业务指标体系梳理-微博</title>
+    <title>Python中的表结构对象</title>
+    <url>/p/8759704b/</url>
+    <content><![CDATA[<p>在Python中Dataframe对象就是我们熟知的表结构对象，它具备构成表的基本元素：字段和记录。</p>
+<p>下面，我们先来简单了解下Dataframe的创建和基本构成。</p>
+  <span id="more"></span>
+
+<h3 id="1、Dataframe表的创建"><a href="#1、Dataframe表的创建" class="headerlink" title="1、Dataframe表的创建"></a>1、Dataframe表的创建</h3><p>Dataframe表通过<code>pd.Dataframe()</code>方法创建。</p>
+<p><strong><code>pd.DataFrame(data, index, columns)</code></strong>  </p>
+<ul>
+<li>data作为值，可以是二维数组、多维列表、多维元组、字典（键值必须是可迭代对象） </li>
+<li>index作为行索引  </li>
+<li>columns作为列索引</li>
+<li>dtype用于设置数据类型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 全部行输出</span></span><br><span class="line"><span class="keyword">from</span> IPython.core.interactiveshell <span class="keyword">import</span> InteractiveShell</span><br><span class="line"></span><br><span class="line">InteractiveShell.ast_node_interactivity = <span class="string">&quot;all&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入包</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用二维数组创建Dataframe表</span></span><br><span class="line">arr = np.zeros((<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">tb_arr = pd.DataFrame(data=arr, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])</span><br><span class="line">tb_arr</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用二维列表创建Dataframe表</span></span><br><span class="line">li = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]</span><br><span class="line">tb_li = pd.DataFrame(data=li, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])</span><br><span class="line">tb_li</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用二维元组创建Dataframe表</span></span><br><span class="line">tup = ((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), (<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>))</span><br><span class="line">tb_tup = pd.DataFrame(data=tup, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>], dtype=<span class="built_in">int</span>)</span><br><span class="line">tb_tup</span><br><span class="line">tb_tup.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+<pre><code>a    int32
+b    int32
+c    int32
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用字典创建Dataframe表</span></span><br><span class="line">dic = &#123;<span class="string">&#x27;a&#x27;</span>: (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), <span class="string">&#x27;b&#x27;</span>: (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), <span class="string">&#x27;c&#x27;</span>: (<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>)&#125;</span><br><span class="line">tb_dic = pd.DataFrame(data=dic, index=[<span class="string">&#x27;index1&#x27;</span>, <span class="string">&#x27;index2&#x27;</span>, <span class="string">&#x27;index3&#x27;</span>], dtype=<span class="built_in">str</span>)</span><br><span class="line">tb_dic</span><br><span class="line">tb_dic.dtypes</span><br></pre></td></tr></table></figure>
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style><p></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>index1</th>
+      <td>1</td>
+      <td>4</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>index2</th>
+      <td>2</td>
+      <td>5</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>index3</th>
+      <td>3</td>
+      <td>6</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+<pre><code>a    object
+b    object
+c    object
+dtype: object
+</code></pre>
+<p><strong>为什么三维数组不能生成Dataframe，但三维列表却可以？</strong></p>
+<blockquote>
+<p>三维列表（即列表的列表的列表）在Python中可以被视为一种嵌套的数据结构，其中每个内部列表都可以被看作是一个独立的序列（即一维数组）。<br>当你将三维列表转换为pandas DataFrame时，实际上你是在将这些内部列表（即二维列表）作为DataFrame的行或列来处理。</p>
+<p><strong>pandas的DataFrame构造函数可以接受一个嵌套的列表（或类似的可迭代对象），并尝试将这些内部列表转换为DataFrame的列。</strong></p>
+<p>值得注意的是，三维列表和三维数组在结构上有所不同。三维数组（如NumPy数组）是连续的内存块，其中的元素按照固定的步长排列，<br>而三维列表则是由嵌套的Python列表组成，每个内部列表都是独立的对象，可能存储在内存的不同位置。由于这种结构上的差异，<br>它们与pandas DataFrame的交互方式也会有所不同。NumPy数组提供了更高效的数值计算功能，而列表则提供了更灵活的数据结构。</p>
+</blockquote>
+<h3 id="2、Dataframe表的字段：Series对象"><a href="#2、Dataframe表的字段：Series对象" class="headerlink" title="2、Dataframe表的字段：Series对象"></a>2、Dataframe表的字段：Series对象</h3><p>Dataframe表的字段是Python中的Series对象</p>
+<p>Series是一种类似于一维数组的对象，是由一组数据(各种NumPy数据类型)以及一组与之相关的数据标签(即索引)组成。仅由一组数据也可产生简单的Series对象。<br>Series是Pandas包提供的一种Key-value型数据结构,其中Key为用户定义的显示index,每个显式index对应一个value值.</p>
+<p>它与Python列表的区别在于,Series的每个元素都带有两种index</p>
+<ul>
+<li>显示index : 由用户指定</li>
+<li>隐式index : 由系统自动分配(Series对象中每个元素的下标,类似Python”列表”的下标)</li>
+</ul>
+<p>Series的访问既可以通过显示index,也可以通过隐式index,</p>
+<p>在数据分析和数据科学项目中,一般用显式索引(index),而不是隐式下标,原因在于:当数据量很大时,很难准确定义其下标</p>
+<h4 id="2-1、Series对象的创建"><a href="#2-1、Series对象的创建" class="headerlink" title="2.1、Series对象的创建"></a>2.1、Series对象的创建</h4><p><strong>Series对象通过<code>pd.Series()</code>创建</strong></p>
+<p> <code>pd.Series(data, index, dtype, name) </code></p>
+<ul>
+<li>data可以是ndarray对象，列表，元组，字典等，其中字典的键直接作为显示索引</li>
+<li>index用于设置显示索引</li>
+<li>dtype用于设置数据类型</li>
+<li>name用于设置Series的名称</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span>(tb_dic[<span class="string">&#x27;a&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>pandas.core.series.Series
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用列表创建Series对象</span></span><br><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    80
+数学    90
+英语    70
+Name: 分数, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用字典创建Series对象</span></span><br><span class="line">dic = &#123;<span class="string">&#x27;a&#x27;</span>: <span class="number">123</span>, <span class="string">&#x27;b&#x27;</span>: <span class="number">456</span>, <span class="string">&#x27;c&#x27;</span>: <span class="string">&#x27;789&#x27;</span>&#125;</span><br><span class="line">ser_dic = pd.Series(dic, name=<span class="string">&quot;用字典创建&quot;</span>)  <span class="comment"># 把字典的键作为显示索引</span></span><br><span class="line"><span class="built_in">print</span>(ser_dic)</span><br></pre></td></tr></table></figure>
+
+<pre><code>a    123
+b    456
+c    789
+Name: 用字典创建, dtype: object
+</code></pre>
+<h3 id="2-2、Series对象的常用属性"><a href="#2-2、Series对象的常用属性" class="headerlink" title="2.2、Series对象的常用属性"></a>2.2、Series对象的常用属性</h3><ul>
+<li>ser.name：字段名</li>
+<li>ser.dtype：字段类型</li>
+<li>ser.size：字段大小</li>
+<li>ser.index：字段索引</li>
+<li>ser.values：字段值</li>
+<li>ser.is_unique：字段值是否唯一</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line">ser.name</span><br><span class="line">ser.dtype</span><br><span class="line">ser.size</span><br><span class="line">ser.index</span><br><span class="line">ser.values</span><br><span class="line">ser.is_unique</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>&#39;分数&#39;
+
+
+
+
+
+
+dtype(&#39;int64&#39;)
+
+
+
+
+
+
+3
+
+
+
+
+
+
+Index([&#39;语文&#39;, &#39;数学&#39;, &#39;英语&#39;], dtype=&#39;object&#39;)
+
+
+
+
+
+
+array([80, 90, 70], dtype=int64)
+
+
+
+
+
+
+True
+</code></pre>
+<h3 id="2-3、Series对象的常用方法"><a href="#2-3、Series对象的常用方法" class="headerlink" title="2.3、Series对象的常用方法"></a>2.3、Series对象的常用方法</h3><ul>
+<li>数据的增删改查</li>
+<li>数据清洗：排序、筛选、去重、缺失值处理</li>
+<li>数据统计：计数和非重复计数、平均值、分位数、最大和最小值、标准差</li>
+<li>一行转多行：列表展开</li>
+<li>自定义方法</li>
+</ul>
+<h4 id="2-31、字段的增删改查"><a href="#2-31、字段的增删改查" class="headerlink" title="2.31、字段的增删改查"></a>2.31、字段的增删改查</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 增加数据</span></span><br><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line">ser[<span class="string">&#x27;地理&#x27;</span>] = <span class="number">55</span>  <span class="comment"># 直接赋值法</span></span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"></span><br><span class="line">ser2 = pd.Series([<span class="number">99</span>], index=[<span class="string">&#x27;生物&#x27;</span>])</span><br><span class="line">ser = ser._append(ser2)</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    80
+数学    90
+英语    70
+地理    55
+Name: 分数, dtype: int64
+语文    80
+数学    90
+英语    70
+地理    55
+生物    99
+dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 删除数据</span></span><br><span class="line">ser = ser.drop(<span class="string">&#x27;生物&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    80
+数学    90
+英语    70
+地理    55
+dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更改数据</span></span><br><span class="line">ser[<span class="string">&#x27;语文&#x27;</span>] = <span class="number">70</span></span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="comment"># 更改字段类型</span></span><br><span class="line">ser = ser.astype(<span class="string">&#x27;int32&#x27;</span>)</span><br><span class="line">ser.dtypes</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70
+数学    90
+英语    70
+地理    55
+dtype: int64
+
+
+
+
+
+dtype(&#39;int32&#39;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查询数据：切片</span></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="number">0</span>:<span class="number">2</span>])  <span class="comment"># 隐式索引</span></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="number">2</span>])  <span class="comment"># 隐式索引</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="string">&#x27;语文&#x27;</span>:<span class="string">&#x27;英语&#x27;</span>])  <span class="comment"># 显示索引</span></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="string">&#x27;语文&#x27;</span>])  <span class="comment"># 显示索引</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70
+数学    90
+dtype: int32
+70
+语文    70
+数学    90
+英语    70
+dtype: int32
+70
+</code></pre>
+<h4 id="2-32、字段的数据清洗"><a href="#2-32、字段的数据清洗" class="headerlink" title="2.32、字段的数据清洗"></a>2.32、字段的数据清洗</h4><p><strong>1）排序</strong></p>
+<ul>
+<li>ser.sort_index(ascending, inplace)</li>
+<li>ser.sort_values(ascending, inplace)</li>
+</ul>
+<p>ascending默认为True, 即升序排列<br>inplace默认为False，即不替换原始数据</p>
+<p><strong>2）筛选</strong></p>
+<ul>
+<li>ser.loc[条件表达式]</li>
+</ul>
+<p><strong>3）去重</strong></p>
+<ul>
+<li>ser.unique()</li>
+<li>ser.nunique() 返回不重复元素的个数</li>
+</ul>
+<p><strong>4）缺失值处理</strong></p>
+<ul>
+<li>ser.isna()</li>
+<li>ser.isnull()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 排序</span></span><br><span class="line"><span class="built_in">print</span>(ser.sort_index())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(ser.sort_values(ascending=<span class="literal">False</span>))  <span class="comment"># 按分数降序</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>地理    55
+数学    90
+英语    70
+语文    70
+dtype: int32
+数学    90
+语文    70
+英语    70
+地理    55
+dtype: int32
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 去重</span></span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="built_in">print</span>(ser.unique())  <span class="comment">## 字段去重</span></span><br><span class="line"><span class="built_in">print</span>(ser.nunique())  <span class="comment">## 非重复计数</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70
+数学    90
+英语    70
+地理    55
+dtype: int32
+[70 90 55]
+3
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 筛选</span></span><br><span class="line"><span class="built_in">print</span>((ser.loc[(ser &gt; <span class="number">60</span>) &amp; (ser &lt; <span class="number">90</span>)]))  <span class="comment"># 大于60分且小于90分的数据</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70
+英语    70
+dtype: int32
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 缺失值处理</span></span><br><span class="line">ser[<span class="string">&#x27;历史&#x27;</span>] = np.nan</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="built_in">print</span>(ser.isna())  <span class="comment"># 判断是否有缺失值</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70.0
+数学    90.0
+英语    70.0
+地理    55.0
+历史     NaN
+dtype: float64
+语文    False
+数学    False
+英语    False
+地理    False
+历史     True
+dtype: bool
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(ser.fillna(<span class="number">0</span>))  <span class="comment"># 填充缺失值</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70.0
+数学    90.0
+英语    70.0
+地理    55.0
+历史     0.0
+dtype: float64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(ser.dropna())  <span class="comment"># 删除缺失值</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    70.0
+数学    90.0
+英语    70.0
+地理    55.0
+dtype: float64
+</code></pre>
+<h4 id="2-33、字段的数据统计"><a href="#2-33、字段的数据统计" class="headerlink" title="2.33、字段的数据统计"></a>2.33、字段的数据统计</h4><p><strong>1）计数和非重复计数</strong></p>
+<ul>
+<li>ser.count()：计数</li>
+<li>ser.nunique()：非重复计数</li>
+<li>ser.value_counts()：分类计数</li>
+</ul>
+<p><strong>2）平均值</strong></p>
+<ul>
+<li>ser.mean()</li>
+</ul>
+<p><strong>3）分位数</strong></p>
+<ul>
+<li>ser.median()</li>
+<li>ser.quantile()</li>
+</ul>
+<p><strong>4）最大和最小值</strong></p>
+<ul>
+<li>ser.max()</li>
+</ul>
+<p><strong>5）标准差</strong></p>
+<ul>
+<li>ser.std()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义分类型变量</span></span><br><span class="line">ser = pd.Series([<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>])</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 计数</span></span><br><span class="line">ser.count()</span><br><span class="line"><span class="comment"># 非重复计数</span></span><br><span class="line">ser.nunique()</span><br><span class="line"><span class="comment"># 分类计数</span></span><br><span class="line">ser.value_counts()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    A
+1    A
+2    B
+3    C
+dtype: object
+
+
+
+
+
+
+4
+
+
+
+
+
+
+3
+
+
+
+
+
+
+A    2
+B    1
+C    1
+Name: count, dtype: int64
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义数值型变量</span></span><br><span class="line">ser = pd.Series(<span class="built_in">range</span>(<span class="number">5</span>))</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 平均数</span></span><br><span class="line">ser.mean()</span><br><span class="line"><span class="comment"># 中位数</span></span><br><span class="line">ser.median()</span><br><span class="line"><span class="comment"># 分位数</span></span><br><span class="line">ser.quantile(<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># 最大值</span></span><br><span class="line">ser.<span class="built_in">max</span>()</span><br><span class="line"><span class="comment"># 最小值</span></span><br><span class="line">ser.<span class="built_in">min</span>()</span><br><span class="line"><span class="comment"># 标准差</span></span><br><span class="line">ser.std()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    0
+1    1
+2    2
+3    3
+4    4
+dtype: int64
+
+
+
+
+
+
+2.0
+
+
+
+
+
+
+2.0
+
+
+
+
+
+
+2.0
+
+
+
+
+
+
+4
+
+
+
+
+
+
+0
+
+
+
+
+
+
+1.5811388300841898
+</code></pre>
+<h4 id="2-34、一行转多行"><a href="#2-34、一行转多行" class="headerlink" title="2.34、一行转多行"></a>2.34、一行转多行</h4><ul>
+<li>ser.explore()：可将字段中的列表元素展开为多行</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 列表元素展开</span></span><br><span class="line">ser.explode()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0            1
+1            2
+2            3
+3    [4, 5, 6]
+dtype: object
+
+
+
+
+
+
+0    1
+1    2
+2    3
+3    4
+3    5
+3    6
+dtype: object
+</code></pre>
+<h4 id="2-35、自定义方法"><a href="#2-35、自定义方法" class="headerlink" title="2.35、自定义方法"></a>2.35、自定义方法</h4><ul>
+<li>ser.map(lambda x: 函数表达式)</li>
+<li>ser.apply(lambda x: 函数表达式)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">ser.<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x + <span class="number">1</span>)</span><br><span class="line">ser.apply(<span class="keyword">lambda</span> x: x + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0    2
+1    3
+2    4
+dtype: int64
+
+
+
+
+
+
+0    2
+1    3
+2    4
+dtype: int64
+</code></pre>
+<p><strong>ser.map()和ser.apply()的区别</strong></p>
+<p><strong><code>ser.map()</code></strong><br>map() 方法用于将一个函数应用于Series中的每个元素。它主要用于将一组值映射到另一组值，通常用于分类变量的转换或简单的元素级操作。map() 方法通常接受一个字典或一个函数作为参数。</p>
+<p><strong><code>ser.apply()</code></strong><br>apply() 方法也用于对Series中的每个元素应用一个函数，但它更加通用和灵活。apply() 方法可以接受任何可调用的对象（如函数、方法、Lambda表达式等），并且可以使用axis参数来指定操作是应用于Series的每个元素（axis&#x3D;0，默认值）还是应用于整个Series（axis&#x3D;1，这种情况对于Series并不常见，因为Series本身是一维的）。</p>
+<p><strong>区别总结</strong></p>
+<ul>
+<li><p>灵活性：apply() 方法更加灵活，可以接受任何可调用的对象，而 map() 通常只接受函数或字典。</p>
+</li>
+<li><p>性能：对于简单的映射操作，map() 通常比 apply() 更快，因为它针对这类操作进行了优化。然而，对于复杂的操作或需要更多控制的情况，apply() 提供了更大的灵活性。</p>
+</li>
+<li><p>用途：map() 更常用于简单的值映射，而 apply() 则更常用于更复杂的转换和计算。</p>
+</li>
+</ul>
+<h3 id="3、Dataframe表的常用属性和方法"><a href="#3、Dataframe表的常用属性和方法" class="headerlink" title="3、Dataframe表的常用属性和方法"></a>3、Dataframe表的常用属性和方法</h3><p>Dataframe表的字段是Python中的Series对象</p>
+<p>Series是一种类似于一维数组的对象，是由一组数据(各种NumPy数据类型)以及一组与之相关的数据标签(即索引)组成。仅由一组数据也可产生简单的Series对象。<br>Series是Pandas包提供的一种Key-value型数据结构,其中Key为用户定义的显示index,每个显式index对应一个value值.</p>
+<p>它与Python列表的区别在于,Series的每个元素都带有两种index</p>
+<ul>
+<li>显示index : 由用户指定</li>
+<li>隐式index : 由系统自动分配(Series对象中每个元素的下标,类似Python”列表”的下标)</li>
+</ul>
+<p>Series的访问既可以通过显示index,也可以通过隐式index,</p>
+<p>在数据分析和数据科学项目中,一般用显式索引(index),而不是隐式下标,原因在于:当数据量很大时,很难准确定义其下标</p>
+]]></content>
+      <categories>
+        <category>数据处理能力</category>
+        <category>Python篇</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>业务指标解析</title>
+    <url>/p/7ef0c61b/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>业务理解能力</category>
+        <category>内容资讯行业</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>内容平台通用分析方法</title>
     <url>/p/7ef0c61b/</url>
     <content><![CDATA[<p>微博（旧称：新浪微博）于2009年8月上线，是一家社交媒体平台；2014年3月27日，新浪微博正式更名为微博；4月17日晚，新浪公司旗下微博业务正式登陆纳斯达克，股票代码WB。</p>
-<p>2023年11月9日，微博发布2023年第三季度财报。三季度微博总营收4.422亿美元，约合32.07亿元人民币，剔除汇率因素，总营收同比增长2%。其中，<strong>广告营收达到3.893亿美元</strong>，约合28.25亿元人民币，剔除汇率因素，广告收入同比增长3%。三季度微博调整后净利润1.366亿美元，约合人民币9.94亿元，剔除汇率因素，同比增长17%。用户方面，截至三季度末，<strong>微博月活跃用户达到6.05亿</strong>，同比净增约2100万，<strong>日活跃用户达到2.6亿</strong>，同比净增约800万。</p>
   <span id="more"></span>
+
+
+
+<p>转化链路指标：分发-&gt;曝光-&gt;播放&#x2F;完播（完成触达），转评赞关注互动（触达深度）-&gt;点击-&gt;商品页面-&gt;下单-&gt;成单…</p>
+<p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/%E5%86%85%E5%AE%B9%E5%B9%B3%E5%8F%B0%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B.png" alt="内容平台业务流程"></p>
+<p>微博AI交互运营</p>
+<p>1、生产侧</p>
+<ul>
+<li>生产方式：AIGC+人工审核</li>
+<li>内容类型：文字</li>
+<li>内容领域：非敏感内容领域</li>
+</ul>
+<p>2、平台侧</p>
+<ul>
+<li>仿真普户：平台互动策略规则-&gt;push下发规则</li>
+<li>仿真博主：平台曝光规则-&gt;内容曝光、推荐、关注、投放规则</li>
+</ul>
+<p>3、消费侧</p>
+<ul>
+<li>用户体验（触达内容的过程）–&gt; 过程链路指标体系 –&gt; 优化SOP（链路转化率：push下发率–&gt;平台push下发规则优化；push点击率–&gt;频控策略（天级频控、小时级频控））</li>
+<li>用户消费（消费内容的结果）–&gt; 结果评估指标体系（正向、负向）–&gt; 优化内容（内容质量、内容匹配度）</li>
+</ul>
+<p>事前</p>
+<p>目标用户、内容圈定：用户分析案例</p>
+<p>项目目标制定：预测分析案例</p>
+<p>公式法对目标进行拆解分析</p>
+<p>事中</p>
+<p>策略制定、优化：AB测试案例</p>
+<p>数据监控预警</p>
+<p>事后</p>
+<p>数据复盘、评估</p>
+<p>商业模式：公司层面</p>
+<p>广告收入 &#x3D; 付费次数×次均付费</p>
+<p>付费次数 &#x3D; 付费人数 × 人均付费次数</p>
+<p>付费人数 &#x3D; DAU × 付费人数占比</p>
+<p>业务流程：部门层面</p>
+<p>付费次数 &#x3D; 次数 × 付费次数占比</p>
+<p>执行方案：个人&#x2F;小组层面</p>
+<p>AB测试：</p>
+<p>1、评估指标：push点击率</p>
+<p>2、用户圈定原则：相互独立，且各组结构保持一致</p>
+<p>用户结构一致，就是push点击率的分布各组要保持一致。</p>
+<p>用户频次结构一致本质上也是对push点击率进行分组，进而保证push点击率分组的分布保持一致。</p>
+<p>3、不同频次对push点击率是否影响显著</p>
+<p>方差分析（F检验，多样本均值）或者Z检验（两样本均值）</p>
+<p>判断显著后，对组平均与总体平均对比即可</p>
+<p>微博（旧称：新浪微博）于2009年8月上线，是一家社交媒体平台；2014年3月27日，新浪微博正式更名为微博；4月17日晚，新浪公司旗下微博业务正式登陆纳斯达克，股票代码WB。</p>
+<p>2023年11月9日，微博发布2023年第三季度财报。三季度微博总营收4.422亿美元，约合32.07亿元人民币，剔除汇率因素，总营收同比增长2%。其中，<strong>广告营收达到3.893亿美元</strong>，约合28.25亿元人民币，剔除汇率因素，广告收入同比增长3%。三季度微博调整后净利润1.366亿美元，约合人民币9.94亿元，剔除汇率因素，同比增长17%。用户方面，截至三季度末，<strong>微博月活跃用户达到6.05亿</strong>，同比净增约2100万，<strong>日活跃用户达到2.6亿</strong>，同比净增约800万。</p>
+  <!--more-->
 
 <h3 id="1、商业画布（Business-canvas）"><a href="#1、商业画布（Business-canvas）" class="headerlink" title="1、商业画布（Business canvas）"></a>1、商业画布（Business canvas）</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/%E5%95%86%E4%B8%9A%E6%A8%A1%E5%BC%8F%E7%94%BB%E5%B8%83-%E5%BE%AE%E5%8D%9A.png" alt="商业模式画布-微博"></p>
 <h3 id="2、业务流程图（Transaction-Flow-Diagram-TFD）"><a href="#2、业务流程图（Transaction-Flow-Diagram-TFD）" class="headerlink" title="2、业务流程图（Transaction Flow Diagram, TFD）"></a>2、业务流程图（Transaction Flow Diagram, TFD）</h3><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/业务流程图-微博.png" alt="业务流程图-微博" style="zoom:50%;">
@@ -123,7 +860,7 @@
 ]]></content>
       <categories>
         <category>业务理解能力</category>
-        <category>内容社交行业</category>
+        <category>内容资讯行业</category>
       </categories>
   </entry>
   <entry>
@@ -625,7 +1362,8 @@
 
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -698,7 +1436,8 @@
 <p>当你的浏览器中地址栏输入地址并回车的一瞬间到页面能够展示回来，经历了什么？</p>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -759,7 +1498,8 @@
 
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -813,7 +1553,8 @@
 </ol>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -890,7 +1631,8 @@
 <p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220904100826164.png"></p>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>JavaWeb</category>
       </categories>
       <tags>
@@ -986,7 +1728,8 @@
 <p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220827144825570.png" alt="image-20220827144825570"></p>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>HTML</category>
       </categories>
       <tags>
@@ -1007,7 +1750,8 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">在 Java 中操作 HDFS, 主要涉及以下 Class</span></span><br><span class="line"><span class="comment">1. Configuration：该类的对象封装了客户端或者服务器的配置</span></span><br><span class="line"><span class="comment">2. FileSystem：该类的对象是一个文件系统对象, 可以用该对象的一些方法来对文件进行操作, 通过FileSystem 的静态方法 get 获得该对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.commons.compress.utils.IOUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URI;</span><br><span class="line"><span class="keyword">import</span> java.net.URISyntaxException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HdfsClientOpt</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">HdfsClientOpt</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HdfsClientOpt</span>();</span><br><span class="line">        client.getFileSystem();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">// 获取FileSystem</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式一：set+get</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getFileSystem</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//1.创建一个Configuration实例化对象</span></span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>();</span><br><span class="line">        <span class="comment">//2.设置文件系统类型</span></span><br><span class="line">        configuration.set(<span class="string">&quot;fs.defaultFS&quot;</span>, <span class="string">&quot;hdfs://hadoop10:8020&quot;</span>);</span><br><span class="line">        <span class="comment">//3.获取文件系统</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(configuration);</span><br><span class="line">        <span class="comment">//4.打印输出</span></span><br><span class="line">        System.out.println(fileSystem);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式二：set方式+通过newInstance</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getFileSystem2</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//1:创建Configuration对象</span></span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">conf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>();</span><br><span class="line">        <span class="comment">//2:设置文件系统类型</span></span><br><span class="line">        conf.set(<span class="string">&quot;fs.defaultFS&quot;</span>, <span class="string">&quot;hdfs://hadoop10:8020&quot;</span>);</span><br><span class="line">        <span class="comment">//3:获取指定文件系统</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.newInstance(conf);</span><br><span class="line">        <span class="comment">//4:输出测试</span></span><br><span class="line">        System.out.println(fileSystem);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式三：new URI+get</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getFileSystem3</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>), <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        System.out.println(<span class="string">&quot;fileSystem:&quot;</span> + fileSystem);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 方式四：newInstance+get</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getFileSystem4</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.newInstance(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>), <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        System.out.println(<span class="string">&quot;fileSystem:&quot;</span> + fileSystem);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//文件的遍历</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * hdfs文件的遍历</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">listFiles</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException &#123;</span><br><span class="line">        <span class="comment">//1、获取FileSystem实例</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        <span class="comment">//2、调用方法listFiles 获取 /目录下所有的文件信息</span></span><br><span class="line">        RemoteIterator&lt;LocatedFileStatus&gt; iterator = fileSystem.listFiles(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>), <span class="literal">true</span>);</span><br><span class="line">        <span class="comment">//3、遍历迭代器</span></span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            <span class="type">LocatedFileStatus</span> <span class="variable">fileStatus</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">            <span class="comment">//获取文件的绝对路径 : hdfs://hadoop10:8020/xxx</span></span><br><span class="line">            System.out.println(fileStatus.getPath() + <span class="string">&quot;======&quot;</span></span><br><span class="line">                    + fileStatus.getPath().getName());</span><br><span class="line">            System.out.println(fileStatus.getPermission());</span><br><span class="line">            System.out.println(fileStatus.getOwner());</span><br><span class="line">            System.out.println(fileStatus.getGroup());</span><br><span class="line">            System.out.println(fileStatus.getLen());</span><br><span class="line">            System.out.println(fileStatus.getModificationTime());</span><br><span class="line">            System.out.println(fileStatus.getReplication());</span><br><span class="line">            System.out.println(fileStatus.getBlockSize());</span><br><span class="line">            System.out.println(fileStatus.getPath().getName());</span><br><span class="line">            <span class="comment">//文件的block信息</span></span><br><span class="line">            BlockLocation[] blockLocations = fileStatus.getBlockLocations();</span><br><span class="line">            <span class="keyword">for</span> (BlockLocation blockLocation : blockLocations) &#123;</span><br><span class="line">                String[] hosts = blockLocation.getHosts();</span><br><span class="line">                System.out.println(<span class="string">&quot;block数量为: &quot;</span> + hosts.length);</span><br><span class="line">                <span class="keyword">for</span> (String host : hosts) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;主机为: &quot;</span> + host);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//创建文件夹</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建文件夹</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">mkdirs</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException,</span><br><span class="line">            InterruptedException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem实例</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>(), <span class="string">&quot;root&quot;</span>);</span><br><span class="line">        <span class="comment">//2:创建文件夹</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">bl</span> <span class="operator">=</span> fileSystem.mkdirs(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/aaa/bbb/ccc&quot;</span>));</span><br><span class="line">        System.out.println(bl);</span><br><span class="line">        <span class="comment">//3: 关闭FileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//文件的上传</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件的上传</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">uploadFile</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException,</span><br><span class="line">            InterruptedException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>(), <span class="string">&quot;root&quot;</span>);</span><br><span class="line">        <span class="comment">//2:调用方法，实现上传</span></span><br><span class="line">        fileSystem.copyFromLocalFile(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;D://test1.txt&quot;</span>), <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>));</span><br><span class="line">        <span class="comment">//3:关闭FileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//文件的下载</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件的下载方式一：使用copyToLocalFile</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">downloadFile1</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        <span class="comment">//2:调用方法，实现文件的下载</span></span><br><span class="line">        <span class="comment">// boolean delSrc 指是否将原文件删除</span></span><br><span class="line">        <span class="comment">// Path src 指要下载的文件路径</span></span><br><span class="line">        <span class="comment">// Path dst 指将文件下载到的路径</span></span><br><span class="line">        <span class="comment">// boolean useRawLocalFileSystem 是否开启文件校验 就是是否生成windows系统是上</span></span><br><span class="line">        <span class="comment">//面那个crc文件, 设置true，不会有crc文件。设置false在本地会有crc文件。</span></span><br><span class="line">        fileSystem.copyToLocalFile(<span class="literal">false</span>, <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/bb/cc/test1.txt&quot;</span>), <span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Path</span>(<span class="string">&quot;D://test1_down1.txt&quot;</span>), <span class="literal">false</span>);</span><br><span class="line">        <span class="comment">//3:关闭FileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件的下载方式二：通过输入输出流</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">downloadFile2</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>());</span><br><span class="line">        <span class="comment">//2:获取hdfs的输入流</span></span><br><span class="line">        <span class="type">FSDataInputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> fileSystem.open(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/test1.txt&quot;</span>));</span><br><span class="line">        <span class="comment">//3:获取本地路径的输出流</span></span><br><span class="line">        <span class="type">FileOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span></span><br><span class="line">                <span class="title class_">FileOutputStream</span>(<span class="string">&quot;D://test1_down2.txt&quot;</span>);</span><br><span class="line">        <span class="comment">//4:文件的拷贝</span></span><br><span class="line">        IOUtils.copy(inputStream, outputStream);</span><br><span class="line">        <span class="comment">//5:关闭流</span></span><br><span class="line">        IOUtils.closeQuietly(inputStream);</span><br><span class="line">        IOUtils.closeQuietly(outputStream);</span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//删除文件或文件夹</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteFileOrDir</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException,</span><br><span class="line">            InterruptedException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem（分布式文件系统）</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>(),<span class="string">&quot;root&quot;</span>);</span><br><span class="line">        <span class="comment">//2、删除操作</span></span><br><span class="line">        <span class="comment">//boolean b = fileSystem.delete(new Path(&quot;/test_big.txt&quot;));</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> fileSystem.delete(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/aa&quot;</span>));</span><br><span class="line">        System.out.println(b);</span><br><span class="line">        <span class="comment">//3、关闭FileSystem</span></span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//=================================================================//</span></span><br><span class="line">    <span class="comment">//文件的合并上传</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 小文件的合并上传</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">mergeFile</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException,</span><br><span class="line">            InterruptedException &#123;</span><br><span class="line">        <span class="comment">//1:获取FileSystem（分布式文件系统）</span></span><br><span class="line">        <span class="type">FileSystem</span> <span class="variable">fileSystem</span> <span class="operator">=</span> FileSystem.get(<span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop10:8020&quot;</span>),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">Configuration</span>(),<span class="string">&quot;root&quot;</span>);</span><br><span class="line">        <span class="comment">//2:获取hdfs大文件的输出流</span></span><br><span class="line">        <span class="type">FSDataOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> fileSystem.create(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Path</span>(<span class="string">&quot;/test_big.txt&quot;</span>));</span><br><span class="line">        <span class="comment">//3:获取一个本地文件系统</span></span><br><span class="line">        <span class="type">LocalFileSystem</span> <span class="variable">localFileSystem</span> <span class="operator">=</span> FileSystem.getLocal(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Configuration</span>());</span><br><span class="line">        <span class="comment">//4:获取本地文件夹下所有文件的详情</span></span><br><span class="line">        FileStatus[] fileStatuses = localFileSystem.listStatus(<span class="keyword">new</span></span><br><span class="line">                <span class="title class_">Path</span>(<span class="string">&quot;D:\\input&quot;</span>));</span><br><span class="line">        <span class="comment">//5:遍历每个文件，获取每个文件的输入流</span></span><br><span class="line">        <span class="keyword">for</span> (FileStatus fileStatus : fileStatuses) &#123;</span><br><span class="line">            <span class="type">FSDataInputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span></span><br><span class="line">                    localFileSystem.open(fileStatus.getPath());</span><br><span class="line">        <span class="comment">//6:将小文件的数据复制到大文件</span></span><br><span class="line">            IOUtils.copy(inputStream, outputStream);</span><br><span class="line">            IOUtils.closeQuietly(inputStream);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//7:关闭流</span></span><br><span class="line">        IOUtils.closeQuietly(outputStream);</span><br><span class="line">        localFileSystem.close();</span><br><span class="line">        fileSystem.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>Hadoop</category>
       </categories>
       <tags>
@@ -1295,7 +2039,8 @@ hadoop04： blk_02 blk_04
 <h4 id="setrep：设置-hdfs-中文件的副本数量"><a href="#setrep：设置-hdfs-中文件的副本数量" class="headerlink" title="-setrep：设置 hdfs 中文件的副本数量"></a>-setrep：设置 hdfs 中文件的副本数量</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">功能：设置 hdfs 中文件的副本数量</span><br><span class="line">示例：hadoop fs -setrep 3 /aaa/jdk.tar.gz</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>Hadoop</category>
       </categories>
       <tags>
@@ -1338,7 +2083,8 @@ hadoop04： blk_02 blk_04
 <p>6、Hadoop 三大发行版本：Apache、Cloudera、Hortonworks</p>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>Hadoop</category>
       </categories>
       <tags>
@@ -1492,7 +2238,8 @@ hadoop04： blk_02 blk_04
 
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>JavaSE</category>
       </categories>
       <tags>
@@ -1560,7 +2307,8 @@ hadoop04： blk_02 blk_04
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhou.arr;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 稀疏数组的压缩存储</span></span><br><span class="line"><span class="comment">// 将n*m稀疏数组用N*3的数组存储每个非0元素的地址和值（行、列、值）</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    第0行        n                     m                     非0元素个数</span></span><br><span class="line"><span class="comment">    第1行        第1个非0元素的行号       第1个非0元素的列号       第1个非0元素的值</span></span><br><span class="line"><span class="comment">    第2行        第2个非0元素的行号       第2个非0元素的列号       第2个非0元素的值</span></span><br><span class="line"><span class="comment">    第3行        第3个非0元素的行号       第3个非0元素的列号       第3个非0元素的值</span></span><br><span class="line"><span class="comment">    ...</span></span><br><span class="line"><span class="comment">    第N行        第N个非0元素的行号       第N个非0元素的列号       第N个非0元素的值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo03</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[][] nums = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">10</span>][<span class="number">10</span>];</span><br><span class="line">        nums[<span class="number">2</span>][<span class="number">3</span>] = <span class="number">1</span>;  <span class="comment">// 第2行第3列，行号和列号从0开始</span></span><br><span class="line">        nums[<span class="number">5</span>][<span class="number">6</span>] = <span class="number">2</span>;</span><br><span class="line">        nums[<span class="number">9</span>][<span class="number">9</span>] = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 打印稀疏数组</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            System.out.println(Arrays.toString(nums[i]));</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;===============================&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 压缩存储稀疏数组</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> nums[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">N</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i][j] != <span class="number">0</span>) &#123;</span><br><span class="line">                    N++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;N=&quot;</span>+N);</span><br><span class="line">        System.out.println(<span class="string">&quot;===============================&quot;</span>);</span><br><span class="line">        <span class="type">int</span>[][] arr = <span class="keyword">new</span> <span class="title class_">int</span>[N+<span class="number">1</span>][<span class="number">3</span>];</span><br><span class="line">        N = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i][j] != <span class="number">0</span>) &#123;</span><br><span class="line">                    N++;</span><br><span class="line">                    arr[N][<span class="number">0</span>] = i;</span><br><span class="line">                    arr[N][<span class="number">1</span>] = j;</span><br><span class="line">                    arr[N][<span class="number">2</span>] = nums[i][j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[<span class="number">0</span>][<span class="number">0</span>] = n;</span><br><span class="line">        arr[<span class="number">0</span>][<span class="number">1</span>] = m;</span><br><span class="line">        arr[<span class="number">0</span>][<span class="number">2</span>] = N;</span><br><span class="line">        <span class="comment">// 打印</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; N+<span class="number">1</span>; i++) &#123;</span><br><span class="line">            System.out.println(Arrays.toString(arr[i]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>JavaSE</category>
       </categories>
       <tags>
@@ -1632,7 +2380,8 @@ hadoop04： blk_02 blk_04
 <h3 id="打印一个三角形"><a href="#打印一个三角形" class="headerlink" title="打印一个三角形"></a>打印一个三角形</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zhou.process;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印一个三角形</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Demo09</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">5</span>; j &gt;= i; j--) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">1</span>; k &lt;= i; k++) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> <span class="number">1</span>; m &lt; i; m++) &#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>JavaSE</category>
       </categories>
       <tags>
@@ -2088,7 +2837,8 @@ hadoop04： blk_02 blk_04
 <h3 id="包机制"><a href="#包机制" class="headerlink" title="包机制"></a>包机制</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 包语句的语法格式</span></span><br><span class="line"><span class="keyword">package</span> pkg1[.pkg2[.pkg3...]];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入包</span></span><br><span class="line"><span class="keyword">import</span> package1[.package2...].(classname|*);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 一般利用公司域名倒置作为报名：com.zhou.×××</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>JavaSE</category>
       </categories>
       <tags>
@@ -2206,11 +2956,12 @@ hadoop04： blk_02 blk_04
 <p>SSH是由客户端和服务端的软件组成的<br>服务端是一个守护进程(sshd)，他在后台运行并响应来自客户端的连接请求。<br>客户端包含ssh程序以及像scp（远程拷贝）、slogin（远程登陆）、sftp（安全文件传输）等其他的应用程序。</p>
 <p>首先确保服务器是否安装了ssh服务：<br> [root@mycentos7 ~]# yum list installed | grep openssh-server<br>正常情况下，CentOS7是安装了的。或者你只要能使用SecureCRT、Xshell等工具连接，那都是正常的。</p>
 <h3 id="Linux中SSH协议：具体配置"><a href="#Linux中SSH协议：具体配置" class="headerlink" title="Linux中SSH协议：具体配置"></a>Linux中SSH协议：具体配置</h3><p>准备两台虚拟机：A和B，假如A要登陆B，或者安全访问B</p>
-<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#114;&#111;&#111;&#x74;&#64;&#x31;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#46;&#49;&#50;&#x33;&#46;&#49;&#x35;&#x32;">&#114;&#111;&#111;&#x74;&#64;&#x31;&#x39;&#x32;&#46;&#49;&#x36;&#56;&#46;&#49;&#50;&#x33;&#46;&#49;&#x35;&#x32;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
+<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#x72;&#x6f;&#111;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#49;&#50;&#51;&#x2e;&#x31;&#53;&#50;">&#x72;&#x6f;&#111;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#49;&#50;&#51;&#x2e;&#x31;&#53;&#50;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
 <h3 id="Linux中SSH协议：原理"><a href="#Linux中SSH协议：原理" class="headerlink" title="Linux中SSH协议：原理"></a>Linux中SSH协议：原理</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220415151926777.png" alt="image-20220415151926777"></p>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>Linux</category>
       </categories>
       <tags>
@@ -2438,7 +3189,8 @@ hadoop04： blk_02 blk_04
 
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>Linux</category>
       </categories>
       <tags>
@@ -2588,7 +3340,8 @@ hadoop04： blk_02 blk_04
 <p><strong>Linux终端工具：</strong>SecureCRT、SFTP工具、Filezilla工具、Xshell</p>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>Linux</category>
       </categories>
       <tags>
@@ -2684,7 +3437,8 @@ hadoop04： blk_02 blk_04
 </ol>
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>Linux</category>
       </categories>
       <tags>
@@ -2750,7 +3504,8 @@ hadoop04： blk_02 blk_04
 
 ]]></content>
       <categories>
-        <category>数据工程</category>
+        <category>数据处理能力</category>
+        <category>大数据</category>
         <category>Git</category>
       </categories>
       <tags>
@@ -3619,8 +4374,8 @@ Cramer&#39;s V        : 0.322
         <category>统计分析方法</category>
       </categories>
       <tags>
-        <tag>R语言</tag>
         <tag>推断统计</tag>
+        <tag>R语言</tag>
       </tags>
   </entry>
   <entry>
@@ -3718,9 +4473,34 @@ Cramer&#39;s V        : 0.322
         <category>统计分析方法</category>
       </categories>
       <tags>
-        <tag>描述统计</tag>
         <tag>R语言</tag>
+        <tag>描述统计</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>刻意练习</title>
+    <url>/p/2e543a56/</url>
+    <content><![CDATA[<p><strong>每天1小时数据分析技能学习，用热爱成就事业，用坚持锻造专业！</strong></p>
+<iframe title="日程数据监控" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiYmIwZDdmZWEtZWQ4OC00YmMyLTk5YjEtNTcyMjkzNzAwNWM4IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&pageName=ReportSection3d21ab029abe43e7ce90" frameborder="0" allowfullscreen="true"></iframe>
+
+
+
+]]></content>
+      <categories>
+        <category>说明文档</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>博客目录结构</title>
+    <url>/p/7f337b91/</url>
+    <content><![CDATA[<iframe title="博客目录结构" width="800" height="486" src="https://www.processon.com/embed/6471ae2978dff312e1bd73f7"></iframe>
+
+  <span id="more"></span>
+
+]]></content>
+      <categories>
+        <category>说明文档</category>
+      </categories>
   </entry>
   <entry>
     <title>个人网站说明</title>
@@ -3783,7 +4563,7 @@ Cramer&#39;s V        : 0.322
 
 <h3 id="V2022-08-09"><a href="#V2022-08-09" class="headerlink" title="V2022.08.09"></a>V2022.08.09</h3><h4 id="嵌入ipynb文件"><a href="#嵌入ipynb文件" class="headerlink" title="嵌入ipynb文件"></a>嵌入ipynb文件</h4><ol>
 <li>将ipynb文件上传至github，在GitHub中打开</li>
-<li>复制GitHub中的ipynb文件链接粘贴至<a href="https://nbviewer.org/%E4%B8%AD%E6%89%93%E5%BC%80">https://nbviewer.org/中打开</a></li>
+<li>复制GitHub中的ipynb文件链接粘贴至 <a href="https://nbviewer.org/">https://nbviewer.org/</a></li>
 </ol>
 <p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220809221327754.png"></p>
 <ol start="3">
@@ -3827,7 +4607,7 @@ Cramer&#39;s V        : 0.322
 <h2 id="V2023-12"><a href="#V2023-12" class="headerlink" title="V2023.12"></a>V2023.12</h2><h3 id="V2023-12-04"><a href="#V2023-12-04" class="headerlink" title="V2023.12.04"></a>V2023.12.04</h3><h4 id="添加二级菜单"><a href="#添加二级菜单" class="headerlink" title="添加二级菜单"></a>添加二级菜单</h4><p>参考博客：<a href="https://blog.justlovesmile.top/posts/14357.html?time=1701661084759">https://blog.justlovesmile.top/posts/14357.html?time=1701661084759</a></p>
 <p>Hexo主题导航栏添加二级菜单的简单方法</p>
 <p>第一步，找到所使用主题的导航栏文件，例如：Ayer主题的位于hexo\themes\ayer\layout_partial\sidebar.ejs</p>
-<p>第二步，打开文件，找到文件对应生成菜单的位置,一般在<li></li>内，在里面添加代码</p>
+<p>第二步，打开文件，找到文件对应生成菜单的位置,一般在&lt; li &gt;&lt; &#x2F;li &gt;内，在里面添加代码</p>
 <p>第三步，添加css，css模板可以参考：<a href="https://www.bootstrapmb.com/tag/daohangyangshi">https://www.bootstrapmb.com/tag/daohangyangshi</a></p>
 <p>第四步，找到主题下的配置文件，如ayer的位于hexo\themes\ayer_config.yml，在需要的位置添加submenus，修改菜单menu信息</p>
 ]]></content>
@@ -3837,31 +4617,6 @@ Cramer&#39;s V        : 0.322
       <tags>
         <tag>网站开发</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>刻意练习</title>
-    <url>/p/2e543a56/</url>
-    <content><![CDATA[<p><strong>每天1小时数据分析技能学习，用热爱成就事业，用坚持锻造专业！</strong></p>
-<iframe title="日程数据监控" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiYmIwZDdmZWEtZWQ4OC00YmMyLTk5YjEtNTcyMjkzNzAwNWM4IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&pageName=ReportSection3d21ab029abe43e7ce90" frameborder="0" allowfullscreen="true"></iframe>
-
-
-
-]]></content>
-      <categories>
-        <category>说明文档</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>博客目录结构</title>
-    <url>/p/7f337b91/</url>
-    <content><![CDATA[<iframe title="博客目录结构" width="800" height="486" src="https://www.processon.com/embed/6471ae2978dff312e1bd73f7"></iframe>
-
-  <span id="more"></span>
-
-]]></content>
-      <categories>
-        <category>说明文档</category>
-      </categories>
   </entry>
   <entry>
     <title>PQ填充</title>

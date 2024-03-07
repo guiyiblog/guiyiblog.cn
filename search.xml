@@ -126,13 +126,11 @@
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+    
+<pre><code>.dataframe thead th &#123;
     text-align: right;
 &#125;
 </code></pre>
@@ -183,13 +181,11 @@
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+    
+<pre><code>.dataframe thead th &#123;
     text-align: right;
 &#125;
 </code></pre>
@@ -240,13 +236,11 @@
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+    
+<pre><code>.dataframe thead th &#123;
     text-align: right;
 &#125;
 </code></pre>
@@ -281,12 +275,7 @@
     </tr>
   </tbody>
 </table>
-
 </div>
-
-
-
-
 
 
 <pre><code>a    int32
@@ -304,13 +293,11 @@ dtype: object
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
-
-
-<pre><code>.dataframe tbody tr th &#123;
-    vertical-align: top;
-&#125;
-
-.dataframe thead th &#123;
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+    
+<pre><code>.dataframe thead th &#123;
     text-align: right;
 &#125;
 </code></pre>
@@ -345,12 +332,7 @@ dtype: object
     </tr>
   </tbody>
 </table>
-
 </div>
-
-
-
-
 
 
 <pre><code>a    object
@@ -384,8 +366,6 @@ dtype: object
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span>(tb_dic[<span class="string">&#x27;a&#x27;</span>])</span><br></pre></td></tr></table></figure>
 
 
-
-
 <pre><code>pandas.core.series.Series
 </code></pre>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用列表创建Series对象</span></span><br><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br></pre></td></tr></table></figure>
@@ -413,41 +393,19 @@ Name: 用字典创建, dtype: object
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line">ser.name</span><br><span class="line">ser.dtype</span><br><span class="line">ser.size</span><br><span class="line">ser.index</span><br><span class="line">ser.values</span><br><span class="line">ser.is_unique</span><br></pre></td></tr></table></figure>
 
 
-
-
 <pre><code>&#39;分数&#39;
-
-
-
-
 
 
 dtype(&#39;int64&#39;)
 
 
-
-
-
-
 3
-
-
-
-
 
 
 Index([&#39;语文&#39;, &#39;数学&#39;, &#39;英语&#39;], dtype=&#39;object&#39;)
 
 
-
-
-
-
 array([80, 90, 70], dtype=int64)
-
-
-
-
 
 
 True
@@ -488,10 +446,6 @@ dtype: int64
 英语    70
 地理    55
 dtype: int64
-
-
-
-
 
 dtype(&#39;int32&#39;)
 </code></pre>
@@ -623,22 +577,10 @@ dtype: float64
 dtype: object
 
 
-
-
-
-
 4
 
 
-
-
-
-
 3
-
-
-
-
 
 
 A    2
@@ -649,8 +591,6 @@ Name: count, dtype: int64
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义数值型变量</span></span><br><span class="line">ser = pd.Series(<span class="built_in">range</span>(<span class="number">5</span>))</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 平均数</span></span><br><span class="line">ser.mean()</span><br><span class="line"><span class="comment"># 中位数</span></span><br><span class="line">ser.median()</span><br><span class="line"><span class="comment"># 分位数</span></span><br><span class="line">ser.quantile(<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># 最大值</span></span><br><span class="line">ser.<span class="built_in">max</span>()</span><br><span class="line"><span class="comment"># 最小值</span></span><br><span class="line">ser.<span class="built_in">min</span>()</span><br><span class="line"><span class="comment"># 标准差</span></span><br><span class="line">ser.std()</span><br></pre></td></tr></table></figure>
 
 
-
-
 <pre><code>0    0
 1    1
 2    2
@@ -659,43 +599,19 @@ Name: count, dtype: int64
 dtype: int64
 
 
-
-
+2.0
 
 
 2.0
 
 
-
-
-
-
 2.0
-
-
-
-
-
-
-2.0
-
-
-
-
 
 
 4
 
 
-
-
-
-
 0
-
-
-
-
 
 
 1.5811388300841898
@@ -706,17 +622,11 @@ dtype: int64
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 列表元素展开</span></span><br><span class="line">ser.explode()</span><br></pre></td></tr></table></figure>
 
 
-
-
 <pre><code>0            1
 1            2
 2            3
 3    [4, 5, 6]
 dtype: object
-
-
-
-
 
 
 0    1
@@ -734,16 +644,10 @@ dtype: object
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">ser.<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x + <span class="number">1</span>)</span><br><span class="line">ser.apply(<span class="keyword">lambda</span> x: x + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
 
-
-
 <pre><code>0    2
 1    3
 2    4
 dtype: int64
-
-
-
-
 
 
 0    2

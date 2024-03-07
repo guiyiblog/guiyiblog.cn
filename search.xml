@@ -116,218 +116,38 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 全部行输出</span></span><br><span class="line"><span class="keyword">from</span> IPython.core.interactiveshell <span class="keyword">import</span> InteractiveShell</span><br><span class="line"></span><br><span class="line">InteractiveShell.ast_node_interactivity = <span class="string">&quot;all&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 导入包</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
 
 
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用二维数组创建Dataframe表</span></span><br><span class="line">arr = np.zeros((<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">tb_arr = pd.DataFrame(data=arr, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])</span><br><span class="line">tb_arr</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用二维数组创建Dataframe表</span></span><br><span class="line">arr = np.zeros((<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">tb_arr = pd.DataFrame(data=arr, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(tb_arr)</span><br></pre></td></tr></table></figure>
 
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-    
-<pre><code>.dataframe thead th &#123;
-    text-align: right;
-&#125;
+<pre><code>     a    b    c
+0  0.0  0.0  0.0
+1  0.0  0.0  0.0
+2  0.0  0.0  0.0
 </code></pre>
-<p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-      <th>c</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用二维列表创建Dataframe表</span></span><br><span class="line">li = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]</span><br><span class="line">tb_li = pd.DataFrame(data=li, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(tb_li)</span><br></pre></td></tr></table></figure>
 
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用二维列表创建Dataframe表</span></span><br><span class="line">li = [[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]]</span><br><span class="line">tb_li = pd.DataFrame(data=li, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>])</span><br><span class="line">tb_li</span><br></pre></td></tr></table></figure>
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-    
-<pre><code>.dataframe thead th &#123;
-    text-align: right;
-&#125;
+<pre><code>   a  b  c
+0  1  2  3
+1  4  5  6
+2  7  8  9
 </code></pre>
-<p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-      <th>c</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用二维元组创建Dataframe表</span></span><br><span class="line">tup = ((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), (<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>))</span><br><span class="line">tb_tup = pd.DataFrame(data=tup, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>], dtype=<span class="built_in">int</span>)</span><br><span class="line"><span class="built_in">print</span>(tb_tup)</span><br><span class="line"><span class="built_in">print</span>(tb_tup.dtypes)</span><br></pre></td></tr></table></figure>
 
-</div>
-
-
-
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用二维元组创建Dataframe表</span></span><br><span class="line">tup = ((<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), (<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>))</span><br><span class="line">tb_tup = pd.DataFrame(data=tup, columns=[<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>], dtype=<span class="built_in">int</span>)</span><br><span class="line">tb_tup</span><br><span class="line">tb_tup.dtypes</span><br></pre></td></tr></table></figure>
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-    
-<pre><code>.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-      <th>c</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4</td>
-      <td>5</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>7</td>
-      <td>8</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-<pre><code>a    int32
+<pre><code>   a  b  c
+0  1  2  3
+1  4  5  6
+2  7  8  9
+a    int32
 b    int32
 c    int32
 dtype: object
 </code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用字典创建Dataframe表</span></span><br><span class="line">dic = &#123;<span class="string">&#x27;a&#x27;</span>: (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), <span class="string">&#x27;b&#x27;</span>: (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), <span class="string">&#x27;c&#x27;</span>: (<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>)&#125;</span><br><span class="line">tb_dic = pd.DataFrame(data=dic, index=[<span class="string">&#x27;index1&#x27;</span>, <span class="string">&#x27;index2&#x27;</span>, <span class="string">&#x27;index3&#x27;</span>], dtype=<span class="built_in">str</span>)</span><br><span class="line">tb_dic</span><br><span class="line">tb_dic.dtypes</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用字典创建Dataframe表</span></span><br><span class="line">dic = &#123;<span class="string">&#x27;a&#x27;</span>: (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>), <span class="string">&#x27;b&#x27;</span>: (<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>), <span class="string">&#x27;c&#x27;</span>: (<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>)&#125;</span><br><span class="line">tb_dic = pd.DataFrame(data=dic, index=[<span class="string">&#x27;index1&#x27;</span>, <span class="string">&#x27;index2&#x27;</span>, <span class="string">&#x27;index3&#x27;</span>], dtype=<span class="built_in">str</span>)</span><br><span class="line"><span class="built_in">print</span>(tb_dic)</span><br><span class="line"><span class="built_in">print</span>(tb_dic.dtypes)</span><br></pre></td></tr></table></figure>
 
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-    
-<pre><code>.dataframe thead th &#123;
-    text-align: right;
-&#125;
-</code></pre>
-<p></style><p></p>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-      <th>c</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>index1</th>
-      <td>1</td>
-      <td>4</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>index2</th>
-      <td>2</td>
-      <td>5</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>index3</th>
-      <td>3</td>
-      <td>6</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-<pre><code>a    object
+<pre><code>        a  b  c
+index1  1  4  7
+index2  2  5  8
+index3  3  6  9
+a    object
 b    object
 c    object
 dtype: object
@@ -355,10 +175,9 @@ dtype: object
 <li>dtype用于设置数据类型</li>
 <li>name用于设置Series的名称</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">type</span>(tb_dic[<span class="string">&#x27;a&#x27;</span>])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 表字段对象类型</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(tb_dic[<span class="string">&#x27;a&#x27;</span>]))</span><br></pre></td></tr></table></figure>
 
-
-<pre><code>pandas.core.series.Series
+<pre><code>&lt;class &#39;pandas.core.series.Series&#39;&gt;
 </code></pre>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用列表创建Series对象</span></span><br><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br></pre></td></tr></table></figure>
 
@@ -382,24 +201,13 @@ Name: 用字典创建, dtype: object
 <li>ser.values：字段值</li>
 <li>ser.is_unique：字段值是否唯一</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line">ser.name</span><br><span class="line">ser.dtype</span><br><span class="line">ser.size</span><br><span class="line">ser.index</span><br><span class="line">ser.values</span><br><span class="line">ser.is_unique</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series(data=[<span class="number">80</span>, <span class="number">90</span>, <span class="number">70</span>], index=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>], name=<span class="string">&#x27;分数&#x27;</span>, dtype=<span class="string">&#x27;int64&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ser.name)</span><br><span class="line"><span class="built_in">print</span>(ser.dtype)</span><br><span class="line"><span class="built_in">print</span>(ser.size)</span><br><span class="line"><span class="built_in">print</span>(ser.index)</span><br><span class="line"><span class="built_in">print</span>(ser.values)</span><br><span class="line"><span class="built_in">print</span>(ser.is_unique)</span><br></pre></td></tr></table></figure>
 
-
-<pre><code>&#39;分数&#39;
-
-
-dtype(&#39;int64&#39;)
-
-
+<pre><code>分数
+int64
 3
-
-
 Index([&#39;语文&#39;, &#39;数学&#39;, &#39;英语&#39;], dtype=&#39;object&#39;)
-
-
-array([80, 90, 70], dtype=int64)
-
-
+[80 90 70]
 True
 </code></pre>
 <h3 id="2-3、Series对象的常用方法"><a href="#2-3、Series对象的常用方法" class="headerlink" title="2.3、Series对象的常用方法"></a>2.3、Series对象的常用方法</h3><ul>
@@ -431,15 +239,14 @@ dtype: int64
 地理    55
 dtype: int64
 </code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更改数据</span></span><br><span class="line">ser[<span class="string">&#x27;语文&#x27;</span>] = <span class="number">70</span></span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="comment"># 更改字段类型</span></span><br><span class="line">ser = ser.astype(<span class="string">&#x27;int32&#x27;</span>)</span><br><span class="line">ser.dtypes</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 更改数据</span></span><br><span class="line">ser[<span class="string">&#x27;语文&#x27;</span>] = <span class="number">70</span></span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="comment"># 更改字段类型</span></span><br><span class="line">ser = ser.astype(<span class="string">&#x27;int32&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(ser.dtypes)</span><br></pre></td></tr></table></figure>
 
 <pre><code>语文    70
 数学    90
 英语    70
 地理    55
 dtype: int64
-
-dtype(&#39;int32&#39;)
+int32
 </code></pre>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查询数据：切片</span></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="number">0</span>:<span class="number">2</span>])  <span class="comment"># 隐式索引</span></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="number">2</span>])  <span class="comment"># 隐式索引</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="string">&#x27;语文&#x27;</span>:<span class="string">&#x27;英语&#x27;</span>])  <span class="comment"># 显示索引</span></span><br><span class="line"><span class="built_in">print</span>(ser[<span class="string">&#x27;语文&#x27;</span>])  <span class="comment"># 显示索引</span></span><br></pre></td></tr></table></figure>
 
@@ -557,29 +364,21 @@ dtype: float64
 <ul>
 <li>ser.std()</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义分类型变量</span></span><br><span class="line">ser = pd.Series([<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>])</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 计数</span></span><br><span class="line">ser.count()</span><br><span class="line"><span class="comment"># 非重复计数</span></span><br><span class="line">ser.nunique()</span><br><span class="line"><span class="comment"># 分类计数</span></span><br><span class="line">ser.value_counts()</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义分类型变量</span></span><br><span class="line">ser = pd.Series([<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>, <span class="string">&#x27;C&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="comment"># 计数</span></span><br><span class="line"><span class="built_in">print</span>(ser.count())</span><br><span class="line"><span class="comment"># 非重复计数</span></span><br><span class="line"><span class="built_in">print</span>(ser.nunique())</span><br><span class="line"><span class="comment"># 分类计数</span></span><br><span class="line"><span class="built_in">print</span>(ser.value_counts())</span><br></pre></td></tr></table></figure>
 
 <pre><code>0    A
 1    A
 2    B
 3    C
 dtype: object
-
-
 4
-
-
 3
-
-
 A    2
 B    1
 C    1
 Name: count, dtype: int64
 </code></pre>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义数值型变量</span></span><br><span class="line">ser = pd.Series(<span class="built_in">range</span>(<span class="number">5</span>))</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 平均数</span></span><br><span class="line">ser.mean()</span><br><span class="line"><span class="comment"># 中位数</span></span><br><span class="line">ser.median()</span><br><span class="line"><span class="comment"># 分位数</span></span><br><span class="line">ser.quantile(<span class="number">0.5</span>)</span><br><span class="line"><span class="comment"># 最大值</span></span><br><span class="line">ser.<span class="built_in">max</span>()</span><br><span class="line"><span class="comment"># 最小值</span></span><br><span class="line">ser.<span class="built_in">min</span>()</span><br><span class="line"><span class="comment"># 标准差</span></span><br><span class="line">ser.std()</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义数值型变量</span></span><br><span class="line">ser = pd.Series(<span class="built_in">range</span>(<span class="number">5</span>))</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="comment"># 平均数</span></span><br><span class="line"><span class="built_in">print</span>(ser.mean())</span><br><span class="line"><span class="comment"># 中位数</span></span><br><span class="line"><span class="built_in">print</span>(ser.median())</span><br><span class="line"><span class="comment"># 分位数</span></span><br><span class="line"><span class="built_in">print</span>(ser.quantile(<span class="number">0.5</span>))</span><br><span class="line"><span class="comment"># 最大值</span></span><br><span class="line"><span class="built_in">print</span>(ser.<span class="built_in">max</span>())</span><br><span class="line"><span class="comment"># 最小值</span></span><br><span class="line"><span class="built_in">print</span>(ser.<span class="built_in">min</span>())</span><br><span class="line"><span class="comment"># 标准差</span></span><br><span class="line"><span class="built_in">print</span>(ser.std())</span><br></pre></td></tr></table></figure>
 
 <pre><code>0    0
 1    1
@@ -587,38 +386,23 @@ Name: count, dtype: int64
 3    3
 4    4
 dtype: int64
-
-
 2.0
-
-
 2.0
-
-
 2.0
-
-
 4
-
-
 0
-
-
 1.5811388300841898
 </code></pre>
 <h4 id="2-34、一行转多行"><a href="#2-34、一行转多行" class="headerlink" title="2.34、一行转多行"></a>2.34、一行转多行</h4><ul>
 <li>ser.explore()：可将字段中的列表元素展开为多行</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line">ser</span><br><span class="line"><span class="comment"># 列表元素展开</span></span><br><span class="line">ser.explode()</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line"><span class="built_in">print</span>(ser)</span><br><span class="line"><span class="comment"># 列表元素展开</span></span><br><span class="line"><span class="built_in">print</span>(ser.explode())</span><br></pre></td></tr></table></figure>
 
 <pre><code>0            1
 1            2
 2            3
 3    [4, 5, 6]
 dtype: object
-
-
 0    1
 1    2
 2    3
@@ -631,15 +415,12 @@ dtype: object
 <li>ser.map(lambda x: 函数表达式)</li>
 <li>ser.apply(lambda x: 函数表达式)</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">ser.<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x + <span class="number">1</span>)</span><br><span class="line">ser.apply(<span class="keyword">lambda</span> x: x + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ser = pd.Series([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(ser.<span class="built_in">map</span>(<span class="keyword">lambda</span> x: x + <span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(ser.apply(<span class="keyword">lambda</span> x: x + <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
 
 <pre><code>0    2
 1    3
 2    4
 dtype: int64
-
-
 0    2
 1    3
 2    4
@@ -2850,7 +2631,7 @@ hadoop04： blk_02 blk_04
 <p>SSH是由客户端和服务端的软件组成的<br>服务端是一个守护进程(sshd)，他在后台运行并响应来自客户端的连接请求。<br>客户端包含ssh程序以及像scp（远程拷贝）、slogin（远程登陆）、sftp（安全文件传输）等其他的应用程序。</p>
 <p>首先确保服务器是否安装了ssh服务：<br> [root@mycentos7 ~]# yum list installed | grep openssh-server<br>正常情况下，CentOS7是安装了的。或者你只要能使用SecureCRT、Xshell等工具连接，那都是正常的。</p>
 <h3 id="Linux中SSH协议：具体配置"><a href="#Linux中SSH协议：具体配置" class="headerlink" title="Linux中SSH协议：具体配置"></a>Linux中SSH协议：具体配置</h3><p>准备两台虚拟机：A和B，假如A要登陆B，或者安全访问B</p>
-<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#x72;&#x6f;&#111;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#49;&#50;&#51;&#x2e;&#x31;&#53;&#50;">&#x72;&#x6f;&#111;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#x2e;&#49;&#50;&#51;&#x2e;&#x31;&#53;&#50;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
+<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#x72;&#x6f;&#x6f;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#56;&#46;&#49;&#x32;&#x33;&#46;&#x31;&#53;&#50;">&#x72;&#x6f;&#x6f;&#x74;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#56;&#46;&#49;&#x32;&#x33;&#46;&#x31;&#53;&#50;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
 <h3 id="Linux中SSH协议：原理"><a href="#Linux中SSH协议：原理" class="headerlink" title="Linux中SSH协议：原理"></a>Linux中SSH协议：原理</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220415151926777.png" alt="image-20220415151926777"></p>
 ]]></content>
       <categories>
@@ -4268,8 +4049,8 @@ Cramer&#39;s V        : 0.322
         <category>统计分析方法</category>
       </categories>
       <tags>
-        <tag>推断统计</tag>
         <tag>R语言</tag>
+        <tag>推断统计</tag>
       </tags>
   </entry>
   <entry>
@@ -4367,34 +4148,9 @@ Cramer&#39;s V        : 0.322
         <category>统计分析方法</category>
       </categories>
       <tags>
-        <tag>R语言</tag>
         <tag>描述统计</tag>
+        <tag>R语言</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>刻意练习</title>
-    <url>/p/2e543a56/</url>
-    <content><![CDATA[<p><strong>每天1小时数据分析技能学习，用热爱成就事业，用坚持锻造专业！</strong></p>
-<iframe title="日程数据监控" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiYmIwZDdmZWEtZWQ4OC00YmMyLTk5YjEtNTcyMjkzNzAwNWM4IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&pageName=ReportSection3d21ab029abe43e7ce90" frameborder="0" allowfullscreen="true"></iframe>
-
-
-
-]]></content>
-      <categories>
-        <category>说明文档</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>博客目录结构</title>
-    <url>/p/7f337b91/</url>
-    <content><![CDATA[<iframe title="博客目录结构" width="800" height="486" src="https://www.processon.com/embed/6471ae2978dff312e1bd73f7"></iframe>
-
-  <span id="more"></span>
-
-]]></content>
-      <categories>
-        <category>说明文档</category>
-      </categories>
   </entry>
   <entry>
     <title>个人网站说明</title>
@@ -4511,6 +4267,31 @@ Cramer&#39;s V        : 0.322
       <tags>
         <tag>网站开发</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>刻意练习</title>
+    <url>/p/2e543a56/</url>
+    <content><![CDATA[<p><strong>每天1小时数据分析技能学习，用热爱成就事业，用坚持锻造专业！</strong></p>
+<iframe title="日程数据监控" width="800" height="486" src="https://app.powerbi.com/view?r=eyJrIjoiYmIwZDdmZWEtZWQ4OC00YmMyLTk5YjEtNTcyMjkzNzAwNWM4IiwidCI6IjFkOThmYTJiLTA2ZTgtNDhlYS05YjY4LWI2YzZkYTYwODljYiIsImMiOjEwfQ%3D%3D&pageName=ReportSection3d21ab029abe43e7ce90" frameborder="0" allowfullscreen="true"></iframe>
+
+
+
+]]></content>
+      <categories>
+        <category>说明文档</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>博客目录结构</title>
+    <url>/p/7f337b91/</url>
+    <content><![CDATA[<iframe title="博客目录结构" width="800" height="486" src="https://www.processon.com/embed/6471ae2978dff312e1bd73f7"></iframe>
+
+  <span id="more"></span>
+
+]]></content>
+      <categories>
+        <category>说明文档</category>
+      </categories>
   </entry>
   <entry>
     <title>PQ填充</title>

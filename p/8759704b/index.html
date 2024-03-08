@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.8k</span>
+            <span class="post-count">2.6k</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">12 分钟</span>
+            <span class="post-count">11 分钟</span>
         </span>
     </span>
 </div>
@@ -115,7 +115,7 @@
 <p>下面，我们先来简单了解下Dataframe的创建和基本构成。</p>
   <span id="more"></span>
 
-<h3 id="1、Dataframe表的创建"><a href="#1、Dataframe表的创建" class="headerlink" title="1、Dataframe表的创建"></a>1、Dataframe表的创建</h3><p>Dataframe表通过<code>pd.Dataframe()</code>方法创建。</p>
+<h2 id="1、Dataframe表的创建"><a href="#1、Dataframe表的创建" class="headerlink" title="1、Dataframe表的创建"></a>1、Dataframe表的创建</h2><p>Dataframe表通过<code>pd.Dataframe()</code>方法创建。</p>
 <p><strong><code>pd.DataFrame(data, index, columns)</code></strong>  </p>
 <ul>
 <li>data作为值，可以是二维数组、多维列表、多维元组、字典（键值必须是可迭代对象） </li>
@@ -168,7 +168,7 @@ dtype: object
 <p><strong>pandas的DataFrame构造函数可以接受一个嵌套的列表（或类似的可迭代对象），并尝试将这些内部列表转换为DataFrame的列。</strong></p>
 <p>值得注意的是，三维列表和三维数组在结构上有所不同。三维数组（如NumPy数组）是连续的内存块，其中的元素按照固定的步长排列，<br>而三维列表则是由嵌套的Python列表组成，每个内部列表都是独立的对象，可能存储在内存的不同位置。由于这种结构上的差异，<br>它们与pandas DataFrame的交互方式也会有所不同。NumPy数组提供了更高效的数值计算功能，而列表则提供了更灵活的数据结构。</p>
 </blockquote>
-<h3 id="2、Dataframe表的字段：Series对象"><a href="#2、Dataframe表的字段：Series对象" class="headerlink" title="2、Dataframe表的字段：Series对象"></a>2、Dataframe表的字段：Series对象</h3><p>Dataframe表的字段是Python中的Series对象</p>
+<h2 id="2、Dataframe表的字段：Series对象"><a href="#2、Dataframe表的字段：Series对象" class="headerlink" title="2、Dataframe表的字段：Series对象"></a>2、Dataframe表的字段：Series对象</h2><p>Dataframe表的字段是Python中的Series对象</p>
 <p>Series是一种类似于一维数组的对象，是由一组数据(各种NumPy数据类型)以及一组与之相关的数据标签(即索引)组成。仅由一组数据也可产生简单的Series对象。<br>Series是Pandas包提供的一种Key-value型数据结构,其中Key为用户定义的显示index,每个显式index对应一个value值.</p>
 <p>它与Python列表的区别在于,Series的每个元素都带有两种index</p>
 <ul>
@@ -177,7 +177,7 @@ dtype: object
 </ul>
 <p>Series的访问既可以通过显示index,也可以通过隐式index,</p>
 <p>在数据分析和数据科学项目中,一般用显式索引(index),而不是隐式下标,原因在于:当数据量很大时,很难准确定义其下标</p>
-<h4 id="2-1、Series对象的创建"><a href="#2-1、Series对象的创建" class="headerlink" title="2.1、Series对象的创建"></a>2.1、Series对象的创建</h4><p><strong>Series对象通过<code>pd.Series()</code>创建</strong></p>
+<h3 id="2-1、Series对象的创建"><a href="#2-1、Series对象的创建" class="headerlink" title="2.1、Series对象的创建"></a>2.1、Series对象的创建</h3><p><strong>Series对象通过<code>pd.Series()</code>创建</strong></p>
 <p> <code>pd.Series(data, index, dtype, name) </code></p>
 <ul>
 <li>data可以是ndarray对象，列表，元组，字典等，其中字典的键直接作为显示索引</li>
@@ -450,15 +450,6 @@ dtype: int64
 </li>
 </ul>
 </blockquote>
-<h3 id="3、Dataframe表的常用属性和方法"><a href="#3、Dataframe表的常用属性和方法" class="headerlink" title="3、Dataframe表的常用属性和方法"></a>3、Dataframe表的常用属性和方法</h3><p>Dataframe表的字段是Python中的Series对象</p>
-<p>Series是一种类似于一维数组的对象，是由一组数据(各种NumPy数据类型)以及一组与之相关的数据标签(即索引)组成。仅由一组数据也可产生简单的Series对象。<br>Series是Pandas包提供的一种Key-value型数据结构,其中Key为用户定义的显示index,每个显式index对应一个value值.</p>
-<p>它与Python列表的区别在于,Series的每个元素都带有两种index</p>
-<ul>
-<li>显示index : 由用户指定</li>
-<li>隐式index : 由系统自动分配(Series对象中每个元素的下标,类似Python”列表”的下标)</li>
-</ul>
-<p>Series的访问既可以通过显示index,也可以通过隐式index,</p>
-<p>在数据分析和数据科学项目中,一般用显式索引(index),而不是隐式下标,原因在于:当数据量很大时,很难准确定义其下标</p>
  
       <!-- reward -->
       

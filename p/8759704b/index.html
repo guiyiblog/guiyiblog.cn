@@ -437,6 +437,7 @@ dtype: int64
 dtype: int64
 </code></pre>
 <p><strong>ser.map()和ser.apply()的区别</strong></p>
+<blockquote>
 <p><strong><code>ser.map()</code></strong><br>map() 方法用于将一个函数应用于Series中的每个元素。它主要用于将一组值映射到另一组值，通常用于分类变量的转换或简单的元素级操作。map() 方法通常接受一个字典或一个函数作为参数。</p>
 <p><strong><code>ser.apply()</code></strong><br>apply() 方法也用于对Series中的每个元素应用一个函数，但它更加通用和灵活。apply() 方法可以接受任何可调用的对象（如函数、方法、Lambda表达式等），并且可以使用axis参数来指定操作是应用于Series的每个元素（axis&#x3D;0，默认值）还是应用于整个Series（axis&#x3D;1，这种情况对于Series并不常见，因为Series本身是一维的）。</p>
 <p><strong>区别总结</strong></p>
@@ -448,6 +449,7 @@ dtype: int64
 <li><p>用途：map() 更常用于简单的值映射，而 apply() 则更常用于更复杂的转换和计算。</p>
 </li>
 </ul>
+</blockquote>
 <h3 id="3、Dataframe表的常用属性和方法"><a href="#3、Dataframe表的常用属性和方法" class="headerlink" title="3、Dataframe表的常用属性和方法"></a>3、Dataframe表的常用属性和方法</h3><p>Dataframe表的字段是Python中的Series对象</p>
 <p>Series是一种类似于一维数组的对象，是由一组数据(各种NumPy数据类型)以及一组与之相关的数据标签(即索引)组成。仅由一组数据也可产生简单的Series对象。<br>Series是Pandas包提供的一种Key-value型数据结构,其中Key为用户定义的显示index,每个显式index对应一个value值.</p>
 <p>它与Python列表的区别在于,Series的每个元素都带有两种index</p>

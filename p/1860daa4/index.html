@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="数据分析师的成长博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Python中的单表查询 |  归一</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="归一" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-240312-Python中的单表查询"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Python中的单表查询
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/p/1860daa4/" class="article-date">
+  <time datetime="2024-03-12T14:11:32.000Z" itemprop="datePublished">2024-03-12</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/">数据处理能力</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Python/">Python</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">5.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">24 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>本文主要介绍了Python中常用的单表查询操作，包括：表结构查询、行查询、列查询，以及分组聚合和数据透视等。</p>
+  <span id="more"></span>
+
+<h2 id="1、表结构信息查询和修改"><a href="#1、表结构信息查询和修改" class="headerlink" title="1、表结构信息查询和修改"></a>1、表结构信息查询和修改</h2><h3 id="1-1、表结构信息查询"><a href="#1-1、表结构信息查询" class="headerlink" title="1.1、表结构信息查询"></a>1.1、表结构信息查询</h3><ul>
+<li>df.info()：表基础信息</li>
+<li>df.index：表索引</li>
+<li>df.columns：表字段</li>
+<li>df.dtypes：字段类型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">8</span>)</span><br><span class="line">a = np.random.randint(<span class="number">60</span>, <span class="number">100</span>, (<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">df = pd.DataFrame(a)</span><br><span class="line">df.columns = [<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="string">&#x27;物理&#x27;</span>, <span class="string">&#x27;化学&#x27;</span>, <span class="string">&#x27;生物&#x27;</span>]</span><br><span class="line">df.index = <span class="built_in">list</span>(<span class="string">&#x27;ABCDEFGHIJ&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物
+A  63  80  65  86  68  79
+B  81  70  87  73  69  75
+C  89  94  78  74  98  89
+D  69  64  67  86  62  98
+E  69  97  77  75  88  87
+F  82  91  80  81  68  88
+G  88  91  70  60  67  62
+H  98  67  91  96  85  98
+I  87  64  97  62  78  98
+J  82  99  66  91  92  69
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看表信息</span></span><br><span class="line"><span class="built_in">print</span>(df.info())</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 10 entries, A to J
+Data columns (total 6 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   语文      10 non-null     int32
+ 1   数学      10 non-null     int32
+ 2   英语      10 non-null     int32
+ 3   物理      10 non-null     int32
+ 4   化学      10 non-null     int32
+ 5   生物      10 non-null     int32
+dtypes: int32(6)
+memory usage: 320.0+ bytes
+None
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.index)  <span class="comment"># 查看索引标签</span></span><br><span class="line"><span class="built_in">print</span>(df.columns)  <span class="comment"># 查看字段标签</span></span><br><span class="line"><span class="built_in">print</span>(df.dtypes)  <span class="comment"># 查看字段类型</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;], dtype=&#39;object&#39;)
+Index([&#39;语文&#39;, &#39;数学&#39;, &#39;英语&#39;, &#39;物理&#39;, &#39;化学&#39;, &#39;生物&#39;], dtype=&#39;object&#39;)
+语文    int32
+数学    int32
+英语    int32
+物理    int32
+化学    int32
+生物    int32
+dtype: object
+</code></pre>
+<h3 id="1-2、表结构信息修改"><a href="#1-2、表结构信息修改" class="headerlink" title="1.2、表结构信息修改"></a>1.2、表结构信息修改</h3><h4 id="1-21、修改字段名"><a href="#1-21、修改字段名" class="headerlink" title="1.21、修改字段名"></a>1.21、修改字段名</h4><ul>
+<li>给所有字段重命名：df.columns</li>
+<li>给某个字段重命名：df.rename(columns &#x3D; {‘原字段名’:’新字段名’}</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">8</span>)</span><br><span class="line">a = np.random.randint(<span class="number">60</span>, <span class="number">100</span>, (<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">df = pd.DataFrame(a)</span><br><span class="line">df.columns = [<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="string">&#x27;物理&#x27;</span>, <span class="string">&#x27;化学&#x27;</span>, <span class="string">&#x27;生物&#x27;</span>]</span><br><span class="line">df.index = <span class="built_in">list</span>(<span class="string">&#x27;ABCDEFGHIJ&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物
+A  63  80  65  86  68  79
+B  81  70  87  73  69  75
+C  89  94  78  74  98  89
+D  69  64  67  86  62  98
+E  69  97  77  75  88  87
+F  82  91  80  81  68  88
+G  88  91  70  60  67  62
+H  98  67  91  96  85  98
+I  87  64  97  62  78  98
+J  82  99  66  91  92  69
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.columns)</span><br><span class="line">df.columns = <span class="built_in">list</span>(<span class="string">&#x27;ABCDEF&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df.columns)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;语文&#39;, &#39;数学&#39;, &#39;英语&#39;, &#39;物理&#39;, &#39;化学&#39;, &#39;生物&#39;], dtype=&#39;object&#39;)
+Index([&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;], dtype=&#39;object&#39;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = df.rename(columns=&#123;<span class="string">&#x27;A&#x27;</span>: <span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;B&#x27;</span>: <span class="string">&#x27;数学&#x27;</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(df.columns)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;语文&#39;, &#39;数学&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;], dtype=&#39;object&#39;)
+</code></pre>
+<h4 id="1-22-修改字段数据类型"><a href="#1-22-修改字段数据类型" class="headerlink" title="1.22 修改字段数据类型"></a>1.22 修改字段数据类型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.dtypes)</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    int32
+数学    int32
+C     int32
+D     int32
+E     int32
+F     int32
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;语文&#x27;</span>] = df[<span class="string">&#x27;语文&#x27;</span>].astype(<span class="string">&#x27;float&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df.dtypes)</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文    float64
+数学      int32
+C       int32
+D       int32
+E       int32
+F       int32
+dtype: object
+</code></pre>
+<h4 id="1-23、修改索引名"><a href="#1-23、修改索引名" class="headerlink" title="1.23、修改索引名"></a>1.23、修改索引名</h4><ul>
+<li>给所有索引重命名：df.index</li>
+<li>给某个索引重命名：df.rename(index &#x3D; {‘原索引名’:’新索引名’}</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.index)</span><br><span class="line">df.index = <span class="built_in">list</span>(<span class="string">&#x27;0123456789&#x27;</span>)  <span class="comment">## 注意此处索引是字符串，而不是数值！</span></span><br><span class="line"><span class="built_in">print</span>(df.index)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;, &#39;H&#39;, &#39;I&#39;, &#39;J&#39;], dtype=&#39;object&#39;)
+Index([&#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;], dtype=&#39;object&#39;)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df = df.rename(index=&#123;<span class="string">&#x27;1&#x27;</span>: <span class="number">11</span>, <span class="string">&#x27;3&#x27;</span>: <span class="number">33</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(df.index)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Index([&#39;0&#39;, 11, &#39;2&#39;, 33, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;], dtype=&#39;object&#39;)
+</code></pre>
+<h4 id="1-24、索引与列的转换"><a href="#1-24、索引与列的转换" class="headerlink" title="1.24、索引与列的转换"></a>1.24、索引与列的转换</h4><ul>
+<li><p><strong>列转换成索引</strong>：df.set_index(列名)  </p>
+</li>
+<li><p><strong>索引转换成列</strong>：df.reset_index()</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">df = pd.DataFrame([[<span class="string">&#x27;小明&#x27;</span>, <span class="number">89</span>, <span class="number">70</span>], [<span class="string">&#x27;小篮&#x27;</span>, <span class="number">45</span>, <span class="number">84</span>], [<span class="string">&#x27;小红&#x27;</span>, <span class="number">76</span>, <span class="number">99</span>], [<span class="string">&#x27;小黑&#x27;</span>, <span class="number">76</span>, <span class="number">88</span>]],</span><br><span class="line">                  columns=[<span class="string">&#x27;姓名&#x27;</span>, <span class="string">&#x27;物理&#x27;</span>, <span class="string">&#x27;化学&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   姓名  物理  化学
+0  小明  89  70
+1  小篮  45  84
+2  小红  76  99
+3  小黑  76  88
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.set_index(<span class="string">&#x27;姓名&#x27;</span>, inplace=<span class="literal">True</span>)  <span class="comment"># 列转化为索引,inplace=True 生成的副本替换原变量</span></span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>    物理  化学
+姓名        
+小明  89  70
+小篮  45  84
+小红  76  99
+小黑  76  88
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.reset_index())  <span class="comment"># 重置索引，并将旧索引转成列</span></span><br><span class="line"><span class="built_in">print</span>(df.reset_index(drop=<span class="literal">True</span>))  <span class="comment"># 仅重置索引</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   姓名  物理  化学
+0  小明  89  70
+1  小篮  45  84
+2  小红  76  99
+3  小黑  76  88
+   物理  化学
+0  89  70
+1  45  84
+2  76  99
+3  76  88
+</code></pre>
+<h2 id="2、对行的查询"><a href="#2、对行的查询" class="headerlink" title="2、对行的查询"></a>2、对行的查询</h2><p><strong>索引&#x2F;选择的基本语法如下：</strong></p>
+<table>
+<thead>
+<tr>
+<th>实现目的</th>
+<th>语法</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>选择列</td>
+<td>df[col]</td>
+<td>Series</td>
+</tr>
+<tr>
+<td>切片行</td>
+<td>df[5:10]</td>
+<td>DataFrame</td>
+</tr>
+<tr>
+<td>按标签选择行</td>
+<td>df.loc[label]</td>
+<td>Series</td>
+</tr>
+<tr>
+<td>按位置选择行</td>
+<td>df.iloc[loc]</td>
+<td>Series</td>
+</tr>
+</tbody></table>
+<h3 id="2-1、隐式索引查询"><a href="#2-1、隐式索引查询" class="headerlink" title="2.1、隐式索引查询"></a>2.1、隐式索引查询</h3><ul>
+<li>df[ 隐式索引切片 ]</li>
+<li>df.iloc[ 隐式索引切片, ‘列索引’切片]<br><strong>切片的终止位置不能取</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">np.random.seed(<span class="number">8</span>)</span><br><span class="line">a = np.random.randint(<span class="number">60</span>, <span class="number">100</span>, (<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">df = pd.DataFrame(a)</span><br><span class="line">df.columns = [<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="string">&#x27;物理&#x27;</span>, <span class="string">&#x27;化学&#x27;</span>, <span class="string">&#x27;生物&#x27;</span>]</span><br><span class="line">df.index = <span class="built_in">list</span>(<span class="string">&#x27;ABCDEFGHIJ&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物
+A  63  80  65  86  68  79
+B  81  70  87  73  69  75
+C  89  94  78  74  98  89
+D  69  64  67  86  62  98
+E  69  97  77  75  88  87
+F  82  91  80  81  68  88
+G  88  91  70  60  67  62
+H  98  67  91  96  85  98
+I  87  64  97  62  78  98
+J  82  99  66  91  92  69
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df[<span class="number">1</span>:<span class="number">3</span>])  <span class="comment"># 切片的终止位置不能取</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物
+B  81  70  87  73  69  75
+C  89  94  78  74  98  89
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.iloc[<span class="number">1</span>:<span class="number">6</span>:<span class="number">2</span>, <span class="number">1</span>:<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>   数学  英语  物理
+B  70  87  73
+D  64  67  86
+F  91  80  81
+</code></pre>
+<h3 id="2-2、显式索引查询"><a href="#2-2、显式索引查询" class="headerlink" title="2.2、显式索引查询"></a>2.2、显式索引查询</h3><ul>
+<li>df[ 显式索引切片]</li>
+<li>df.loc[ 显式索引切片 , 字段名切片 ]<br><strong>切片的终止位置能取</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df[<span class="string">&#x27;B&#x27;</span>:<span class="string">&#x27;D&#x27;</span>])  <span class="comment"># 终止位置能取</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物
+B  81  70  87  73  69  75
+C  89  94  78  74  98  89
+D  69  64  67  86  62  98
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.loc[<span class="string">&#x27;B&#x27;</span>:<span class="string">&#x27;F&#x27;</span>, ])</span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物
+B  81  70  87  73  69  75
+C  89  94  78  74  98  89
+D  69  64  67  86  62  98
+E  69  97  77  75  88  87
+F  82  91  80  81  68  88
+</code></pre>
+<h3 id="2-3、条件查询"><a href="#2-3、条件查询" class="headerlink" title="2.3、条件查询"></a>2.3、条件查询</h3><ul>
+<li>df[ 条件表达式 ]</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>释义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>|</td>
+<td>or</td>
+<td>或者</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>and</td>
+<td>并且</td>
+</tr>
+<tr>
+<td>~</td>
+<td>not</td>
+<td>取反</td>
+</tr>
+<tr>
+<td>^</td>
+<td>xor</td>
+<td>异或</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df[df.物理 &gt; <span class="number">80</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物
+A  63  80  65  86  68  79
+D  69  64  67  86  62  98
+F  82  91  80  81  68  88
+H  98  67  91  96  85  98
+J  82  99  66  91  92  69
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df[(df.物理 &gt; <span class="number">80</span>) | (df.化学 &gt; <span class="number">80</span>)])  <span class="comment"># 多条件要用()隔开</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物
+A  63  80  65  86  68  79
+C  89  94  78  74  98  89
+D  69  64  67  86  62  98
+E  69  97  77  75  88  87
+F  82  91  80  81  68  88
+H  98  67  91  96  85  98
+J  82  99  66  91  92  69
+</code></pre>
+<h2 id="3、对列的查询"><a href="#3、对列的查询" class="headerlink" title="3、对列的查询"></a>3、对列的查询</h2><h3 id="3-1、隐式索引查询"><a href="#3-1、隐式索引查询" class="headerlink" title="3.1、隐式索引查询"></a>3.1、隐式索引查询</h3><ul>
+<li>df.iloc[ 隐式索引切片, ‘列索引’切片]<br><strong>切片的终止位置不能取</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.iloc[:, <span class="number">1</span>:<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>   数学  英语  物理
+A  80  65  86
+B  70  87  73
+C  94  78  74
+D  64  67  86
+E  97  77  75
+F  91  80  81
+G  91  70  60
+H  67  91  96
+I  64  97  62
+J  99  66  91
+</code></pre>
+<h3 id="3-2-显式索引查询"><a href="#3-2-显式索引查询" class="headerlink" title="3.2 显式索引查询"></a>3.2 显式索引查询</h3><ul>
+<li>df[ 字段名 ]</li>
+<li>df[ [字段名1，字段名2，…] ]</li>
+<li>df.loc[ 显式索引切片 , 字段名切片 ]<br><strong>切片的终止位置能取</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df[<span class="string">&#x27;语文&#x27;</span>])  <span class="comment"># 查询单列</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>A    63
+B    81
+C    89
+D    69
+E    69
+F    82
+G    88
+H    98
+I    87
+J    82
+Name: 语文, dtype: int32
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df[[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;物理&#x27;</span>]])  <span class="comment"># 查询多列</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  物理
+A  63  86
+B  81  73
+C  89  74
+D  69  86
+E  69  75
+F  82  81
+G  88  60
+H  98  96
+I  87  62
+J  82  91
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.loc[:, <span class="string">&#x27;语文&#x27;</span>:<span class="string">&#x27;物理&#x27;</span>])  <span class="comment"># 使用切片</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理
+A  63  80  65  86
+B  81  70  87  73
+C  89  94  78  74
+D  69  64  67  86
+E  69  97  77  75
+F  82  91  80  81
+G  88  91  70  60
+H  98  67  91  96
+I  87  64  97  62
+J  82  99  66  91
+</code></pre>
+<h3 id="3-3、查询特定数据类型的列"><a href="#3-3、查询特定数据类型的列" class="headerlink" title="3.3、查询特定数据类型的列"></a>3.3、查询特定数据类型的列</h3><ul>
+<li>df.select_dtypes(include, excluede)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">&#x27;浮点型&#x27;</span>] = <span class="number">1.3</span></span><br><span class="line"><span class="built_in">print</span>(df.dtypes)</span><br></pre></td></tr></table></figure>
+
+<pre><code>语文       int32
+数学       int32
+英语       int32
+物理       int32
+化学       int32
+生物       int32
+浮点型    float64
+dtype: object
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.select_dtypes(include=<span class="built_in">float</span>))  <span class="comment"># 查找float类型的列</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   浮点型
+A  1.3
+B  1.3
+C  1.3
+D  1.3
+E  1.3
+F  1.3
+G  1.3
+H  1.3
+I  1.3
+J  1.3
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.select_dtypes(exclude=<span class="built_in">float</span>))  <span class="comment"># 查找非float类型的列</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物
+A  63  80  65  86  68  79
+B  81  70  87  73  69  75
+C  89  94  78  74  98  89
+D  69  64  67  86  62  98
+E  69  97  77  75  88  87
+F  82  91  80  81  68  88
+G  88  91  70  60  67  62
+H  98  67  91  96  85  98
+I  87  64  97  62  78  98
+J  82  99  66  91  92  69
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.select_dtypes(include=[<span class="built_in">float</span>, <span class="built_in">int</span>]))  <span class="comment"># 查找多种类型的列</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>   语文  数学  英语  物理  化学  生物  浮点型
+A  63  80  65  86  68  79  1.3
+B  81  70  87  73  69  75  1.3
+C  89  94  78  74  98  89  1.3
+D  69  64  67  86  62  98  1.3
+E  69  97  77  75  88  87  1.3
+F  82  91  80  81  68  88  1.3
+G  88  91  70  60  67  62  1.3
+H  98  67  91  96  85  98  1.3
+I  87  64  97  62  78  98  1.3
+J  82  99  66  91  92  69  1.3
+</code></pre>
+<h2 id="4、分组聚合"><a href="#4、分组聚合" class="headerlink" title="4、分组聚合"></a>4、分组聚合</h2><h3 id="4-1-数值型变量的统计描述"><a href="#4-1-数值型变量的统计描述" class="headerlink" title="4.1 数值型变量的统计描述"></a>4.1 数值型变量的统计描述</h3><ul>
+<li>df.describe()：查看数值型变量的特征</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">8</span>)</span><br><span class="line">a = np.random.randint(<span class="number">60</span>, <span class="number">100</span>, (<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">df = pd.DataFrame(a)</span><br><span class="line">df.columns = [<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="string">&#x27;物理&#x27;</span>, <span class="string">&#x27;化学&#x27;</span>, <span class="string">&#x27;生物&#x27;</span>]</span><br><span class="line">df.insert(loc=<span class="number">0</span>, column=<span class="string">&#x27;姓名&#x27;</span>, value=<span class="built_in">list</span>(<span class="string">&#x27;ABCDEFGHIJ&#x27;</span>))</span><br><span class="line">df.insert(loc=<span class="number">1</span>, column=<span class="string">&#x27;性别&#x27;</span>, value=df.姓名.apply(<span class="keyword">lambda</span> x: random.choice([<span class="string">&#x27;男&#x27;</span>,<span class="string">&#x27;女&#x27;</span>])))</span><br><span class="line">df.insert(loc=<span class="number">2</span>, column=<span class="string">&#x27;班级&#x27;</span>, value=df.姓名.apply(<span class="keyword">lambda</span> x: random.choice([<span class="string">&#x27;1班&#x27;</span>,<span class="string">&#x27;2班&#x27;</span>,<span class="string">&#x27;3班&#x27;</span>])))</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>  姓名 性别  班级  语文  数学  英语  物理  化学  生物
+0  A  男  2班  63  80  65  86  68  79
+1  B  男  2班  81  70  87  73  69  75
+2  C  女  2班  89  94  78  74  98  89
+3  D  男  1班  69  64  67  86  62  98
+4  E  男  1班  69  97  77  75  88  87
+5  F  女  3班  82  91  80  81  68  88
+6  G  女  3班  88  91  70  60  67  62
+7  H  女  1班  98  67  91  96  85  98
+8  I  男  2班  87  64  97  62  78  98
+9  J  女  3班  82  99  66  91  92  69
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(df.describe().T)   <span class="comment"># 只对数值型变量进行统计描述</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>    count  mean        std   min    25%   50%    75%   max
+语文   10.0  80.8  10.809461  63.0  72.00  82.0  87.75  98.0
+数学   10.0  81.7  14.298796  64.0  67.75  85.5  93.25  99.0
+英语   10.0  77.8  11.123549  65.0  67.75  77.5  85.25  97.0
+物理   10.0  78.4  11.824645  60.0  73.25  78.0  86.00  96.0
+化学   10.0  77.5  12.474418  62.0  68.00  73.5  87.25  98.0
+生物   10.0  84.3  12.702143  62.0  76.00  87.5  95.75  98.0
+</code></pre>
+<h3 id="4-2、分组"><a href="#4-2、分组" class="headerlink" title="4.2、分组"></a>4.2、分组</h3><h4 id="4-21、groupby对象"><a href="#4-21、groupby对象" class="headerlink" title="4.21、groupby对象"></a>4.21、groupby对象</h4><p><strong>创建groupby对象</strong></p>
+<ul>
+<li>df.groupby(by) 当依据多个字段分组时，by用列表</li>
+</ul>
+<p><strong>groupby对象的属性和方法</strong></p>
+<ul>
+<li>gp.groups查看分组情况查看分组的情况</li>
+<li>len(gp)查看分成了多少组</li>
+<li>gp.size()查看每组包含多少条记录</li>
+<li>gp.get_groups(某组)获得分组后的某组</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gp = df.groupby(by=[<span class="string">&#x27;性别&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(gp)   <span class="comment"># 分组得到的是一个惰性对象</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x0000020CCBEE2B90&gt;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(gp.groups)   <span class="comment"># 返回的是一个字典</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(gp))     <span class="comment"># 返回组数</span></span><br><span class="line"><span class="built_in">print</span>(gp.size())   <span class="comment"># 返回每组条数（分组计数）</span></span><br><span class="line"><span class="built_in">print</span>(gp.get_group(<span class="string">&#x27;男&#x27;</span>).reset_index(drop=<span class="literal">True</span>))     <span class="comment"># 返回组子集</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&#123;&#39;女&#39;: [2, 5, 6, 7, 9], &#39;男&#39;: [0, 1, 3, 4, 8]&#125;
+2
+性别
+女    5
+男    5
+dtype: int64
+  姓名 性别  班级  语文  数学  英语  物理  化学  生物
+0  A  男  2班  63  80  65  86  68  79
+1  B  男  2班  81  70  87  73  69  75
+2  D  男  1班  69  64  67  86  62  98
+3  E  男  1班  69  97  77  75  88  87
+4  I  男  2班  87  64  97  62  78  98
+</code></pre>
+<p>在 Python 的 pandas 库中，<code>.groupby</code> 是一个强大的功能，它允许用户根据一个或多个键对数据进行分组，并对每个组执行某些操作。<br>了解其内部原理有助于更好地理解其工作方式以及为何在某些情况下它的性能表现如此出色。</p>
+<p>下面是 <code>.groupby</code> 的内部原理的基本概述：</p>
+<ol>
+<li><p><strong>创建分组键</strong><br>当你调用 <code>.groupby</code> 方法并传入一个或多个列名时，pandas 会首先根据这些列的值创建分组键。这些键是唯一的，用于标识每个分组。<br>例如，如果你根据一个包含 <code>[&#39;foo&#39;, &#39;bar&#39;, &#39;foo&#39;, &#39;bar&#39;]</code> 的列进行分组，那么你会得到两个分组键：<code>&#39;foo&#39;</code> 和 <code>&#39;bar&#39;</code>。</p>
+</li>
+<li><p><strong>哈希映射</strong><br>为了高效地查找每个键对应的行，pandas 使用哈希映射（通常是字典）来存储分组键和它们对应的行索引。<br>这样，当你需要访问某个键的所有行时，可以立即通过哈希查找得到，而不需要遍历整个数据集。</p>
+</li>
+<li><p><strong>分组对象</strong><br><code>.groupby</code> 方法返回的是一个分组对象（GroupBy object），它并不包含实际的分组数据，而是存储了如何根据分组键访问原始数据的信息。<br>这个对象非常轻量级，因为它没有复制数据，只是保存了分组逻辑。</p>
+</li>
+<li><p><strong>惰性计算</strong><br>分组对象是惰性的，这意味着它不会立即执行任何计算。只有当你调用聚合函数（如 <code>mean()</code>, <code>sum()</code>, <code>count()</code> 等）或其他方法（如 <code>apply()</code>）时，<br>pandas 才会根据分组键对数据进行实际的分组和计算。这种惰性计算方式可以显著提高性能，特别是在处理大型数据集时。</p>
+</li>
+<li><p><strong>聚合操作</strong><br>当你对分组对象调用聚合函数时，pandas 会遍历每个分组，并对每个分组内的数据应用指定的聚合函数。<br>由于分组键和对应的行索引已经通过哈希映射建立好了，所以这个过程是非常高效的。</p>
+</li>
+<li><p><strong>返回结果</strong><br>最后，<code>.groupby</code> 操作会返回一个新的 DataFrame 或 Series，其中包含了每个分组的聚合结果。<br>这个结果的索引通常是分组键，列则是聚合函数的输出。</p>
+</li>
+<li><p><strong>性能优化</strong><br>为了进一步提高性能，pandas 在实现 <code>.groupby</code> 时还采用了一些优化技术，如使用 Cython（一种 Python 的扩展语言，<br>用于编写 C 风格的代码以提高性能）编写的底层代码、内部多线程处理以及缓存机制等。</p>
+<p> 总的来说，<code>.groupby</code> 的内部原理基于哈希映射和惰性计算，这使得它能够高效地处理大型数据集，并为用户提供灵活且强大的分组聚合功能。</p>
+</li>
+</ol>
+<h3 id="4-3、聚合"><a href="#4-3、聚合" class="headerlink" title="4.3、聚合"></a>4.3、聚合</h3><ul>
+<li><strong><code>gp.agg()</code></strong></li>
+</ul>
+<p><code>.agg()</code> 函数是 pandas 库中用于对 <code>groupby</code> 对象应用聚合函数的一个非常强大的工具。通过 <code>.agg()</code>，你可以对分组后的数据应用一个或多个聚合函数，并返回结果。这允许你以灵活的方式对分组数据进行摘要统计。</p>
+<p>下面是如何使用 <code>.agg()</code> 函数的一些示例：</p>
+<h4 id="4-31、对单个列应用单个聚合函数"><a href="#4-31、对单个列应用单个聚合函数" class="headerlink" title="4.31、对单个列应用单个聚合函数"></a>4.31、对单个列应用单个聚合函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个简单的 DataFrame</span></span><br><span class="line">df = pd.DataFrame(&#123;</span><br><span class="line">    <span class="string">&#x27;A&#x27;</span>: [<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;foo&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;B&#x27;</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>],</span><br><span class="line">    <span class="string">&#x27;C&#x27;</span>: [<span class="number">9</span>, <span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>, <span class="number">15</span>, <span class="number">16</span>]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据列 &#x27;A&#x27; 分组，并对列 &#x27;B&#x27; 应用 mean 聚合函数</span></span><br><span class="line">gp = df.groupby(<span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">result = gp[<span class="string">&#x27;B&#x27;</span>].agg(<span class="string">&#x27;mean&#x27;</span>)   </span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<pre><code>A
+bar    4.0
+foo    4.8
+Name: B, dtype: float64
+</code></pre>
+<p><strong>注意：</strong><br>通过 gp[‘B’]，你可以专注于特定的列，并对其应用聚合操作，而不是对整个 DataFrame 应用操作。这使得 groupby 操作更加灵活和高效。 </p>
+<p><code>gp.head()</code> 获取各组前n行<br><code>gp.tail()</code> 获取各组后n行</p>
+<p>在 pandas 中，当你使用 grouped.head() 时，你实际上是在对分组后的每个组调用 head() 方法，以获取每个组的前几行数据。<br>这里的关键是，虽然你根据某个键进行了分组，但 head() 方法返回的是原始 DataFrame 中的行，而不是重新构建的、仅包含分组键的 DataFrame。</p>
+<p>因此，grouped.head() 返回的索引仍然是原始 DataFrame 的索引，而不是分组键。这是因为 head() 只是简单地选择每个组的前几行，并没有改变这些行的索引。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(gp.head(<span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(gp.head(<span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(gp.tail(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>     A  B   C
+0  foo  1   9
+1  bar  2  10
+     A  B   C
+0  foo  1   9
+1  bar  2  10
+     A  B   C
+5  bar  6  14
+7  foo  8  16
+</code></pre>
+<h4 id="4-32、对单个列应用多个聚合函数"><a href="#4-32、对单个列应用多个聚合函数" class="headerlink" title="4.32、对单个列应用多个聚合函数"></a>4.32、对单个列应用多个聚合函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据列 &#x27;A&#x27; 分组，并对列 &#x27;B&#x27; 应用多个聚合函数</span></span><br><span class="line">result = gp[<span class="string">&#x27;B&#x27;</span>].agg([<span class="string">&#x27;mean&#x27;</span>, <span class="string">&#x27;sum&#x27;</span>, <span class="string">&#x27;count&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<pre><code>     mean  sum  count
+A                    
+bar   4.0   12      3
+foo   4.8   24      5
+</code></pre>
+<h4 id="4-33、对多个列应用聚合函数"><a href="#4-33、对多个列应用聚合函数" class="headerlink" title="4.33、对多个列应用聚合函数"></a>4.33、对多个列应用聚合函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对多个列应用不同的聚合函数</span></span><br><span class="line">result = gp.agg(&#123;<span class="string">&#x27;B&#x27;</span>: [<span class="string">&#x27;mean&#x27;</span>, <span class="string">&#x27;sum&#x27;</span>], <span class="string">&#x27;C&#x27;</span>: <span class="string">&#x27;count&#x27;</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<pre><code>       B         C
+    mean sum count
+A                 
+bar  4.0  12     3
+foo  4.8  24     5
+</code></pre>
+<h4 id="4-34、使用自定义函数"><a href="#4-34、使用自定义函数" class="headerlink" title="4.34、使用自定义函数"></a>4.34、使用自定义函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义一个自定义函数</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">custom_func</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x.<span class="built_in">sum</span>() / <span class="built_in">len</span>(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对列 &#x27;B&#x27; 应用自定义函数</span></span><br><span class="line">result = gp[<span class="string">&#x27;B&#x27;</span>].agg(custom_func)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<pre><code>A
+bar    4.0
+foo    4.8
+Name: B, dtype: float64
+</code></pre>
+<h4 id="4-35、使用-lambda-函数"><a href="#4-35、使用-lambda-函数" class="headerlink" title="4.35、使用 lambda 函数"></a>4.35、使用 lambda 函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 lambda 函数计算列 &#x27;B&#x27; 的标准差</span></span><br><span class="line">result = gp[<span class="string">&#x27;B&#x27;</span>].agg(<span class="keyword">lambda</span> x: x.std())</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<pre><code>A
+bar    2.000000
+foo    2.863564
+Name: B, dtype: float64
+</code></pre>
+<p>在这些示例中，<code>.agg()</code> 函数接受一个函数、函数列表、字典或者字符串作为参数，这些参数定义了如何聚合数据。<br>你可以传递内置的聚合函数（如 ‘mean’, ‘sum’, ‘count’ 等），自定义函数，或者 lambda 函数。如果传递字典，则字典的键是列名，值是聚合函数或函数列表。</p>
+<p><code>.agg()</code> 函数的强大之处在于其灵活性，它允许你以多种方式组合和定制你的聚合操作，从而得到你想要的统计摘要。</p>
+<h2 id="5、数据透视表"><a href="#5、数据透视表" class="headerlink" title="5、数据透视表"></a>5、数据透视表</h2><h4 id="5-1、数据透视"><a href="#5-1、数据透视" class="headerlink" title="5.1、数据透视"></a>5.1、数据透视</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">8</span>)</span><br><span class="line">a = np.random.randint(<span class="number">60</span>, <span class="number">100</span>, (<span class="number">10</span>, <span class="number">6</span>))</span><br><span class="line">df = pd.DataFrame(a)</span><br><span class="line">df.columns = [<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="string">&#x27;物理&#x27;</span>, <span class="string">&#x27;化学&#x27;</span>, <span class="string">&#x27;生物&#x27;</span>]</span><br><span class="line">df.insert(loc=<span class="number">0</span>, column=<span class="string">&#x27;姓名&#x27;</span>, value=<span class="built_in">list</span>(<span class="string">&#x27;ABCDEFGHIJ&#x27;</span>))</span><br><span class="line">df.insert(loc=<span class="number">1</span>, column=<span class="string">&#x27;性别&#x27;</span>, value=df.姓名.apply(<span class="keyword">lambda</span> x: random.choice([<span class="string">&#x27;男&#x27;</span>,<span class="string">&#x27;女&#x27;</span>])))</span><br><span class="line">df.insert(loc=<span class="number">2</span>, column=<span class="string">&#x27;班级&#x27;</span>, value=df.姓名.apply(<span class="keyword">lambda</span> x: random.choice([<span class="string">&#x27;1班&#x27;</span>,<span class="string">&#x27;2班&#x27;</span>,<span class="string">&#x27;3班&#x27;</span>])))</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>  姓名 性别  班级  语文  数学  英语  物理  化学  生物
+0  A  女  3班  63  80  65  86  68  79
+1  B  男  3班  81  70  87  73  69  75
+2  C  女  3班  89  94  78  74  98  89
+3  D  女  3班  69  64  67  86  62  98
+4  E  男  2班  69  97  77  75  88  87
+5  F  男  2班  82  91  80  81  68  88
+6  G  男  2班  88  91  70  60  67  62
+7  H  女  2班  98  67  91  96  85  98
+8  I  男  3班  87  64  97  62  78  98
+9  J  女  2班  82  99  66  91  92  69
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_pivot1 = pd.pivot_table(df, values=<span class="string">&#x27;语文&#x27;</span>, index=<span class="string">&#x27;班级&#x27;</span>, columns=<span class="string">&#x27;性别&#x27;</span>, aggfunc=[<span class="string">&#x27;mean&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(df_pivot1)</span><br></pre></td></tr></table></figure>
+
+<pre><code>         mean           
+性别          女          男
+班级                      
+2班  90.000000  79.666667
+3班  73.666667  84.000000
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df_pivot2 = pd.pivot_table(df, values=[<span class="string">&#x27;语文&#x27;</span>,<span class="string">&#x27;数学&#x27;</span>], index=[<span class="string">&#x27;班级&#x27;</span>,<span class="string">&#x27;姓名&#x27;</span>], columns=[<span class="string">&#x27;性别&#x27;</span>], aggfunc=[<span class="string">&#x27;mean&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(df_pivot2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>       mean                  
+         数学          语文      
+性别        女     男     女     男
+班级 姓名                        
+2班 E    NaN  97.0   NaN  69.0
+   F    NaN  91.0   NaN  82.0
+   G    NaN  91.0   NaN  88.0
+   H   67.0   NaN  98.0   NaN
+   J   99.0   NaN  82.0   NaN
+3班 A   80.0   NaN  63.0   NaN
+   B    NaN  70.0   NaN  81.0
+   C   94.0   NaN  89.0   NaN
+   D   64.0   NaN  69.0   NaN
+   I    NaN  64.0   NaN  87.0
+</code></pre>
+<h3 id="5-2、逆透视"><a href="#5-2、逆透视" class="headerlink" title="5.2、逆透视"></a>5.2、逆透视</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result = df_pivot1.stack().reset_index().head()</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   班级 性别       mean
+0  2班  女  90.000000
+1  2班  男  79.666667
+2  3班  女  73.666667
+3  3班  男  84.000000
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 逆透视两次</span></span><br><span class="line">result = df_pivot2.stack().stack().reset_index().head()</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   班级 姓名 性别 level_3  mean
+0  2班  E  男      数学  97.0
+1  2班  E  男      语文  69.0
+2  2班  F  男      数学  91.0
+3  2班  F  男      语文  82.0
+4  2班  G  男      数学  91.0
+</code></pre>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://guiyiblog.com/p/1860daa4/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/p/8759704b/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Python中的表结构对象</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2024
+        <i class="ri-heart-fill heart_icon"></i> 归一
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+    
+        <div class="logo">
+            <a href="/"><img src="/images/ayer-side.svg" alt="归一"></a>
+        </div>
+    
+    <ul class="nav nav-main">
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/">主页</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/categories">分类</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B">业务理解能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/%E5%86%85%E5%AE%B9%E7%A4%BE%E4%BA%A4%E8%A1%8C%E4%B8%9A">内容社交行业
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E8%83%BD%E5%8A%9B">数据获取能力</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B">数据处理能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Excel">Excel
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/PowerBI">PowerBI
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/MySQL">MySQL
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Python">Python
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE">BigData
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%83%BD%E5%8A%9B">数据分析能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%83%BD%E5%8A%9B/%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95">统计分析方法
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B">数据表达能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B">分析案例
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/categories/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3">网站说明</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/about">关于</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+    </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+    <ul class="nav">
+        <li class="nav-item">
+            
+                <a class="nav-item-link nav-item-search" title="搜索">
+                    <i class="ri-search-line"></i>
+                </a>
+            
+            
+        </li>
+    </ul>
+</nav>
+<div class="search-form-wrap">
+    <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+
+<style>
+    .nav-main li ul {
+        display: none;
+    }
+
+    .nav-main li:hover ul {
+        display: block;
+        /*color: #dee2ec;*/
+        /*animation: swing ease-in-out 0.5s 1 alternate;*/
+    }
+
+    .sub-menu {
+        /*position: absolute;*/
+        position: relative;
+        background: rgba(0, 0, 0, 0);
+        color: rgba(0, 0, 0, 0);
+        padding: 3px;
+        width: 10rem;
+        left: 3rem;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .menu-suffix {
+        display: inline-block;
+        padding: 5px;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+</style>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

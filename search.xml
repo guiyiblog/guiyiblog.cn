@@ -101,6 +101,191 @@
   <entry>
     <title>Python中的单表查询</title>
     <url>/p/1860daa4/</url>
+    <content><![CDATA[<p>本文主要介绍了Python中常用的多表查询操作，包括：纵向追加、横向合并。</p>
+  <span id="more"></span>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#全部行都能输出</span></span><br><span class="line"><span class="keyword">from</span> IPython.core.interactiveshell <span class="keyword">import</span> InteractiveShell</span><br><span class="line">InteractiveShell.ast_node_interactivity = <span class="string">&quot;all&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">np.random.seed(<span class="number">666</span>)</span><br><span class="line">a = np.random.randint(<span class="number">60</span>, <span class="number">100</span>, (<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">df1 = pd.DataFrame(a, </span><br><span class="line">                   index=[<span class="string">&#x27;A1&#x27;</span>, <span class="string">&#x27;A2&#x27;</span>, <span class="string">&#x27;A3&#x27;</span>, <span class="string">&#x27;A4&#x27;</span>, <span class="string">&#x27;A5&#x27;</span>], </span><br><span class="line">                   columns=[<span class="string">&#x27;语文&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>])</span><br><span class="line">b = np.random.randint(<span class="number">60</span>, <span class="number">100</span>, (<span class="number">3</span>, <span class="number">4</span>))</span><br><span class="line">df2 = pd.DataFrame(b, </span><br><span class="line">                   index=[<span class="string">&#x27;A6&#x27;</span>, <span class="string">&#x27;A7&#x27;</span>, <span class="string">&#x27;A8&#x27;</span>], </span><br><span class="line">                   columns=[<span class="string">&#x27;物理&#x27;</span>, <span class="string">&#x27;数学&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="string">&#x27;语文&#x27;</span>])</span><br><span class="line">c = np.random.randint(<span class="number">60</span>, <span class="number">100</span>, (<span class="number">3</span>, <span class="number">2</span>))</span><br><span class="line">df3 = pd.DataFrame(c, </span><br><span class="line">                   index=[<span class="string">&#x27;A2&#x27;</span>, <span class="string">&#x27;A3&#x27;</span>, <span class="string">&#x27;A9&#x27;</span>], </span><br><span class="line">                   columns=[<span class="string">&#x27;物理&#x27;</span>, <span class="string">&#x27;化学&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(df1)</span><br><span class="line"><span class="built_in">print</span>(df2)</span><br><span class="line"><span class="built_in">print</span>(df3)</span><br></pre></td></tr></table></figure>
+
+<pre><code>    语文  数学  英语
+A1  62  90  66
+A2  69  90  96
+A3  87  90  91
+A4  88  74  93
+A5  76  99  65
+    物理  数学  英语  语文
+A6  78  72  75  73
+A7  65  80  71  84
+A8  80  96  96  90
+    物理  化学
+A2  76  73
+A3  96  86
+A9  65  99
+</code></pre>
+<h2 id="1、纵向追加"><a href="#1、纵向追加" class="headerlink" title="1、纵向追加"></a>1、纵向追加</h2><p><strong><code>pd.concat([df1, df2，df3..], axis=0, join=&#39;outer&#39;,keys)</code></strong></p>
+<ul>
+<li>axis&#x3D;0 默认是纵向拼接 , axis&#x3D;1横向拼接。  </li>
+<li>join默认连接方式是外连接, 当然还有inner内连接。注意这里没有左连接和右连接。</li>
+<li>设置keys用于区分合并后的数据来自于哪个表</li>
+</ul>
+<h3 id="1-1、纵向外连接"><a href="#1-1、纵向外连接" class="headerlink" title="1.1、纵向外连接"></a>1.1、纵向外连接</h3><ul>
+<li>axis&#x3D;0代表纵向， 会按照相同的列名进行拼接。  </li>
+<li>join&#x3D;’outer’表示外连接， 外连接会保留所有的信息， 匹配不上的地方就是缺失值。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.concat([df1, df2], axis=<span class="number">0</span>,join=<span class="string">&#x27;outer&#x27;</span>, keys=[<span class="string">&#x27;df1&#x27;</span>,<span class="string">&#x27;df2&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>        语文  数学  英语    物理
+df1 A1  62  90  66   NaN
+    A2  69  90  96   NaN
+    A3  87  90  91   NaN
+    A4  88  74  93   NaN
+    A5  76  99  65   NaN
+df2 A6  73  72  75  78.0
+    A7  84  80  71  65.0
+    A8  90  96  96  80.0
+</code></pre>
+<h3 id="1-2、纵向内连接"><a href="#1-2、纵向内连接" class="headerlink" title="1.2、纵向内连接"></a>1.2、纵向内连接</h3><ul>
+<li>axis&#x3D;0  </li>
+<li>内连接是保留匹配上的数据， 纵向连接的时候， 是以列来匹配的， 即保留大家都有的列</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.concat([df1, df2], axis=<span class="number">0</span>,join=<span class="string">&#x27;inner&#x27;</span>, keys=[<span class="string">&#x27;df1&#x27;</span>,<span class="string">&#x27;df2&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>        语文  数学  英语
+df1 A1  62  90  66
+    A2  69  90  96
+    A3  87  90  91
+    A4  88  74  93
+    A5  76  99  65
+df2 A6  73  72  75
+    A7  84  80  71
+    A8  90  96  96
+</code></pre>
+<h2 id="2、横向合并"><a href="#2、横向合并" class="headerlink" title="2、横向合并"></a>2、横向合并</h2><h3 id="2-1、pd-concat"><a href="#2-1、pd-concat" class="headerlink" title="2.1、pd.concat()"></a>2.1、pd.concat()</h3><p><strong><code>pd.concat([df1, df2，df3..], axis=0, join=&#39;outer&#39;,keys)  </code></strong></p>
+<ul>
+<li>axis&#x3D;0 默认是纵向拼接 , axis&#x3D;1横向拼接。</li>
+<li>join默认连接方式是外连接, 当然还有inner内连接。注意这里没有左连接和右连接。</li>
+<li>设置keys用于区分合并后的数据来自于哪个表</li>
+</ul>
+<p>注意：<strong>只能通过索引进行关联！</strong></p>
+<h4 id="2-11、横向外连接"><a href="#2-11、横向外连接" class="headerlink" title="2.11、横向外连接"></a>2.11、横向外连接</h4><ul>
+<li>axis&#x3D;1  </li>
+<li>外连接保留两张表所有的信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.concat([df1, df2], axis=<span class="number">1</span>, join=<span class="string">&#x27;outer&#x27;</span>, keys=[<span class="string">&#x27;df1&#x27;</span>,<span class="string">&#x27;df2&#x27;</span>])  <span class="comment"># 保留所有的信息</span></span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>     df1               df2                  
+      语文    数学    英语    物理    数学    英语    语文
+A1  62.0  90.0  66.0   NaN   NaN   NaN   NaN
+A2  69.0  90.0  96.0   NaN   NaN   NaN   NaN
+A3  87.0  90.0  91.0   NaN   NaN   NaN   NaN
+A4  88.0  74.0  93.0   NaN   NaN   NaN   NaN
+A5  76.0  99.0  65.0   NaN   NaN   NaN   NaN
+A6   NaN   NaN   NaN  78.0  72.0  75.0  73.0
+A7   NaN   NaN   NaN  65.0  80.0  71.0  84.0
+A8   NaN   NaN   NaN  80.0  96.0  96.0  90.0
+</code></pre>
+<h4 id="2-12、横向内连接"><a href="#2-12、横向内连接" class="headerlink" title="2.12、横向内连接"></a>2.12、横向内连接</h4><ul>
+<li>axis&#x3D;1</li>
+<li>join&#x3D;’inner’, 好留两张表都有的行索引</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.concat([df1, df3], axis=<span class="number">1</span>, join=<span class="string">&#x27;inner&#x27;</span>, keys=[<span class="string">&#x27;df1&#x27;</span>,<span class="string">&#x27;df3&#x27;</span>])</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   df1         df3    
+    语文  数学  英语  物理  化学
+A2  69  90  96  76  73
+A3  87  90  91  96  86
+</code></pre>
+<h3 id="2-2、pd-merge"><a href="#2-2、pd-merge" class="headerlink" title="2.2、pd.merge()"></a>2.2、pd.merge()</h3><p><strong><code>pd.merge(左表, 右表，how=连接方式， on=连接字段 )  </code></strong></p>
+<ul>
+<li>pd.merge()基本参照的是数据库表的连接方式， 也是用的最多的连接方式， 逻辑上与数据库保持一致。 </li>
+<li>how&#x3D;’inner’, 即默认是内连接， 这里还可以选择外连接outer 左连接left  右连接right</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df1 = df1.reset_index().rename(columns=&#123;<span class="string">&#x27;index&#x27;</span>:<span class="string">&#x27;姓名&#x27;</span>&#125;)</span><br><span class="line">df2 = df2.reset_index().rename(columns = &#123;<span class="string">&#x27;index&#x27;</span>:<span class="string">&#x27;姓名&#x27;</span>&#125;)</span><br><span class="line">df3 = df3.reset_index().rename(columns = &#123;<span class="string">&#x27;index&#x27;</span>:<span class="string">&#x27;姓名&#x27;</span>&#125;)</span><br><span class="line"><span class="built_in">print</span>(df1)</span><br><span class="line"><span class="built_in">print</span>(df2)</span><br><span class="line"><span class="built_in">print</span>(df3)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   姓名  语文  数学  英语
+0  A1  62  90  66
+1  A2  69  90  96
+2  A3  87  90  91
+3  A4  88  74  93
+4  A5  76  99  65
+   姓名  物理  数学  英语  语文
+0  A6  78  72  75  73
+1  A7  65  80  71  84
+2  A8  80  96  96  90
+   姓名  物理  化学
+0  A2  76  73
+1  A3  96  86
+2  A9  65  99
+</code></pre>
+<h4 id="2-21、内连接"><a href="#2-21、内连接" class="headerlink" title="2.21、内连接"></a>2.21、内连接</h4><ul>
+<li>how&#x3D;’inner’  </li>
+<li>保留在连接字段上大家都有的</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.merge(df1, df3, <span class="string">&#x27;inner&#x27;</span>, <span class="string">&#x27;姓名&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   姓名  语文  数学  英语  物理  化学
+0  A2  69  90  96  76  73
+1  A3  87  90  91  96  86
+</code></pre>
+<h3 id="2-22、外连接"><a href="#2-22、外连接" class="headerlink" title="2.22、外连接"></a>2.22、外连接</h3><ul>
+<li>how&#x3D;’outer’  </li>
+<li>全部所有的信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.merge(df1, df2, how=<span class="string">&#x27;outer&#x27;</span>, on=<span class="string">&#x27;姓名&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   姓名  语文_x  数学_x  英语_x    物理  数学_y  英语_y  语文_y
+0  A1  62.0  90.0  66.0   NaN   NaN   NaN   NaN
+1  A2  69.0  90.0  96.0   NaN   NaN   NaN   NaN
+2  A3  87.0  90.0  91.0   NaN   NaN   NaN   NaN
+3  A4  88.0  74.0  93.0   NaN   NaN   NaN   NaN
+4  A5  76.0  99.0  65.0   NaN   NaN   NaN   NaN
+5  A6   NaN   NaN   NaN  78.0  72.0  75.0  73.0
+6  A7   NaN   NaN   NaN  65.0  80.0  71.0  84.0
+7  A8   NaN   NaN   NaN  80.0  96.0  96.0  90.0
+</code></pre>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.merge(df1, df3, how=<span class="string">&#x27;outer&#x27;</span>, on=<span class="string">&#x27;姓名&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   姓名    语文    数学    英语    物理    化学
+0  A1  62.0  90.0  66.0   NaN   NaN
+1  A2  69.0  90.0  96.0  76.0  73.0
+2  A3  87.0  90.0  91.0  96.0  86.0
+3  A4  88.0  74.0  93.0   NaN   NaN
+4  A5  76.0  99.0  65.0   NaN   NaN
+5  A9   NaN   NaN   NaN  65.0  99.0
+</code></pre>
+<h4 id="2-23、左连接"><a href="#2-23、左连接" class="headerlink" title="2.23、左连接"></a>2.23、左连接</h4><ul>
+<li>how&#x3D;’left’  </li>
+<li>保留左表所有的信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.merge(df3, df1, how=<span class="string">&#x27;left&#x27;</span>, on=<span class="string">&#x27;姓名&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   姓名  物理  化学    语文    数学    英语
+0  A2  76  73  69.0  90.0  96.0
+1  A3  96  86  87.0  90.0  91.0
+2  A9  65  99   NaN   NaN   NaN
+</code></pre>
+<h4 id="2-24、右连接"><a href="#2-24、右连接" class="headerlink" title="2.24、右连接"></a>2.24、右连接</h4><ul>
+<li>how &#x3D; ‘right’  </li>
+<li>保留右表所有的信息</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.merge(df1, df3, <span class="string">&#x27;right&#x27;</span>, <span class="string">&#x27;姓名&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>   姓名    语文    数学    英语  物理  化学
+0  A2  69.0  90.0  96.0  76  73
+1  A3  87.0  90.0  91.0  96  86
+2  A9   NaN   NaN   NaN  65  99
+</code></pre>
+<p><strong>总结：</strong></p>
+<p>纵向追加用<code>pd.concat()</code><br>横向合并使用索引关联用<code>pd.concat()</code>，使用字段关联用<code>pd.merge()</code></p>
+]]></content>
+      <categories>
+        <category>数据处理能力</category>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Python中的单表查询</title>
+    <url>/p/1860daa4/</url>
     <content><![CDATA[<p>本文主要介绍了Python中常用的单表查询操作，包括：表结构查询、行查询、列查询，以及分组聚合和数据透视等。</p>
   <span id="more"></span>
 
@@ -3670,7 +3855,7 @@ hadoop04： blk_02 blk_04
 <p>SSH是由客户端和服务端的软件组成的<br>服务端是一个守护进程(sshd)，他在后台运行并响应来自客户端的连接请求。<br>客户端包含ssh程序以及像scp（远程拷贝）、slogin（远程登陆）、sftp（安全文件传输）等其他的应用程序。</p>
 <p>首先确保服务器是否安装了ssh服务：<br> [root@mycentos7 ~]# yum list installed | grep openssh-server<br>正常情况下，CentOS7是安装了的。或者你只要能使用SecureCRT、Xshell等工具连接，那都是正常的。</p>
 <h3 id="Linux中SSH协议：具体配置"><a href="#Linux中SSH协议：具体配置" class="headerlink" title="Linux中SSH协议：具体配置"></a>Linux中SSH协议：具体配置</h3><p>准备两台虚拟机：A和B，假如A要登陆B，或者安全访问B</p>
-<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#114;&#x6f;&#111;&#x74;&#x40;&#49;&#57;&#50;&#46;&#x31;&#54;&#56;&#x2e;&#x31;&#50;&#51;&#46;&#49;&#x35;&#x32;">&#114;&#x6f;&#111;&#x74;&#x40;&#49;&#57;&#50;&#46;&#x31;&#54;&#56;&#x2e;&#x31;&#50;&#51;&#46;&#49;&#x35;&#x32;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
+<p>1、首先各自生成密钥对，生成过程中，直接三次回车即可。会在当前用户的家目录中生成一个.ssh隐藏文件夹。公钥是id_rsa.pub ，私钥是id_rsa<br>    ssh-keygen 或者 ssh-keygen -t rsa<br>2、将A自己的公钥放置到授权列表文件authorized_keys中<br>    cat id_rsa.pub &gt; authorized_keys<br>3、将得到的authorized_keys发送给B机器对应的文件夹下，就相当于把自己的公钥发给对方<br>    scp -r authorized_keys <a href="mailto:&#114;&#x6f;&#111;&#116;&#64;&#49;&#x39;&#50;&#46;&#49;&#x36;&#56;&#46;&#x31;&#50;&#x33;&#x2e;&#x31;&#53;&#50;">&#114;&#x6f;&#111;&#116;&#64;&#49;&#x39;&#50;&#46;&#49;&#x36;&#56;&#46;&#x31;&#50;&#x33;&#x2e;&#x31;&#53;&#50;</a>:$PWD<br>4、这样，A就能访问机器B了<br>5、如果是自己访问自己的时候，也是需要把自己的公钥放在authorized_keys文件中</p>
 <h3 id="Linux中SSH协议：原理"><a href="#Linux中SSH协议：原理" class="headerlink" title="Linux中SSH协议：原理"></a>Linux中SSH协议：原理</h3><p><img src="http://guiyi-home-resource-picture.oss-cn-beijing.aliyuncs.com/img/image-20220415151926777.png" alt="image-20220415151926777"></p>
 ]]></content>
       <categories>

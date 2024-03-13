@@ -6,7 +6,7 @@
   <link href="http://guiyiblog.com/atom.xml" rel="self"/>
   
   <link href="http://guiyiblog.com/"/>
-  <updated>2024-03-13T04:20:07.037Z</updated>
+  <updated>2024-03-13T04:22:05.559Z</updated>
   <id>http://guiyiblog.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Python中的单表查询</title>
+    <title>Python中的多表查询</title>
     <link href="http://guiyiblog.com/p/1860daa4/"/>
     <id>http://guiyiblog.com/p/1860daa4/</id>
     <published>2024-03-13T14:11:32.000Z</published>
-    <updated>2024-03-13T04:20:07.037Z</updated>
+    <updated>2024-03-13T04:22:05.559Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文主要介绍了Python中常用的多表查询操作，包括：纵向追加、横向合并。&lt;/p&gt;</summary>

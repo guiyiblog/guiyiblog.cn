@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="数据分析师的成长博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Python中的MySQL操作 |  归一</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="归一" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-240314-Python中的MySQL操作"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Python中的MySQL操作
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/p/1dc91063/" class="article-date">
+  <time datetime="2024-03-14T14:11:32.000Z" itemprop="datePublished">2024-03-14</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/">数据处理能力</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Python/">Python</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">13 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>数据库是数据分析、数据清洗重要的数据来源，也是数据共享平台。因此学会如何从数据库获取数据、如何将数据存放到数据库还是蛮重要的。<br>企业中的数据库各种各样，但是其原理都大同小异，因此我们这里主要介绍Python读写MySQL数据库的方法，不涉及过多数据库的 SQL 语句相关内容。  </p>
+  <span id="more"></span>
+
+<p>mysql数据库管理系统是由服务（server）与 客户端（client）程序组成的，数据库里的数据由server管理维护，我们对数据的任何访问都需要经过服务程序处理。<br>客户端程序则是我们与MySQL服务程序交流的桥梁，客户端程序有两大类：带交互界面的和不带交互界面的。<br>之前大家上课使用的workbench属于有界面的MySQL客户端程序，而我们今天通过python代码编写的程序属于无界面的客户端程序。  </p>
+<p>这两类程序本质上是一样的，只是使用场景有一些区别。 </p>
+<p>MySQL客户端连接服务器，有一些基本要求：</p>
+<ul>
+<li>服务端程序是启动的</li>
+<li>有服务端软件的IP地址、端口号、拥有一些权限的账号密码</li>
+</ul>
+<p>除了MySQL之外还有很多种数据库，这些数据库跟MySQL类似，一般也得需要这些信息才能连接访问。<br>客户端与数据库服务程序之间的通信需要一定的协议、约定，这个已经有人给写好了，因此我们只需安装相应的库就可以使用了。<br>各个编程语言都有连接数据库的开发库：如Java里的jdbc ，在 Python 3 里面主要使用 MySQL 官方的 <strong><code>mysql-connector-python</code></strong> 或者 <strong><code>pymysql</code></strong> 这两个库。  </p>
+<h2 id="1、mysql-connector-python"><a href="#1、mysql-connector-python" class="headerlink" title="1、mysql-connector-python"></a>1、mysql-connector-python</h2><p>mysql-connector-python 是 MySQL 官方提供的 Python 数据库连接器。它允许 Python 应用程序连接到 MySQL 数据库服务器并执行 SQL 查询。该连接器符合 Python 数据库 API 规范（也被称为 DB-API），因此它提供了标准的数据库操作方法，如连接、查询、执行命令等。</p>
+<p>以下是使用 mysql-connector-python 的一些基本步骤：</p>
+<h3 id="1-1、安装"><a href="#1-1、安装" class="headerlink" title="1.1、安装"></a>1.1、安装</h3><p>首先，你需要使用 pip 安装 mysql-connector-python：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pip install mysql-connector-python</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2、连接到数据库"><a href="#1-2、连接到数据库" class="headerlink" title="1.2、连接到数据库"></a>1.2、连接到数据库</h3><p>接下来，你可以使用以下代码连接到 MySQL 数据库：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mysql.connector</span><br><span class="line"></span><br><span class="line">cnx = mysql.connector.connect(</span><br><span class="line">    host=<span class="string">&quot;localhost&quot;</span>,  <span class="comment"># 数据库服务器地址  </span></span><br><span class="line">    user=<span class="string">&quot;yourusername&quot;</span>,  <span class="comment"># 数据库用户名  </span></span><br><span class="line">    password=<span class="string">&quot;yourpassword&quot;</span>,  <span class="comment"># 数据库密码  </span></span><br><span class="line">    database=<span class="string">&quot;yourdatabase&quot;</span>  <span class="comment"># 要连接的数据库名  </span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">cursor = cnx.cursor()  <span class="comment"># 创建一个游标对象用于执行查询</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3、执行查询"><a href="#1-3、执行查询" class="headerlink" title="1.3、执行查询"></a>1.3、执行查询</h3><p>使用游标对象执行 SQL 查询：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 执行一个简单的查询  </span></span><br><span class="line">query = <span class="string">&quot;SELECT * FROM your_table&quot;</span></span><br><span class="line">cursor.execute(query)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取查询结果  </span></span><br><span class="line"><span class="keyword">for</span> (<span class="built_in">id</span>, name, age) <span class="keyword">in</span> cursor:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;ID: <span class="subst">&#123;<span class="built_in">id</span>&#125;</span>, Name: <span class="subst">&#123;name&#125;</span>, Age: <span class="subst">&#123;age&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="1-4、执行命令"><a href="#1-4、执行命令" class="headerlink" title="1.4、执行命令"></a>1.4、执行命令</h3><p>如果你需要执行修改数据的命令（如 INSERT, UPDATE, DELETE），可以这样做：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 执行 INSERT 命令  </span></span><br><span class="line">insert_query = <span class="string">&quot;INSERT INTO your_table (name, age) VALUES (%s, %s)&quot;</span></span><br><span class="line">val = (<span class="string">&quot;John Doe&quot;</span>, <span class="number">30</span>)</span><br><span class="line">cursor.execute(insert_query, val)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交更改到数据库  </span></span><br><span class="line">cnx.commit()</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5、关闭连接"><a href="#1-5、关闭连接" class="headerlink" title="1.5、关闭连接"></a>1.5、关闭连接</h3><p>完成数据库操作后，记得关闭游标和连接：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cursor.close()  <span class="comment"># 关闭游标  </span></span><br><span class="line">cnx.close()  <span class="comment"># 关闭连接</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong></p>
+<pre><code>确保你的 MySQL 服务器正在运行，并且可以从你的 Python 应用程序所在的位置访问。
+替换上面代码中的 yourusername, yourpassword, yourdatabase, your_table 等占位符为实际的值。
+在执行修改数据的命令（如 INSERT, UPDATE, DELETE）后，记得调用 cnx.commit() 来提交更改，否则更改不会被保存到数据库中。
+异常处理也很重要，应该考虑在代码中加入 try...except 块来处理可能出现的数据库错误。
+</code></pre>
+<p>mysql-connector-python 还提供了许多高级功能，如连接池、SSL 支持、事务处理等，可以根据具体需求查阅官方文档来了解更多信息。</p>
+<h2 id="2、pymysql"><a href="#2、pymysql" class="headerlink" title="2、pymysql"></a>2、pymysql</h2><p>pymysql 是一个纯 Python 实现的 MySQL 客户端库，用于连接和操作 MySQL 数据库。它基于 Python 的 DB-API 2.0 规范，因此与标准的 Python 数据库接口兼容，使得开发者可以轻松地与 MySQL 数据库进行交互。</p>
+<p>pymysql 的使用方式与 mysql-connector-python 类似，但它是作为第三方库开发的，而不是 MySQL 官方提供的。由于它是纯 Python 实现的，所以安装和使用相对简单，并且不需要额外的依赖。</p>
+<p>以下是使用 pymysql 进行数据库操作的基本步骤：</p>
+<h3 id="2-1、安装"><a href="#2-1、安装" class="headerlink" title="2.1、安装"></a>2.1、安装</h3><p>首先，你需要使用 pip 安装 pymysql：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pip install pymysql</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2、连接到数据库"><a href="#2-2、连接到数据库" class="headerlink" title="2.2、连接到数据库"></a>2.2、连接到数据库</h3><p>创建一个连接对象，并指定数据库连接参数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建连接  </span></span><br><span class="line">connection = pymysql.connect(</span><br><span class="line">    host=<span class="string">&#x27;localhost&#x27;</span>,  <span class="comment"># 数据库服务器地址  </span></span><br><span class="line">    user=<span class="string">&#x27;yourusername&#x27;</span>,  <span class="comment"># 数据库用户名  </span></span><br><span class="line">    password=<span class="string">&#x27;yourpassword&#x27;</span>,  <span class="comment"># 数据库密码  </span></span><br><span class="line">    database=<span class="string">&#x27;yourdatabase&#x27;</span>,  <span class="comment"># 要连接的数据库名  </span></span><br><span class="line">    charset=<span class="string">&#x27;utf8mb4&#x27;</span>,  <span class="comment"># 字符集，根据需要设置  </span></span><br><span class="line">    cursorclass=pymysql.cursors.DictCursor  <span class="comment"># 返回字典而不是元组  </span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">with</span> connection.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">        <span class="comment"># 执行 SQL 查询  </span></span><br><span class="line">        sql = <span class="string">&quot;SELECT `id`, `password` FROM `users` WHERE `email`=%s&quot;</span></span><br><span class="line">        cursor.execute(sql, (<span class="string">&#x27;webmaster@python.org&#x27;</span>,))</span><br><span class="line">        result = cursor.fetchone()</span><br><span class="line">        <span class="built_in">print</span>(result)</span><br><span class="line">        <span class="comment"># 使用with语句，文件会在这里自动关闭，无需显式调用 cursor.close()</span></span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">    connection.close()</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3、执行查询和命令"><a href="#2-3、执行查询和命令" class="headerlink" title="2.3、执行查询和命令"></a>2.3、执行查询和命令</h3><p>使用游标对象执行 SQL 查询或命令：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> connection.cursor() <span class="keyword">as</span> cursor:</span><br><span class="line">    <span class="comment"># 执行查询  </span></span><br><span class="line">    sql = <span class="string">&quot;SELECT * FROM `some_table`&quot;</span></span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    results = cursor.fetchall()  <span class="comment"># 获取所有结果  </span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> results:</span><br><span class="line">        <span class="built_in">print</span>(row)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 执行命令（如 INSERT, UPDATE, DELETE）  </span></span><br><span class="line">    sql = <span class="string">&quot;INSERT INTO `some_table` (`column1`, `column2`) VALUES (%s, %s)&quot;</span></span><br><span class="line">    val = (<span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;value2&#x27;</span>)</span><br><span class="line">    cursor.execute(sql, val)</span><br><span class="line">    connection.commit()  <span class="comment"># 提交更改</span></span><br></pre></td></tr></table></figure>
+
+<p>注意事项</p>
+<pre><code>确保你的 MySQL 服务器正在运行，并且可以从你的 Python 应用程序所在的位置访问。
+替换上面代码中的 yourusername, yourpassword, yourdatabase, some_table, column1, column2 等占位符为实际的值。
+使用 with 语句可以确保游标和连接在操作完成后被正确关闭，即使在发生异常时也是如此。
+在执行修改数据的命令后，记得调用 connection.commit() 来提交更改，否则更改不会被保存到数据库中。
+pymysql 还支持其他高级功能，如事务处理、批量插入等，具体可以查阅官方文档或相关教程。
+</code></pre>
+<p>pymysql 由于其纯 Python 实现和相对简单的 API，在 Python 社区中广受欢迎，并经常用于构建 Web 应用程序和其他需要与 MySQL 数据库交互的项目。</p>
+<h3 id="2-4、示例"><a href="#2-4、示例" class="headerlink" title="2.4、示例"></a>2.4、示例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建连接对象</span></span><br><span class="line">mydb = pymysql.connect(</span><br><span class="line">    host=<span class="string">&quot;localhost&quot;</span>,  <span class="comment"># 数据库主机地址</span></span><br><span class="line">    user=<span class="string">&quot;root&quot;</span>,  <span class="comment"># 数据库用户名</span></span><br><span class="line">    passwd=<span class="string">&quot;1234&quot;</span>,  <span class="comment"># 数据库密码</span></span><br><span class="line">    port=<span class="number">3306</span>  <span class="comment"># 端口号      </span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建游标对象</span></span><br><span class="line">mycursor = mydb.cursor(cursor=pymysql.cursors.DictCursor)</span><br><span class="line"><span class="comment"># 使用数据库</span></span><br><span class="line">mycursor.execute(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">use manage;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询</span></span><br><span class="line">mycursor.execute(<span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">select * from schedule limit 10</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接收数据</span></span><br><span class="line">df = pd.DataFrame(mycursor)</span><br><span class="line"><span class="built_in">print</span>(df)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭游标</span></span><br><span class="line">mycursor.close()</span><br><span class="line"><span class="comment"># 关闭数据库连接</span></span><br><span class="line">mydb.close()</span><br><span class="line"></span><br><span class="line">pd.read_sql(<span class="string">&quot;select * from schedule where item = &#x27;睡觉&#x27;&quot;</span>, con=mydb)  <span class="comment"># 使用Dataframe对象操作数据库时，最好使用SQLAlchemy库！</span></span><br></pre></td></tr></table></figure>
+
+
+<pre><code>---------------------------------------------------------------------------
+
+NameError                                 Traceback (most recent call last)
+
+Cell In[1], line 2
+      1 # 创建连接对象
+----&gt; 2 mydb = pymysql.connect(
+      3     host=&quot;localhost&quot;,  # 数据库主机地址
+      4     user=&quot;root&quot;,  # 数据库用户名
+      5     passwd=&quot;1234&quot;,  # 数据库密码
+      6     port=3306  # 端口号      
+      7 )
+      9 # 创建游标对象
+     10 mycursor = mydb.cursor(cursor=pymysql.cursors.DictCursor)
+
+
+NameError: name &#39;pymysql&#39; is not defined
+</code></pre>
+<p>这句话的意思是：“其他DBAPI2对象没有被测试。请考虑使用SQLAlchemy。”</p>
+<p>解释如下：</p>
+<pre><code>DBAPI2：这是Python的数据库API的规范版本2。它定义了一组通用的接口，使得Python程序员可以更容易地与各种数据库进行交互。
+对象：在这里，对象指的是与数据库交互时可能使用的各种类和方法。
+未测试：意味着这些DBAPI2对象没有经过充分的测试或验证，可能存在未知的问题或不稳定的行为。
+SQLAlchemy：是一个流行的Python ORM（对象关系映射）工具，它提供了对数据库操作的高级抽象，使得开发者可以更简洁、更安全地与数据库进行交互。
+</code></pre>
+<p>整句话的建议是，如果你正在考虑使用那些没有被充分测试的DBAPI2对象进行数据库操作，那么最好考虑使用SQLAlchemy这样的更高级、更稳定的库。<br>SQLAlchemy经过了广泛的测试和使用，提供了更多的功能和更好的安全性，因此通常是一个更好的选择。</p>
+<h2 id="3、sqlalchemy"><a href="#3、sqlalchemy" class="headerlink" title="3、sqlalchemy"></a>3、sqlalchemy</h2><p>SQLAlchemy 是一个流行的 Python SQL 工具包和对象关系映射（ORM）系统，它为应用程序开发者提供了一套全面的企业级持久性模型。<br>它支持多种数据库后端，并且提供了灵活的方式来构建和管理 SQL 语句和对象关系。<br>SQLAlchemy 的核心功能</p>
+<pre><code>对象关系映射（ORM）：
+    将数据库表映射到 Python 类。
+    将表中的行映射到类的实例。
+    将表中的列映射到类的属性。
+SQL 表达式语言：
+    允许开发者以 Pythonic 的方式构建 SQL 查询。
+    提供了一套完整的 SQL 构造器，可以构建复杂的查询。
+事务和会话管理：
+    管理数据库事务的开始、提交和回滚。
+    提供会话对象来管理对象的生命周期。
+关系：
+    支持一对一、一对多、多对多等关系。
+    提供关系加载策略，如连接加载、子查询加载等。
+数据库引擎：
+    提供了与多种数据库（如 MySQL、PostgreSQL、SQLite 等）的接口。
+    允许开发者配置连接池和其他数据库特定的设置。
+扩展：
+    提供了大量的扩展来支持更多高级功能，如水平分片、异步操作、全文搜索等。
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pip install sqlalchemy</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1、MySQL数据读取"><a href="#3-1、MySQL数据读取" class="headerlink" title="3.1、MySQL数据读取"></a>3.1、MySQL数据读取</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">MYSQL_HOST = <span class="string">&#x27;localhost&#x27;</span></span><br><span class="line">MYSQL_PORT = <span class="string">&#x27;3306&#x27;</span></span><br><span class="line">MYSQL_USER = <span class="string">&#x27;root&#x27;</span></span><br><span class="line">MYSQL_PASSWORD = <span class="string">&#x27;1234&#x27;</span></span><br><span class="line">MYSQL_DB = <span class="string">&#x27;manage&#x27;</span></span><br><span class="line"></span><br><span class="line">engine = create_engine(<span class="string">&#x27;mysql+pymysql://%s:%s@%s:%s/%s?charset=utf8&#x27;</span></span><br><span class="line">                       % (MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOST, MYSQL_PORT, MYSQL_DB))</span><br><span class="line"></span><br><span class="line">sql = <span class="string">&quot;SELECT * FROM schedule where item = &#x27;睡觉&#x27; limit 10&quot;</span></span><br><span class="line"></span><br><span class="line">df = pd.read_sql(sql, engine)</span><br><span class="line"></span><br><span class="line"><span class="comment"># pd.set_option(&#x27;display.unicode.ambiguous_as_wide&#x27;, True) #设置列名对齐</span></span><br><span class="line"><span class="comment"># pd.set_option(&#x27;display.unicode.east_asian_width&#x27;, True) #设置列名对齐</span></span><br><span class="line"><span class="built_in">print</span>(df)</span><br></pre></td></tr></table></figure>
+
+<pre><code>         dt      time item  duration
+0  20220401   1:00:00   睡觉       0.5
+1  20220401   1:30:00   睡觉       0.5
+2  20220401  13:00:00   睡觉       0.5
+3  20220401  13:30:00   睡觉       0.5
+4  20220401   2:00:00   睡觉       0.5
+5  20220401   2:30:00   睡觉       0.5
+6  20220401   3:00:00   睡觉       0.5
+7  20220401   3:30:00   睡觉       0.5
+8  20220401   4:00:00   睡觉       0.5
+9  20220401   4:30:00   睡觉       0.5
+</code></pre>
+<h3 id="3-2-MySQL数据写入"><a href="#3-2-MySQL数据写入" class="headerlink" title="3.2 MySQL数据写入"></a>3.2 MySQL数据写入</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.to_sql(<span class="string">&#x27;ceshi&#x27;</span>, con=engine, if_exists=<span class="string">&#x27;replace&#x27;</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>10
+</code></pre>
+<h2 id="4、MySQL常用操作函数封装"><a href="#4、MySQL常用操作函数封装" class="headerlink" title="4、MySQL常用操作函数封装"></a>4、MySQL常用操作函数封装</h2><p>注意：python3以上版本可以直接使用sqlalchemy库来进行Dataframe操作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># driver = &#123;&#x27;host&#x27;: &#x27;localhost&#x27;, &#x27;port&#x27;: 3306, &#x27;user&#x27;: &#x27;&#x27;, &#x27;pwd&#x27;: &#x27;&#x27;, &#x27;db&#x27;: &#x27;&#x27;&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">insert_mysql_data</span>(<span class="params">sql, data, driver</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    用于批量插入MySQL数据</span></span><br><span class="line"><span class="string">    :param sql:MySQL数据插入语句</span></span><br><span class="line"><span class="string">    :param data:列表数据[[a1,b1],[a2,b2]]</span></span><br><span class="line"><span class="string">    :param driver:数据库引擎</span></span><br><span class="line"><span class="string">    :return:无返回值</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment">## 连接MySQL数据库</span></span><br><span class="line">    host, port, user, pwd, db = driver[<span class="string">&#x27;host&#x27;</span>], driver[<span class="string">&#x27;port&#x27;</span>], driver[<span class="string">&#x27;user&#x27;</span>], driver[<span class="string">&#x27;pwd&#x27;</span>], driver[<span class="string">&#x27;db&#x27;</span>]</span><br><span class="line">    db = pymysql.connect(host=host, port=port, user=user,</span><br><span class="line">                         password=pwd, database=db)</span><br><span class="line">    cursor = db.cursor()</span><br><span class="line">    <span class="comment">## 批量写入数据</span></span><br><span class="line">    cursor.executemany(sql, data)</span><br><span class="line">    db.commit()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;MySQL数据插入成功！&quot;</span>)</span><br><span class="line">    <span class="comment">## 关闭游标和数据库</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    db.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">update_mysql_data</span>(<span class="params">sql, driver</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    用于更新MySQL数据</span></span><br><span class="line"><span class="string">    :param sql:MySQL数据更新语句</span></span><br><span class="line"><span class="string">    :param driver:MySQL连接参数</span></span><br><span class="line"><span class="string">    :return:无返回值</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment">## 连接MySQL数据库</span></span><br><span class="line">    host, port, user, pwd, db = driver[<span class="string">&#x27;host&#x27;</span>], driver[<span class="string">&#x27;port&#x27;</span>], driver[<span class="string">&#x27;user&#x27;</span>], driver[<span class="string">&#x27;pwd&#x27;</span>], driver[<span class="string">&#x27;db&#x27;</span>]</span><br><span class="line">    db = pymysql.connect(host=host, port=port, user=user,</span><br><span class="line">                         password=pwd, database=db)</span><br><span class="line">    cursor = db.cursor()</span><br><span class="line">    <span class="comment">## 更新MySQL数据</span></span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    db.commit()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;MySQL数据更新成功！&quot;</span>)</span><br><span class="line">    <span class="comment">## 关闭游标和数据库</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    db.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_mysql_data</span>(<span class="params">sql, driver</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    用于获取MySQL数据</span></span><br><span class="line"><span class="string">    :param sql:MySQL数据查询语句</span></span><br><span class="line"><span class="string">    :param driver:MySQL连接参数</span></span><br><span class="line"><span class="string">    :return:查询数据结果，字典类型</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment">## 连接MySQL数据库</span></span><br><span class="line">    host, port, user, pwd, db = driver[<span class="string">&#x27;host&#x27;</span>], driver[<span class="string">&#x27;port&#x27;</span>], driver[<span class="string">&#x27;user&#x27;</span>], driver[<span class="string">&#x27;pwd&#x27;</span>], driver[<span class="string">&#x27;db&#x27;</span>]</span><br><span class="line">    db = pymysql.connect(host=host, port=port, user=user,</span><br><span class="line">                         password=pwd, database=db)</span><br><span class="line">    cursor = db.cursor()</span><br><span class="line">    <span class="comment">## 创建游标对象</span></span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    results = cursor.fetchall()</span><br><span class="line">    <span class="comment"># 获取表结构  cursor.description</span></span><br><span class="line">    fields = [field[<span class="number">0</span>] <span class="keyword">for</span> field <span class="keyword">in</span> cursor.description]</span><br><span class="line">    <span class="comment"># 序列化成字典：zip把两迭代对象合并成2维元组,然后用dict转化为字典。</span></span><br><span class="line">    data = [<span class="built_in">dict</span>(<span class="built_in">zip</span>(fields, result)) <span class="keyword">for</span> result <span class="keyword">in</span> results]</span><br><span class="line">    <span class="comment">## 关闭游标和数据库</span></span><br><span class="line">    cursor.close()</span><br><span class="line">    db.close()</span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://guiyiblog.com/p/1dc91063/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/p/14ba307b/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Python中的多表查询</div>
+      </a>
+    
+  </nav>
+
+  
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2022-2024
+        <i class="ri-heart-fill heart_icon"></i> 归一
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+    
+        <div class="logo">
+            <a href="/"><img src="/images/ayer-side.svg" alt="归一"></a>
+        </div>
+    
+    <ul class="nav nav-main">
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/">主页</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/categories">分类</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B">业务理解能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E4%B8%9A%E5%8A%A1%E7%90%86%E8%A7%A3%E8%83%BD%E5%8A%9B/%E5%86%85%E5%AE%B9%E7%A4%BE%E4%BA%A4%E8%A1%8C%E4%B8%9A">内容社交行业
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96%E8%83%BD%E5%8A%9B">数据获取能力</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B">数据处理能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Excel">Excel
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/PowerBI">PowerBI
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/MySQL">MySQL
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/Python">Python
+                                    </a></small>
+                            </li>
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B/%E5%A4%A7%E6%95%B0%E6%8D%AE">BigData
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%83%BD%E5%8A%9B">数据分析能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E8%83%BD%E5%8A%9B/%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95">统计分析方法
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                
+                    <a class="nav-item-link" href="/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B">数据表达能力</a>
+                    <!--<span class="menu-suffix">&#x1F525;</span>-->
+                    <ul class="sub-menu">
+                        
+                            <li>
+                                <small><a class="nav-item-link"
+                                          href="/categories/%E6%95%B0%E6%8D%AE%E8%A1%A8%E8%BE%BE%E8%83%BD%E5%8A%9B/%E5%88%86%E6%9E%90%E6%A1%88%E4%BE%8B">分析案例
+                                    </a></small>
+                            </li>
+                        
+                    </ul>
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/categories/%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3">网站说明</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+            <li class="nav-item">
+                <!-- 找到这里，添加代码 -->
+                
+                    <a class="nav-item-link" href="/about">关于</a>
+                
+                
+                <!-- 到这里结束 -->
+            </li>
+        
+    </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+    <ul class="nav">
+        <li class="nav-item">
+            
+                <a class="nav-item-link nav-item-search" title="搜索">
+                    <i class="ri-search-line"></i>
+                </a>
+            
+            
+        </li>
+    </ul>
+</nav>
+<div class="search-form-wrap">
+    <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+
+<style>
+    .nav-main li ul {
+        display: none;
+    }
+
+    .nav-main li:hover ul {
+        display: block;
+        /*color: #dee2ec;*/
+        /*animation: swing ease-in-out 0.5s 1 alternate;*/
+    }
+
+    .sub-menu {
+        /*position: absolute;*/
+        position: relative;
+        background: rgba(0, 0, 0, 0);
+        color: rgba(0, 0, 0, 0);
+        padding: 3px;
+        width: 10rem;
+        left: 3rem;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    .menu-suffix {
+        display: inline-block;
+        padding: 5px;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+</style>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
